@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:28:02 by chrhu             #+#    #+#             */
-/*   Updated: 2024/07/12 19:01:02 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/07/12 20:15:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,25 @@
 # define GREEN "\033[0;32m"
 # define YELLOW "\033[0;33m"
 
-class PhoneBook 
-{
+class PhoneBook {
 	public :
-
+	// 	PhoneBook(void);
+	// 	~PhoneBook(void);
 };
 
-class Contact
-{
+class Contact {
 	private :
-		std::string firstName;
-		std::string lastName;
-		std::string phoneNumber;
+		std::string first_name;
+		std::string last_name;
+		std::string nickname;
+		std::string phone_number;
+		std::string darkest_secret;
 	public :
+	// 	Contact(void);
+	// 	~Contact(void);
 
 };
+
+void add(void);
 
 #endif

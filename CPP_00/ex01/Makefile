@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 15:27:57 by chrhu             #+#    #+#              #
-#    Updated: 2024/07/12 17:31:42 by chrhu            ###   ########.fr        #
+#    Updated: 2024/07/12 19:27:13 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
 #SOURCES
-SRCS = main.cpp Phone.Book.cpp
+SRCS = main.cpp Phone.Book.cpp contact.cpp
 OBJS = $(SRCS:%.cpp=%.o) 
 
 #COMPILE

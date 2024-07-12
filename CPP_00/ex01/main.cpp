@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:27:53 by chrhu             #+#    #+#             */
-/*   Updated: 2024/07/12 18:17:27 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/07/12 20:15:20 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 			if (str == "EXIT")
 				break ;
 			else if (str == "ADD")
-				std::cout << "enter ADD" << std::endl;
+				add();
 			else if (str == "SEARCH")
 				std::cout << "enter SEARCH" << std::endl;
 			else
@@ -33,5 +33,7 @@ int main(int argc, char **argv)
 			std::cout << "> ";
 		}
 	}
+	else
+		std::cout << RED << "./phonebook don't take arg" << DEFAULT << std::endl;
 	return (0);
 }
