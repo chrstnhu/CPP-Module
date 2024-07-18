@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:28:02 by chrhu             #+#    #+#             */
-/*   Updated: 2024/07/12 20:15:12 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/07/18 20:47:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,28 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include "contact.hpp"
 
 # define DEFAULT "\033[0;39m"
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m"
+# define YELLOW "\033[0;33m" 
 
-class PhoneBook {
-	public :
-	// 	PhoneBook(void);
-	// 	~PhoneBook(void);
+class PhoneBook 
+{
+private:
+    static const int max_contacts = 8;
+    Contact contacts[max_contacts];
+    int contact_count;
+
+public:
+    PhoneBook() : contact_count(0) {}
+
+    void add_contact(Contact contact);
+    void display_contacts() const ;
 };
 
-class Contact {
-	private :
-		std::string first_name;
-		std::string last_name;
-		std::string nickname;
-		std::string phone_number;
-		std::string darkest_secret;
-	public :
-	// 	Contact(void);
-	// 	~Contact(void);
-
-};
-
-void add(void);
+void add(PhoneBook &phonebook);
 
 #endif

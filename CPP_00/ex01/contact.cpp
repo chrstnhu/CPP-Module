@@ -6,46 +6,60 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:47:51 by chrhu             #+#    #+#             */
-/*   Updated: 2024/07/12 20:15:38 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/07/18 20:40:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phone.Book.hpp"
+#include "contact.hpp"
 
-int add_str(std::string str)
-{
-	std::getline(std::cin, str); 
-	if (str.empty())
-	{
-		std::cout << YELLOW <<"Don't leave it empty" << DEFAULT <<std::endl;
-		return (1);
-	}
-	// std::cout << "First name : " << str << std::endl;
-	return (0);
+Contact::Contact() {}
+
+Contact::Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds) {
+    first_name = fn;
+    last_name = ln;
+    nickname = nn;
+    phone_number = pn;
+    darkest_secret = ds;
 }
 
-void add(void)
-{
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secrets;
-
-	std::cout << "enter ADD" << std::endl;
-	std::cout << "First name : ";
-	if (add_str(first_name))
-		return ;
-	std::cout << "Last name : ";
-	if (add_str(last_name))
-		return ;
-	std::cout << "Nickname : ";
-	if (add_str(nickname))
-		return ;
-	std::cout << "Phone number : ";
-	if (add_str(phone_number))
-		return ;
-	std::cout << "Secrets : ";
-	if (add_str(darkest_secrets))
-		return ;
+void Contact::set_first_name(const std::string &fn) {
+    first_name = fn;
 }
+
+void Contact::set_last_name(const std::string &ln) {
+    last_name = ln;
+}
+
+void Contact::set_nickname(const std::string &nn) {
+    nickname = nn;
+}
+
+void Contact::set_phone_number(const std::string &pn) {
+    phone_number = pn;
+}
+
+void Contact::set_darkest_secret(const std::string &ds) {
+    darkest_secret = ds;
+}
+
+std::string Contact::get_first_name() const {
+    return first_name;
+}
+
+std::string Contact::get_last_name() const {
+    return last_name;
+}
+
+std::string Contact::get_nickname() const {
+    return nickname;
+}
+
+std::string Contact::get_phone_number() const {
+    return phone_number;
+}
+
+std::string Contact::get_darkest_secret() const {
+    return darkest_secret;
+}
+
