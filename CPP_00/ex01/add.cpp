@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phone.Book.hpp"
-#include "contact.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 using namespace std;
 
-void PhoneBook::add_contact(Contact contact) 
-{
+void PhoneBook::add_contact(Contact contact) {
 	int i = 0;
 
     if (contact_count < max_contacts) 
@@ -42,8 +41,7 @@ void PhoneBook::add_contact(Contact contact)
     }
 }
 
-int add_str(std::string &str)
-{
+int add_str(std::string &str) {
 	getline(cin, str); 
 	if (str.empty())
 	{
@@ -53,8 +51,7 @@ int add_str(std::string &str)
 	return (0);
 }
 
-void PhoneBook::add(PhoneBook &phonebook)
-{
+void PhoneBook::add(PhoneBook &phonebook) {
     string first_name;
     string last_name;
     string nickname;

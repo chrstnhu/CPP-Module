@@ -6,39 +6,43 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:27:53 by chrhu             #+#    #+#             */
-/*   Updated: 2024/07/18 20:40:25 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/07/19 19:04:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phone.Book.hpp"
-#include "contact.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-int main(int argc, char **argv)
-{
+using namespace std;
+
+int main(int argc, char **argv) {
 	(void)argv;
-	std::string str;
 	PhoneBook phonebook;
+	string str;
+	string index;
 
 	if (argc == 1)
 	{
-		std::cout << "phonebook > ";
-		while (std::getline(std::cin, str))
+		cout << "phonebook > ";
+		while (getline(cin, str))
 		{
 			if (str == "EXIT")
 				break ;
 			else if (str == "ADD")
-				add(phonebook);
+				phonebook.add(phonebook);
 			else if (str == "SEARCH")
 			{
-				std::cout << "enter SEARCH" << std::endl;
 				phonebook.display_contacts();
+				cout << YELLOW << "Which contact do you want the details ? " << DEFAULT << endl;
+				getline(cin, index);
+				phonebook.display_index(index);
 			}
 			else
-				std::cout << RED << "Try again with : ADD/SEARCH/EXIT " << DEFAULT << std::endl;
-			std::cout << "phonebook > ";
+				cout << RED << "Try again with : ADD/SEARCH/EXIT " << DEFAULT << endl;
+			cout << "phonebook > ";
 		}
 	}
 	else
-		std::cout << RED << "./phonebook don't take arg" << DEFAULT << std::endl;
+		cout << RED << "./phonebook don't take arg" << DEFAULT << endl;
 	return (0);
 }
