@@ -13,79 +13,76 @@
 #include "Phone.Book.hpp"
 #include "contact.hpp"
 
-int add_str(std::string str)
+using namespace std;
+
+void PhoneBook::add_contact(Contact contact) 
 {
-	std::getline(std::cin, str); 
+	int i = 0;
+
+    if (contact_count < max_contacts) 
+    {
+		i = contact_count;
+		while (i > 0) 
+        {
+            contacts[i] = contacts[i - 1];
+			i--;
+        }
+        contacts[0] = contact;
+        contact_count++;
+    } 
+    if (contact_count == max_contacts) 
+    {
+		i = max_contacts - 1;
+        while (i > 0) 
+        {
+            contacts[i] = contacts[i - 1];
+			i--;
+        }
+        contacts[0] = contact;
+    }
+}
+
+int add_str(std::string &str)
+{
+	getline(cin, str); 
 	if (str.empty())
 	{
-		std::cout << YELLOW << "Don't leave it empty !" << DEFAULT <<std::endl;
+		cout << YELLOW << "Don't leave it empty !" << DEFAULT << endl;
 		return (1);
 	}
 	return (0);
 }
 
-// void add(PhoneBook &phonebook)
-// {
-//     Contact new_contact;
+void PhoneBook::add(PhoneBook &phonebook)
+{
+    string first_name;
+    string last_name;
+    string nickname;
+    string phone_number;
+    string darkest_secret;
 
-//     std::string first_name;
-//     std::string last_name;
-//     std::string nickname;
-//     std::string phone_number;
-//     std::string darkest_secret;
+    cout << "First name: ";
+    if (add_str(first_name))
+		return;
+    
+	cout << "Last name: ";
+    if (add_str(last_name))
+		return;
+    
+	cout << "Nickname: ";
+    if (add_str(nickname))
+		return;
+    
+	cout << "Phone number: ";
+    if (add_str(phone_number))
+		return;
 
-//     std::cout << "enter ADD" << std::endl;
-//     std::cout << "First name: ";
-//     if (add_str(first_name)) return;
-//     new_contact.set_first_name(first_name);
-
-//     std::cout << "Last name: ";
-//     if (add_str(last_name)) return;
-//     new_contact.set_last_name(last_name);
-
-//     std::cout << "Nickname: ";
-//     if (add_str(nickname)) return;
-//     new_contact.set_nickname(nickname);
-
-//     std::cout << "Phone number: ";
-//     if (add_str(phone_number)) return;
-//     new_contact.set_phone_number(phone_number);
-
-//     std::cout << "Secrets: ";
-//     if (add_str(darkest_secret)) return;
-//     new_contact.set_darkest_secret(darkest_secret);
-
-//     phonebook.add_contact(new_contact);
-
-// 	 std::cout << GREEN << "Contact added successfully!" << DEFAULT << std::endl;
-// }
-
-void add(PhoneBook &phonebook) {
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string phone_number;
-    std::string darkest_secret;
-
-    std::cout << "enter ADD" << std::endl;
-
-    std::cout << "First name: ";
-    if (add_str(first_name)) return;
-
-    std::cout << "Last name: ";
-    if (add_str(last_name)) return;
-
-    std::cout << "Nickname: ";
-    if (add_str(nickname)) return;
-
-    std::cout << "Phone number: ";
-    if (add_str(phone_number)) return;
-
-    std::cout << "Secrets: ";
-    if (add_str(darkest_secret)) return;
+    cout << "Secrets: ";
+    if (add_str(darkest_secret))
+		return;
 
     Contact new_contact(first_name, last_name, nickname, phone_number, darkest_secret);
     phonebook.add_contact(new_contact);
 
-    std::cout << GREEN << "Contact added successfully!" << DEFAULT << std::endl;
+    cout << GREEN << "Contact added successfully!" << DEFAULT << endl << endl;
 }
