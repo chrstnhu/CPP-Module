@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:28:02 by chrhu             #+#    #+#             */
-/*   Updated: 2024/07/19 18:08:25 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/07/23 13:15:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ class PhoneBook
 		int contact_count;
 
 	public:
-		PhoneBook() : contact_count(max_contacts) {}
-		~PhoneBook(void);
+		PhoneBook(): contact_count(max_contacts) {}
+		~PhoneBook();
 		void add_contact(Contact contact);
 		void display_contacts() const ;
 		std::string resize(std::string str) const;
 		void display_index(std::string number) const;
 		void add(PhoneBook &phonebook);
-
 };
 
 #endif

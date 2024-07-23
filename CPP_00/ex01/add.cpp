@@ -13,8 +13,6 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-using namespace std;
-
 void PhoneBook::add_contact(Contact contact) {
 	int i = 0;
 
@@ -42,44 +40,44 @@ void PhoneBook::add_contact(Contact contact) {
 }
 
 int add_str(std::string &str) {
-	getline(cin, str); 
+	std::getline(std::cin, str); 
 	if (str.empty())
 	{
-		cout << YELLOW << "Don't leave it empty !" << DEFAULT << endl;
+		std::cout << YELLOW << "Don't leave it empty !" << DEFAULT << std::endl;
 		return (1);
 	}
 	return (0);
 }
 
 void PhoneBook::add(PhoneBook &phonebook) {
-    string first_name;
-    string last_name;
-    string nickname;
-    string phone_number;
-    string darkest_secret;
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
+    std::string phone_number;
+    std::string darkest_secret;
 
-    cout << "First name: ";
+    std::cout << "First name: ";
     if (add_str(first_name))
 		return;
     
-	cout << "Last name: ";
+	std::cout << "Last name: ";
     if (add_str(last_name))
 		return;
     
-	cout << "Nickname: ";
+	std::cout << "Nickname: ";
     if (add_str(nickname))
 		return;
     
-	cout << "Phone number: ";
+	std::cout << "Phone number: ";
     if (add_str(phone_number))
 		return;
 
-    cout << "Secrets: ";
+    std::cout << "Secrets: ";
     if (add_str(darkest_secret))
 		return;
 
     Contact new_contact(first_name, last_name, nickname, phone_number, darkest_secret);
     phonebook.add_contact(new_contact);
 
-    cout << GREEN << "Contact added successfully!" << DEFAULT << endl << endl;
+    std::cout << GREEN << "Contact added successfully!" << DEFAULT << std::endl << std::endl;
 }
