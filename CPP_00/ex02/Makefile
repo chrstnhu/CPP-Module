@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 15:27:57 by chrhu             #+#    #+#              #
-#    Updated: 2024/07/23 17:27:54 by chrhu            ###   ########.fr        #
+#    Updated: 2024/07/24 15:56:50 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS = $(SRCS:%.cpp=%.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 
 
-NAME = result.log
+NAME = result
 
 %.o: %.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
