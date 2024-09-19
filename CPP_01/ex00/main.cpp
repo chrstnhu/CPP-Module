@@ -6,14 +6,13 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/18 16:29:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/19 10:10:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
-{
+int main() {
 	Zombie zombie1("Foo");
 	Zombie zombie2;
 

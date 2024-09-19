@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:13 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/18 16:34:20 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/19 10:10:23 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ class Zombie
 		void set_name(const std::string name);
 		std::string get_name() const ;
 		void announce(void);
-		
-
 };
-Zombie* newZombie( std::string name );
+
+Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
 #endif 

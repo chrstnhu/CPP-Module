@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/18 16:24:48 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/19 10:10:17 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Zombie::~Zombie() {
 }
 
 // Set name of zombie
-void Zombie::set_name(const std::string _name){
+void Zombie::set_name(const std::string _name) {
     name = _name;
 }
 
@@ -41,8 +41,7 @@ std::string Zombie::get_name() const {
 }
 
 // Announce
-void Zombie::announce(void)
-{
+void Zombie::announce(void) {
 	if (name.empty()) {
         std::cout << "Unnamed: BraiiiiiiinnnzzzZ..." << std::endl;
     }
