@@ -6,15 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/18 17:11:33 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/19 10:10:51 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 // Create and allocate N Zombie
-Zombie* zombieHorde( int N, std::string name)
-{
+Zombie* zombieHorde( int N, std::string name) {
 	int i = 0;
 
 	if (N <= 0)
