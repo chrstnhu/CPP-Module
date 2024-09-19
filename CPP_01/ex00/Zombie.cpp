@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/19 10:10:17 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/19 10:33:25 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,18 @@ Zombie::Zombie() {
 }
 
 // Constructor : initialize zombie name
-Zombie::Zombie(std::string _name) : name(_name) {}
+Zombie::Zombie(std::string _name) {
+	this->name = _name;
+}
 
 // Destructor
 Zombie::~Zombie() {
-	if (name.empty()) {
+	if (this->name.empty()) {
         std::cout << GREEN << "Destroy unamed zombie" << DEF << std::endl;
     }
 	else {
-    	std::cout << GREEN << "Destroy " << get_name() << " zombie" << DEF << std::endl;
+    	std::cout << GREEN << "Destroy " << this->name << " zombie" << DEF << std::endl;
 	}
-}
-
-// Set name of zombie
-void Zombie::set_name(const std::string _name) {
-    name = _name;
-}
-
-// Get name of zombie
-std::string Zombie::get_name() const {
-    return name;
 }
 
 // Announce
@@ -46,6 +38,6 @@ void Zombie::announce(void) {
         std::cout << "Unnamed: BraiiiiiiinnnzzzZ..." << std::endl;
     }
 	else {
-        std::cout << get_name() << ": BraiiiiiiinnnzzzZ..." << std::endl;
+        std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
     }
 }
