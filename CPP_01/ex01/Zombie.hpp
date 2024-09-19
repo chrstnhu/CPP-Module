@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:13 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/18 17:11:26 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/19 10:40:29 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class Zombie {
 		~Zombie();
 
 		void set_name(const std::string name);
-		std::string get_name() const ;
 		void announce(void);
 };
 

@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/18 16:40:13 by chrhu             #+#    #+#              #
-#    Updated: 2024/09/18 16:47:48 by chrhu            ###   ########.fr        #
+#    Updated: 2024/09/19 10:16:28 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS = $(SRCS:%.cpp=%.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = brainz
+NAME = zombiehorde
 
 %.o: %.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
