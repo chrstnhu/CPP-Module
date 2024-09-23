@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:29:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 17:50:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/23 17:59:28 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ Weapon::Weapon() {
 	return ;
 };
 
-Weapon::Weapon(const std::string type) {
+Weapon::Weapon(const std::string type) : _type(type) {
 	std::cout << GREEN << "Construct Weapon with type: " << _type << DEF << std::endl;
-	_type = type;
+	return ;
 };
 
 Weapon::~Weapon() {
@@ -29,6 +29,7 @@ Weapon::~Weapon() {
 
 void Weapon::setType(const std::string type) {
 	_type = type;
+	return ;
 }
 
 std::string Weapon::getType() const {

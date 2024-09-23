@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:29:39 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 17:53:20 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/23 17:58:50 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 HumanB::HumanB() {
 	std::cout << GREEN << "Construct HumanB" << DEF << std::endl;
+	return ;
 }
 
-HumanB::HumanB(const std::string name) {
-	_name = name;
-	_weapon = 0;
+HumanB::HumanB(const std::string name) : _name(name), _weapon(0) {
 	std::cout << GREEN << "Construct HumanB" << std::endl;
 	std::cout << YELLOW << "- name: " << _name << DEF << std::endl;
 	return ;
@@ -33,6 +32,7 @@ HumanB::~HumanB() {
 void HumanB::setWeapon(Weapon &weapon) {
 	_weapon = &weapon;
 	std::cout << YELLOW << "- setWeapon: " <<  _weapon->getType()  << DEF << std::endl;
+	return ;
 }
 
 void HumanB::attack(void) {
@@ -40,4 +40,5 @@ void HumanB::attack(void) {
 		std::cout << _name <<" doesn't have a Weapon." << std::endl;
 	else
 		std::cout << _name <<" attacks with their " << _weapon->getType() << std::endl;
+	return ;
 }
