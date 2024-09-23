@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:13 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 16:53:25 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/23 17:50:56 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class Weapon {
 	private:
 		std::string	_type;
-	
+
 	public:
 		Weapon();
 		Weapon(const std::string type);

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:29:39 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 17:35:27 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/23 17:53:20 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 HumanB::HumanB() {
 	std::cout << GREEN << "Construct HumanB" << DEF << std::endl;
-	return ;
 }
 
 HumanB::HumanB(const std::string name) {
 	_name = name;
+	_weapon = 0;
 	std::cout << GREEN << "Construct HumanB" << std::endl;
 	std::cout << YELLOW << "- name: " << _name << DEF << std::endl;
 	return ;
@@ -35,6 +35,9 @@ void HumanB::setWeapon(Weapon &weapon) {
 	std::cout << YELLOW << "- setWeapon: " <<  _weapon->getType()  << DEF << std::endl;
 }
 
-void HumanB::attack(void){
-	std::cout << _name <<" attacks with their " << _weapon->getType() << std::endl;
+void HumanB::attack(void) {
+	if (_weapon == 0)
+		std::cout << _name <<" doesn't have a Weapon." << std::endl;
+	else
+		std::cout << _name <<" attacks with their " << _weapon->getType() << std::endl;
 }
