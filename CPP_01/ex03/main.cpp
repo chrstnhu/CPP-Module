@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:48:43 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/19 16:51:01 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/23 17:09:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ int main() {
 	club.setType("some other type of club");
 	bob.attack();
 
-	Weapon club = Weapon("crude spiked club");
+	Weapon club1 = Weapon("eternal knight");
 	HumanB jim("Jim");
-	jim.setWeapon(club);
+	jim.setWeapon(club1);
 	jim.attack();
-	club.setType("some other type of club");
+	club1.setType("some other type of club");
 	jim.attack();
 }
-r
