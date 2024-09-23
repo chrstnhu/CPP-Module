@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:29:39 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 17:09:50 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/23 17:35:27 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void HumanB::setWeapon(Weapon &weapon) {
 	std::cout << YELLOW << "- setWeapon: " <<  _weapon->getType()  << DEF << std::endl;
 }
 
-void HumanB::attack(void) {
+void HumanB::attack(void){
 	std::cout << _name <<" attacks with their " << _weapon->getType() << std::endl;
 }
