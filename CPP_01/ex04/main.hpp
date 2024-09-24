@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:05:13 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 18:17:57 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/24 14:05:32 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@
 #include <fstream>
 #include <iomanip>
 
-class ReplaceString {
-	private :
-
-	public :
-};
+void replaceString(std::string &line, const std::string &s1, const std::string &s2);
 
 #endif 

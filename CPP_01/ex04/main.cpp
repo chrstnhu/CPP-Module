@@ -6,25 +6,58 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:02:23 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/23 18:21:10 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/24 14:09:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
 
+void replaceString(std::string &line, const std::string &s1, const std::string &s2);
+
 int main(int ac, char **av) {
     std::string line;
+    std::string fileName;
+    std::string newFile;
 
-    if (ac == 2) {
-        std::ifstream myfile(av[1]);
-        if (myfile.is_open()) {
-            while (std::getline(myfile, line)) {
-                std::cout << line << '\n';
+    fileName = av[1];
+    if (ac == 4) {
+        std::ifstream inputFile(av[1]);
+        if (inputFile.is_open()) {
+            newFile += fileName + "_replace";
+
+            std::ofstream outputFile(newFile.c_str());
+            if (!outputFile.is_open()) {
+                std::cout << "Can't create the output file: " << newFile << std::endl;
+                return 1;
             }
-            myfile.close(); 
-        } else
-            std::cout << RED << "Can't read this file" << DEF << std::endl;
-    } else
-        std::cout << RED << "Usage: " << av[0] << " <filename>" << DEF << std::endl;
-    return (0);
+
+            while (std::getline(inputFile, line)) {
+                replaceString(line, av[2], av[3]);
+                outputFile << line << std::endl;
+            }
+
+            inputFile.close(); 
+            outputFile.close();
+        } else {
+            std::cout << "Can't open this file: " << fileName << std::endl;
+            return 1;
+        }
+    } else {
+        std::cout << "Usage: " << av[0] << " <filename> <string> <replacestring>" << std::endl;
+    }
+    return 0;
+}
+
+void replaceString(std::string &line, const std::string &s1, const std::string &s2) {
+    std::string newLine;
+    size_t i = 0;
+    size_t found;
+
+    while ((found = line.find(s1, i)) != std::string::npos) {
+        newLine += line.substr(i, found - i);
+        newLine += s2;
+        i = found + s1.length();
+    }
+    newLine += line.substr(i);
+    line = newLine;
 }
