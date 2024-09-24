@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:02:23 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/24 14:09:26 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/09/24 14:11:16 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int ac, char **av) {
     if (ac == 4) {
         std::ifstream inputFile(av[1]);
         if (inputFile.is_open()) {
-            newFile += fileName + "_replace";
+            newFile += fileName + ".replace";
 
             std::ofstream outputFile(newFile.c_str());
             if (!outputFile.is_open()) {
