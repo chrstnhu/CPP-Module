@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:16:48 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/19 16:43:48 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/05 14:31:32 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 # define DEF "\033[0;39m"
 # define YELLOW "\033[0;33m" 
 
-int main () {
+int main(int ac, char **av) {
+	(void)ac;
+	if (av[1] != NULL)
+	{
+		std::cout << YELLOW << " Usage : ./brain " << DEF << std::endl;
+		return (1);
+	}
 	std::string str("HI THIS IS BRAIN");
 	std::string str2("Hello");
 	std::string *stringPTR = &str;

@@ -6,13 +6,20 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/19 10:10:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/05 14:28:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main() {
+int main(int ac, char **av) {
+	(void)ac;
+	if (av[1] != NULL)
+	{
+		std::cout << YELLOW << " Usage : ./zombie " << DEF << std::endl;
+		return (1);
+	}
+
 	Zombie zombie1("Foo");
 	Zombie zombie2;
 
