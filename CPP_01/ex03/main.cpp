@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:48:43 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/05 14:31:49 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/08 16:39:23 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,21 @@ int main(int ac, char **av) {
 		std::cout << YELLOW << " Usage : ./attack " << DEF << std::endl;
 		return (1);
 	}
-	Weapon club = Weapon("crude spiked club");
-	HumanA bob("Bob", club);
-	bob.attack();
-	club.setType("some other type of club");
-	bob.attack();
 
-	Weapon club1 = Weapon("eternal knight");
-	HumanB jim("Jim");
-	jim.attack();
-	jim.setWeapon(club1);
-	jim.attack();
-	club1.setType("some other type of club");
-	jim.attack();
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.attack();
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
 }
