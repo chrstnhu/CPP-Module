@@ -6,23 +6,25 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:14:49 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/05 15:25:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/08 17:23:40 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
+// Constructor
 Harl::Harl() {
 	std::cout << GREEN << "Construct Harl" << DEF << std::endl;
 	return ;
 }
 
+// Destructor
 Harl::~Harl() {
 	std::cout << GREEN << "Destruct Harl" << DEF << std::endl;
 	return ;
 }
 
-
+// Messages
 void Harl::debug( void ) {
 	std::cout << "[DEBUG]" << std::endl
 	<< "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. " << std::endl
@@ -47,7 +49,7 @@ void Harl::error( void ) {
 	<< "This is unacceptable, I want to speak to the manager now." << std::endl << std::endl;
 }
 
-
+// Complain message
 void Harl::complain( std::string level ) {
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int i = 0;
