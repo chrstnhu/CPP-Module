@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:02:23 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/24 14:11:16 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/08 17:23:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(int ac, char **av) {
     std::string fileName;
     std::string newFile;
 
-    fileName = av[1];
     if (ac == 4) {
+		fileName = av[1];
         std::ifstream inputFile(av[1]);
         if (inputFile.is_open()) {
             newFile += fileName + ".replace";
@@ -48,6 +48,7 @@ int main(int ac, char **av) {
     return 0;
 }
 
+// Replace string
 void replaceString(std::string &line, const std::string &s1, const std::string &s2) {
     std::string newLine;
     size_t i = 0;
