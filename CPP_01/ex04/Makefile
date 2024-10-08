@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/23 18:03:14 by chrhu             #+#    #+#              #
-#    Updated: 2024/09/23 18:19:16 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/08 15:55:46 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,13 @@ GREEN = \033[0;32m
 YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
+# PATH
+OBJ_DIR = obj
+
 # SOURCES
 SRCS = main.cpp 
 HEADERS = main.hpp
-OBJS = $(SRCS:%.cpp=%.o)
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 # COMPILE
 CC = c++
@@ -26,17 +29,19 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = replace
 
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS)
+$(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Executable '$(NAME)' has been created successfully!$(DEFAULT)" 
 
 clean: 
-	@echo "$(YELLOW)rm -rf $(OBJS)$(DEFAULT)" 
+	@echo "$(YELLOW)rm -rf $(OBJS)$(DEFAULT)"
+	@rm -rf $(OBJ_DIR) 
 	@rm -f $(OBJS)
 	@echo "$(GREEN)Cleaned up $(OBJS)!$(DEFAULT)"
 

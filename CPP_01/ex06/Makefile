@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 14:14:06 by chrhu             #+#    #+#              #
-#    Updated: 2024/09/24 15:48:18 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/08 15:57:47 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,13 @@ GREEN = \033[0;32m
 YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
+# PATH
+OBJ_DIR = obj
+
 # SOURCES
 SRCS = main.cpp Harl.cpp
 HEADERS = Harl.hpp
-OBJS = $(SRCS:%.cpp=%.o)
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 # COMPILE
 CC = c++
@@ -26,17 +29,22 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = HarlFilter
 
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS)
+$(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Executable '$(NAME)' has been created successfully!$(DEFAULT)" 
 
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+	
 clean: 
-	@echo "$(YELLOW)rm -rf $(OBJS)$(DEFAULT)" 
+	@echo "$(YELLOW)rm -rf $(OBJS)$(DEFAULT)"
+	@rm -rf $(OBJ_DIR)
 	@rm -f $(OBJS)
 	@echo "$(GREEN)Cleaned up $(OBJS)!$(DEFAULT)"
 
