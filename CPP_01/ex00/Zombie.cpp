@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/09/19 12:34:59 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/08 13:28:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,18 @@ Zombie::Zombie() {
 
 // Constructor : initialize zombie name
 Zombie::Zombie( std::string name ) {
-	this->_name = name;
+	std::cout << GREEN << "Construct zombie with name" << DEF << std::endl;
+	_name = name;
 	return ;
 }
 
 // Destructor
 Zombie::~Zombie() {
-	if (this->_name.empty()) {
+	if (_name.empty()) {
         std::cout << GREEN << "Destroy unamed zombie" << DEF << std::endl;
     }
 	else {
-    	std::cout << GREEN << "Destroy " << this->_name << " zombie" << DEF << std::endl;
+    	std::cout << GREEN << "Destroy " << _name << " zombie" << DEF << std::endl;
 	}
 	return ;
 }
@@ -41,6 +42,6 @@ void Zombie::announce( void ) {
         std::cout << "Unnamed: BraiiiiiiinnnzzzZ..." << std::endl;
     }
 	else {
-        std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+        std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
     }
 }
