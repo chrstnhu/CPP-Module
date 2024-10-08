@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:14:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/03 18:18:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/08 11:31:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@
 #include <iomanip>
 
 class Harl {
-	public :
-		Harl();
-		~Harl();
-		void complain( std::string level );
-
 	private :
 		void debug( void );
 		void info( void );
 		void warning( void );
 		void error( void );
+
+	public :
+		Harl();
+		~Harl();
+		void complain( std::string level );
 };
 
 #endif 
