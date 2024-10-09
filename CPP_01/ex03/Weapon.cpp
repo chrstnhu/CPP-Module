@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:29:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/08 17:22:45 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/09 16:51:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ Weapon::~Weapon() {
 };
 
 // Set type
-void Weapon::setType(const std::string type) {
+void Weapon::setType(std::string newType) {
 	_type = type;
 }
 
 // Get type
-std::string Weapon::getType() const {
+std::string const &Weapon::getType(void) const {
 	return _type;
 }
