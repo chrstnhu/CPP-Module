@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:56:13 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/08 14:10:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/09 16:49:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ class Zombie {
 };
 
 Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+void 	randomChump(std::string name);
 
 #endif 
