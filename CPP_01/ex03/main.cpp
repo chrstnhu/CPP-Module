@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 16:48:43 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/08 16:39:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/09 16:50:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ int main(int ac, char **av) {
 	}
 	{
 		Weapon club = Weapon("crude spiked club");
+		Weapon club2 = Weapon("eternal knight");
 		HumanB jim("Jim");
 		jim.attack();
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
+		jim.attack();
+		jim.setWeapon(club2);
 		jim.attack();
 	}
 }

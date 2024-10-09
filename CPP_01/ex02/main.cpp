@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:16:48 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/05 14:31:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/09 16:50:30 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ int main(int ac, char **av) {
 	std::cout << YELLOW << "--- Reaffecter ---" << DEF << std::endl;
 	stringPTR = &str2;
 	std::cout << "stringPTR: " << *stringPTR << std::endl;
+	std::cout << "  adresse: " << stringPTR << std::endl;
 	// stringREF = &str2;
+	stringREF = str2;
 	std::cout << "stringREF: " << stringREF << std::endl;
+	std::cout << "  adresse: " << &stringREF << std::endl;
+	
+	std::cout << "   string: " << str << std::endl;
+	std::cout << "  adresse: " << &stringREF << std::endl;
 }
