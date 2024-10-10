@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/10 19:39:47 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/10 19:49:13 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 class Fixed {
 	private :
 		int			_numberFixed;
-		const int 	_bitNumber;
+		static const int 	_rawBit;
 	
 	public :
 		Fixed();
-		Fixed( Fixed &numberFixed );
+		Fixed(const Fixed &fixed );
 		~Fixed();
 		
 		int		getRawBits( void ) const;
