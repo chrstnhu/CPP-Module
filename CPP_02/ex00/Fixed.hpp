@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/10 19:49:13 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/11 14:30:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,20 @@
 # define YELLOW "\033[0;33m" 
 
 #include <iostream>
+#include <cmath>
 
 class Fixed {
 	private :
-		int			_numberFixed;
-		static const int 	_rawBit;
+		int					_raw;
+		static int const 	_rawBit = 8;
 	
 	public :
 		Fixed();
-		Fixed(const Fixed &fixed );
+		Fixed( const Fixed &other );
 		~Fixed();
 		
+		Fixed	&operator=( const Fixed &other );
+
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 };
