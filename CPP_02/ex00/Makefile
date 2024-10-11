@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 19:22:57 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/10 19:51:57 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/11 16:33:29 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = canon
+NAME = fixed
 
 $(OBJ_DIR)/%.o: %.cpp  $(HEADERS)
 	@mkdir -p $(OBJ_DIR)
