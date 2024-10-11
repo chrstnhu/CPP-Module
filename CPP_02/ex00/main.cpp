@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/10 19:48:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/11 14:21:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int main( void ) {
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
-	
 	return 0;
 }
