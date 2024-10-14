@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/11 17:01:05 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/14 14:42:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Fixed::setRawBits( int const raw ) {
 	_raw = raw;
 }
 
-// Converts the value to float
+// Converts the value to std::cout << RED << "Enter overloarsds operator" << DEF << std::endl;
 float	Fixed::toFloat( void ) const {
 	return static_cast<float>(_raw) / (1 << _rawBit);
 }
