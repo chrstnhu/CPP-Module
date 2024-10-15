@@ -6,13 +6,13 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/14 14:42:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:12:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-float const Fixed::_rawFloatBit = 8.0f;
+float const Fixed::_rawFloatBit = static_cast<float>(1 << _rawBit);
 
 // Default constructor
 Fixed::Fixed() : _raw(0) {
@@ -29,7 +29,7 @@ Fixed::Fixed(int number) {
 // Converts the float to fixed-point number
 Fixed::Fixed(float number) {
 	std::cout << GREEN << "Float constructor called" << DEF << std::endl;
-	_raw = static_cast<int>(roundf(number * (1 << _rawBit)));
+	_raw = static_cast<int>(roundf(number * _rawFloatBit));
 }
 
 // Copy constructor
@@ -63,7 +63,7 @@ void	Fixed::setRawBits( int const raw ) {
 
 // Converts the value to std::cout << RED << "Enter overloarsds operator" << DEF << std::endl;
 float	Fixed::toFloat( void ) const {
-	return static_cast<float>(_raw) / (1 << _rawBit);
+	return static_cast<float>(_raw) / _rawFloatBit;
 }
 
 // Converts the value to int

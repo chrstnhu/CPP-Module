@@ -6,45 +6,40 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/14 17:24:22 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:12:47 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-float const Fixed::_rawFloatBit = 8.0f;
+float const Fixed::_rawFloatBit = static_cast<float>(1 << _rawBit);
 
 // Default constructor
 Fixed::Fixed() : _raw(0) {
-	// std::cout << GREEN << "Default constructor called" << DEF << std::endl;
 }
 
-// Constructor with parameters
 // Converts the int to fixed-point number
 Fixed::Fixed(int number) {
-	// std::cout << GREEN << "Int constructor called" << DEF << std::endl;
 	_raw = number << _rawBit;
 }
 
 // Converts the float to fixed-point number
 Fixed::Fixed(float number) {
-	// std::cout << GREEN << "Float constructor called" << DEF << std::endl;
-	_raw = static_cast<int>(roundf(number * (1 << _rawBit)));
+	_raw = static_cast<int>(roundf(number * _rawFloatBit));
 }
 
 // Copy constructor
 Fixed::Fixed( const Fixed &other ) : _raw(other._raw) {
-	// std::cout << GREEN << "Copy constructor called" << DEF << std::endl;
 }
 
 // Destructor
 Fixed::~Fixed() {
-	// std::cout << GREEN << "Destructor called" << DEF << std::endl;
 }
+
 
 // Getter
 int		Fixed::getRawBits( void ) const {
-	return this->_raw;
+	return _raw;
 }
 
 // Setter
@@ -52,9 +47,9 @@ void	Fixed::setRawBits( int const raw ) {
 	_raw = raw;
 }
 
-// Converts the value to std::cout << RED << "Enter overloarsds operator" << DEF << std::endl;
+// Converts the value to float
 float	Fixed::toFloat( void ) const {
-	return static_cast<float>(_raw) / (1 << _rawBit);
+	return static_cast<float>(_raw) / _rawFloatBit;
 }
 
 // Converts the value to int
