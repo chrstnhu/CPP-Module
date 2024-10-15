@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:15:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/14 19:32:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:13:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ Fixed Fixed::operator++(int) {
 Fixed Fixed::operator--(int) {
 	Fixed temp;
 	temp._raw = _raw;
-	_raw++;
+	_raw--;
 	return temp;
 }
