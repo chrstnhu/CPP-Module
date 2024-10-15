@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:52:03 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 14:15:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/15 16:53:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ class Point {
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
+float sign( Point p1, Point p2, Point p3);
 
 #endif

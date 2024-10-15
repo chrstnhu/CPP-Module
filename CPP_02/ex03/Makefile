@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 19:22:57 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/15 14:00:36 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/15 16:50:20 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ_DIR = obj
 OPERATOR_SRC = operators/increment_decrement.cpp operators/arithmetic.cpp \
 				operators/comparison.cpp operators/min_max.cpp
 
-SRCS = main.cpp Fixed.cpp $(OPERATOR_SRC)
+SRCS = main.cpp Fixed.cpp Point.cpp $(OPERATOR_SRC)
 
 HEADERS = includes/Fixed.hpp includes/Point.hpp
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
