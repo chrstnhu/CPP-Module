@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:09:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:39:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ class Fixed {
 		Fixed( int number );
 		Fixed( float number );
 		Fixed( const Fixed &other );
-		~Fixed();
-
-		// Copy assignment operator
 		Fixed	&operator=( const Fixed &other );
+		~Fixed();
 
 		// Comparaison
 		bool	operator>( const Fixed &other ) const;
@@ -78,12 +76,5 @@ class Fixed {
 		// Overloads the << operator
 		friend std::ostream &operator<<(std::ostream& os, const Fixed &obj);
 };
-
-// Print function
-void printDecrementation(Fixed &c);
-void printArithmetic(Fixed &d, Fixed &e);
-void printComparison(Fixed &d, Fixed &e);
-void printMinMax(Fixed &a, Fixed &c);
-void printConstMinMax(const Fixed &a, const Fixed &c);
 
 #endif

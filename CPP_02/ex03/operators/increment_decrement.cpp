@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:15:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:59:50 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:35:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed &Fixed::operator--() {
 }
 
 // Increment post-increment
-Fixed Fixed::operator++(int) {
+Fixed Fixed::operator++( int ) {
 	Fixed temp;
 	temp._raw = _raw;
 	_raw++;
@@ -33,7 +33,7 @@ Fixed Fixed::operator++(int) {
 }
 
 // Decrement post-increment
-Fixed Fixed::operator--(int) {
+Fixed Fixed::operator--( int ) {
 	Fixed temp;
 	temp._raw = _raw;
 	_raw--;

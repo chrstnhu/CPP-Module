@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:16:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:35:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int main( void ) {
 	Fixed c;
 	printDecrementation(c);
 
-	Fixed d(5.56f);
-	Fixed e(3.2f);
+	Fixed d( 5.56f );
+	Fixed e( 3.2f );
 	printArithmetic(d, e);
 	printComparison(d, e);
 	
 	printMinMax(a, c);
  
-    const Fixed f(4.0f);
-    const Fixed g(1.5f);
+    const Fixed f( 4.0f );
+    const Fixed g( 1.5f );
     printConstMinMax(f, g);
 }
 

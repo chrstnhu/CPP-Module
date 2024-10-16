@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:09:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:34:51 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ class Fixed {
 		Fixed( int number );
 		Fixed( float number );
 		Fixed( const Fixed &other );
-		~Fixed();
-
-		// Copy assignment operator
 		Fixed	&operator=( const Fixed &other );
-
+		~Fixed();
+	
 		// Comparaison
 		bool	operator>( const Fixed &other ) const;
 		bool	operator<( const Fixed &other ) const;
@@ -55,17 +53,17 @@ class Fixed {
 
 		// Increment
 		Fixed	&operator++();   // Pre incrementation
-		Fixed	operator++(int); // POst incrementation
+		Fixed	operator++( int ); // POst incrementation
 		
 		// Decrement
 		Fixed	&operator--();   // Pre incrementation
-		Fixed	operator--(int); // Post incrementation		
+		Fixed	operator--( int ); // Post incrementation		
 		
 		// Return the value (min or max)
-		static			Fixed min(Fixed &a, Fixed &b);
-		static			Fixed max(Fixed &a, Fixed &b);
-		static const	Fixed min(const Fixed &a, const Fixed &b);
-		static const	Fixed max(const Fixed &a, const Fixed &b);
+		static			Fixed min( Fixed &a, Fixed &b );
+		static			Fixed max( Fixed &a, Fixed &b );
+		static const	Fixed min( const Fixed &a, const Fixed &b );
+		static const	Fixed max( const Fixed &a, const Fixed &b );
 		
 		// Getter and Setter
 		int		getRawBits( void ) const;

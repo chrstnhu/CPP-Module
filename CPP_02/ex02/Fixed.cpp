@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:12:47 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:34:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ Fixed::Fixed() : _raw(0) {
 }
 
 // Converts the int to fixed-point number
-Fixed::Fixed(int number) {
+Fixed::Fixed( int number ) {
 	_raw = number << _rawBit;
 }
 
 // Converts the float to fixed-point number
-Fixed::Fixed(float number) {
+Fixed::Fixed( float number ) {
 	_raw = static_cast<int>(roundf(number * _rawFloatBit));
 }
 
@@ -36,6 +36,13 @@ Fixed::Fixed( const Fixed &other ) : _raw(other._raw) {
 Fixed::~Fixed() {
 }
 
+// Copy assignement operator =
+Fixed &Fixed::operator= ( const Fixed &other ) {
+	if (this != &other) {
+		_raw = other.getRawBits();
+	}
+	return *this;
+}
 
 // Getter
 int		Fixed::getRawBits( void ) const {

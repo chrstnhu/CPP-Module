@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/11 14:43:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:32:56 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Fixed::~Fixed() {
 }
 
 // Copy assignement operator
-Fixed &Fixed::operator= (const Fixed &other) {
+Fixed &Fixed::operator= ( const Fixed &other ) {
     std::cout << GREEN << "Copy assignment operator called" << DEF << std::endl;
 	if (this != &other) {
 		_raw = other.getRawBits();

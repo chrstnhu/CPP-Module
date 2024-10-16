@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:10:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:39:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ class Fixed {
 	public :
 		Fixed();
 		Fixed( const Fixed &other );
-		~Fixed();
-		
-		// Copy assignment operator
 		Fixed	&operator=( const Fixed &other );
+		~Fixed();		
 
 		// Getter and Setter
 		int		getRawBits( void ) const;

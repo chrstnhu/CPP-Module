@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:12:35 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:33:28 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ Fixed::Fixed() : _raw(0) {
 
 // Constructor with parameters
 // Converts the int to fixed-point number
-Fixed::Fixed(int number) {
+Fixed::Fixed( int const number ) {
 	std::cout << GREEN << "Int constructor called" << DEF << std::endl;
 	_raw = number << _rawBit;
 }
 
 // Converts the float to fixed-point number
-Fixed::Fixed(float number) {
+Fixed::Fixed( float const number ) {
 	std::cout << GREEN << "Float constructor called" << DEF << std::endl;
 	_raw = static_cast<int>(roundf(number * _rawFloatBit));
 }
@@ -43,7 +43,7 @@ Fixed::~Fixed() {
 }
 
 // Copy assignement operator
-Fixed &Fixed::operator= (const Fixed &other) {
+Fixed &Fixed::operator= ( const Fixed &other ) {
     std::cout << GREEN << "Copy assignment operator called" << DEF << std::endl;
 	if (this != &other) {
 		_raw = other.getRawBits();
@@ -72,7 +72,7 @@ int		Fixed::toInt( void ) const {
 }
 
 // Overloads the << operator for output
-std::ostream &operator << (std::ostream& os, const Fixed &obj) {
+std::ostream &operator << ( std::ostream& os, const Fixed &obj ) {
 	os << obj.toFloat();
 	return os;
 }
