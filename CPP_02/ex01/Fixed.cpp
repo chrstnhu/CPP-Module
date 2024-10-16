@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/16 17:33:28 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 18:55:04 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,9 @@ Fixed::Fixed( float const number ) {
 }
 
 // Copy constructor
-Fixed::Fixed( const Fixed &other ) : _raw(other._raw) {
+Fixed::Fixed( const Fixed &other ) {
 	std::cout << GREEN << "Copy constructor called" << DEF << std::endl;
-}
-
-// Destructor
-Fixed::~Fixed() {
-	std::cout << GREEN << "Destructor called" << DEF << std::endl;
+	*this = other;
 }
 
 // Copy assignement operator
@@ -49,6 +45,11 @@ Fixed &Fixed::operator= ( const Fixed &other ) {
 		_raw = other.getRawBits();
 	}
 	return *this;
+}
+
+// Destructor
+Fixed::~Fixed() {
+	std::cout << GREEN << "Destructor called" << DEF << std::endl;
 }
 
 // Getter
