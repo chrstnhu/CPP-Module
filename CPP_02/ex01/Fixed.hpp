@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/15 13:10:18 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/16 17:31:55 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ class Fixed {
 	
 	public :
 		Fixed();
-		Fixed( int number );
-		Fixed( float number );
+		Fixed( int const number );
+		Fixed( float const number );
 		Fixed( const Fixed &other );
-		~Fixed();
-		
-		// Copy assignment operator
 		Fixed	&operator=( const Fixed &other );
+		~Fixed();		
 
 		// Getter and setter
 		int		getRawBits( void ) const;
