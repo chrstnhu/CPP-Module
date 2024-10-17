@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/16 17:35:02 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/17 12:22:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,15 @@ void printComparison(Fixed &d, Fixed &e) {
 
 void printMinMax(Fixed &a, Fixed &c) {
 	std::cout << GREEN << "------ Return min/max ------ " << DEF << std::endl;
-    std::cout << "non-const a: " << a << std::endl
-    		<< "non-const c: " << c << std::endl
-    		<< "Min( a, c ): " << Fixed::min(a, c) << std::endl
-    		<< "Max( a, c ): " << Fixed::max(a, c) << std::endl << std::endl;
+	std::cout << "non-const a: " << a << std::endl
+			<< "non-const c: " << c << std::endl
+			<< "Min( a, c ): " << Fixed::min(a, c) << std::endl
+			<< "Max( a, c ): " << Fixed::max(a, c) << std::endl << std::endl;
 }
 
 void printConstMinMax(const Fixed &f, const Fixed &g) {
 	std::cout << "const f  : " << f << std::endl
-    		<< "const g  : " << g << std::endl
-    		<< "Min(f, g): " << Fixed::min(f, g) << std::endl
-    		<< "Max(f, g): " << Fixed::max(f, g) << std::endl;
+			<< "const g  : " << g << std::endl
+			<< "Min(f, g): " << Fixed::min(f, g) << std::endl
+			<< "Max(f, g): " << Fixed::max(f, g) << std::endl;
 }
