@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/16 17:31:55 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/17 12:21:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ class Fixed {
 		Fixed( int const number );
 		Fixed( float const number );
 		Fixed( const Fixed &other );
+		~Fixed();
+
+		// Copy assignment operator overload
 		Fixed	&operator=( const Fixed &other );
-		~Fixed();		
 
 		// Getter and setter
 		int		getRawBits( void ) const;
@@ -44,8 +46,9 @@ class Fixed {
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
 
-		// Overloads the << operator
-		friend std::ostream &operator << (std::ostream& os, const Fixed &obj);
 };
+
+// Overloads the << operator
+std::ostream &operator << (std::ostream& os, const Fixed &obj);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:04:36 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/16 17:37:02 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/17 12:14:15 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 // Default constructor
 Point::Point() : _x(0), _y(0) {	}
 
-// Constructor with parameters
+// Constructor with int
 Point::Point( const int x, const int y ) : _x(x), _y(y) { }
 
+// Constructor with float
 Point::Point( const float x, const float y ) : _x(x), _y(y) { }
+
+// Copy constructor
+Point::Point( const Point &other) {
+	*this = other;
+}
 
 // Destructor
 Point::~Point() {
 }
-		
+
 // Copy assignment
 Point &Point::operator=( const Point &other ) {
 	if (this != &other) {
@@ -44,7 +50,7 @@ Fixed		Point::getY(void) const {
 
 // Overload << operator
 std::ostream &operator<<( std::ostream &os, const Point &obj ) {
-	os << "Point(" << obj._x << ", " << obj._y << ")";
+	os << "Point(" << obj.getX() << ", " << obj.getY() << ")";
 	return os;
 }
 
