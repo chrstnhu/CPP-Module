@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:05:38 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/16 17:38:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/17 12:15:20 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ static void print_bsp( Point &a, Point &b, Point &c, Point point );
 
 int main(void) {
 	// Triangle coordinates
-	Point a(0, 0);
-	Point b(5, 0);
+	Point a;
+	Point b;
 	Point c(0, 5);
+	Point d(5, 0);
 
+	b = d;
 	std::cout << "Triangle coordinates: "
 			<< "a(" << a.getX() << ", " << a.getY() << ") | "
 			<< "b(" << b.getX() << ", " << b.getY() << ") | "
