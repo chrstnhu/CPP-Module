@@ -6,20 +6,20 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:04:36 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/17 12:14:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 12:54:51 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/Point.hpp"
 
 // Default constructor
-Point::Point() : _x(0), _y(0) {	}
+Point::Point() : _x(Fixed(0)), _y(Fixed(0)) {	}
 
 // Constructor with int
-Point::Point( const int x, const int y ) : _x(x), _y(y) { }
+Point::Point( const int x, const int y ) : _x(Fixed(x)), _y(Fixed(y)) { }
 
 // Constructor with float
-Point::Point( const float x, const float y ) : _x(x), _y(y) { }
+Point::Point( const float x, const float y ) : _x(Fixed(x)), _y(Fixed(y)) { }
 
 // Copy constructor
 Point::Point( const Point &other) {
