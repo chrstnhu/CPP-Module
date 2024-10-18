@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:14:51 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/18 12:17:41 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/18 13:53:23 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,24 +20,24 @@ OBJ_DIR = obj
 
 # Source
 SRCS = main.cpp ClapTrap.cpp 
-HEADERS = ClapTrap
+HEADERS = ClapTrap.hpp
 
-OBJS = $(SRCS:%.cpp=$(SRCS)/%.o)
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 # Compile
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
-	@MKDIR -P $(OBJ_DIR)
-	@$(CC) $(CFLAGS)-c $< -o $@
+NAME = ClapTrap
 
-NAME = ClapTrack
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(HEADER)
-		$(CC) $(CFLAGS) -o $(NAME)
+$(NAME) : $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 		@echo "$(GREEN)Executable '$(NAME)' has been created successfully!$(DEFAULT)" 
 
 clean : 
