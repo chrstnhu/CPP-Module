@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 18:07:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 18:41:01 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else {
 		std::cout << std::endl << RED << _name 
-			<< " can be repaired with max " << _energyPoint << " energy point(s)" << DEF << std::endl;
+			<< " can't be repaired with "<< amount << ", max " << _energyPoint << " energy point(s)" << DEF << std::endl;
 	}
 }
