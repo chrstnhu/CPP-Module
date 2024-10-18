@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:23:54 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/17 12:20:51 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 12:54:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class Fixed {
 	
 	public :
 		Fixed();
-		Fixed( int number );
-		Fixed( float number );
+		Fixed( int const number );
+		Fixed( float const number );
 		Fixed( const Fixed &other );		
 		~Fixed();
 
