@@ -6,19 +6,23 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 12:52:24 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 16:42:19 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap() : _name(0), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
+ClapTrap::ClapTrap(): _name("Unamed"), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
 	std::cout << GREEN << "Default ClapTrap constructor" << DEF << std::endl;
 }
 
+// ClapTrap constructor with parameter
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
+	std::cout << GREEN << "ClapTrap constructor with parameter" << DEF << std::endl;
+}
 // Copy constructor
-ClapTrap::ClapTrap(const ClapTrap &other) {
+ClapTrap::ClapTrap( const ClapTrap &other ) {
 	std::cout << GREEN << "Copy constructor ClapTrap" << DEF << std::endl;
 	*this = other;
 }
@@ -29,7 +33,7 @@ ClapTrap::~ClapTrap() {
 }
 
 // Copy assignement operator =
-ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
+ClapTrap &ClapTrap::operator=( const ClapTrap &other ) {
 	std::cout << GREEN << "Copy assignement ClapTrap" << DEF << std::endl;
 	if (this != &other) {
 		_name = other._name;
@@ -40,7 +44,71 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
 	return *this;
 }
 
-/*
-aattack function()
-print : ClapTrap <name> attacks <target>, causing <damage> points of damage!
-*/
+// Setters and getters
+void	ClapTrap::setName(std::string name) {
+	_name = name;
+}
+
+std::string ClapTrap::getName(void) const {
+	return this->_name;
+}
+
+int		ClapTrap::getAttackDamage( void ) const {
+	return this->_attackDamage;
+}
+		
+int		ClapTrap::getHitPoint( void ) const {
+	return this->_hitPoint;
+}
+
+int		ClapTrap::getEnergyPoint( void ) const {
+	return this->_energyPoint;
+}
+		
+// Functions
+void ClapTrap::attack(const std::string& target) {
+	if (_energyPoint > 0 && _hitPoint > 0) {
+		std::cout << std::endl <<"ClapTrap " <<_name << " attacks "
+			<< target << " causing "
+			<< YELLOW << _attackDamage << DEF
+			<< " points of damage!" << std::endl;
+		_energyPoint--;
+	}
+	else
+		std::cout << RED << _name << " can't attack!" << DEF << std::endl;
+}
+
+void ClapTrap::takeDamage(unsigned int amount) {
+	if (amount > _hitPoint) {
+		std::cout << std::endl << RED << "Attack damage : "
+			<< _attackDamage + amount
+			<< ", ennemy can't attack more than 10 energy points" << DEF << std::endl;
+	}
+	else
+	{
+		_hitPoint -= amount;
+		if (_hitPoint < 0)
+			_hitPoint = 0;
+		std::cout << std::endl << _name << " take " << YELLOW << amount << DEF 
+			<< " damage(s), hit point(s) remaining: " 
+			<< YELLOW << _hitPoint << DEF << std::endl;
+	}
+	if (_hitPoint == 0) {
+        std::cout << RED << _name << " is defeated!" << DEF << std::endl;
+    }
+}
+
+void ClapTrap::beRepaired(unsigned int amount) {
+	if ((_energyPoint > 0) && (_hitPoint > 0 )&& (amount <= _energyPoint)) {
+		
+		_hitPoint += amount;
+		_energyPoint -= amount;
+		std::cout << std::endl << "Current hit point(s): " << YELLOW << (_hitPoint - amount) << DEF
+				<< ", repaired: " << YELLOW << amount << DEF
+				<< ", after repaired: " << YELLOW << _hitPoint << DEF << std::endl;
+	}
+	else {
+		std::cout << std::endl << RED << _name 
+			<< " can't be repaired with " << amount << DEF << std::endl;
+	}
+}
