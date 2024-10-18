@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 16:42:19 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 18:07:29 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ClapTrap::getEnergyPoint( void ) const {
 	return this->_energyPoint;
 }
 		
-// Functions
+// Attack someone
 void ClapTrap::attack(const std::string& target) {
 	if (_energyPoint > 0 && _hitPoint > 0) {
 		std::cout << std::endl <<"ClapTrap " <<_name << " attacks "
@@ -78,8 +78,13 @@ void ClapTrap::attack(const std::string& target) {
 		std::cout << RED << _name << " can't attack!" << DEF << std::endl;
 }
 
+// Take damage of hit point
 void ClapTrap::takeDamage(unsigned int amount) {
-	if (amount > _hitPoint) {
+	if (_hitPoint < 0) {
+        std::cout << RED << "Can't attack "
+			<< _name << ", he is defeated!" << DEF << std::endl;
+    }
+	else if (_hitPoint - amount > _hitPoint) {
 		std::cout << std::endl << RED << "Attack damage : "
 			<< _attackDamage + amount
 			<< ", ennemy can't attack more than 10 energy points" << DEF << std::endl;
@@ -93,13 +98,16 @@ void ClapTrap::takeDamage(unsigned int amount) {
 			<< " damage(s), hit point(s) remaining: " 
 			<< YELLOW << _hitPoint << DEF << std::endl;
 	}
-	if (_hitPoint == 0) {
-        std::cout << RED << _name << " is defeated!" << DEF << std::endl;
-    }
+
 }
 
+// Repair hitpoint
 void ClapTrap::beRepaired(unsigned int amount) {
-	if ((_energyPoint > 0) && (_hitPoint > 0 )&& (amount <= _energyPoint)) {
+	if (_hitPoint == 0 ) {
+		std::cout << std::endl << RED << _name 
+			<< " can't be repaired. "<< DEF << std::endl;
+	}
+	else if ((_energyPoint > 0) && (amount <= _energyPoint)) {
 		
 		_hitPoint += amount;
 		_energyPoint -= amount;
@@ -109,6 +117,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else {
 		std::cout << std::endl << RED << _name 
-			<< " can't be repaired with " << amount << DEF << std::endl;
+			<< " can be repaired with max " << _energyPoint << " energy point(s)" << DEF << std::endl;
 	}
 }
