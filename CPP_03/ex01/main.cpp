@@ -6,50 +6,64 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:27:07 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 18:08:45 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 18:35:05 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 static void printIdentity(ClapTrap &Clap);
+static void ftAttack(ClapTrap &ClapTrap, ScavTrap &ScavTrap);
+static void ftTakeDamage(ClapTrap &ClapTrap, ScavTrap &ScavTrap);
+static void ftRepair(ClapTrap &ClapTrap, ScavTrap &ScavTrap);
 
 int main () {
-	ClapTrap ClapTrack("Bob");
+	ClapTrap ClapTrap("Bob");
 	ScavTrap ScavTrap;
 
-	// Attack
-	ClapTrack.attack("Someone");
-	ClapTrack.attack("Zombie");
-	ClapTrack.attack("Fish");
-	printIdentity(ClapTrack);
+	ftAttack(ClapTrap, ScavTrap);
+	ftTakeDamage(ClapTrap, ScavTrap);
+	ftRepair(ClapTrap, ScavTrap);
+
+	// Gate keeper mode
+	std::cout << std::endl << "======================= Guard Gate =======================" << std::endl;
+	ScavTrap.guardGate();
+	
+}
+
+static void ftAttack(ClapTrap &ClapTrap, ScavTrap &ScavTrap) {
+	std::cout << std::endl << "======================= Attack =======================" << std::endl;
+	ClapTrap.attack("Someone");
+	ClapTrap.attack("Zombie");
+	ClapTrap.attack("Fish");
+	printIdentity(ClapTrap);
 	
 	ScavTrap.attack("Computer");
 	printIdentity(ScavTrap);
+}
 
-	// Take damage
-	ClapTrack.takeDamage(10);
-	printIdentity(ClapTrack);
-	ClapTrack.takeDamage(3);
-	printIdentity(ClapTrack);
+static void ftTakeDamage(ClapTrap &ClapTrap, ScavTrap &ScavTrap) {
+	std::cout << std::endl << "======================= Take Damage =======================" << std::endl;
+	ClapTrap.takeDamage(10);
+	printIdentity(ClapTrap);
+	ClapTrap.takeDamage(3);
+	printIdentity(ClapTrap);
 	
 	ScavTrap.takeDamage(60);
 	printIdentity(ScavTrap);
 	ScavTrap.takeDamage(2);
 	printIdentity(ScavTrap);
-	
-	// Repair
-	ClapTrack.beRepaired(7);
-	printIdentity(ClapTrack);
+}
+
+static void ftRepair(ClapTrap &ClapTrap, ScavTrap &ScavTrap) {
+	std::cout << std::endl << "======================= Repair =======================" << std::endl;
+	ClapTrap.beRepaired(7);
+	printIdentity(ClapTrap);
 	
 	ScavTrap.beRepaired(46);
 	printIdentity(ScavTrap);
 	ScavTrap.beRepaired(4);
 	printIdentity(ScavTrap);
-
-	// Gate keeper mode
-	ScavTrap.guardGate();
-	
 }
 
 static void printIdentity(ClapTrap &Clap)
