@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:20:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 12:53:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/18 15:03:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,28 @@
 
 class ClapTrap {
 	private :
-		std::string _name;
-		int	_hitPoint;
-		int _energyPoint;
-		int _attackDamage;
+		std::string		_name;
+		unsigned int	_hitPoint;
+		unsigned int	_energyPoint;
+		unsigned int	_attackDamage;
 	
 	public :
 		ClapTrap();
-		ClapTrap(const ClapTrap &other);
+		ClapTrap(std::string name);
+		ClapTrap( const ClapTrap &other );
 		~ClapTrap();
 		
-		ClapTrap &operator=(const ClapTrap &other);
+		ClapTrap &operator=( const ClapTrap &other );
 
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void takeDamage(unsigned int amount);
+		void attack( const std::string& target );
+		void takeDamage( unsigned int amount );
+		void beRepaired( unsigned int amount );
+
+		void		setName( const std::string name );
+		std::string	getName( void ) const;
+		int			getAttackDamage( void ) const;
+		int			getHitPoint( void ) const;
+		int			getEnergyPoint( void ) const;
 };
 
 #endif
