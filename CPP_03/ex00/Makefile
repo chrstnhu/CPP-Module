@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:14:51 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/17 18:27:21 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/18 12:17:41 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
 DEFAULT = \033[0m
+
+# Path
+OBJ_DIR = obj
 
 # Source
 SRCS = main.cpp ClapTrap.cpp 
@@ -25,18 +28,29 @@ OBJS = $(SRCS:%.cpp=$(SRCS)/%.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
+	@MKDIR -P $(OBJ_DIR)
+	@$(CC) $(CFLAGS)-c $< -o $@
+
 NAME = ClapTrack
 
 all : $(NAME)
 
-$(NAME) : $(HEADER)
+$(NAME) : $(OBJS) $(HEADER)
 		$(CC) $(CFLAGS) -o $(NAME)
+		@echo "$(GREEN)Executable '$(NAME)' has been created successfully!$(DEFAULT)" 
 
-clean : rm -f $(OBJS)
+clean : 
+		@echo "$(YELLOW)rm -rf $(OBJS)$(DEFAULT)"
+		@rm -rf $(OBJ_DIR)
+		@rm -f $(OBJS)
+		@echo "$(GREEN)Cleaned up $(OBJS)!$(DEFAULT)"
 
 fclean : clean
-		rm -f $(NAME);
+		@echo "$(YELLOW)rm -f $(NAME)"
+		@rm -f $(NAME)
+		@echo "$(GREEN)Removed executable '$(NAME)'!$(DEFAULT)"
 
 re : fclean all
 
-.phony ALL MAKE CLEAN FCLEAN
+.PHONY: all clean fclean re
