@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 18:15:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 11:32:53 by chrhu            ###   ########.fr       */
+/*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
+/*   Updated: 2024/10/18 18:39:18 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 // Default constructor
-FragTrap::FragTrap() : ClapTrap("Unamed", 100, 100, 30) {
-	std::cout << GREEN << "Default FragTrap constructor" << DEF << std::endl;
+ScavTrap::ScavTrap() : ClapTrap("Unamed", 100, 50, 20) {
+	std::cout << GREEN << "Default ScavTrap constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
-FragTrap::FragTrap( std::string name) : ClapTrap (name, 100, 100, 30) {
-	std::cout << GREEN << "FragTrap constructor with parameter" << DEF << std::endl;
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name, 100, 50, 20) {
+	std::cout << GREEN << "ScavTrap constructor with parameter" << DEF << std::endl;
 }
 
 // Copy constructor
-FragTrap::FragTrap( const FragTrap &other) : ClapTrap(other) {
+ScavTrap::ScavTrap( const ScavTrap &other ) : ClapTrap(other) {
 	std::cout << GREEN << "ScavTrap copy constructor " << DEF << std::endl;
 }
 
 // Destructor
-FragTrap::~FragTrap() {
-	std::cout << GREEN << "Destruct FragTrap" << DEF << std::endl;
+ScavTrap::~ScavTrap() {
+	std::cout << GREEN << "Destruct ScavTrap" << DEF << std::endl;
 }
 
 // Copy assignement
-FragTrap &FragTrap::operator=( const FragTrap &other) {
+ScavTrap &ScavTrap::operator=( const ScavTrap &other ) {
 	std::cout << GREEN << "ScavTrap copy assignement " << DEF << std::endl;
 	if (this != &other) {
 		ClapTrap::operator=(other);
@@ -41,7 +41,7 @@ FragTrap &FragTrap::operator=( const FragTrap &other) {
 	return *this;
 }
 
-// High fives
-void FragTrap::highFivesGuys(void) {
-	std::cout << YELLOW << getName() << "display a positive high five!" << DEF << std::endl;
+// Guard keeper mode
+void ScavTrap::guardGate() {
+	std::cout << YELLOW << getName() << " is in guard gate keeper mode" << DEF << std::endl << std::endl;
 }
