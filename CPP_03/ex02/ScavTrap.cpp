@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 18:39:18 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/21 12:35:33 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ ScavTrap &ScavTrap::operator=( const ScavTrap &other ) {
 		ClapTrap::operator=(other);
 	}
 	return *this;
+}
+
+// Attack someone
+void ScavTrap::attack(const std::string& target){
+	if (getEnergyPoint() > 0 && getHitPoint() > 0) {
+		std::cout << std::endl <<"ScavTrap " << getName() << " causing "
+			<< YELLOW << getAttackDamage() << DEF
+			<< " points of damage to " << target << std::endl;
+		setEnergyPoint(getEnergyPoint() - 1);
+	}
+	else
+		std::cout << RED << getName() << " can't attack!" << DEF << std::endl;
 }
 
 // Guard keeper mode
