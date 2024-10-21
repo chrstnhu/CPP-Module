@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:14:51 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/18 18:15:34 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/21 12:36:49 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ DEFAULT = \033[0m
 OBJ_DIR = obj
 
 # Source
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
-HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
