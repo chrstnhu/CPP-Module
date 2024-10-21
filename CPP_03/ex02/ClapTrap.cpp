@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 18:40:42 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/21 12:54:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ int		ClapTrap::getAttackDamage( void ) const {
 		
 int		ClapTrap::getHitPoint( void ) const {
 	return this->_hitPoint;
+}
+
+void	ClapTrap::setEnergyPoint(unsigned int energyPoint) {
+	_energyPoint = energyPoint;
 }
 
 int		ClapTrap::getEnergyPoint( void ) const {
