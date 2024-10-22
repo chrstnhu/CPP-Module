@@ -6,22 +6,22 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 15:48:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 12:58:16 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 // Default constructor;
-DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap("Unamed").getHitPoint(),
-	ScavTrap("Unamed").getEnergyPoint(), FragTrap("Unamed").getAttackDamage()),
+DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap().getHitPoint(),
+	ScavTrap().getEnergyPoint(), FragTrap().getAttackDamage()),
 	ScavTrap("Unamed"), FragTrap("Unamed"), _name("Unamed") {
 	std::cout << GREEN << "Default DiamondTrap constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap(name).getHitPoint(),
-	ScavTrap(name).getEnergyPoint(), FragTrap(name).getAttackDamage()),
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap().getHitPoint(),
+	ScavTrap().getEnergyPoint(), FragTrap().getAttackDamage()),
 	ScavTrap(name), FragTrap(name), _name(name) {
 	std::cout << GREEN << "DiamondTrap constructor with parameters" << DEF << std::endl;
 }
@@ -45,6 +45,13 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other) {
 	}
 	return *this;
 }
+
+
+// Getter
+std::string DiamondTrap::getName() const {
+	return _name;
+}
+
 
 // Function
 void DiamondTrap::whoAmI() {
