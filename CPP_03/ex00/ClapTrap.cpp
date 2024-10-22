@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 18:41:01 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 11:59:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,6 @@ ClapTrap &ClapTrap::operator=( const ClapTrap &other ) {
 }
 
 // Setters and getters
-void	ClapTrap::setName(std::string name) {
-	_name = name;
-}
-
 std::string ClapTrap::getName(void) const {
 	return this->_name;
 }

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 13:24:12 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 12:50:18 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,8 @@ ClapTrap &ClapTrap::operator=( const ClapTrap &other ) {
 	return *this;
 }
 
-// Setters and getters
-void	ClapTrap::setName(std::string name) {
-	_name = name;
-}
 
+// Setters and getters
 std::string ClapTrap::getName(void) const {
 	return this->_name;
 }
@@ -74,7 +71,8 @@ void	ClapTrap::setEnergyPoint(unsigned int energyPoint) {
 int		ClapTrap::getEnergyPoint( void ) const {
 	return this->_energyPoint;
 }
-		
+
+
 // Attack someone
 void ClapTrap::attack(const std::string& target) {
 	if (_energyPoint > 0 && _hitPoint > 0) {

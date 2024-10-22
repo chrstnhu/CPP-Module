@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:20:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 15:03:10 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 11:59:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ class ClapTrap {
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );
 
-		void		setName( const std::string name );
 		std::string	getName( void ) const;
 		int			getAttackDamage( void ) const;
 		int			getHitPoint( void ) const;
