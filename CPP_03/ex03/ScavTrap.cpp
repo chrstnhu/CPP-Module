@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 12:35:33 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 13:03:58 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ ScavTrap &ScavTrap::operator=( const ScavTrap &other ) {
 	}
 	return *this;
 }
+
 
 // Attack someone
 void ScavTrap::attack(const std::string& target){

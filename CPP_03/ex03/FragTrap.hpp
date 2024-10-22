@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:15:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 13:14:59 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 12:33:32 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ class FragTrap : virtual public ClapTrap {
 		FragTrap( const FragTrap &other);
 		~FragTrap();
 
+		// Copy assignement
 		FragTrap &operator=( const FragTrap &other);
+	
+		// Functions
 		void highFivesGuys( void );
 };
 

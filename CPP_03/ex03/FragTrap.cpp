@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:15:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 11:32:53 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/22 12:33:56 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ FragTrap &FragTrap::operator=( const FragTrap &other) {
 	}
 	return *this;
 }
+
 
 // High fives
 void FragTrap::highFivesGuys(void) {
