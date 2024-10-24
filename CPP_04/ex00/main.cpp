@@ -6,14 +6,12 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 18:00:33 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:05:16 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongCat.hpp"
-#include "WrongDog.hpp"
+#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 void printWrongAnimal();
 

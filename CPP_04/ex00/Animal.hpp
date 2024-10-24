@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 15:14:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:02:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ class Animal {
 		// Function
 		virtual void makeSound() const;
 		std::string getType() const;
+};
+
+class Dog : public Animal {
+	public :
+		Dog();
+		~Dog();
+		virtual void makeSound() const;
+};
+
+class Cat : public Animal {
+	public :
+		Cat();
+		~Cat();
+		virtual void makeSound() const;
 };
 
 #endif

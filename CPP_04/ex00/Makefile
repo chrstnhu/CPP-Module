@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:09:31 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/24 18:53:29 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/24 19:02:30 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,8 @@ DEFAULT = \033[0m
 OBJ_DIR = obj
 
 # Source
-ANIMALS_SRCS = WrongAnimal.cpp WrongCat.cpp WrongDog.cpp
-WRONG_ANIMALS_SRCS =  Animal.cpp Dog.cpp Cat.cpp
-SRCS = main.cpp $(ANIMALS_SRCS) $(WRONG_ANIMALS_SRCS)
-HEADERS = Animal.hpp Dog.hpp Cat.hpp 
-HEADERS_WRONG = WrongAnimal.hpp WrongCat.hpp WrongDog.hpp
+SRCS = main.cpp Animal.cpp WrongAnimal.cpp
+HEADERS = Animal.hpp WrongAnimal.hpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
@@ -33,7 +30,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = Animal
 
-$(OBJ_DIR)/%.o: %.cpp $(HEADERS) $(HEADERS_WRONG)
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 

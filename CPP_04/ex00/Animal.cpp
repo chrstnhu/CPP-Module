@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 15:11:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:02:53 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,36 @@ std::string Animal::getType() const {
 // Function
 void Animal::makeSound() const{
 	std::cout << getType() <<": Wowwwwwww" << std::endl;
+}
+
+
+// Default constructor
+Dog::Dog() : Animal("Dog") {
+	std::cout << GREEN << "Dog Default constructor " << DEF << std::endl;
+}
+
+// Destructor
+Dog::~Dog() {
+	std::cout << GREEN << "Dog destructor " << DEF << std::endl;
+}
+
+// Functions
+void Dog::makeSound() const{
+	std::cout << getType() << ": Waoufffffff" << std::endl;
+}
+
+
+// Default constructor
+Cat::Cat() : Animal("Cat") {
+	std::cout << GREEN << "Cat Default constructor " << DEF << std::endl;
+}
+
+// Destructor
+Cat::~Cat() {
+	std::cout << GREEN << "Cat destructor " << DEF << std::endl;
+}
+
+// Function
+void Cat::makeSound() const{
+	std::cout << getType() << ": Miaouuuuuuuu" << std::endl;
 }
