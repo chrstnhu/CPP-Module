@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:15:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/23 17:16:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 16:37:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Dog : public Animal {
 	public :
 		Dog();
 		~Dog();
+		virtual void makeSound() const;
 };
 
 #endif

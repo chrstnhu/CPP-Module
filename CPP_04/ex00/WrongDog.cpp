@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongDog.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:15:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 15:13:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 18:50:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongDog.hpp"
 
 // Default constructor
-Dog::Dog() : Animal("Dog") {
-	std::cout << GREEN << "Dog Default constructor " << DEF << std::endl;
+WrongDog::WrongDog() : WrongAnimal("WrongDog") {
+	std::cout << GREEN << "WrongDog Default constructor " << DEF << std::endl;
 }
 
 // Destructor
-Dog::~Dog() {
-	std::cout << GREEN << "Dog destructor " << DEF << std::endl;
+WrongDog::~WrongDog() {
+	std::cout << GREEN << "WrongDog destructor " << DEF << std::endl;
 }
 
 // Functions
-void Dog::makeSound() const{
-	std::cout << getType() << ": Waoufffffff" << std::endl;
+void WrongDog::makeSound() const{
+	std::cout << getType() << ": my little doggy" << std::endl;
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 15:14:23 by chrhu            ###   ########.fr       */
+/*   Created: 2024/10/24 15:15:06 by chrhu             #+#    #+#             */
+/*   Updated: 2024/10/24 16:43:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 # define BLUE "\033[0;313m"
 # define DEF "\033[0;39m"
@@ -22,21 +22,20 @@
 #include <iostream>
 #include <string>
 
-class Animal {
+class WrongAnimal {
 	protected :
 		std::string _type;
 	public :
-		Animal();
-		Animal(std::string type);
-		Animal(const Animal &other);
-		
-		virtual ~Animal();
+		WrongAnimal();
+		WrongAnimal(std::string type);
+		WrongAnimal(const WrongAnimal &other);
+		~WrongAnimal();
 
 		// Copy assignement
-		Animal &operator=(const Animal &other);
+		WrongAnimal &operator=(const WrongAnimal &other);
 
 		// Function
-		virtual void makeSound() const;
+		void makeSound() const;
 		std::string getType() const;
 };
 

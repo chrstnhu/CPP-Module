@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongDog.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:15:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 15:13:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 16:35:59 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef WRONGDOG_HPP
+#define WRONGDOG_HPP
 
-// Default constructor
-Dog::Dog() : Animal("Dog") {
-	std::cout << GREEN << "Dog Default constructor " << DEF << std::endl;
-}
+#include <iostream>
+#include <string>
+#include "WrongAnimal.hpp"
 
-// Destructor
-Dog::~Dog() {
-	std::cout << GREEN << "Dog destructor " << DEF << std::endl;
-}
+class WrongDog : public WrongAnimal {
+	public :
+		WrongDog();
+		~WrongDog();
+		void makeSound() const;
+};
 
-// Functions
-void Dog::makeSound() const{
-	std::cout << getType() << ": Waoufffffff" << std::endl;
-}
+
+#endif
