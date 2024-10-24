@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:09:31 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/24 19:15:59 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/24 19:18:15 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ DEFAULT = \033[0m
 OBJ_DIR = obj
 
 # Source
-SRCS = main.cpp Animal.cpp WrongAnimal.cpp Brain.cpp
-HEADERS = Animal.hpp WrongAnimal.hpp Brain.hpp
+SRCS = main.cpp Animal.cpp Brain.cpp
+HEADERS = Animal.hpp Brain.hpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
