@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 19:02:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:16:22 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 #include <iostream>
 #include <string>
+#include "Brain.hpp"
 
 class Animal {
 	protected :
@@ -41,6 +42,8 @@ class Animal {
 };
 
 class Dog : public Animal {
+	private :
+		Brain *_brain;
 	public :
 		Dog();
 		~Dog();
@@ -48,6 +51,8 @@ class Dog : public Animal {
 };
 
 class Cat : public Animal {
+	private :
+		Brain *_brain;
 	public :
 		Cat();
 		~Cat();

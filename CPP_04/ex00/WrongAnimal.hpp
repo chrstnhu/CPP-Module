@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:15:06 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 16:43:26 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:03:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ class WrongAnimal {
 		// Function
 		void makeSound() const;
 		std::string getType() const;
+};
+
+class WrongDog : public WrongAnimal {
+	public :
+		WrongDog();
+		~WrongDog();
+		void makeSound() const;
+};
+
+class WrongCat : public WrongAnimal {
+	public :
+		WrongCat();
+		~WrongCat();
+		void makeSound() const;
 };
 
 #endif

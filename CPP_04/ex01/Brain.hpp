@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:15:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 16:37:02 by chrhu            ###   ########.fr       */
+/*   Created: 2024/10/24 19:07:31 by chrhu             #+#    #+#             */
+/*   Updated: 2024/10/24 19:10:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
+
+# define BLUE "\033[0;313m"
+# define DEF "\033[0;39m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m" 
 
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
 
-class Cat : public Animal {
-	public :
-		Cat();
-		~Cat();
-		virtual void makeSound() const;
+class Brain {
+	public:
+		std::string ideas[100];
 };
-
 
 #endif

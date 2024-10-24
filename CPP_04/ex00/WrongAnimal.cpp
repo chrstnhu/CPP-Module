@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 18:51:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:03:53 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,37 @@ void WrongAnimal::makeSound() const{
 
 std::string WrongAnimal::getType() const {
 	return _type;
+}
+
+
+// Default constructor
+WrongDog::WrongDog() : WrongAnimal("WrongDog") {
+	std::cout << GREEN << "WrongDog Default constructor " << DEF << std::endl;
+}
+
+// Destructor
+WrongDog::~WrongDog() {
+	std::cout << GREEN << "WrongDog destructor " << DEF << std::endl;
+}
+
+// Functions
+void WrongDog::makeSound() const{
+	std::cout << getType() << ": my little doggy" << std::endl;
+}
+
+
+
+// Default constructor
+WrongCat::WrongCat() : WrongAnimal("WrongCat") {
+	std::cout << GREEN << "WrongCat Default constructor " << DEF << std::endl;
+}
+
+// Destructor
+WrongCat::~WrongCat() {
+	std::cout << GREEN << "WrongCat destructor " << DEF << std::endl;
+}
+
+// Function
+void WrongCat::makeSound() const{
+	std::cout << getType() << ": my little cat" << std::endl;
 }

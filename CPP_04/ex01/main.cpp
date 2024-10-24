@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:15:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 16:35:56 by chrhu            ###   ########.fr       */
+/*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
+/*   Updated: 2024/10/24 19:18:22 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
+#include "Animal.hpp"
 
-#include <iostream>
-#include <string>
-#include "WrongAnimal.hpp"
+void printWrongAnimal();
 
-class WrongCat : public WrongAnimal {
-	public :
-		WrongCat();
-		~WrongCat();
-		void makeSound() const;
-};
-
-#endif
+int main()
+{
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << "Type: " << j->getType() << " " << std::endl;
+	std::cout << "Type: " << i->getType() << " " << std::endl;
+	i->makeSound();
+	j->makeSound();
+	
+	printWrongAnimal();
+	
+	delete i;
+	delete j;
+	return 0;
+}
