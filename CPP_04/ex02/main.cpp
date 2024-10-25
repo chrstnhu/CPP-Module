@@ -6,13 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/25 16:56:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/25 16:59:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include <math.h>
-#include <cmath>
 
 int main()
 {
