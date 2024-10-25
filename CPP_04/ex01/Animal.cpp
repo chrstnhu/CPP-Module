@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 19:15:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/25 11:17:17 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
 // Default constructor
-Animal::Animal() : _type("Animal") {
+Animal::Animal() : _type("Animal"){
 	std::cout << GREEN << "Default constructor animal" << DEF << std::endl;
 }
 
@@ -53,13 +53,14 @@ void Animal::makeSound() const{
 
 
 // Default constructor
-Dog::Dog() : Animal("Dog") {
+Dog::Dog() : Animal("Dog"), _brain(new Brain()) {
 	std::cout << GREEN << "Dog Default constructor " << DEF << std::endl;
 }
 
 // Destructor
 Dog::~Dog() {
 	std::cout << GREEN << "Dog destructor " << DEF << std::endl;
+	delete _brain;
 }
 
 // Functions
@@ -69,13 +70,14 @@ void Dog::makeSound() const{
 
 
 // Default constructor
-Cat::Cat() : Animal("Cat") {
+Cat::Cat() : Animal("Cat"), _brain(new Brain()) {
 	std::cout << GREEN << "Cat Default constructor " << DEF << std::endl;
 }
 
 // Destructor
 Cat::~Cat() {
 	std::cout << GREEN << "Cat destructor " << DEF << std::endl;
+	delete _brain;
 }
 
 // Function

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:07:31 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 19:10:49 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/25 14:42:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 class Brain {
 	public:
 		std::string ideas[100];
+		Brain();
+		Brain(const Brain &other);
+		~Brain();
+		Brain &operator=(const Brain &other);
 };
 
 #endif
