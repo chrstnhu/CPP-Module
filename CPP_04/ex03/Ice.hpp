@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:34:50 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:46:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Ice : public AMateria {
 		Ice(const AMateria &other);
 		virtual ~Ice();
 
+		// Copy assignement
 		Ice &operator=(const Ice &other);
 
 		// Function

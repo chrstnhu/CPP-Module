@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:34:48 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:46:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Cure : public AMateria {
 		Cure(const AMateria &other);
 		virtual ~Cure();
 
+		// COpy assignement
 		Cure &operator=(const Cure &other);
 
 		// Function
