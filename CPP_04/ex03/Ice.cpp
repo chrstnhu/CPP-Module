@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:31:31 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 13:03:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 13:44:16 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ Ice &Ice::operator=(const Ice &other) {
 }
 
 // Function 
+Ice* Ice::clone() const {
+	return new Ice(*this);
+}
+
 void Ice::use(ICharacter& target) {
 	std::cout << "* shoots an ice bolt at" << target.getName() << " *" << std::endl;
 }
