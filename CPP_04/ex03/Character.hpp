@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:54:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 17:00:47 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Character : public ICharacter {
 	protected :
+		AMateria	*_materias[4];
 		std::string	_name;
 	public:
 		Character();

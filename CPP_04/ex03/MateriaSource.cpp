@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:51:41 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:59:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,22 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other) {
 
 // Functions
 void MateriaSource::learnMateria(AMateria *materia) {
-
+	if (materia == NULL)
+		return ;
+	for (int i = 0; i < 4; i++) {
+		if (_materia[i] == NULL) {
+			_materia[i] = materia;
+			return;
+		}
+	}
 }
 
 AMateria *MateriaSource::createMateria(const std::string &type) {
-
+	for (int i = 0; i < 4; i++) {
+		if (_materia[i] != NULL && _materia[i]->getType() == type) {
+		    AMateria *materia = _materia[i]->clone();
+			return materia;
+		}
+	}
+	return 0;
 }

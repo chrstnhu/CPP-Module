@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:11:29 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:53:24 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:56:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class MateriaSource : public IMateriaSource {
 	protected :
+		AMateria	*_materia[4];
 		std::string _type;
 	public :
 		MateriaSource();

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:20:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:49:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 17:03:24 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,19 @@ std::string const &Character::getName() const {
 
 // Function
 void Character::equip(AMateria *m) {
-    
+    if (!m) {
+		std::cout << RED << "Can't equip anything"<< DEF << std::endl;
+	}
+	for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] == NULL) {
+			this->_inventory[i] = m;
+			std::cout << GREEN << "Equip " << m->getType() << " to slot " << i << DEF << std::endl;
+			return ;
+		}
+	}
+	if (i == 5) {
+		std::cout << RED << "Inventory is full" << DEF << std::endl;
+	}
 }
 
 void Character::unequip(int idx) {
