@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:35:14 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:51:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,13 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other) {
 		_type = other._type;
 	}
 	return (*this);
+}
+
+// Functions
+void MateriaSource::learnMateria(AMateria *materia) {
+
+}
+
+AMateria *MateriaSource::createMateria(const std::string &type) {
+
 }

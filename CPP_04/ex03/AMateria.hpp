@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:59:34 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:27:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:54:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ class AMateria {
 		AMateria &operator=(const AMateria &other);
 		
 		// Getters
-		std::string const & getType() const;
+		std::string const &getType() const;
 
 		// Functions
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual AMateria*	clone() const = 0;
+		virtual void		use(ICharacter &target);
 };
 
 #endif

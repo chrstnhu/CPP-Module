@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:31:31 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:21:43 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:52:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Ice &Ice::operator=(const Ice &other) {
 	if (this != &other) {
 		_type = other._type;
 	}
-	return (*this);
+	return *this;
 }
 
 // Function 

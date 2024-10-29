@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:46:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:53:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ class Cure : public AMateria {
 		Cure();
 		Cure(std::string type);
 		Cure(const AMateria &other);
-		virtual ~Cure();
+		~Cure();
 
-		// COpy assignement
+		// Copy assignement
 		Cure &operator=(const Cure &other);
 
 		// Function
-		Cure* clone() const;
-		void use(ICharacter& target);
+		Cure*	clone() const;
+		void	use(ICharacter& target);
 };
 
 #endif

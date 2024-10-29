@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:46:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:53:56 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ class Ice : public AMateria {
 		Ice();
 		Ice(std::string type);
 		Ice(const AMateria &other);
-		virtual ~Ice();
+		~Ice();
 
 		// Copy assignement
 		Ice &operator=(const Ice &other);
 
 		// Function
-		Ice* clone() const;
-		void use(ICharacter& target);
+		Ice*	clone() const;
+		void	use(ICharacter& target);
 };
 
 #endif
