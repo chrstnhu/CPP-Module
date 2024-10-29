@@ -6,12 +6,12 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:59:34 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/28 17:40:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 12:57:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
-#define AMARERIA_HPP
+# define AMATERIA_HPP
 
 # define BLUE "\033[0;313m"
 # define DEF "\033[0;39m"
@@ -21,6 +21,7 @@
 
 #include <iostream>
 #include <string>
+#include "ICharacter.hpp"
 
 class AMateria {
 	protected:
@@ -28,26 +29,17 @@ class AMateria {
 
 	public:
 		AMateria();
-		AMateria(std::string const & type);
+		AMateria(std::string type);
 		AMateria(const AMateria &other);
-		~AMateria();
+		virtual ~AMateria();
 		
 		// Copy assignement operator
 		AMateria &operator=(const AMateria &other);
 		
 		std::string const & getType() const; //Returns the materia type
+
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
-};
-
-class ICharacter
-{
-	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
 };
 
 class IMateriaSource
@@ -58,10 +50,11 @@ class IMateriaSource
 		virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
-class Ice : public AMateria{
+class Ice : public AMateria {
 	public:
 		Ice();
-		Ice(const Ice &other);
+		Ice(std::string type);
+		Ice(const AMateria &other);
 		~Ice();
 
 		Ice &operator=(const Ice &other);
@@ -70,10 +63,11 @@ class Ice : public AMateria{
 		void use(ICharacter& target);
 };
 
-class Cure : public AMateria{
+class Cure : public AMateria {
 	public:
 		Cure();
-		Cure(const Cure &other);
+		Cure(std::string type);
+		Cure(const AMateria &other);
 		~Cure();
 
 		Cure &operator=(const Cure &other);
