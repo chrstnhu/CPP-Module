@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 13:03:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 14:25:23 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
 // Default constructor
-AMateria::AMateria() {
+AMateria::AMateria() : _type("Unamed") {
 	std::cout << GREEN << "Default constructor AMateria" << DEF << std::endl;
 }
 
