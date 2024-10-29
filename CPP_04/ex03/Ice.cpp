@@ -6,11 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:31:31 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 13:44:16 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:21:43 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
 Ice::Ice() : AMateria("ice") {
 	std::cout << GREEN << "Default constructor Ice" << DEF << std::endl;

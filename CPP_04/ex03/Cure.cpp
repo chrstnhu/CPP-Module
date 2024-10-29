@@ -6,11 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:37:46 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 13:43:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:27:46 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
 Cure::Cure() : AMateria("cure") {
 	std::cout << GREEN << "Default constructor Cure" << DEF << std::endl;
