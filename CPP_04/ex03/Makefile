@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:09:31 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/28 17:40:48 by chrhu            ###   ########.fr        #
+#    Updated: 2024/10/29 12:27:27 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_DIR = obj
 
 # Source
 SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp
-HEADERS = AMateria.hpp 
+HEADERS = AMateria.hpp ICharacter.hpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
