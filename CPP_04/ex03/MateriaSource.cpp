@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 14:58:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:48:13 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 // Default constructor
 MateriaSource::MateriaSource() : _type("Unamed") {
-	// std::cout << GREEN << "Default constructor MateriaSource" << DEF << std::endl;
 	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
 	
@@ -22,13 +21,17 @@ MateriaSource::MateriaSource() : _type("Unamed") {
 
 // Copy constructor
 MateriaSource::MateriaSource(const MateriaSource &other) {
-	// std::cout << GREEN << "Copy constructor MateriaSource" << DEF << std::endl;
-	*this = other;
+	for (int i = 0; i < MAX_MATERIA; i++) {
+		if (other._inventory[i] != NULL) {
+			_inventory[i] = other._inventory[i]->clone();
+		} else {
+			_inventory[i] = NULL;
+		}
+	}
 }
 
 // Destructor
 MateriaSource::~MateriaSource() {
-	// std::cout << GREEN << "Destructor MateriaSource" << DEF << std::endl;
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (this->_inventory[i] != NULL)
 			delete this->_inventory[i];
@@ -37,11 +40,21 @@ MateriaSource::~MateriaSource() {
 
 // Copy assignement operator
 MateriaSource &MateriaSource::operator=(const MateriaSource &other) {
-	// std::cout << GREEN << "Copy assignement operator MateriaSource" << DEF << std::endl;
 	if (this != &other) {
+		for (int i= 0; i < MAX_MATERIA; i++) {
+			delete _inventory[i];
+			_inventory[i] = NULL;
+		}
 		_type = other._type;
+		for (int i = 0; i < MAX_MATERIA; i++) {
+			if (other._inventory[i] != NULL) {
+				_inventory[i] = other._inventory[i]->clone();
+			}
+			else
+				_inventory[i] = NULL;
+		}
 	}
-	return (*this);
+	return *this;
 }
 
 // Functions

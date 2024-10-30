@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:20:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 14:56:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:47:44 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,22 @@
 Character::Character() : _name("unamed") {
 	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
-	// std::cout << GREEN << "Default constructor Character" << DEF << std::endl;
 }
 
 // Constructor with parameters
 Character::Character(std::string name) : _name(name) {
 	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
-	// std::cout << GREEN << "Constructor with parameters Character" << DEF << std::endl;
 }
 
 // Copy constructor
 Character::Character(Character const &other) {
-	// std::cout << GREEN << "Copy constructor Character" << DEF << std::endl;
 	delete[] this->_name.c_str();
 	*this = other;
 }
 
 // Destructor
 Character::~Character() {
-	// std::cout << GREEN << "Destructor Character" << DEF << std::endl;
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (this->_inventory[i] != NULL)
 			delete this->_inventory[i];
@@ -44,7 +40,6 @@ Character::~Character() {
 
 // Copy assignement
 Character &Character::operator=(Character const &other) {
-	// std::cout << GREEN << "Copy assignment Character" << DEF << std::endl;
 	if (this != &other) {
 		delete[] this->_name.c_str();
 		this->_name = other._name;

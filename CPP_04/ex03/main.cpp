@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:58:46 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 14:58:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:48:44 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int main()
 {
-	std::cout << YELLOW << "Learn the Materia" << DEF << std::endl;
+	std::cout << YELLOW << "===== Learn the Materia =====" << DEF << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -28,7 +28,7 @@ int main()
 	src->learnMateria(new Cure());
 	src->learnMateria(new Cure());
 	
-	std::cout << std::endl << YELLOW << "Create the Materia" << DEF << std::endl;
+	std::cout << std::endl << YELLOW << "===== Create the Materia =====" << DEF << std::endl;
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
@@ -42,7 +42,7 @@ int main()
 	tmp = src->createMateria("ice2");
 	me->equip(tmp);
 
-	std::cout << std::endl << YELLOW << "Character use Materia" << DEF << std::endl;
+	std::cout << std::endl << YELLOW << "===== Character use Materia =====" << DEF << std::endl;
 	ICharacter* bob = new Character("bob");
 	
 	me->use(0, *bob);
