@@ -6,18 +6,20 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 17:00:47 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:27:28 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
+# define MAX_MATERIA 4
+
 #include "ICharacter.hpp"
 
 class Character : public ICharacter {
 	protected :
-		AMateria	*_materias[4];
+		AMateria	*_inventory[MAX_MATERIA];
 		std::string	_name;
 	public:
 		Character();

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:53:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 12:40:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Cure : public AMateria {
 	public:
 		Cure();
 		Cure(std::string type);
-		Cure(const AMateria &other);
+		Cure(const Cure &other);
 		~Cure();
 
 		// Copy assignement

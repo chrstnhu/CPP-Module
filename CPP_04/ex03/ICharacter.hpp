@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:23:05 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:28:01 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define ICHARACTER_HPP
 
 #include "AMateria.hpp"
+# define MAX_MATERIA 4
+
+class AMateria;
 
 class ICharacter {
 	public:

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:59:34 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:54:35 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:27:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 #include <iostream>
 #include <string>
 #include "ICharacter.hpp"
-#include "MateriaSource.hpp"
-#include "Ice.hpp"
+
+class ICharacter;
 
 class AMateria {
 	protected:

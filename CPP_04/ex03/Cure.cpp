@@ -6,35 +6,35 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:37:46 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:50:38 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 14:56:38 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
 Cure::Cure() : AMateria("cure") {
-	std::cout << GREEN << "Default constructor Cure" << DEF << std::endl;
+	// std::cout << GREEN << "Default constructor Cure" << DEF << std::endl;
 }
 
 // Constructor with parameter
 Cure::Cure(std::string type) : AMateria("cure " + type) {
-	std::cout << GREEN << "Constructor with parameter Cure" << DEF << std::endl;
+	// std::cout << GREEN << "Constructor with parameter Cure" << DEF << std::endl;
 }
 
 // Copy constructor
 Cure::Cure(const Cure &other) {
-	std::cout << GREEN << "Copy constructor Cure" << DEF << std::endl;
+	// std::cout << GREEN << "Copy constructor Cure" << DEF << std::endl;
 	*this = other;
 }
 
 // Destructor
 Cure::~Cure() {
-	std::cout << GREEN << "Destructor Cure" << DEF << std::endl;
+	// std::cout << GREEN << "Destructor Cure" << DEF << std::endl;
 }
 
 // Copy assignement operator
 Cure &Cure::operator=(const Cure &other) {
-	std::cout << GREEN << "Copy assignement operator Cure" << DEF << std::endl;
+	// std::cout << GREEN << "Copy assignement operator Cure" << DEF << std::endl;
 	if (this != &other) {
 		_type = other._type;
 	}
@@ -47,5 +47,5 @@ Cure* Cure::clone() const{
 }
 
 void Cure::use(ICharacter& target) {
-	std::cout << "* heals <" << target.getName() << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

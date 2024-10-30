@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:11:29 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/29 16:53:42 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:27:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define IMATERIASOURCE_HPP
 
 #include "AMateria.hpp"
+# define MAX_MATERIA 4
+
+class AMateria;
 
 class IMateriaSource {
 	public:
