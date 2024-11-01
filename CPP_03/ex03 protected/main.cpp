@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:27:07 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 11:55:06 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/01 12:12:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
-static void printIdentity(ClapTrap &Clap);
+static void printIdentity(ClapTrap &Clap, DiamondTrap &DiamondTrap, int isDiamond);
 static void ftAttack(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap, DiamondTrap &DiamondTrap);
 static void ftTakeDamage(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap, DiamondTrap &DiamondTrap);
 static void ftRepair(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap, DiamondTrap &DiamondTrap);
@@ -40,7 +40,7 @@ int main () {
 	// Diamond Trap
 	std::cout << std::endl << "======================= Diamond trap =======================" << std::endl;
 	std::cout << GREEN << "Name: " << DiamondTrap.getName() << DEF << std::endl;
-	printIdentity(DiamondTrap);
+	printIdentity(DiamondTrap, DiamondTrap, 1);
 	DiamondTrap.whoAmI();
 }
 
@@ -49,61 +49,64 @@ static void ftAttack(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap,
 	ClapTrap.attack("Someone");
 	ClapTrap.attack("Zombie");
 	ClapTrap.attack("Fish");
-	printIdentity(ClapTrap);
+	printIdentity(ClapTrap, DiamondTrap, 0);
 	
 	ScavTrap.attack("Computer");
-	printIdentity(ScavTrap);
+	printIdentity(ScavTrap, DiamondTrap, 0);
 
 	for (int i = 0; i < 5; i++)
 		FragTrap.attack("robot");
-	printIdentity(FragTrap);
+	printIdentity(FragTrap, DiamondTrap, 0);
 
 	DiamondTrap.attack("rock");
-	printIdentity(DiamondTrap);
+	printIdentity(DiamondTrap, DiamondTrap, 1);
 }
 
 static void ftTakeDamage(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap, DiamondTrap &DiamondTrap) {
 	std::cout << std::endl << "======================= Take Damage =======================" << std::endl;
 	ClapTrap.takeDamage(10);
-	printIdentity(ClapTrap);
+	printIdentity(ClapTrap, DiamondTrap, 0);
 	ClapTrap.takeDamage(3);
-	printIdentity(ClapTrap);
+	printIdentity(ClapTrap, DiamondTrap, 0);
 	
 	ScavTrap.takeDamage(60);
-	printIdentity(ScavTrap);
+	printIdentity(ScavTrap, DiamondTrap, 0);
 	ScavTrap.takeDamage(2);
-	printIdentity(ScavTrap);
+	printIdentity(ScavTrap, DiamondTrap, 0);
 
 	FragTrap.takeDamage(95);
-	printIdentity(FragTrap);
+	printIdentity(FragTrap, DiamondTrap, 0);
 
 	DiamondTrap.takeDamage(80);
-	printIdentity(DiamondTrap);
+	printIdentity(DiamondTrap, DiamondTrap, 1);
 }
 
 static void ftRepair(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap, DiamondTrap &DiamondTrap) {
 	std::cout << std::endl << "======================= Repair =======================" << std::endl;
 	ClapTrap.beRepaired(7);
-	printIdentity(ClapTrap);
+	printIdentity(ClapTrap, DiamondTrap, 0);
 	
 	ScavTrap.beRepaired(46);
-	printIdentity(ScavTrap);
+	printIdentity(ScavTrap, DiamondTrap, 0);
 	ScavTrap.beRepaired(4);
-	printIdentity(ScavTrap);
+	printIdentity(ScavTrap, DiamondTrap, 0);
 
 	FragTrap.beRepaired(100);
-	printIdentity(FragTrap);
+	printIdentity(FragTrap, DiamondTrap, 0);
 
 	DiamondTrap.beRepaired(50);
-	printIdentity(DiamondTrap);
+	printIdentity(DiamondTrap, DiamondTrap, 1);
 }
 
-static void printIdentity(ClapTrap &Clap)
+static void printIdentity(ClapTrap &Clap, DiamondTrap &DiamondTrap, int isDiamond)
 {
 	if (Clap.getHitPoint() != 0)
 	{
-		std::cout << GREEN << Clap.getName() << DEF
-			<< " - Hit point(s): " 
+		if (isDiamond)
+			std::cout << GREEN << DiamondTrap.getName() << DEF;
+		else
+			std::cout << GREEN << Clap.getName() << DEF;
+		std::cout << " - Hit point(s): " 
 			<< YELLOW << Clap.getHitPoint() << DEF
 			<< ", energy point: "
 			<< YELLOW << Clap.getEnergyPoint() << DEF

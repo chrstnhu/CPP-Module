@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 17:12:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/01 12:42:47 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name"),
 	ScavTrap("Unamed"), FragTrap("Unamed"), _name("Unamed") {
 	
 	this->_hitPoint = FragTrap::_hitPoint;
-	this->_energyPoint = ScavTrap::_energyPoint;
+	this->_energyPoint = 50;
 	this->_attackDamage = FragTrap::_attackDamage;
 	std::cout << GREEN << "Default DiamondTrap constructor" << DEF << std::endl;
 }

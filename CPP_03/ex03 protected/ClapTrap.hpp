@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:20:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 17:00:17 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/01 12:43:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class ClapTrap {
 	public :
 		ClapTrap();
 		ClapTrap(std::string name);
-		ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
 		ClapTrap( const ClapTrap &other );
 		~ClapTrap();
 		
