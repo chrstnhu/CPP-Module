@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:09:31 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/24 19:02:30 by chrhu            ###   ########.fr        #
+#    Updated: 2024/11/01 13:02:33 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ DEFAULT = \033[0m
 OBJ_DIR = obj
 
 # Source
-SRCS = main.cpp Animal.cpp WrongAnimal.cpp
-HEADERS = Animal.hpp WrongAnimal.hpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp WrongDog.cpp
+HEADERS = Animal.hpp Cat.cpp Dog.cpp WrongAnimal.hpp WrongCat.hpp WrongDog.hpp
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 

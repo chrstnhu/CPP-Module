@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:52:45 by chrhu            ###   ########.fr       */
+/*   Created: 2024/10/24 15:15:06 by chrhu             #+#    #+#             */
+/*   Updated: 2024/11/01 13:16:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-# define BLUE "\033[0;313m"
-# define DEF "\033[0;39m"
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m" 
+# include "WrongAnimal.hpp"
 
-#include <iostream>
-#include <string>
-
-class Animal {
-	protected :
-		std::string _type;
+class WrongCat : public WrongAnimal {
 	public :
-		Animal();
-		Animal(std::string type);
-		Animal(const Animal &other);
-		
-		virtual ~Animal();
+		WrongCat();
+		WrongCat(const WrongCat &other);
+		~WrongCat();
 
 		// Copy assignement
-		Animal &operator=(const Animal &other);
+		WrongCat &operator=(const WrongCat &other);
 
 		// Function
-		virtual void makeSound() const;
-		std::string getType() const;
+		void makeSound() const;
 };
 
 #endif

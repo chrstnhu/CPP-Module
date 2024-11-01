@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/24 19:03:53 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/01 13:23:43 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other) {
 		
 // Destructor
 WrongAnimal::~WrongAnimal() {
-	std::cout << GREEN << "Destructor animal" << DEF << std::endl;
+	std::cout << GREEN << "Destructor WrongAnimal" << DEF << std::endl;
 }
 
 // Copy assignement
@@ -42,44 +42,12 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other) {
 	return *this;
 }
 
-// Function
-void WrongAnimal::makeSound() const{
-	std::cout << getType() <<": animaaaaals" << std::endl;
-}
-
+// Getter
 std::string WrongAnimal::getType() const {
 	return _type;
 }
 
-
-// Default constructor
-WrongDog::WrongDog() : WrongAnimal("WrongDog") {
-	std::cout << GREEN << "WrongDog Default constructor " << DEF << std::endl;
-}
-
-// Destructor
-WrongDog::~WrongDog() {
-	std::cout << GREEN << "WrongDog destructor " << DEF << std::endl;
-}
-
-// Functions
-void WrongDog::makeSound() const{
-	std::cout << getType() << ": my little doggy" << std::endl;
-}
-
-
-
-// Default constructor
-WrongCat::WrongCat() : WrongAnimal("WrongCat") {
-	std::cout << GREEN << "WrongCat Default constructor " << DEF << std::endl;
-}
-
-// Destructor
-WrongCat::~WrongCat() {
-	std::cout << GREEN << "WrongCat destructor " << DEF << std::endl;
-}
-
 // Function
-void WrongCat::makeSound() const{
-	std::cout << getType() << ": my little cat" << std::endl;
+void WrongAnimal::makeSound() const{
+	std::cout << getType() <<": animaaaaals" << std::endl;
 }
