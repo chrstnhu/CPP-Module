@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:07:31 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/25 14:42:34 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/01 13:29:28 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class Brain {
 		Brain();
 		Brain(const Brain &other);
 		~Brain();
+		
+		// Copy assignement
 		Brain &operator=(const Brain &other);
 };
 
