@@ -6,22 +6,22 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 12:58:16 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 17:52:32 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-// Default constructor;
-DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap().getHitPoint(),
-	ScavTrap().getEnergyPoint(), FragTrap().getAttackDamage()),
+// Default constructor
+DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap::_defaultHitPoint,
+	ScavTrap::_defaultEnergyPoint, FragTrap::_defaultAttackDamage),
 	ScavTrap("Unamed"), FragTrap("Unamed"), _name("Unamed") {
 	std::cout << GREEN << "Default DiamondTrap constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap().getHitPoint(),
-	ScavTrap().getEnergyPoint(), FragTrap().getAttackDamage()),
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap::_defaultHitPoint,
+	ScavTrap::_defaultEnergyPoint, FragTrap::_defaultAttackDamage),
 	ScavTrap(name), FragTrap(name), _name(name) {
 	std::cout << GREEN << "DiamondTrap constructor with parameters" << DEF << std::endl;
 }
@@ -52,8 +52,12 @@ std::string DiamondTrap::getName() const {
 	return _name;
 }
 
+// Functions
+void DiamondTrap::attack( const std::string& target ) {
+	ScavTrap::attack(target);
+}
 
-// Function
 void DiamondTrap::whoAmI() {
-	std::cout << "My name: " << _name << ", my ClapTrap name: " << ClapTrap::getName() << std::endl;
+	std::cout << "My name: " << _name
+		<< ", my ClapTrap name: " << ClapTrap::getName() << std::endl;
 }
