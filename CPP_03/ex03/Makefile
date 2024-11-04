@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:14:51 by chrhu             #+#    #+#              #
-#    Updated: 2024/10/22 12:50:27 by chrhu            ###   ########.fr        #
+#    Updated: 2024/11/04 18:06:03 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 # Compile
 CC = c++
-# Warn whenever a local variable or type declaration shadows another variable, parameter,
-# type, class member (in C++) [...] or whenever a built-in function is shadowed.
+
 # Compiler flag : (activate)-W-shadow and (desactivate)-Wno-shadow
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 NAME = ClapTrap
