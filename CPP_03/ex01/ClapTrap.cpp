@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 11:59:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 17:51:42 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,6 @@ int		ClapTrap::getHitPoint( void ) const {
 	return this->_hitPoint;
 }
 
-void	ClapTrap::setEnergyPoint(unsigned int energyPoint) {
-	_energyPoint = energyPoint;
-}
-
 int		ClapTrap::getEnergyPoint( void ) const {
 	return this->_energyPoint;
 }
@@ -119,6 +115,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else {
 		std::cout << std::endl << RED << _name 
-			<< " can't be repaired with "<< amount << ", max " << _energyPoint << " energy point(s)" << DEF << std::endl;
+			<< " can't be repaired with "<< amount 
+			<< ", max " << _energyPoint << " energy point(s)" << DEF << std::endl;
 	}
 }

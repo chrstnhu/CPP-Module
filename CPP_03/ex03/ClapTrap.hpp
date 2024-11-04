@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:20:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 11:59:25 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:31:42 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <cmath>
 
 class ClapTrap {
-	private :
+	protected :
 		std::string		_name;
 		unsigned int	_hitPoint;
 		unsigned int	_energyPoint;
@@ -44,11 +44,10 @@ class ClapTrap {
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );
 
-		// Setter and getter
+		// Getter
 		std::string	getName( void ) const;
 		int			getAttackDamage( void ) const;
 		int			getHitPoint( void ) const;
-		void		setEnergyPoint(unsigned int energyPoint );
 		int			getEnergyPoint( void ) const;
 };
 

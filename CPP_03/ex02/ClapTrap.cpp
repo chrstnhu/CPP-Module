@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 11:59:20 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 17:51:48 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ ClapTrap &ClapTrap::operator=( const ClapTrap &other ) {
 	return *this;
 }
 
-// Setters and getters
 
+// Getters
 std::string ClapTrap::getName(void) const {
 	return this->_name;
 }
@@ -62,10 +62,6 @@ int		ClapTrap::getAttackDamage( void ) const {
 		
 int		ClapTrap::getHitPoint( void ) const {
 	return this->_hitPoint;
-}
-
-void	ClapTrap::setEnergyPoint(unsigned int energyPoint) {
-	_energyPoint = energyPoint;
 }
 
 int		ClapTrap::getEnergyPoint( void ) const {
@@ -91,8 +87,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
         std::cout << RED << "Can't attack "
 			<< _name << ", he is defeated!" << DEF << std::endl;
     }
-	else
-	{
+	else {
 		_hitPoint -= amount;
 		if (_hitPoint < 0)
 			_hitPoint = 0;
@@ -119,6 +114,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 	else {
 		std::cout << std::endl << RED << _name 
-			<< " can't be repaired with "<< amount << ", max " << _energyPoint << " energy point(s)" << DEF << std::endl;
+			<< " can't be repaired with "<< amount << ", max " 
+			<< _energyPoint << " energy point(s)" << DEF << std::endl;
 	}
 }
