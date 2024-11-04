@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:15:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/21 11:32:53 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:30:04 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Default constructor
 FragTrap::FragTrap() : ClapTrap("Unamed", 100, 100, 30) {
-	std::cout << GREEN << "Default FragTrap constructor" << DEF << std::endl;
+	std::cout << GREEN << "FragTrap Default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
@@ -24,17 +24,17 @@ FragTrap::FragTrap( std::string name) : ClapTrap (name, 100, 100, 30) {
 
 // Copy constructor
 FragTrap::FragTrap( const FragTrap &other) : ClapTrap(other) {
-	std::cout << GREEN << "ScavTrap copy constructor " << DEF << std::endl;
+	std::cout << GREEN << "FragTrap copy constructor " << DEF << std::endl;
 }
 
 // Destructor
 FragTrap::~FragTrap() {
-	std::cout << GREEN << "Destruct FragTrap" << DEF << std::endl;
+	std::cout << GREEN << "FragTrap Destructor" << DEF << std::endl;
 }
 
 // Copy assignement
 FragTrap &FragTrap::operator=( const FragTrap &other) {
-	std::cout << GREEN << "ScavTrap copy assignement " << DEF << std::endl;
+	std::cout << GREEN << "FragTrap copy assignement " << DEF << std::endl;
 	if (this != &other) {
 		ClapTrap::operator=(other);
 	}
@@ -43,5 +43,5 @@ FragTrap &FragTrap::operator=( const FragTrap &other) {
 
 // High fives
 void FragTrap::highFivesGuys(void) {
-	std::cout << YELLOW << getName() << "display a positive high five!" << DEF << std::endl;
+	std::cout << YELLOW << _name << " display a positive high five!" << DEF << std::endl;
 }

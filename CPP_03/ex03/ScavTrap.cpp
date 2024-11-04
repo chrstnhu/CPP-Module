@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 13:03:58 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 17:51:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Default constructor
 ScavTrap::ScavTrap() : ClapTrap("Unamed", 100, 50, 20) {
-	std::cout << GREEN << "Default ScavTrap constructor" << DEF << std::endl;
+	std::cout << GREEN << "ScavTrap Default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
@@ -29,7 +29,7 @@ ScavTrap::ScavTrap( const ScavTrap &other ) : ClapTrap(other) {
 
 // Destructor
 ScavTrap::~ScavTrap() {
-	std::cout << GREEN << "Destruct ScavTrap" << DEF << std::endl;
+	std::cout << GREEN << "ScavTrap Destructor " << DEF << std::endl;
 }
 
 // Copy assignement
@@ -44,17 +44,19 @@ ScavTrap &ScavTrap::operator=( const ScavTrap &other ) {
 
 // Attack someone
 void ScavTrap::attack(const std::string& target){
-	if (getEnergyPoint() > 0 && getHitPoint() > 0) {
-		std::cout << std::endl <<"ScavTrap " << getName() << " causing "
-			<< YELLOW << getAttackDamage() << DEF
-			<< " points of damage to " << target << std::endl;
-		setEnergyPoint(getEnergyPoint() - 1);
+	if (_energyPoint > 0 && _hitPoint > 0) {
+		std::cout << std::endl <<"ScavTrap causing "
+			<< YELLOW << _attackDamage << DEF
+			<< " points of damage to "
+			<< target << std::endl;
+		_energyPoint--;
 	}
-	else
-		std::cout << RED << getName() << " can't attack!" << DEF << std::endl;
+	else {
+		std::cout << RED << _name << " can't attack!" << DEF << std::endl;
+	}
 }
 
 // Guard keeper mode
 void ScavTrap::guardGate() {
-	std::cout << YELLOW << getName() << " is in guard gate keeper mode" << DEF << std::endl << std::endl;
+	std::cout << YELLOW << _name << " is in guard gate keeper mode" << DEF << std::endl;
 }

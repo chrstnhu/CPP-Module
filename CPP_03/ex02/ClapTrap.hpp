@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:20:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 11:59:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:27:47 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <cmath>
 
 class ClapTrap {
-	private :
+	protected :
 		std::string		_name;
 		unsigned int	_hitPoint;
 		unsigned int	_energyPoint;
