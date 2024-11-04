@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:27:07 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/18 18:41:20 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 12:35:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ static void ftAttack(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap)
 	ScavTrap.attack("Computer");
 	printIdentity(ScavTrap);
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++) {
 		FragTrap.attack("robot");
+	}
 	printIdentity(FragTrap);
 }
 

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:27:07 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:43:49 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 17:50:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int main () {
 	std::cout << std::endl << "======================= Diamond trap =======================" << std::endl;
 	std::cout << GREEN << "Name: " << DiamondTrap.getName() << DEF << std::endl;
 	printIdentity(DiamondTrap, DiamondTrap, 1);
+	DiamondTrap.guardGate();
+	DiamondTrap.highFivesGuys();
 	DiamondTrap.whoAmI();
 }
 
@@ -54,8 +56,9 @@ static void ftAttack(ClapTrap &ClapTrap, ScavTrap &ScavTrap, FragTrap &FragTrap,
 	ScavTrap.attack("Computer");
 	printIdentity(ScavTrap, DiamondTrap, 0);
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++) {
 		FragTrap.attack("robot");
+	}
 	printIdentity(FragTrap, DiamondTrap, 0);
 
 	DiamondTrap.attack("rock");
@@ -102,11 +105,13 @@ static void printIdentity(ClapTrap &Clap, DiamondTrap &DiamondTrap, int isDiamon
 {
 	if (Clap.getHitPoint() != 0)
 	{
-		if (isDiamond)
+		if (isDiamond) {
 			std::cout << GREEN << DiamondTrap.getName() << DEF;
-		else
+		}
+		else {
 			std::cout << GREEN << Clap.getName() << DEF;
-		std::cout << " - Hit point(s): " 
+		}
+			std::cout << " - Hit point(s): " 
 			<< YELLOW << Clap.getHitPoint() << DEF
 			<< ", energy point: "
 			<< YELLOW << Clap.getEnergyPoint() << DEF
