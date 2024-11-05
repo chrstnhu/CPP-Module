@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:20:58 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:43:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:46:40 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class ClapTrap {
 		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap( const ClapTrap &other );
+		ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDamage);
 		~ClapTrap();
 		
 		// Copy assignement
@@ -47,7 +48,6 @@ class ClapTrap {
 		std::string	getName( void ) const;
 		int			getAttackDamage( void ) const;
 		int			getHitPoint( void ) const;
-		void		setEnergyPoint(unsigned int energyPoint );
 		int			getEnergyPoint( void ) const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:43:34 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:46:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ ClapTrap::ClapTrap(): _name("Unamed"), _hitPoint(10), _energyPoint(10), _attackD
 
 // ClapTrap constructor with parameter
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
+	std::cout << GREEN << "ClapTrap constructor with parameter" << DEF << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDamage) 
+	: _name(name), _hitPoint(hitPoint), _energyPoint(energyPoint), _attackDamage(attackDamage) {
 	std::cout << GREEN << "ClapTrap constructor with parameter" << DEF << std::endl;
 }
 
@@ -57,10 +62,6 @@ int		ClapTrap::getAttackDamage( void ) const {
 		
 int		ClapTrap::getHitPoint( void ) const {
 	return this->_hitPoint;
-}
-
-void	ClapTrap::setEnergyPoint(unsigned int energyPoint) {
-	_energyPoint = energyPoint;
 }
 
 int		ClapTrap::getEnergyPoint( void ) const {

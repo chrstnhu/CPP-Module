@@ -6,29 +6,23 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:42:47 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:46:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-// Default constructor;
-DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name"),
+// Default constructor
+DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap::_defaultHitPoint,
+	ScavTrap::_defaultEnergyPoint, FragTrap::_defaultAttackDamage),
 	ScavTrap("Unamed"), FragTrap("Unamed"), _name("Unamed") {
-	
-	this->_hitPoint = FragTrap::_hitPoint;
-	this->_energyPoint = 50;
-	this->_attackDamage = FragTrap::_attackDamage;
 	std::cout << GREEN << "Default DiamondTrap constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"),
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap::_defaultHitPoint,
+	ScavTrap::_defaultEnergyPoint, FragTrap::_defaultAttackDamage),
 	ScavTrap(name), FragTrap(name), _name(name) {
-
-	this->_hitPoint = FragTrap::_hitPoint;
-	this->_energyPoint = 50;
-	this->_attackDamage = FragTrap::_attackDamage;
 	std::cout << GREEN << "DiamondTrap constructor with parameters" << DEF << std::endl;
 }
 

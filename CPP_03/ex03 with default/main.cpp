@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:27:07 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:12:02 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:52:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int main () {
 	std::cout << std::endl << "======================= Diamond trap =======================" << std::endl;
 	std::cout << GREEN << "Name: " << DiamondTrap.getName() << DEF << std::endl;
 	printIdentity(DiamondTrap, DiamondTrap, 1);
+	DiamondTrap.guardGate();
+	DiamondTrap.highFivesGuys();
 	DiamondTrap.whoAmI();
 }
 

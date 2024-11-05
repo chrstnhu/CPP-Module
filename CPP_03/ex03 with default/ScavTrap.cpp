@@ -6,25 +6,19 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:42:55 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/04 19:16:40 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 // Default constructor
-ScavTrap::ScavTrap() : ClapTrap("Unamed") {
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;
-	this->_attackDamage = 20;
+ScavTrap::ScavTrap() : ClapTrap("Unamed", 100, 50, 20) {
 	std::cout << GREEN << "Default ScavTrap constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
-ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;z
-	this->_attackDamage = 20;
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name, 100, 50, 20) {
 	std::cout << GREEN << "ScavTrap constructor with parameter" << DEF << std::endl;
 }
 
