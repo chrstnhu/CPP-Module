@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:14 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/04 17:44:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/05 11:55:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 #include "ClapTrap.hpp"
 
 class ScavTrap : virtual public ClapTrap {
-	protected :
-		static const unsigned int _defaultHitPoint = 100;
-		static const unsigned int _defaultEnergyPoint = 50;
-		static const unsigned int _defaultAttackDamage = 20;
-	
+
 	public :
 		ScavTrap();
 		ScavTrap( std::string name );
