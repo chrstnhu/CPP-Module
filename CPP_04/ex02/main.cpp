@@ -6,45 +6,46 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/25 16:59:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:49:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 int main()
 {
-	//const AAnimal* meta = new AAnimal();
 	const AAnimal* j = new Dog();
 	const AAnimal* i = new Cat();
-	std::cout << "Type: " << j->getType() << " " << std::endl
-			<< "Adress: " << j << std::endl;
-	std::cout << "Type: " << i->getType() << " " << std::endl
-			<< "Adress: " << i << std::endl;
+	std::cout << "Type: " << j->getType() << " " << std::endl;
+	std::cout << "Type: " << i->getType() << " " << std::endl;
 	i->makeSound();
 	j->makeSound();
 	
-	static int index = 0;
-	static int nb = 10;
-	const AAnimal** a = new const AAnimal *[nb];
-	std::cout << YELLOW << "========== Animal object ==========" << DEF << std::endl;
-	while (index < (nb/2)) {
-		a[index] = new Dog();
-		std::cout << index + 1 << " - Type: " << a[index]->getType() << " " << std::endl;
-        std::cout << "Address: " << a[index] << std::endl;
-		index++;
-	}
-	while (index < nb) {
-		a[index] = new Cat();
-		std::cout << index + 1 << " - Type: " << a[index]->getType() << " " << std::endl;
-        std::cout << "Address: " << a[index] << std::endl;
-		index++;
-	}
 	delete i;
 	delete j;
-	for (int index = 0; index < nb; index++) {
-		delete a [index];
+
+
+	static const int max = 10;
+	const AAnimal** a = new const AAnimal *[max];
+	std::cout << YELLOW << "========== Animal object ==========" << DEF << std::endl;
+
+	for (int i = 0; i < max / 2; i++) {
+		a[i] = new Dog();
+		std::cout << i + 1 << " - Type: " << a[i]->getType() << " " << std::endl;
+        std::cout << "Address: " << a[i] << std::endl;
 	}
-	delete[] a;
+	for (int i = max / 2; i < max; i++) {
+		a[i] = new Cat();
+		std::cout << i + 1 << " - Type: " << a[i]->getType() << " " << std::endl;
+        std::cout << "Address: " << a[i] << std::endl;
+	}
+
+	for (int i = 0; i < max; i++) {
+		delete a [i];
+	}
+
+	delete [] a;
 	return 0;
 }

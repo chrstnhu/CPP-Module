@@ -1,52 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:30:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:48:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Dog.hpp"
 
 // Default constructor
-Animal::Animal() : _type("Animal"){
-	std::cout << GREEN << "Default constructor animal" << DEF << std::endl;
-}
-
-// Constructor with parameters
-Animal::Animal(std::string type) : _type(type) {
-	std::cout << GREEN << "Constructor animal" << DEF << std::endl;
+Dog::Dog() : AAnimal("Dog"), _brain(new Brain()) {
+	std::cout << GREEN << "Dog Default constructor " << DEF << std::endl;
 }
 
 // Copy constructor
-Animal::Animal(const Animal &other) {
+Dog::Dog(const Dog &other) : AAnimal(other) {
 	std::cout << GREEN << "Copy constructor animal" << DEF << std::endl;
-	_type = other._type;
+	_brain = new Brain(*other._brain);
 }
-		
+
 // Destructor
-Animal::~Animal() {
-	std::cout << GREEN << "Destructor animal" << DEF << std::endl;
+Dog::~Dog() {
+	std::cout << GREEN << "Dog destructor " << DEF << std::endl;
+	delete _brain;
 }
 
 // Copy assignement
-Animal &Animal::operator=(const Animal &other) {
-	std::cout << GREEN << "Copy assignement animal" << DEF << std::endl;
+Dog &Dog::operator=(const Dog &other) {
+	std::cout << GREEN << "DOg copy assignement" << DEF << std::endl;
 	if (this != &other) {
-		_type = other._type;
+		delete _brain;
+		AAnimal::operator=(other);
+		_brain = new Brain(*other._brain);
 	}
 	return *this;
 }
 
-std::string Animal::getType() const {
-	return _type;
-}
-
-// Function
-void Animal::makeSound() const{
-	std::cout << getType() <<": Wowwwwwww" << std::endl;
+// Functions
+void Dog::makeSound() const{
+	std::cout << getType() << ": Waoufffffff" << std::endl;
 }

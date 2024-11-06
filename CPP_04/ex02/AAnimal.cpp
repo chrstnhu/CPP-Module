@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/25 16:53:58 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:48:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 // Default constructor
 AAnimal::AAnimal() : _type("Animal"){
@@ -49,38 +49,4 @@ std::string AAnimal::getType() const {
 // Function
 void AAnimal::makeSound() const{
 	std::cout << getType() <<": Wowwwwwww" << std::endl;
-}
-
-
-// Default constructor
-Dog::Dog() : AAnimal("Dog"), _brain(new Brain()) {
-	std::cout << GREEN << "Dog Default constructor " << DEF << std::endl;
-}
-
-// Destructor
-Dog::~Dog() {
-	std::cout << GREEN << "Dog destructor " << DEF << std::endl;
-	delete _brain;
-}
-
-// Functions
-void Dog::makeSound() const{
-	std::cout << getType() << ": Waoufffffff" << std::endl;
-}
-
-
-// Default constructor
-Cat::Cat() : AAnimal("Cat"), _brain(new Brain()) {
-	std::cout << GREEN << "Cat Default constructor " << DEF << std::endl;
-}
-
-// Destructor
-Cat::~Cat() {
-	std::cout << GREEN << "Cat destructor " << DEF << std::endl;
-	delete _brain;
-}
-
-// Function
-void Cat::makeSound() const{
-	std::cout << getType() << ": Miaouuuuuuuu" << std::endl;
 }
