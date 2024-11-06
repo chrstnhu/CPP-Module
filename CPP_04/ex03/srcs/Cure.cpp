@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 17:31:31 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 16:48:03 by chrhu            ###   ########.fr       */
+/*   Created: 2024/10/28 17:37:46 by chrhu             #+#    #+#             */
+/*   Updated: 2024/11/06 16:33:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "../includes/Cure.hpp"
 
-// Default constructor
-Ice::Ice() : AMateria("ice") {
+Cure::Cure() : AMateria("cure") {
 }
 
 // Constructor with parameter
-Ice::Ice(std::string type) : AMateria("ice " + type) {
+Cure::Cure(std::string type) : AMateria("cure " + type) {
 }
 
 // Copy constructor
-Ice::Ice(const Ice &other) : AMateria(other) {
+Cure::Cure(const Cure &other) : AMateria(other) {
 }
 
 // Destructor
-Ice::~Ice() {
+Cure::~Cure() {
 }
 
 // Copy assignement operator
-Ice &Ice::operator=(const Ice &other) {
+Cure &Cure::operator=(const Cure &other) {
 	if (this != &other) {
 		AMateria::operator=(other);
-		_type = other._type;
+		// _type = other._type;
 	}
 	return *this;
 }
 
 // Function 
-Ice* Ice::clone() const {
-	return new Ice(*this);
+Cure* Cure::clone() const{
+	return new Cure(*this);
 }
 
-void Ice::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+void Cure::use(ICharacter& target) {
+	std::cout << "* heals " << target.getName()
+		<< "’s wounds *" << std::endl;
 }

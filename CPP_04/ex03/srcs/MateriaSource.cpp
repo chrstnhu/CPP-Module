@@ -6,17 +6,17 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 16:48:13 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 14:00:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MateriaSource.hpp"
+#include "../includes/MateriaSource.hpp"
 
 // Default constructor
 MateriaSource::MateriaSource() : _type("Unamed") {
-	for (int i = 0; i < MAX_MATERIA; i++)
+	for (int i = 0; i < MAX_MATERIA; i++) {
 		_inventory[i] = NULL;
-	
+	}
 }
 
 // Copy constructor
@@ -33,8 +33,9 @@ MateriaSource::MateriaSource(const MateriaSource &other) {
 // Destructor
 MateriaSource::~MateriaSource() {
 	for (int i = 0; i < MAX_MATERIA; i++) {
-		if (this->_inventory[i] != NULL)
+		if (this->_inventory[i] != NULL) {
 			delete this->_inventory[i];
+		}
 	}
 }
 
@@ -50,8 +51,9 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other) {
 			if (other._inventory[i] != NULL) {
 				_inventory[i] = other._inventory[i]->clone();
 			}
-			else
+			else {
 				_inventory[i] = NULL;
+			}
 		}
 	}
 	return *this;
@@ -68,7 +70,9 @@ void MateriaSource::learnMateria(AMateria *m) {
 			return;
 		}
 	}
-	std::cout << RED << "Inventory is full, cannot learn more than " << MAX_MATERIA << " Materia!" << DEF << std::endl;
+	std::cout << RED << "Inventory is full,"
+		<< "cannot learn more than " << MAX_MATERIA
+		<< " Materia!" << DEF << std::endl;
 	delete m ;
 }
 
@@ -80,6 +84,7 @@ AMateria *MateriaSource::createMateria(const std::string &type) {
 			return materia;
 		}
 	}
-	std::cout << RED << "Cannot create " << type << " because it is not a valid Materia !" << DEF << std::endl;
+	std::cout << RED << "Cannot create " << type
+		<< " because it is not a valid Materia !" << DEF << std::endl;
 	return 0;
 }

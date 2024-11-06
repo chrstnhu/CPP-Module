@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 13:28:01 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 13:46:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
 #include "AMateria.hpp"
-# define MAX_MATERIA 4
 
-class AMateria;
-
-class ICharacter {
+class Ice : public AMateria {
 	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
+		Ice();
+		Ice(std::string type);
+		Ice(const Ice &other);
+		~Ice();
+
+		// Copy assignement
+		Ice &operator=(const Ice &other);
+
+		// Function
+		Ice*	clone() const;
+		void	use(ICharacter& target);
 };
 
 #endif

@@ -6,17 +6,17 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:58:46 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 16:48:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 13:41:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
-#include "Cure.hpp"
-#include "Character.hpp"
-#include "ICharacter.hpp"
-#include "MateriaSource.hpp"
-#include "IMateriaSource.hpp"
-#include "AMateria.hpp"
+#include "includes/Ice.hpp"
+#include "includes/Cure.hpp"
+#include "includes/Character.hpp"
+#include "includes/ICharacter.hpp"
+#include "includes/MateriaSource.hpp"
+#include "includes/IMateriaSource.hpp"
+#include "includes/AMateria.hpp"
 
 int main()
 {

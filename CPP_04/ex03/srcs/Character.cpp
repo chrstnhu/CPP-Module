@@ -6,11 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:20:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/30 16:47:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:27:23 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
+#include "../includes/Character.hpp"
 
 // Default constructor
 Character::Character() : _name("unamed") {
@@ -26,8 +26,15 @@ Character::Character(std::string name) : _name(name) {
 
 // Copy constructor
 Character::Character(Character const &other) {
-	delete[] this->_name.c_str();
-	*this = other;
+	this->_name = other._name;
+	for (int i = 0; i < MAX_MATERIA; i++) {
+		if (other._inventory[i] != NULL) {
+			_inventory[i] = other._inventory[i]->clone();
+		}
+		else {
+			_inventory[i] = NULL;
+		}
+	}		
 }
 
 // Destructor
@@ -41,8 +48,21 @@ Character::~Character() {
 // Copy assignement
 Character &Character::operator=(Character const &other) {
 	if (this != &other) {
-		delete[] this->_name.c_str();
 		this->_name = other._name;
+		for (int i = 0; i < MAX_MATERIA; i++) {
+			if (this->_inventory[i] != NULL) {
+				delete this->_inventory[i];
+				_inventory[i] = NULL;
+			}
+		}
+		for (int i = 0; i < MAX_MATERIA; i++) {
+			if (other._inventory[i] != NULL) {
+				_inventory[i] = other._inventory[i]->clone();
+			}
+			else {
+				_inventory[i] = NULL;
+			}
+		}		
 	}
 	return *this;
 }
@@ -61,21 +81,25 @@ void Character::equip(AMateria *m) {
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
-			std::cout << "Equip " << m->getType() << " to slot " << i << std::endl;
+			std::cout << "Equip " << m->getType()
+				<< " to slot " << i << std::endl;
 			return ;
 		}
 	}
-	std::cout << RED << "Inventory is full, cannot learn more Materia!" << DEF << std::endl;
+	std::cout << RED << "Inventory is full,"
+		<< "cannot learn more Materia!" << DEF << std::endl;
 	delete m;
 }
 
 void Character::unequip(int idx) {
 	if (_inventory[idx] == NULL) {
-		std::cout << RED << "Can't unequip a empty slot " << DEF << std::endl;
+		std::cout << RED << "Can't unequip a empty slot "
+			<< DEF << std::endl;
 		return ;
 	}
 	else if (idx < 4) {
-		std::cout << "Unequip " << _inventory[idx]->getType() << " from slot " << idx << std::endl;
+		std::cout << "Unequip " << _inventory[idx]->getType()
+			<< " from slot " << idx << std::endl;
 		_inventory[idx] = NULL;
 	}
 }
@@ -87,7 +111,8 @@ void Character::use(int idx, ICharacter &target) {
 		return ;
 	}
 	else {
-		std::cout << "Using materia on : " << target.getName() << std::endl;  
+		std::cout << "Using materia on : "
+			<< target.getName() << std::endl;  
 		m->use(target);
 		return ;
 	}
