@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/05 11:46:49 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:01:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap(): _name("Unamed"), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
+ClapTrap::ClapTrap(): _name("Unnamed"), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
 	std::cout << GREEN << "Default ClapTrap constructor" << DEF << std::endl;
 }
 
@@ -28,9 +28,12 @@ ClapTrap::ClapTrap(std::string name, int hitPoint, int energyPoint, int attackDa
 }
 
 // Copy constructor
-ClapTrap::ClapTrap( const ClapTrap &other ) {
-	std::cout << GREEN << "Copy constructor ClapTrap" << DEF << std::endl;
-	*this = other;
+ClapTrap::ClapTrap(const ClapTrap &other) {
+    std::cout << GREEN << "Copy constructor ClapTrap" << DEF << std::endl;
+    _name = other._name;
+    _hitPoint = other._hitPoint;
+    _energyPoint = other._energyPoint;
+    _attackDamage = other._attackDamage;
 }
 
 // Destructor

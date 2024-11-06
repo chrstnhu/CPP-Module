@@ -6,16 +6,16 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/05 11:46:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:10:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 // Default constructor
-DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap::_defaultHitPoint,
+DiamondTrap::DiamondTrap() : ClapTrap("Unnamed_clap_name", FragTrap::_defaultHitPoint,
 	ScavTrap::_defaultEnergyPoint, FragTrap::_defaultAttackDamage),
-	ScavTrap("Unamed"), FragTrap("Unamed"), _name("Unamed") {
+	ScavTrap("Unnamed"), FragTrap("Unnamed"), _name("Unnamed") {
 	std::cout << GREEN << "Default DiamondTrap constructor" << DEF << std::endl;
 }
 
@@ -55,5 +55,6 @@ std::string DiamondTrap::getName() const {
 
 // Function
 void DiamondTrap::whoAmI() {
-	std::cout << "My name: " << _name << ", my ClapTrap name: " << ClapTrap::getName() << std::endl;
+	std::cout << "My name: " << _name
+		<< ", my ClapTrap name: " << ClapTrap::_name << std::endl;
 }

@@ -6,15 +6,15 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/04 17:52:09 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:09:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 // Default constructor
-ScavTrap::ScavTrap() : ClapTrap("Unamed", 100, 50, 20) {
-	std::cout << GREEN << "Default ScavTrap constructor" << DEF << std::endl;
+ScavTrap::ScavTrap() : ClapTrap("Unnamed", 100, 50, 20) {
+	std::cout << GREEN << "ScavTrap Default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
@@ -57,5 +57,10 @@ void ScavTrap::attack(const std::string& target){
 
 // Guard keeper mode
 void ScavTrap::guardGate() {
-	std::cout << YELLOW << _name << " is in guard gate keeper mode" << DEF << std::endl;
+	if (_hitPoint == 0 || _energyPoint == 0) {
+		std::cout << RED << _name << " is dead, he can't be in guard gate keeper mode" << DEF << std::endl;
+	}
+	else {
+		std::cout << YELLOW << _name << " is in guard gate keeper mode" << DEF << std::endl;
+	}
 }

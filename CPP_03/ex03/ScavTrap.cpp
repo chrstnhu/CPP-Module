@@ -6,19 +6,19 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/04 17:51:06 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:09:23 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 // Default constructor
-ScavTrap::ScavTrap() : ClapTrap("Unamed", 100, 50, 20) {
+ScavTrap::ScavTrap() : ClapTrap("Unnamed", 100, 50, 20) {
 	std::cout << GREEN << "ScavTrap Default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
-ScavTrap::ScavTrap( std::string name ) : ClapTrap(name, 100, 50, 20) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20) {
 	std::cout << GREEN << "ScavTrap constructor with parameter" << DEF << std::endl;
 }
 
@@ -29,7 +29,7 @@ ScavTrap::ScavTrap( const ScavTrap &other ) : ClapTrap(other) {
 
 // Destructor
 ScavTrap::~ScavTrap() {
-	std::cout << GREEN << "ScavTrap Destructor " << DEF << std::endl;
+	std::cout << GREEN << "ScavTrap destructor" << DEF << std::endl;
 }
 
 // Copy assignement
@@ -40,7 +40,6 @@ ScavTrap &ScavTrap::operator=( const ScavTrap &other ) {
 	}
 	return *this;
 }
-
 
 // Attack someone
 void ScavTrap::attack(const std::string& target){
@@ -58,5 +57,10 @@ void ScavTrap::attack(const std::string& target){
 
 // Guard keeper mode
 void ScavTrap::guardGate() {
-	std::cout << YELLOW << _name << " is in guard gate keeper mode" << DEF << std::endl;
+	if (_hitPoint == 0 || _energyPoint == 0) {
+		std::cout << RED << _name << " is dead, he can't be in guard gate keeper mode" << DEF << std::endl;
+	}
+	else {
+		std::cout << YELLOW << _name << " is in guard gate keeper mode" << DEF << std::endl;
+	}
 }

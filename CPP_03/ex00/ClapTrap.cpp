@@ -6,15 +6,15 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/10/22 11:59:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:07:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap(): _name("Unamed"), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
-	std::cout << GREEN << "Default ClapTrap constructor" << DEF << std::endl;
+ClapTrap::ClapTrap(): _name("Unnamed"), _hitPoint(10), _energyPoint(10), _attackDamage(0) {
+	std::cout << GREEN << "ClapTrap Default constructor" << DEF << std::endl;
 }
 
 // ClapTrap constructor with parameter
@@ -23,18 +23,21 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(
 }
 // Copy constructor
 ClapTrap::ClapTrap( const ClapTrap &other ) {
-	std::cout << GREEN << "Copy constructor ClapTrap" << DEF << std::endl;
-	*this = other;
+	std::cout << GREEN << "ClapTrap Copy constructor" << DEF << std::endl;
+	this->_name = other._name;
+	this->_hitPoint = other._hitPoint;
+	this->_energyPoint = other._energyPoint;
+	this->_attackDamage = other._attackDamage;
 }
 
 // Destructor
 ClapTrap::~ClapTrap() {
-	std::cout << GREEN << "Destruct ClapTrap" << DEF << std::endl;
+	std::cout << GREEN << "ClapTrap Destructor" << DEF << std::endl;
 }
 
 // Copy assignement operator =
 ClapTrap &ClapTrap::operator=( const ClapTrap &other ) {
-	std::cout << GREEN << "Copy assignement ClapTrap" << DEF << std::endl;
+	std::cout << GREEN << "ClapTrap Copy assignement" << DEF << std::endl;
 	if (this != &other) {
 		_name = other._name;
 		_hitPoint = other._hitPoint;
@@ -87,9 +90,11 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	}
 	else
 	{
-		_hitPoint -= amount;
-		if (_hitPoint < 0)
-			_hitPoint = 0;
+		if (amount >= _hitPoint) {
+            _hitPoint = 0;
+        } else {
+            _hitPoint -= amount;
+        }
 		std::cout << std::endl << _name << " take " << YELLOW << amount << DEF 
 			<< " damage(s), hit point(s) remaining: " 
 			<< YELLOW << _hitPoint << DEF << std::endl;
@@ -99,7 +104,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 // Repair hitpoint
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (_hitPoint == 0 ) {
+	if (_energyPoint == 0 ) {
 		std::cout << std::endl << RED << _name 
 			<< " can't be repaired. "<< DEF << std::endl;
 	}

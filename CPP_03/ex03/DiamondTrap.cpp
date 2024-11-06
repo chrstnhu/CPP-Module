@@ -6,34 +6,36 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:21:42 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/05 11:46:25 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 11:57:14 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 // Default constructor
-DiamondTrap::DiamondTrap() : ClapTrap("Unamed_clap_name", FragTrap().getHitPoint(),
+DiamondTrap::DiamondTrap() : ClapTrap("Unnamed_clap_name", FragTrap().getHitPoint(),
 	ScavTrap().getEnergyPoint(), FragTrap().getAttackDamage()),
-	ScavTrap("Unamed"), FragTrap("Unamed"), _name("Unamed") {
-	std::cout << GREEN << "Default DiamondTrap constructor" << DEF << std::endl;
+	ScavTrap("Unnamed"), FragTrap("Unnamed"), _name("Unnamed") {
+	_name = ClapTrap::_name + "_clap_name";
+	std::cout << GREEN << "DiamondTrap Default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap().getHitPoint(),
 	ScavTrap().getEnergyPoint(), FragTrap().getAttackDamage()),
 	ScavTrap(name), FragTrap(name), _name(name) {
+	_name = ClapTrap::_name + "_clap_name";
 	std::cout << GREEN << "DiamondTrap constructor with parameters" << DEF << std::endl;
 }
 
 // Copy constructor
 DiamondTrap::DiamondTrap(const DiamondTrap &other) : ScavTrap(other), FragTrap(other) {
-	std::cout << GREEN << "Copy constructor DiamondTrap" << DEF << std::endl;
+	std::cout << GREEN << "DiamondTrap Copy constructor" << DEF << std::endl;
 }
 
 // Destructor
 DiamondTrap::~DiamondTrap() {
-	std::cout << GREEN << "Destruct DiamondTrap" << DEF << std::endl;
+	std::cout << GREEN << "DiamondTrap Destructor" << DEF << std::endl;
 }
 
 // Copy assignement

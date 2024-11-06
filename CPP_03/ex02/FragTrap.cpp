@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:15:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/04 12:30:04 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 11:12:43 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 // Default constructor
-FragTrap::FragTrap() : ClapTrap("Unamed", 100, 100, 30) {
+FragTrap::FragTrap() : ClapTrap("Unnamed", 100, 100, 30) {
 	std::cout << GREEN << "FragTrap Default constructor" << DEF << std::endl;
 }
 

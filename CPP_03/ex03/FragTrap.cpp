@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:15:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/04 17:50:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/06 12:09:46 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 // Default constructor
-FragTrap::FragTrap() : ClapTrap("Unamed", 100, 100, 30) {
+FragTrap::FragTrap() : ClapTrap("Unnamed", 100, 100, 30) {
 	std::cout << GREEN << "FragTrap Default constructor" << DEF << std::endl;
 }
 
@@ -44,5 +44,10 @@ FragTrap &FragTrap::operator=( const FragTrap &other) {
 
 // High fives
 void FragTrap::highFivesGuys(void) {
-	std::cout << YELLOW << _name << " display a positive high five!" << DEF << std::endl;
+	if (_hitPoint == 0 || _energyPoint == 0) {
+		std::cout << RED << _name << " can't high five" << DEF << std::endl;
+	}
+	else {
+		std::cout << YELLOW << _name << " display a positive high five!" << DEF << std::endl;
+	}
 }
