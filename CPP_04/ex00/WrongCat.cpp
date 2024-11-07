@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 13:24:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 16:59:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ WrongCat &WrongCat::operator=(const WrongCat &other) {
 
 // Function
 void WrongCat::makeSound() const{
-	std::cout << getType() << ": my little cat" << std::endl;
+	std::cout << _type << ": my little cat" << std::endl;
 }

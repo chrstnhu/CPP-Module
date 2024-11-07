@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 13:32:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 16:59:33 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ WrongAnimal::WrongAnimal(std::string type) : _type(type) {
 // Copy constructor
 WrongAnimal::WrongAnimal(const WrongAnimal &other) {
 	std::cout << GREEN << "WrongAnimal Copy constructor" << DEF << std::endl;
-	*this = other;
+	_type = other._type;
 }
 		
 // Destructor
@@ -49,5 +49,5 @@ std::string WrongAnimal::getType() const {
 
 // Function
 void WrongAnimal::makeSound() const{
-	std::cout << getType() <<": animaaaaals" << std::endl;
+	std::cout << _type <<": animaaaaals" << std::endl;
 }

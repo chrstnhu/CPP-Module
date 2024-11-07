@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 13:18:51 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 16:57:05 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ Cat &Cat::operator=(const Cat &other) {
 
 // Function
 void Cat::makeSound() const{
-	std::cout << getType() << ": Miaouuuuuuuu" << std::endl;
+	std::cout << _type << ": Miaouuuuuuuu" << std::endl;
 }

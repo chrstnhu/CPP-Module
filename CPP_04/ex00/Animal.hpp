@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 12:52:45 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 16:59:22 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Animal {
 
 		// Function
 		virtual void makeSound() const;
-		std::string getType() const;
+		virtual std::string getType() const;
 };
 
 #endif

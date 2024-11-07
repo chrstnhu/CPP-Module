@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 13:14:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 16:59:29 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ Dog &Dog::operator=(const Dog &other) {
 
 // Functions
 void Dog::makeSound() const{
-	std::cout << getType() << ": Waoufffffff" << std::endl;
+	std::cout << _type << ": Waoufffffff" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/01 13:03:13 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 16:59:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int main()
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	std::cout << "Type: " << j->getType() << " " << std::endl;
-	std::cout << "Type: " << i->getType() << " " << std::endl;
+	std::cout << "Type: " << j->Animal::getType() << " " << std::endl;
+	std::cout << "Type: " << i->Animal::getType() << " " << std::endl;
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
@@ -46,8 +46,8 @@ void printWrongAnimal() {
 	const WrongAnimal* b = new WrongDog();
 	const WrongAnimal* c = new WrongCat();
 
-	std::cout << "Type: " << b->getType() << " " << std::endl;
-	std::cout << "Type: " << c->getType() << " " << std::endl;
+	std::cout << "Type: " << b->WrongAnimal::getType() << " " << std::endl;
+	std::cout << "Type: " << c->WrongAnimal::getType() << " " << std::endl;
 	a->makeSound();
 	b->makeSound();
 	c->makeSound();
