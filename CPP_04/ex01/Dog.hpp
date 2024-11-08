@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:29:38 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 15:27:20 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ class Dog : public Animal {
 
 		// Copy assignement
 		Dog &operator=(const Dog &other);
+
+		// Setter
+		void setBrainIdeas(int index, std::string idea);
+		std::string getBrainIdeas(int index) const;
 
 		// Function
 		virtual void makeSound() const;

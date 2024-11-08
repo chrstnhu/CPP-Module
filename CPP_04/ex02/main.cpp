@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 14:22:13 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 15:30:20 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int main()
 
 	for (int i = 0; i < max / 2; i++) {
 		a[i] = new Dog();
-		std::cout << i + 1 << " - Type: " << a[i]->getType() << " " << std::endl;
-        std::cout << "Address: " << a[i] << std::endl;
+		std::cout << i + 1 << " - Type: " << a[i]->getType()
+			<< " | " << "Address: " << a[i] << std::endl;
 	}
 	for (int i = max / 2; i < max; i++) {
 		a[i] = new Cat();
-		std::cout << i + 1 << " - Type: " << a[i]->getType() << " " << std::endl;
-        std::cout << "Address: " << a[i] << std::endl;
+		std::cout << i + 1 << " - Type: " << a[i]->getType()
+			<< " | " << "Address: " << a[i] << std::endl;
 	}
 
 	for (int i = 0; i < max; i++) {
