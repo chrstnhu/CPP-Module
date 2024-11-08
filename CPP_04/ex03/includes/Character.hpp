@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 13:46:06 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 12:39:51 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Character : public ICharacter {
 		
 		// Getter
 		std::string const &getName() const;
+		AMateria *getMateria(int idx) const;
 
 		// Function
 		void	equip(AMateria* m);

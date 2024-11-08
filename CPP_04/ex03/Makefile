@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/23 17:09:31 by chrhu             #+#    #+#              #
-#    Updated: 2024/11/06 13:41:32 by chrhu            ###   ########.fr        #
+#    Updated: 2024/11/08 11:47:32 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_DIR = obj
 
 # Source
 SRCS_PATH = srcs
-SRCS = AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
+SRCS = main.cpp PrintColor.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
 HEADERS = includes
 
@@ -32,14 +32,14 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = Materia
 
-$(OBJ_DIR)/%.o: $(SRCS_PATH)/%.cpp $(HEADERS)/*.hpp
+$(OBJ_DIR)/%.o: $(SRCS_PATH)/%.cpp
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) 
-		$(CC) $(CFLAGS) main.cpp $(OBJS) -o $(NAME)
+$(NAME) : $(OBJS) $(HEADERS)/*.hpp
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 		@echo "$(GREEN)Executable '$(NAME)' has been created successfully!$(DEFAULT)" 
 
 clean : 

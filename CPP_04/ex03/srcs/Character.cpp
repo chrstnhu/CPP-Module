@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:20:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 16:27:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 13:06:15 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 // Default constructor
 Character::Character() : _name("unamed") {
-	for (int i = 0; i < MAX_MATERIA; i++)
+	for (int i = 0; i < MAX_MATERIA; i++) {
 		_inventory[i] = NULL;
+	}
 }
 
 // Constructor with parameters
 Character::Character(std::string name) : _name(name) {
-	for (int i = 0; i < MAX_MATERIA; i++)
+	for (int i = 0; i < MAX_MATERIA; i++) {
 		_inventory[i] = NULL;
+	}
 }
 
 // Copy constructor
@@ -34,86 +36,87 @@ Character::Character(Character const &other) {
 		else {
 			_inventory[i] = NULL;
 		}
-	}		
+	}
 }
 
 // Destructor
 Character::~Character() {
 	for (int i = 0; i < MAX_MATERIA; i++) {
-		if (this->_inventory[i] != NULL)
+		if (this->_inventory[i] != NULL) {
 			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
 	}
 }
 
 // Copy assignement
-Character &Character::operator=(Character const &other) {
-	if (this != &other) {
-		this->_name = other._name;
+Character& Character::operator=(Character const &other) {
+    if (this != &other) {
+        this->_name = other._name;
+        // Delete the old inventory
 		for (int i = 0; i < MAX_MATERIA; i++) {
-			if (this->_inventory[i] != NULL) {
-				delete this->_inventory[i];
-				_inventory[i] = NULL;
-			}
-		}
-		for (int i = 0; i < MAX_MATERIA; i++) {
-			if (other._inventory[i] != NULL) {
-				_inventory[i] = other._inventory[i]->clone();
-			}
-			else {
-				_inventory[i] = NULL;
-			}
-		}		
-	}
-	return *this;
+            if (this->_inventory[i] != NULL) {
+                delete this->_inventory[i];
+				this->_inventory[i] = NULL;
+            }
+        }
+		// Copy the new inventory
+        for (int i = 0; i < MAX_MATERIA; i++) {
+            if (other._inventory[i] != NULL) {
+                this->_inventory[i] = other._inventory[i]->clone();
+            } else {
+                this->_inventory[i] = NULL;
+            }
+        }
+    }
+    return *this;
 }
 
 // Getter
 std::string const &Character::getName() const {
-	return this->_name;
+	return _name;
 }
 
 // Function
 void Character::equip(AMateria *m) {
     if (!m) {
-		std::cout << RED << "Can't equip anything"<< DEF << std::endl;
+		std::cout << RED << "Need to create Materia before equip" << DEF << std::endl;
 		return ;
 	}
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (_inventory[i] == NULL) {
 			_inventory[i] = m;
-			std::cout << "Equip " << m->getType()
-				<< " to slot " << i << std::endl;
+			printTwoBlocs("Equip '", m->getType(), "' to inventory ", i, GREEN);
 			return ;
 		}
 	}
-	std::cout << RED << "Inventory is full,"
-		<< "cannot learn more Materia!" << DEF << std::endl;
-	delete m;
+	printColor("Inventory is full, cannot learn more Materia!", RED);
 }
 
 void Character::unequip(int idx) {
-	if (_inventory[idx] == NULL) {
-		std::cout << RED << "Can't unequip a empty slot "
-			<< DEF << std::endl;
-		return ;
-	}
-	else if (idx < 4) {
-		std::cout << "Unequip " << _inventory[idx]->getType()
-			<< " from slot " << idx << std::endl;
+	if (idx >= 0 && idx < MAX_MATERIA && _inventory[idx] != NULL) {
+		printTwoBlocs("Unequip '", _inventory[idx]->getType(), "' from slot ", idx, GREEN);
 		_inventory[idx] = NULL;
+	}
+	else {
+		printColor("Invalid slot or empty slot", RED);
 	}
 }
 
 void Character::use(int idx, ICharacter &target) {
 	AMateria *m = _inventory[idx];
 	if (m == NULL) {
-		std::cout << RED << "Can't use a empty Materia " << DEF << std::endl;
-		return ;
+		printOneBloc(RED "Can't use a empty inventory slot ", idx, RED);
 	}
 	else {
-		std::cout << "Using materia on : "
-			<< target.getName() << std::endl;  
+		printTwoBlocs("Using " + m->getType() + " on: '", target.getName(), "' from slot ", idx, GREEN);
 		m->use(target);
-		return ;
 	}
+}
+
+AMateria *Character::getMateria(int idx) const {
+	if (idx >= 0 && idx < MAX_MATERIA) {
+		return _inventory[idx];
+	}
+	return NULL;
 }

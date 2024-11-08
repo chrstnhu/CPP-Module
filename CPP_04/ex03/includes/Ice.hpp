@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:26:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 13:46:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/07 13:06:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Ice : public AMateria {
 		Ice &operator=(const Ice &other);
 
 		// Function
-		Ice*	clone() const;
-		void	use(ICharacter& target);
+		virtual AMateria*	clone() const;
+		virtual void	use(ICharacter& target);
 };
 
 #endif
