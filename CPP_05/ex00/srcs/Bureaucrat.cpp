@@ -6,22 +6,20 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/07 17:36:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 17:02:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../includes/Bureaucrat.hpp"
 
 // Default constructor
-Bureaucrat::Bureaucrat()
-	: _name("default"), _grade(150) {
-		std::cout << "Bureaucrat default constructor" << std::endl;
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
+	std::cout << "Bureaucrat default constructor" << std::endl;
 }
 
 // Constructor with parameters
-Bureaucrat::Bureaucrat(std::string const name, int grade)
-	: _name(name), _grade(grade){
-		std::cout << "Bureaucrat constructor with parameters" << std::endl;
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade){
+	std::cout << "Bureaucrat constructor with parameters" << std::endl;
 }
 
 // Copy constructor
@@ -30,7 +28,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(oth
 }
 
 // Destructor
-Bureaucrat::Bureaucrat() {
+Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat Destructor" << std::endl;
 }
 
@@ -56,26 +54,25 @@ int Bureaucrat::getGrade() const {
 
 // Grade 1 is the highest one
 void Bureaucrat::incrementGrade() {
-	if (this->_grade == 1) {
-		Bureaucrat::GradeTooHighException();
+	std::cout << "Original grade: " << YELLOW << this->_grade << DEF << std::endl;
+	this->_grade--;
+	if (this->_grade < 1) {
+		throw Bureaucrat::GradeTooHighException();
 	}
-	else
-		this->_grade--;
+	std::cout << "After Increment: " << YELLOW << this->_grade << DEF << std::endl;
 }
 
 // Grade 150 is the lowest one
 void Bureaucrat::decrementGrade() {
-	if (this->_grade == 150) {
-		Bureaucrat::GradeTooLowException();
+	std::cout << "Original grade: " << YELLOW << this->_grade << DEF << std::endl;
+	this->_grade++;
+	if (this->_grade > 150) {
+		throw Bureaucrat::GradeTooLowException();
 	}
-	else
-		this->_grade++;
+	std::cout << "After Decrement: " << YELLOW << this->_grade << DEF << std::endl;
 }
 
-void Bureaucrat::GradeTooHighException() {
-	std::cout << "Grade is too high, can't exceed 1" << std::endl;
-}
-
-void Bureaucrat::GradeTooLowException() {
-	std::cout << "Grade is too low, can't down 150" << std::endl;
+std::ostream &operator<<(std::ostream &oss, Bureaucrat const &bureaucrat) {
+    oss << GREEN << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << DEF;
+    return oss;
 }
