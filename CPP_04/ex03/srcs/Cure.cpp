@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:37:46 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 16:33:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 12:33:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ Cure &Cure::operator=(const Cure &other) {
 }
 
 // Function 
-Cure* Cure::clone() const{
+AMateria* Cure::clone() const{
 	return new Cure(*this);
 }
 
 void Cure::use(ICharacter& target) {
-	std::cout << "* heals " << target.getName()
+	std::cout << "* heals " << GREEN << target.getName() << DEF
 		<< "’s wounds *" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 14:00:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 12:26:25 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ MateriaSource::MateriaSource() : _type("Unamed") {
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		_inventory[i] = NULL;
 	}
+
 }
 
 // Copy constructor
@@ -65,26 +66,22 @@ void MateriaSource::learnMateria(AMateria *m) {
 		return ;
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (_inventory[i] == NULL) {
-			std::cout << "Learned: " << m->getType() << std::endl;
+			printTwoBlocs("Learning: ", m->getType(), " on slot: ", i, GREEN);
 			_inventory[i] = m;
 			return;
 		}
 	}
-	std::cout << RED << "Inventory is full,"
-		<< "cannot learn more than " << MAX_MATERIA
-		<< " Materia!" << DEF << std::endl;
+	printOneBloc(RED"Inventory is full, cannot learn more Materia than ", MAX_MATERIA, RED);
 	delete m ;
 }
 
 AMateria *MateriaSource::createMateria(const std::string &type) {
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (_inventory[i] != NULL && _inventory[i]->getType() == type) {
-			std::cout << "Created: " << _inventory[i]->getType() << " on slot: " << i << std::endl;
-		    AMateria *materia = _inventory[i]->clone();
-			return materia;
+			printTwoBlocs("Creating: ", _inventory[i]->getType(), " on slot: ", i, GREEN);
+			return _inventory[i]->clone();
 		}
 	}
-	std::cout << RED << "Cannot create " << type
-		<< " because it is not a valid Materia !" << DEF << std::endl;
-	return 0;
+	printColor("Cannot create " + type + " because it is not a valid Materia", RED);
+	return NULL;
 }
