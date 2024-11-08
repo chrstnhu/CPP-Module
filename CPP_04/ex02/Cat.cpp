@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:47:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 14:27:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,25 @@ Cat &Cat::operator=(const Cat &other) {
 	return *this;
 }
 
+
+// Getter and setter
+std::string Cat::getBrainIdeas(int index) const {
+	if (index >= 0 && index < 100) {
+		return _brain->ideas[index];
+	}
+	return "Invalid index";
+}
+
+void Cat::setBrainIdeas(int index, std::string idea) {
+	if (index >= 0 && index < 100) {
+		_brain->ideas[index] = idea;
+	}
+}
+
+
+
 // Function
 void Cat::makeSound() const {
 	std::cout << getType() << ": Miaouuuuuuuu" << std::endl;
 }
+

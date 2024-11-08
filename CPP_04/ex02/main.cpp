@@ -6,13 +6,15 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:49:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 14:22:13 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+
+void testDeepCopy();
 
 int main()
 {
@@ -47,5 +49,27 @@ int main()
 	}
 
 	delete [] a;
+
+	testDeepCopy();
 	return 0;
+}
+
+void testDeepCopy() {
+	std::cout << std::endl << YELLOW << "========== Deep copy ==========" << DEF << std::endl;
+	Dog dog1;
+	dog1.setBrainIdeas(0, "New idea in Dog1");
+
+	Dog dog2 = dog1;
+	dog2.setBrainIdeas(0, "New idea in Dog2");
+	
+	std::cout << "Dog1 idea: " << dog1.getBrainIdeas(0) << std::endl;
+	std::cout << "Dog2 idea: " << dog2.getBrainIdeas(0)  << std::endl;
+
+	Dog *dog3;
+	dog3 = new Dog(dog1);
+	dog3->setBrainIdeas(0, "New idea in Dog3");
+	
+	std::cout << "Dog1 idea: " << dog1.getBrainIdeas(0) << std::endl;
+	std::cout << "Dog3 idea: " << dog3->getBrainIdeas(0)  << std::endl;
+	delete dog3;
 }

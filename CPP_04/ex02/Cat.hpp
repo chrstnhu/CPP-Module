@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:47:04 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/08 14:20:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ class Cat : public AAnimal {
 
 		// Copy assignement
 		Cat &operator=(const Cat &other);
+
+		// Setter
+		std::string getBrainIdeas(int index) const;
+		void setBrainIdeas(int index, std::string idea);
 
 		// Function
 		virtual void makeSound() const;
