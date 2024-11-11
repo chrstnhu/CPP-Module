@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 17:59:27 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 19:03:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int main () {
 			std::cout << bureaucrat1 << std::endl;
 		}
 	}
-	catch (const Bureaucrat::GradeTooHighException &e) {
+	catch (Bureaucrat::GradeTooHighException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooLowException &e) {
+	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
 
@@ -38,10 +38,10 @@ int main () {
 		std::cout << *bureaucrat3 << std::endl;
 		bureaucrat3->decrementGrade();
 	}
-	catch (const Bureaucrat::GradeTooHighException &e) {
+	catch (Bureaucrat::GradeTooHighException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooLowException &e) {
+	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
 	delete bureaucrat3;
@@ -58,10 +58,10 @@ void testOutOfGrade() {
 		bureaucratMore.incrementGrade();
 		std::cout << bureaucratMore << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooHighException &e) {
+	catch (Bureaucrat::GradeTooHighException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooLowException &e) {
+	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
 
@@ -71,10 +71,10 @@ void testOutOfGrade() {
 		bureaucratLess.incrementGrade();
 		std::cout << bureaucratLess << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooHighException &e) {
+	catch (Bureaucrat::GradeTooHighException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooLowException &e) {
+	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
 }
