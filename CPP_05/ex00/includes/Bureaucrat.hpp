@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 17:02:14 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 18:00:50 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ class Bureaucrat {
 					return "Grade is too high, can't exceed 1";
 				}
 		};
+
 		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
 					return "Grade is too low, can't exceed 150";
 				}
 		};
-
 };
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat);
