@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:07:24 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 14:25:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 12:47:58 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Brain::Brain() {
 
 Brain::Brain(const Brain &other) {
 	std::cout << GREEN << "Copy constructor brain" << DEF << std::endl;
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < MAX_IDEAS; i++)
 		this->ideas[i] = other.ideas[i];
 }
 
@@ -30,7 +30,7 @@ Brain &Brain::operator=(const Brain &other) {
 	std::cout << GREEN << "Copy assignement brain" << DEF << std::endl;
 	if (this != &other)
 	{
-		for(int i = 0; i < 100; i++)
+		for(int i = 0; i < MAX_IDEAS; i++)
 			this->ideas[i] = other.ideas[i];
 	}
 	return (*this);
