@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 15:27:20 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 12:36:22 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Dog : public Animal {
 		Brain *_brain;
 	public :
 		Dog();
+		Dog(std::string const type);
 		Dog(const Dog &other);
 		~Dog();
 

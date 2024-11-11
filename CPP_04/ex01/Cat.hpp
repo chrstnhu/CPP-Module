@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 15:26:59 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 12:36:05 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Cat : public Animal {
 		Brain *_brain;
 	public :
 		Cat();
+		Cat(std::string const type);
 		Cat(const Cat &other);
 		~Cat();
 
