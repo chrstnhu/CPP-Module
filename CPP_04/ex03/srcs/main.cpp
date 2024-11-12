@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:58:46 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 13:06:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 13:46:50 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ int main()
 	tmp = src->createMateria("CURE");
 	me->equip(tmp);
 
+	// Valid materia
+	tmp = src->createMateria("ice");
+	me->equip(tmp); 
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure"); // More than 4 Materia
+	delete tmp;
+	me->equip(tmp);
+	
+
 	printColor("===== Character use Materia =====", YELLOW);
 	ICharacter* bob = new Character("bob");
 	
@@ -80,6 +90,9 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
+	me->use(3, *bob);
+	me->use(4, *bob); // More than 4 Materia
+	me->use(5, *bob);
 
 	printColor("-- Bob use on me --", YELLOW);
 	// Do not have materia
@@ -105,7 +118,7 @@ int main()
 	return 0;
 }
 
-// Recuperate the materia at index to unequip and delete it
+// Recuperate the adress of Materia than unequip and delete it
 void unequipAndDelete(ICharacter *Character, int idx)
 {
 	AMateria* tmp = Character->getMateria(idx);
@@ -114,7 +127,8 @@ void unequipAndDelete(ICharacter *Character, int idx)
 	}
 	else if (tmp != NULL) {
 		Character->unequip(idx);
-		delete tmp; 
+		delete tmp;
+		tmp = NULL;
 	}
 	else {
 		printOneBloc(RED "No materia at index to unequip ", idx, RED);
