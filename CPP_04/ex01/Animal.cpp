@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:30:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 11:10:56 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,15 @@ Animal &Animal::operator=(const Animal &other) {
 	return *this;
 }
 
+// Getter and setter
 std::string Animal::getType() const {
 	return _type;
 }
+
+void Animal::setType(std::string type) {
+	_type = type + " Animal";
+}
+
 
 // Function
 void Animal::makeSound() const{

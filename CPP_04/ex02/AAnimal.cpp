@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 12:48:06 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 16:31:17 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ AAnimal::AAnimal(std::string type) : _type(type) {
 // Copy constructor
 AAnimal::AAnimal(const AAnimal &other) {
 	std::cout << GREEN << "Copy constructor animal" << DEF << std::endl;
-	*this = other;
+	this->_type = other._type;
 }
 		
 // Destructor
@@ -42,8 +42,13 @@ AAnimal &AAnimal::operator=(const AAnimal &other) {
 	return *this;
 }
 
+// Getter and setter
 std::string AAnimal::getType() const {
 	return _type;
+}
+
+void AAnimal::setType(std::string type) {
+	_type = type;
 }
 
 // Function
