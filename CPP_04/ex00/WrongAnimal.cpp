@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/07 16:59:33 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 10:37:15 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ std::string WrongAnimal::getType() const {
 
 // Function
 void WrongAnimal::makeSound() const{
-	std::cout << _type <<": animaaaaals" << std::endl;
+	std::cout << _type <<": Animaaaaals" << std::endl;
 }

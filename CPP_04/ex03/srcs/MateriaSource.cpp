@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:03:27 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 12:26:25 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 13:28:29 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ MateriaSource::~MateriaSource() {
 	for (int i = 0; i < MAX_MATERIA; i++) {
 		if (this->_inventory[i] != NULL) {
 			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
 		}
 	}
 }

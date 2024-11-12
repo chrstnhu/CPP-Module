@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:11:29 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/06 17:04:30 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 13:32:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource &operator=(const MateriaSource &other);
 
 		// Functions
-		void		learnMateria(AMateria*m);
+		void		learnMateria(AMateria* m);
 		AMateria*	createMateria(std::string const & type);
 };
 

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:09:37 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/07 16:59:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 10:36:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ void printWrongAnimal() {
 
 	std::cout << "Type: " << b->WrongAnimal::getType() << " " << std::endl;
 	std::cout << "Type: " << c->WrongAnimal::getType() << " " << std::endl;
-	a->makeSound();
+
 	b->makeSound();
 	c->makeSound();
+	a->makeSound();
 
-	delete a;
 	delete b;
 	delete c;
+	delete a;
 }

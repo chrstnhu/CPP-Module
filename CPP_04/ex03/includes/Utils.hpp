@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:59:34 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 12:13:53 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/11 12:48:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <string>
 
 # define MAX_MATERIA 4
-# define MAX_LEFT 100
 
 void printColor(const std::string &msg, const std::string &color);
 void printOneBloc(const std::string &msg1, int i, const std::string &color);

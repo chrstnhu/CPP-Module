@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/07 16:59:22 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 10:38:47 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ class Animal {
 		// Copy assignement
 		Animal &operator=(const Animal &other);
 
+		// Getter
+		std::string getType() const;
+
 		// Function
 		virtual void makeSound() const;
-		virtual std::string getType() const;
 };
 
 #endif
