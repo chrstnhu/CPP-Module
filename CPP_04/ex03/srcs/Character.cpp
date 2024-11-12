@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:20:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 13:06:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 13:37:11 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ std::string const &Character::getName() const {
 	return _name;
 }
 
-// Function
+// Functions
+// Equip the materia to the inventory
 void Character::equip(AMateria *m) {
     if (!m) {
 		std::cout << RED << "Need to create Materia before equip" << DEF << std::endl;
@@ -93,6 +94,7 @@ void Character::equip(AMateria *m) {
 	printColor("Inventory is full, cannot learn more Materia!", RED);
 }
 
+// Unequip the materia from the inventory
 void Character::unequip(int idx) {
 	if (idx >= 0 && idx < MAX_MATERIA && _inventory[idx] != NULL) {
 		printTwoBlocs("Unequip '", _inventory[idx]->getType(), "' from slot ", idx, GREEN);
@@ -103,7 +105,10 @@ void Character::unequip(int idx) {
 	}
 }
 
+// Use the materia from the inventory
 void Character::use(int idx, ICharacter &target) {
+	if (idx <= 0 || idx >= MAX_MATERIA)
+		return ;
 	AMateria *m = _inventory[idx];
 	if (m == NULL) {
 		printOneBloc(RED "Can't use a empty inventory slot ", idx, RED);
@@ -114,6 +119,7 @@ void Character::use(int idx, ICharacter &target) {
 	}
 }
 
+// Return the pointer adress of materia
 AMateria *Character::getMateria(int idx) const {
 	if (idx >= 0 && idx < MAX_MATERIA) {
 		return _inventory[idx];
