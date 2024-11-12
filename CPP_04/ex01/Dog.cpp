@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:12:26 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 12:47:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 11:08:17 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Dog::Dog() : Animal("Dog"), _brain(new Brain()) {
 }
 
 // Constructor with parameter
-Dog::Dog(std::string const type) : Animal(type), _brain(new Brain()) {
-	_type = Animal::_type + " dog";
+Dog::Dog(std::string const type) : Animal(type + " Dog"), _brain(new Brain()) {
 	std::cout << GREEN << _type << " constructor with parameter" << DEF << std::endl;
 }
+
 // Copy constructor
 Dog::Dog(const Dog &other) : Animal(other) {
 	std::cout << GREEN << _type << " copy constructor" << DEF << std::endl;
@@ -58,6 +58,15 @@ void Dog::setBrainIdeas(int index, std::string idea) {
 		_brain->ideas[index] = idea;
 	}
 }
+
+void Dog::setType(std::string type) {
+	_type = type + " Dog";
+}
+
+Brain *Dog::getBrain() const {
+	return _brain;
+}
+
 
 // Functions
 void Dog::makeSound() const{

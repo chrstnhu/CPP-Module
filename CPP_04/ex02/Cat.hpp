@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 14:20:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 11:31:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Cat : public AAnimal {
 		Brain *_brain;
 	public :
 		Cat();
+		Cat(std::string const type);
 		Cat(const Cat &other);
 		~Cat();
 
@@ -30,6 +31,8 @@ class Cat : public AAnimal {
 		// Setter
 		std::string getBrainIdeas(int index) const;
 		void setBrainIdeas(int index, std::string idea);
+		virtual void setType(std::string type);
+		Brain *getBrain() const;
 
 		// Function
 		virtual void makeSound() const;
