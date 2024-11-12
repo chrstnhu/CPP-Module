@@ -6,12 +6,12 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:11:11 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/08 14:16:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/12 11:31:43 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 # define BLUE "\033[0;313m"
 # define DEF "\033[0;39m"
@@ -35,9 +35,12 @@ class AAnimal {
 		// Copy assignement
 		AAnimal &operator=(const AAnimal &other);
 
+		// Getter and setter
+		std::string getType() const;
+		virtual void setType(std::string type) = 0;
+
 		// Function
 		virtual void makeSound() const = 0;
-		std::string getType() const;
 };
 
 #endif
