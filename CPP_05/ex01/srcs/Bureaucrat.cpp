@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 18:02:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/19 16:31:15 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
 // Constructor with parameters
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade){
 	std::cout << GREEN << _name 
-		<< ", Bureaucrat constructor with parameters" << DEF
-		<< " | Grade: " << grade << std::endl;
+		<< ", Bureaucrat constructor with parameters" 
+		<< " | Grade: " << grade << DEF << std::endl;
 	if (this->_grade < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
@@ -85,6 +85,22 @@ void Bureaucrat::decrementGrade() {
 	std::cout << " | After Decrement--: " << YELLOW << this->_grade << DEF << std::endl;
 }
 
+void Bureaucrat::signedForm(Bureaucrat &bureaucrat, Form &form) {
+	if (form.getSigned() == true) {
+		std::cout << GREEN << "-> " << DEF
+			<< bureaucrat.getName() << " signed "
+			<< form.getName() << std::endl << std::endl;
+	}
+	else {
+		std::cout <<  RED << "-> " << DEF
+			<< bureaucrat.getName() << " couldn't sign "
+			<< form.getName()  << " because grade: " 
+			<< form.getGrade() << " is to low."
+			<< std::endl << std::endl;
+	}
+}
+
+// Overload << operator
 std::ostream &operator<<(std::ostream &oss, Bureaucrat const &bureaucrat) {
     oss << bureaucrat.getName() << ", bureaucrat grade "
 		<< bureaucrat.getGrade();

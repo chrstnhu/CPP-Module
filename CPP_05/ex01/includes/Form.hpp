@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 19:11:56 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/19 14:19:04 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FORM_HPP
 
 # include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
 	private:
@@ -30,6 +32,31 @@ class Form {
 
 		// Copy assignement operator
 		Form &operator=(Form const &other);
+
+		// Getter
+		std::string const getName() const;
+		bool getSigned() const;
+		int getGrade() const;
+		int getExecuteGrade() const;
+
+		// Functions
+		void beSigned(Bureaucrat &Bureaucrat);
+		
+		class GradeTooHightException : public std::exception {
+			public:
+				virtual const char *what() const throw() {
+					return "Grade is too high, can't exceed 1";
+				}
+		};
+
+		class GradeTooLowException : public std::exception {
+			public:
+				virtual const char *what() const throw() {
+					return "Grade is too low, can't exceed 150";
+				}
+		};
 };
+
+std::ostream &operator <<(std::ostream &oss, Form const &form);
 
 #endif

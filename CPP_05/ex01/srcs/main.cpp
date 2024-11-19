@@ -6,13 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 19:03:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/19 15:59:45 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
 
 void testOutOfGrade();
+void testForm();
 
 int main () {
 	std::cout << YELLOW << "=== Test Bureaucrat ===" << DEF << std::endl;
@@ -47,6 +48,7 @@ int main () {
 	delete bureaucrat3;
 
 	testOutOfGrade();
+	testForm();
 }
 
 void testOutOfGrade() {
@@ -77,4 +79,26 @@ void testOutOfGrade() {
 	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
+}
+
+void testForm () {
+	std::cout << std::endl
+		<< YELLOW << "=== Test Form ===" << DEF << std::endl;
+	
+	Form form1 = Form("Form1", 5, 10);
+	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 4);
+
+	std::cout << form1 << std::endl;
+	std::cout << bureaucrat1 << std::endl;	
+	form1.beSigned(bureaucrat1);
+	bureaucrat1.signedForm(bureaucrat1, form1);
+
+
+	Form form2 = Form("Form2", 9, 10);
+	Bureaucrat bureaucrat2 = Bureaucrat("Alice", 10);
+
+	std::cout << form2 << std::endl;
+	std::cout << bureaucrat2 << std::endl;
+	form2.beSigned(bureaucrat2);
+	bureaucrat2.signedForm(bureaucrat2, form2);
 }
