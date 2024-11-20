@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 15:09:59 by chrhu             #+#    #+#              #
-#    Updated: 2024/11/19 16:52:06 by chrhu            ###   ########.fr        #
+#    Updated: 2024/11/20 16:40:33 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_DIR = obj
 
 # Source
 SRCS_PATH = srcs
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp SchrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 HEADERS = includes
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)

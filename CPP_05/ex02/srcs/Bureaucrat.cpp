@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/19 16:31:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/20 16:21:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void Bureaucrat::decrementGrade() {
 	std::cout << " | After Decrement--: " << YELLOW << this->_grade << DEF << std::endl;
 }
 
-void Bureaucrat::signedForm(Bureaucrat &bureaucrat, Form &form) {
+void Bureaucrat::signedForm(Bureaucrat &bureaucrat, AForm &form) {
 	if (form.getSigned() == true) {
 		std::cout << GREEN << "-> " << DEF
 			<< bureaucrat.getName() << " signed "
@@ -95,8 +95,21 @@ void Bureaucrat::signedForm(Bureaucrat &bureaucrat, Form &form) {
 		std::cout <<  RED << "-> " << DEF
 			<< bureaucrat.getName() << " couldn't sign "
 			<< form.getName()  << " because grade: " 
-			<< form.getGrade() << " is to low."
+			<< form.getGradeToSign() << " is to low."
 			<< std::endl << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+	try {
+		form.execute(*this);
+		std::cout << this->getName() << " executes " << form.getName() << std::endl;
+	}
+	catch (const FormNotSignedException &e) {
+		std::cout << "Error: " << e.what() << std::endl;
+	}
+	catch (const GradeTooLowException &e) {
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 }
 

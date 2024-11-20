@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/19 14:22:10 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/20 16:53:23 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include <cstdlib>
+# include <fstream>
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -46,7 +48,8 @@ class Bureaucrat {
 		// Functions
 		void incrementGrade();
 		void decrementGrade();
-		void signedForm(Bureaucrat &bureaucrat, Form &form);
+		void signedForm(Bureaucrat &bureaucrat, AForm &form);
+		void executeForm(AForm const & form);
 
 		class GradeTooHighException : public std::exception {
 			public:
@@ -59,6 +62,13 @@ class Bureaucrat {
 			public:
 				virtual const char *what() const throw() {
 					return "Grade is too low, can't exceed 150";
+				}
+		};
+
+		class FormNotSignedException : public std::exception {
+			public:
+				virtual const char *what() const throw() {
+					return "Form is not signed";
 				}
 		};
 };

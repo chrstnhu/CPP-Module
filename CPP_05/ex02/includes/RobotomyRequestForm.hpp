@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SchrubberyCreationForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 17:07:46 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/20 16:42:48 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
-#include "AForm.hpp"
+# include "AForm.hpp"
 
 class Bureaucrat;
 
-class SchrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
 	public :
-		SchrubberyCreationForm();
-		SchrubberyCreationForm(std::string const target);
-		SchrubberyCreationForm(SchrubberyCreationForm const &other);
-		virtual ~SchrubberyCreationForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string const target);
+		RobotomyRequestForm(RobotomyRequestForm const &other);
+		virtual ~RobotomyRequestForm();
 
 		// Copy assignement operator
-		SchrubberyCreationForm &operator=(SchrubberyCreationForm const &other);
+		RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
 
 		// Functions
 		virtual void beSigned(Bureaucrat &Bureaucrat);
-		virtual void execute(Bureaucrat const &executor) ;
+		virtual void execute(Bureaucrat const &executor) const;
 };
 
 #endif
