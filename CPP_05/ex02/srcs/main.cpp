@@ -6,14 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 17:00:16 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:03:39 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Bureaucrat.hpp"
-#include "../includes/SchrubberyCreationForm.hpp"
-#include "../includes/RobotomyRequestForm.hpp"
-#include "../includes/PresidentialPardonForm.hpp"
+# include "../includes/Utils.hpp"
 
 void testOutOfGrade();
 void testForm();
@@ -85,22 +82,57 @@ void testOutOfGrade() {
 }
 
 void testForm () {
+	srand(time(0));
+	
 	std::cout << std::endl
 		<< YELLOW << "=== Test Form ===" << DEF << std::endl;
 	
-	SchrubberyCreationForm form1("target1");
-	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 146);
+	std::cout << std::endl << YELLOW << "SchrubberyCreationForm" << DEF << std::endl;
+	
+	SchrubberyCreationForm SchrubberyForm("Target1");
+	Bureaucrat bob = Bureaucrat("Bob", 146); // Max (sign 145 | execute 137)
+	std::cout << SchrubberyForm << std::endl
+			<< bob << std::endl;	
+	bob.signForm(bob, SchrubberyForm);
+    bob.executeForm(SchrubberyForm);
 
-	std::cout << form1 << std::endl;
-	std::cout << bureaucrat1 << std::endl;	
-	form1.beSigned(bureaucrat1);
-	bureaucrat1.signedForm(bureaucrat1, form1);
+	Bureaucrat bureaucrat1 = Bureaucrat("Bureaucrat1", 130); // Max (sign 145 | execute 137)
+	std::cout << SchrubberyForm << std::endl
+			<< bureaucrat1 << std::endl;	
+	bureaucrat1.signForm(bureaucrat1, SchrubberyForm);
+    bureaucrat1.executeForm(SchrubberyForm);
 
-	// Bureaucrat bureaucrat2 = Bureaucrat("Alice", 10);
-	// RobotomyRequestForm form2("target2");
 
-	// std::cout << form2 << std::endl;
-	// std::cout << bureaucrat2 << std::endl;
-	// form2.beSigned(bureaucrat2);
-	// bureaucrat2.signedForm(bureaucrat2, form2);
+	std::cout << std::endl << YELLOW << "RobotomyRequestForm" << DEF << std::endl;
+
+	RobotomyRequestForm RobotomyForm("Target2");
+	Bureaucrat Alice = Bureaucrat("Alice", 80);  // Max (sign 72 | execute 45)
+	std::cout << RobotomyForm << std::endl
+			<< Alice << std::endl;
+	Alice.signForm(Alice, RobotomyForm);
+	Alice.executeForm(RobotomyForm);
+	Alice.executeForm(RobotomyForm);
+
+	Bureaucrat bureaucrat2 = Bureaucrat("Bureaucrat2", 30);  // Max (sign 72 | execute 45)
+	std::cout << RobotomyForm << std::endl
+			<< bureaucrat2 << std::endl;
+	bureaucrat2.signForm(bureaucrat2, RobotomyForm);
+	bureaucrat2.executeForm(RobotomyForm);
+	bureaucrat2.executeForm(RobotomyForm);
+	
+	
+	std::cout << std::endl << YELLOW << "PresidentialPardonForm" << DEF << std::endl;
+
+	PresidentialPardonForm PresidentialForm("Target3"); 
+	Bureaucrat bunny = Bureaucrat("Bunny", 25); // Max sign (25 | execute 5)
+	std::cout << PresidentialForm << std::endl
+			<< bunny << std::endl;
+	bunny.signForm(bunny, PresidentialForm);
+	bunny.executeForm(PresidentialForm);
+
+	Bureaucrat bureaucrat3 = Bureaucrat("Bureaucrat3", 1); // Max sign (25 | execute 5)
+	std::cout << PresidentialForm << std::endl
+			<< bureaucrat3 << std::endl;
+	bureaucrat3.signForm(bureaucrat3, PresidentialForm);
+	bureaucrat3.executeForm(PresidentialForm);
 }
