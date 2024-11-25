@@ -6,21 +6,16 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 19:07:39 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:00:46 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# define BLUE "\033[0;313m"
-# define DEF "\033[0;39m"
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m" 
-
 # include <iostream>
 # include <string>
+# include "Colors.hpp"
 
 class Bureaucrat {
 	private:

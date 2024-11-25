@@ -6,24 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 16:53:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 15:15:27 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# define BLUE "\033[0;313m"
-# define DEF "\033[0;39m"
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m" 
-
-# include <iostream>
-# include <string>
-# include <cstdlib>
-# include <fstream>
-# include "AForm.hpp"
+# include "Utils.hpp"
 
 class AForm;
 
@@ -48,20 +38,20 @@ class Bureaucrat {
 		// Functions
 		void incrementGrade();
 		void decrementGrade();
-		void signedForm(Bureaucrat &bureaucrat, AForm &form);
+		void signForm(Bureaucrat &bureaucrat, AForm &form);
 		void executeForm(AForm const & form);
 
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
-					return "Grade is too high, can't exceed 1";
+					return "Grade is too high";
 				}
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
-					return "Grade is too low, can't exceed 150";
+					return "Grade is too low";
 				}
 		};
 
