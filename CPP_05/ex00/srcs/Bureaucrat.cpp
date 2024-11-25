@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 18:02:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:01:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 // Default constructor
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
-	std::cout << GREEN << _name 
+	std::cout << ITALICGREEN << _name 
 		<< ", Bureaucrat default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade){
-	std::cout << GREEN << _name 
-		<< ", Bureaucrat constructor with parameters" << DEF
-		<< " | Grade: " << grade << std::endl;
+	std::cout << ITALICGREEN << _name 
+		<< ", Bureaucrat constructor with parameters" 
+		<< " | Grade: " << grade << DEF << std::endl;
 	if (this->_grade < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
@@ -33,19 +33,19 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(
 
 // Copy constructor
 Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(other._grade) {
-	std::cout << GREEN << _name 
+	std::cout << ITALICGREEN << _name 
 		<< ", Bureaucrat copy constructor" << DEF << std::endl;
 }
 
 // Destructor
 Bureaucrat::~Bureaucrat() {
-	std::cout << GREEN << 
+	std::cout << ITALICGREEN << 
 		_name << ", Bureaucrat Destructor" << DEF << std::endl;
 }
 
 // Copy assignement operator
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other) {
-	std::cout << GREEN << _name
+	std::cout << ITALICGREEN << _name
 		<< ", Bureaucrat copy assignement operator" << DEF << std::endl;
 	if (this != &other) {
 		this->_grade = other._grade;

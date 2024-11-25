@@ -6,58 +6,58 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/19 16:28:17 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 16:59:50 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Form.hpp"
 
 // Default constructor
-Form::Form() : _name("default"), _signed(false),  _grade(150), _executeGrade(150) {
-	std::cout << GREEN << "Form default constructor" << DEF << std::endl;
-	if (this->_grade < 1) {
+Form::Form() : _name("default"), _isSigned(false),  _gradeToSign(150), _gradeToExecute(150) {
+	std::cout << ITALICGREEN << "Form default constructor" << DEF << std::endl;
+	if (this->_gradeToSign < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-	if (this->_grade > 150) {
+	if (this->_gradeToSign > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
 }
 
 // Constructor with parameters
 Form::Form(std::string const name, int grade, int executeGrade) :
-	_name(name), _signed(false), _grade(grade), _executeGrade(executeGrade) {
-	std::cout << GREEN << name 
+	_name(name), _isSigned(false), _gradeToSign(grade), _gradeToExecute(executeGrade) {
+	std::cout << ITALICGREEN << name 
 		<< ", Form constructor with parameters"
 		<< " | Grade: " << grade 
 		<< " | Execute grade: " << executeGrade << DEF << std::endl;
-	if (this->_grade < 1) {
+	if (this->_gradeToSign < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-	if (this->_grade > 150) {
+	if (this->_gradeToSign > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
 }
 
 // Copy constructor
 Form::Form(Form const &other) : 
-	_name(other._name), _signed(other._signed), 
-	_grade(other._grade), _executeGrade(other._executeGrade) {
-	std::cout << GREEN << _name 
+	_name(other._name), _isSigned(other._isSigned), 
+	_gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute) {
+	std::cout << ITALICGREEN << _name 
 		<< ", Form copy constructor" << DEF << std::endl;
 }
 
 // Destructor
 Form::~Form() {
-	std::cout << GREEN << _name
+	std::cout << ITALICGREEN << _name
 		<< ", Form Destructor" << DEF << std::endl;
 }
 
 // Copy assignement operator
 Form &Form::operator=(Form const &other) {
-	std::cout << GREEN << _name
+	std::cout << ITALICGREEN << _name
 		<< ", Form copy assignement operator" << DEF << std::endl;
 	if (this != &other) {
-		this->_signed = other._signed;
+		this->_isSigned = other._isSigned;
 	}
 	return *this;
 }
@@ -69,22 +69,22 @@ std::string const Form::getName() const {
 }
 
 bool Form::getSigned() const {
-	return this->_signed;
+	return this->_isSigned;
 }
 
-int Form::getGrade() const {
-	return this->_grade;
+int Form::getGradeToSign() const {
+	return this->_gradeToSign;
 }
 
-int Form::getExecuteGrade() const {
-	return this->_executeGrade;
+int Form::getGradeToExecute() const {
+	return this->_gradeToExecute;
 }
 
 
 // Functions
 void Form::beSigned(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() <= this->_grade) {
-		this->_signed = true;
+	if (bureaucrat.getGrade() <= this->_gradeToSign) {
+		this->_isSigned = true;
 	}
 }
 
@@ -93,7 +93,7 @@ void Form::beSigned(Bureaucrat &bureaucrat) {
 std::ostream &operator<<(std::ostream &oss, Form const &form) {
 	oss << "Form: " << form.getName () <<
 		" | Signed: " << form.getSigned() <<
-		" | Grade: " << form.getGrade() <<
-		" | Execute grade: " << form.getExecuteGrade();
+		" | Grade: " << form.getGradeToSign() <<
+		" | Execute grade: " << form.getGradeToExecute();
 	return oss;
 }

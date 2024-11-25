@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/19 15:59:45 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:04:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void testForm () {
 	std::cout << form1 << std::endl;
 	std::cout << bureaucrat1 << std::endl;	
 	form1.beSigned(bureaucrat1);
-	bureaucrat1.signedForm(bureaucrat1, form1);
+	bureaucrat1.signForm(bureaucrat1, form1);
 
 
 	Form form2 = Form("Form2", 9, 10);
@@ -100,5 +100,5 @@ void testForm () {
 	std::cout << form2 << std::endl;
 	std::cout << bureaucrat2 << std::endl;
 	form2.beSigned(bureaucrat2);
-	bureaucrat2.signedForm(bureaucrat2, form2);
+	bureaucrat2.signForm(bureaucrat2, form2);
 }

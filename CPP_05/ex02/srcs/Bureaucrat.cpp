@@ -6,21 +6,21 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 16:21:02 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:03:44 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Bureaucrat.hpp"
+# include "../includes/Utils.hpp"
 
 // Default constructor
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
-	std::cout << GREEN << _name 
+	std::cout << ITALICGREEN << "'" << _name << "'"
 		<< ", Bureaucrat default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade){
-	std::cout << GREEN << _name 
+	std::cout << ITALICGREEN << "'" << _name << "'"
 		<< ", Bureaucrat constructor with parameters" 
 		<< " | Grade: " << grade << DEF << std::endl;
 	if (this->_grade < 1) {
@@ -33,19 +33,19 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(
 
 // Copy constructor
 Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(other._grade) {
-	std::cout << GREEN << _name 
+	std::cout << ITALICGREEN << "'" << _name << "'"
 		<< ", Bureaucrat copy constructor" << DEF << std::endl;
 }
 
 // Destructor
 Bureaucrat::~Bureaucrat() {
-	std::cout << GREEN << 
-		_name << ", Bureaucrat Destructor" << DEF << std::endl;
+	std::cout << ITALICGREEN << "'" << _name << "'"
+		<< ", Bureaucrat Destructor" << DEF << std::endl;
 }
 
 // Copy assignement operator
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other) {
-	std::cout << GREEN << _name
+	std::cout << ITALICGREEN << "'" << _name << "'"
 		<< ", Bureaucrat copy assignement operator" << DEF << std::endl;
 	if (this != &other) {
 		this->_grade = other._grade;
@@ -85,31 +85,31 @@ void Bureaucrat::decrementGrade() {
 	std::cout << " | After Decrement--: " << YELLOW << this->_grade << DEF << std::endl;
 }
 
-void Bureaucrat::signedForm(Bureaucrat &bureaucrat, AForm &form) {
-	if (form.getSigned() == true) {
-		std::cout << GREEN << "-> " << DEF
-			<< bureaucrat.getName() << " signed "
-			<< form.getName() << std::endl << std::endl;
-	}
-	else {
-		std::cout <<  RED << "-> " << DEF
-			<< bureaucrat.getName() << " couldn't sign "
-			<< form.getName()  << " because grade: " 
-			<< form.getGradeToSign() << " is to low."
-			<< std::endl << std::endl;
-	}
+void Bureaucrat::signForm(Bureaucrat &bureaucrat, AForm &form) {
+    try {
+        form.beSigned(bureaucrat);
+        std::cout << UNDERDEF << "-> " 
+                  << bureaucrat.getName() << " signed "
+                  << form.getName() << DEF << std::endl << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cout << RED << "Exception caught in signForm: "
+			<< e.what() << DEF << std::endl;
+    }
 }
+
 
 void Bureaucrat::executeForm(AForm const & form) {
 	try {
+		if (!form.getSigned()) {
+            throw FormNotSignedException();
+        }
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 		form.execute(*this);
-		std::cout << this->getName() << " executes " << form.getName() << std::endl;
 	}
-	catch (const FormNotSignedException &e) {
-		std::cout << "Error: " << e.what() << std::endl;
-	}
-	catch (const GradeTooLowException &e) {
-		std::cout << "Error: " << e.what() << std::endl;
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception caught in executeForm: "
+			<< e.what() << DEF << std::endl << std::endl;
 	}
 }
 

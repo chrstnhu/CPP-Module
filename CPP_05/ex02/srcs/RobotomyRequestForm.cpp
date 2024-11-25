@@ -6,39 +6,39 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:47:41 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 16:42:39 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 16:53:55 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/RobotomyRequestForm.hpp"
+# include "../includes/Utils.hpp"
 
 // Default constructor
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request", 72, 45, "default_target") {
-	std::cout << GREEN << "RobotomyRequestForm default constructor" << DEF << std::endl;
+	std::cout << ITALICGREEN << "RobotomyRequestForm default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) 
 	: AForm("Robotomy Request", 72, 45, target) {
-	std::cout << GREEN << getName() 
+	std::cout << ITALICGREEN << "'" << getName() << "'"
 		<< ", RobotomyRequestForm constructor with parameters" << DEF << std::endl;
 }
 
 // Copy constructor
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : AForm(other){
-	std::cout << GREEN << getName() 
+	std::cout << ITALICGREEN << "'" << getName() << "'"
 		<< ", RobotomyRequestForm copy constructor" << DEF << std::endl;
 }
 
 // Destructor
 RobotomyRequestForm::~RobotomyRequestForm() {
-	std::cout << GREEN << getName()
+	std::cout << ITALICGREEN << "'" << getName() << "'"
 		<< ", RobotomyRequestForm Destructor" << DEF << std::endl;
 }
 
 // Copy assignement operator
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &other) {
-	std::cout << GREEN << getName()
+	std::cout << ITALICGREEN << "'" << getName() << "'"
 		<< ", RobotomyRequestForm copy assignement operator" << DEF << std::endl;
 	if (this != &other) {
 		AForm::operator=(other);
@@ -46,18 +46,10 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 	return *this;
 }
 
+//Functions
 
-// Functions
-void RobotomyRequestForm::beSigned(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() <= this->getGradeToExecute()) {
-		this->setSigned(true);
-	}
-	else {
-		throw GradeTooLowException();
-	}
-}
-
-void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
+// Make drilling noise,  <target> has been robotomized successfully 50% of the time. 
+void RobotomyRequestForm::execute(Bureaucrat const &executor) const {	
 	std::cout << "Drilling noises : Vrrrrrrrrr..." << std::endl;
 	if (!this->getSigned()) {
 		throw FormNotSignedException();
@@ -68,9 +60,11 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 
 	int value = rand() % 2;
 	if (value == 0) {
-		std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
+		std::cout << BOLDGREEN << this->getTarget() 
+			<< " has been robotomized successfully" << DEF << std::endl << std::endl;
 	}
 	else {
-		std::cout << this->getTarget() << "failed to be robotomized" << std::endl;
+		std::cout << BOLDORANGE << this->getTarget()
+			<< " failed to be robotomized" << DEF << std::endl << std::endl;
 	}
 }

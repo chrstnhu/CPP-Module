@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 17:07:46 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 15:15:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
-#include "AForm.hpp"
+# include "Utils.hpp"
 
 class Bureaucrat;
 
@@ -28,8 +28,7 @@ class SchrubberyCreationForm : public AForm {
 		SchrubberyCreationForm &operator=(SchrubberyCreationForm const &other);
 
 		// Functions
-		virtual void beSigned(Bureaucrat &Bureaucrat);
-		virtual void execute(Bureaucrat const &executor) ;
+		virtual void execute(Bureaucrat const &executor) const;
 };
 
 #endif

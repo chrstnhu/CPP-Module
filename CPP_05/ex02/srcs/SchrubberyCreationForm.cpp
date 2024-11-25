@@ -6,39 +6,39 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/20 17:09:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:05:11 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/SchrubberyCreationForm.hpp"
+# include "../includes/Utils.hpp"
 
 // Default constructor
 SchrubberyCreationForm::SchrubberyCreationForm() : AForm("Schrubbery Creation", 145, 137, "default_target") {
-	std::cout << GREEN << "SchrubberyCreationForm default constructor" << DEF << std::endl;
+	std::cout << ITALICGREEN << "SchrubberyCreationForm default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
 SchrubberyCreationForm::SchrubberyCreationForm(const std::string target)
 	: AForm("Schrubbery Creation", 145, 137, target) {
-	std::cout << GREEN << getName() 
+	std::cout << ITALICGREEN << "'" << getName() << "'"
 		<< ", SchrubberyCreationForm constructor with parameters" << DEF << std::endl;
 }
 
 // Copy constructor
 SchrubberyCreationForm::SchrubberyCreationForm(SchrubberyCreationForm const &other) : AForm(other) {
-	std::cout << GREEN << getName() 
+	std::cout << ITALICGREEN << "'" << getName() << "'"
 		<< ", SchrubberyCreationForm copy constructor" << DEF << std::endl;
 }
 
 // Destructor
 SchrubberyCreationForm::~SchrubberyCreationForm() {
-	std::cout << GREEN << getName()
+	std::cout << ITALICGREEN << "'" << getName() << "'" 
 		<< ", SchrubberyCreationForm Destructor" << DEF << std::endl;
 }
 
 // Copy assignement operator
 SchrubberyCreationForm &SchrubberyCreationForm::operator=(SchrubberyCreationForm const &other) {
-	std::cout << GREEN << getName()
+	std::cout << ITALICGREEN << "'" << getName() << "'" 
 		<< ", SchrubberyCreationForm copy assignement operator" << DEF << std::endl;
 	if (this != &other) {
 		AForm::operator=(other);
@@ -46,30 +46,18 @@ SchrubberyCreationForm &SchrubberyCreationForm::operator=(SchrubberyCreationForm
 	return *this;
 }
 
-
 // Functions
-void SchrubberyCreationForm::beSigned(Bureaucrat &bureaucrat) {
-	std::cout << "Bureaucrat " << bureaucrat.getGrade() << std::endl << std::endl;
-	std::cout << "Current grade" << this->getGradeToSign() << std::endl << std::endl;
-	if (bureaucrat.getGrade() <= this->getGradeToSign()) {
-		this->setSigned(true);
-	}
-	else {
-		throw GradeTooLowException();
-	}
-}
 
 // Create a file <target>_shrubbery and writes ASCII trees inside it
-void SchrubberyCreationForm::execute(Bureaucrat const &executor) {
+void SchrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	std::string fileName = this->getTarget() + "_shrubbery";
 
 	if (!this->getSigned()) {
 		throw FormNotSignedException();
 	}
-	if (this->getGradeToExecute() < executor.getGrade()) {
+	if (executor.getGrade() > this->getGradeToExecute()) {
 		throw GradeTooLowException();
 	}
-
 	std::ofstream file;
 	
 	file.open(fileName.c_str(), std::ios::out);
@@ -77,6 +65,8 @@ void SchrubberyCreationForm::execute(Bureaucrat const &executor) {
 		std::cerr << "Error: could not open file" << std::endl;
 		return ;
 	}
+	
+	std::cout << BOLDGREEN << "Created file: " << fileName << DEF << std::endl;
 	
 	file << "      ccee88oo" << std::endl
 	<< "  C8O8O8Q8PoOb o8oo" << std::endl
@@ -90,5 +80,8 @@ void SchrubberyCreationForm::execute(Bureaucrat const &executor) {
 	<< "         ||||| " << std::endl
 	<< "   .....//||||\\..... " << std::endl;
 	file.close();
+
+	std::cout << BOLDBLUE << "Go watch the beautiful ASCII tree art in "
+		<< fileName << DEF << std::endl << std::endl;
 }
 
