@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 15:15:23 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 12:09:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class AForm {
 		AForm(std::string const name, int gradeToSign, int gradeToExecute);
 		AForm(std::string const name, int gradeToSign, int gradeToExecute, std::string const target);
 		AForm(AForm const &other);
-		~AForm();
+		virtual ~AForm();
 
 		// Copy assignement operator
 		AForm &operator=(AForm const &other);
