@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:03:39 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 12:06:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void testOutOfGrade();
 void testForm();
+void testInternForm();
 
 int main () {
 	std::cout << YELLOW << "=== Test Bureaucrat ===" << DEF << std::endl;
@@ -32,28 +33,14 @@ int main () {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
 
-	Bureaucrat *bureaucrat3 = new Bureaucrat("Foo", 148);
-	try {
-		std::cout << *bureaucrat3 << std::endl;
-		bureaucrat3->decrementGrade();
-		std::cout << *bureaucrat3 << std::endl;
-		bureaucrat3->decrementGrade();
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
-	}
-	delete bureaucrat3;
-
 	testOutOfGrade();
 	testForm();
+	testInternForm();
 }
 
 void testOutOfGrade() {
-	std::cout << std::endl
-		<< YELLOW << "=== Test out of grade ===" << DEF << std::endl;
+	std::cout << std::endl << YELLOW
+		<< "=== Test out of grade ===" << DEF << std::endl;
 	try {
 		Bureaucrat bureaucratMore("More", 200);
 		std::cout << bureaucratMore << std::endl;
@@ -66,26 +53,13 @@ void testOutOfGrade() {
 	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
 	}
-
-	try {
-		Bureaucrat bureaucratLess("Less", -5);
-		std::cout << bureaucratLess << std::endl;
-		bureaucratLess.incrementGrade();
-		std::cout << bureaucratLess << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
-	}
 }
 
 void testForm () {
 	srand(time(0));
 	
-	std::cout << std::endl
-		<< YELLOW << "=== Test Form ===" << DEF << std::endl;
+	std::cout << std::endl << YELLOW
+		<< "=== Test Form ===" << DEF << std::endl;
 	
 	std::cout << std::endl << YELLOW << "SchrubberyCreationForm" << DEF << std::endl;
 	
@@ -96,13 +70,6 @@ void testForm () {
 	bob.signForm(bob, SchrubberyForm);
     bob.executeForm(SchrubberyForm);
 
-	Bureaucrat bureaucrat1 = Bureaucrat("Bureaucrat1", 130); // Max (sign 145 | execute 137)
-	std::cout << SchrubberyForm << std::endl
-			<< bureaucrat1 << std::endl;	
-	bureaucrat1.signForm(bureaucrat1, SchrubberyForm);
-    bureaucrat1.executeForm(SchrubberyForm);
-
-
 	std::cout << std::endl << YELLOW << "RobotomyRequestForm" << DEF << std::endl;
 
 	RobotomyRequestForm RobotomyForm("Target2");
@@ -112,13 +79,6 @@ void testForm () {
 	Alice.signForm(Alice, RobotomyForm);
 	Alice.executeForm(RobotomyForm);
 	Alice.executeForm(RobotomyForm);
-
-	Bureaucrat bureaucrat2 = Bureaucrat("Bureaucrat2", 30);  // Max (sign 72 | execute 45)
-	std::cout << RobotomyForm << std::endl
-			<< bureaucrat2 << std::endl;
-	bureaucrat2.signForm(bureaucrat2, RobotomyForm);
-	bureaucrat2.executeForm(RobotomyForm);
-	bureaucrat2.executeForm(RobotomyForm);
 	
 	
 	std::cout << std::endl << YELLOW << "PresidentialPardonForm" << DEF << std::endl;
@@ -129,10 +89,23 @@ void testForm () {
 			<< bunny << std::endl;
 	bunny.signForm(bunny, PresidentialForm);
 	bunny.executeForm(PresidentialForm);
+}
 
-	Bureaucrat bureaucrat3 = Bureaucrat("Bureaucrat3", 1); // Max sign (25 | execute 5)
-	std::cout << PresidentialForm << std::endl
-			<< bureaucrat3 << std::endl;
-	bureaucrat3.signForm(bureaucrat3, PresidentialForm);
-	bureaucrat3.executeForm(PresidentialForm);
+void testInternForm() {
+	std::cout << std::endl << YELLOW
+		<< "=== Test Intern ===" << DEF << std::endl;
+
+	Intern intern;
+
+	AForm *form1 = intern.makeForm("Schrubbery", "Target1");
+	AForm *form2 = intern.makeForm("Robotomy", "Target2");
+	AForm *form3 = intern.makeForm("Presidential", "Target3");
+
+	std::cout << &form1 << std::endl
+			<< &form2 << std::endl
+			<< &form3 << std::endl;
+
+	delete form1;
+	delete form2;
+	delete form3;
 }
