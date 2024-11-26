@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:09:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 15:08:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ int main () {
 			std::cout << bureaucrat1 << std::endl;
 		}
 	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 
 	testOutOfGrade();
@@ -49,11 +46,8 @@ void testOutOfGrade() {
 		bureaucratMore.incrementGrade();
 		std::cout << bureaucratMore << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 }
 
@@ -73,7 +67,7 @@ void testForm () {
 
 	printColor("-- Test RobotomyRequestForm", ITALICYELLOW);
 	RobotomyRequestForm RobotomyForm("Target2");
-	Bureaucrat Alice("Alice", 80);  // Max (sign 72 | execute 45)
+	Bureaucrat Alice("Alice", 40);  // Max (sign 72 | execute 45)
 	std::cout << RobotomyForm << std::endl
 			<< Alice << std::endl;
 	Alice.signForm(Alice, RobotomyForm);
@@ -130,7 +124,7 @@ void testInternForm() {
 
 	}
 	catch (const std::exception &e) {
-		std::cout << RED << "Exception caught in testInternForm" << DEF << std::endl;
+		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 	
 	delete form1;

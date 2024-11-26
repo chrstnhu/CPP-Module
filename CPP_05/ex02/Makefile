@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 15:09:59 by chrhu             #+#    #+#              #
-#    Updated: 2024/11/26 14:10:46 by chrhu            ###   ########.fr        #
+#    Updated: 2024/11/26 15:13:27 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR = obj
 # Source
 SRCS_PATH = srcs
 SRCS = main.cpp Utils.cpp Bureaucrat.cpp Form.cpp \
-	SchrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+	ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 HEADERS = includes
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
@@ -46,6 +46,7 @@ clean :
 		@echo "$(YELLOW)rm -rf $(OBJS)$(DEFAULT)"
 		@rm -rf $(OBJ_DIR)
 		@rm -f $(OBJS)
+		@find . -type f -name '*_shrubbery' -exec rm -f {} \; || true
 		@echo "$(GREEN)Cleaned up $(OBJS)!$(DEFAULT)"
 
 fclean : clean

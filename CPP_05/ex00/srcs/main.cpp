@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:25:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:58:39 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int main () {
 	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
+	}
 
 	Bureaucrat *bureaucrat3 = new Bureaucrat("Foo", 148);
 	try {
@@ -47,6 +50,7 @@ int main () {
 	catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
+
 	delete bureaucrat3;
 
 	testOutOfGrade();

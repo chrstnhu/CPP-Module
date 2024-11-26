@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:23:45 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:59:51 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,7 @@ void testForm () {
 		form2.beSigned(bureaucrat2);
 		bureaucrat2.signForm(bureaucrat2, form2);
 	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 }
