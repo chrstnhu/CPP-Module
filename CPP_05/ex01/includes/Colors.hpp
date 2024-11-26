@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 16:57:32 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:27:32 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,10 @@
 # define BOLDGREY "\033[1;30m"
 # define ITALICGREY "\033[3;30m"
 # define UNDERGREY "\033[4;30m"
+
+# define BROWN "\033[38;5;94m"
+# define BOLDBROWN "\033[38;1;5;94m"
+# define ITALICBROWN "\033[38;3;5;94m"
+# define UNDERBROWN "\033[38;4;5;94m"
 
 #endif

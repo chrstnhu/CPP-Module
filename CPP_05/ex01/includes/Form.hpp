@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 13:02:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:15:01 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include "Bureaucrat.hpp"
+#include "Utils.hpp"
 
 class Bureaucrat;
 

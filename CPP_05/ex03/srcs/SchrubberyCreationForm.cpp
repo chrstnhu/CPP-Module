@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:05:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 13:57:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,22 @@ void SchrubberyCreationForm::execute(Bureaucrat const &executor) const {
 		return ;
 	}
 	
-	std::cout << BOLDGREEN << "Created file: " << fileName << DEF << std::endl;
+	std::cout << BOLDGREEN << "Created file: " << fileName << std::endl;
 	
-	file << "      ccee88oo" << std::endl
+	file << GREEN << "      ccee88oo" << std::endl
 	<< "  C8O8O8Q8PoOb o8oo" << std::endl
 	<< " dOB69QO8PdUOpugoO9bD" << std::endl
 	<< "CgggbU8OU qOp qOdoUOdcb" << std::endl
-	<< "    6OuU  /p u gcoUodpP" << std::endl
-	<< "      \\//  /douUP" << std::endl
-	<< "        \\\\\\////" << std::endl
+	<< "    6OuU  " << BROWN << "/" << GREEN << "p u gcoUodpP" << std::endl
+	<< BROWN << "      \\//  /"<< GREEN << "douUP" << std::endl
+	<< BROWN << "        \\\\\\////" << std::endl
 	<< "         |||/\\ " << std::endl
 	<< "         |||\\/ " << std::endl
 	<< "         ||||| " << std::endl
-	<< "   .....//||||\\..... " << std::endl;
+	<< GREEN << "   ....." << BROWN << "//||||\\" << GREEN << "..... " << DEF << std::endl;
 	file.close();
 
-	std::cout << BOLDBLUE << "Go watch the beautiful ASCII tree art in "
+	std::cout << "Go watch the beautiful ASCII tree art in "
 		<< fileName << DEF << std::endl << std::endl;
 }
 

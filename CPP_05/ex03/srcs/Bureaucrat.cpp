@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:03:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 13:41:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void Bureaucrat::signForm(Bureaucrat &bureaucrat, AForm &form) {
 }
 
 
-void Bureaucrat::executeForm(AForm const & form) {
+void Bureaucrat::executeForm(AForm const &form) {
 	try {
 		if (!form.getSigned()) {
             throw FormNotSignedException();

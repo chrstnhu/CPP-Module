@@ -6,11 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 16:59:50 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:18:53 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Form.hpp"
+#include "../includes/Utils.hpp"
 
 // Default constructor
 Form::Form() : _name("default"), _isSigned(false),  _gradeToSign(150), _gradeToExecute(150) {
@@ -83,9 +83,10 @@ int Form::getGradeToExecute() const {
 
 // Functions
 void Form::beSigned(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() <= this->_gradeToSign) {
-		this->_isSigned = true;
+	if (bureaucrat.getGrade() > this->_gradeToSign) {
+		throw GradeTooLowException();
 	}
+	this->_isSigned = true;
 }
 
 

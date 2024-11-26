@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 12:02:09 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 13:17:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,13 @@
 
 # include "Utils.hpp"
 
-enum FormType {
-	SCHRUBBERY,
-	ROBOTOMY,
-	PRESIDENTIAL,
-	UNKNOWN
-};
-
 class Form;
 
 class Intern {
-	protected :
-		AForm *_form;
+	private :
+		AForm* createShrubberyForm(std::string const &formTarget);
+		AForm *createRobotomyForm(std::string const &formTarget);
+		AForm *createPresidentialForm(std::string const &formTarget);
 		std::string _formName;
 		std::string _formTarget;
 	public :

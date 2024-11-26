@@ -6,11 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 16:59:43 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:15:18 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Bureaucrat.hpp"
+#include "../includes/Utils.hpp"
 
 // Default constructor
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {

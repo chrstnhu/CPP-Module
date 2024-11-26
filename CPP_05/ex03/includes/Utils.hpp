@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:13:39 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:04:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include "Intern.hpp"
+
+void printColor(const std::string &msg, const std::string &color);
+void separatorLine();
 
 #endif

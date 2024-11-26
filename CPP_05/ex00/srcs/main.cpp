@@ -6,16 +6,19 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/11 19:03:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:25:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
 
+void printColor(const std::string &msg, const std::string &color);
+void separatorLine();
 void testOutOfGrade();
 
 int main () {
-	std::cout << YELLOW << "=== Test Bureaucrat ===" << DEF << std::endl;
+	printColor("=== TEST BUREAUCRAT ===", YELLOW);
+
 	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 5);
 	try {
 		std::cout << bureaucrat1 << std::endl;
@@ -25,10 +28,10 @@ int main () {
 		}
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 
 	Bureaucrat *bureaucrat3 = new Bureaucrat("Foo", 148);
@@ -39,10 +42,10 @@ int main () {
 		bureaucrat3->decrementGrade();
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 	delete bureaucrat3;
 
@@ -50,8 +53,9 @@ int main () {
 }
 
 void testOutOfGrade() {
-	std::cout << std::endl
-		<< YELLOW << "=== Test out of grade ===" << DEF << std::endl;
+	separatorLine();
+	printColor("=== TEST OUT OF GRADE ===", YELLOW);
+
 	try {
 		Bureaucrat bureaucratMore("More", 200);
 		std::cout << bureaucratMore << std::endl;
@@ -59,10 +63,10 @@ void testOutOfGrade() {
 		std::cout << bureaucratMore << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 
 	try {
@@ -72,9 +76,17 @@ void testOutOfGrade() {
 		std::cout << bureaucratLess << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
+}
+
+void printColor(const std::string &msg, const std::string &color) {
+    std::cout << std::endl << color << msg << DEF << std::endl;
+}
+
+void separatorLine() {
+	std::cout << std::endl << "==============================================================================================" << std::endl;
 }

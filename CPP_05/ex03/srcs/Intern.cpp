@@ -6,27 +6,26 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 12:06:20 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:08:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/Utils.hpp"
 
 // Default constructor
-Intern::Intern() : _form(NULL), _formName("default_form"), _formTarget("default_target") {
+Intern::Intern() : _formName("default_form"), _formTarget("default_target") {
 	std::cout << ITALICGREEN << "Intern default constructor" << DEF << std::endl;
 }
 
 // Constructor with parameters
 Intern::Intern(std::string const &formName, std::string const &formTarget)
-	: _form(NULL), _formName(formName), _formTarget(formTarget) {
+	: _formName(formName), _formTarget(formTarget) {
 	std::cout << ITALICGREEN << "Intern constructor with parameters" << DEF << std::endl;
 }
 
 // Copy constructor
 Intern::Intern(Intern const &other) {
 	std::cout << ITALICGREEN << "Intern copy constructor" << DEF << std::endl;
-	_form = other._form;
 	_formName = other._formName;
 	_formTarget = other._formTarget;
 }
@@ -40,43 +39,47 @@ Intern::~Intern() {
 Intern &Intern::operator=(Intern const &other) {
 	std::cout << ITALICGREEN << "Intern copy assignement operator" << DEF << std::endl;
 	if (this != &other) {
-		_form = other._form;
 		_formName = other._formName;
 		_formTarget = other._formTarget;
 	}
 	return *this;
 }
 
-FormType getFormName(std::string FormName) {
-	if (FormName == "Schrubbery")
-		return SCHRUBBERY;
-	if (FormName == "Robotomy")
-		return ROBOTOMY;
-	if (FormName == "Presidential")
-		return PRESIDENTIAL;
-	return UNKNOWN;
+
+// Create form functions
+AForm* Intern::createShrubberyForm(std::string const &formTarget) {
+	return new SchrubberyCreationForm(formTarget);
 }
 
-// Functions 
+AForm* Intern::createRobotomyForm(std::string const &formTarget) {
+	return new RobotomyRequestForm(formTarget);
+}
+
+AForm* Intern::createPresidentialForm(std::string const &formTarget) {
+	return new PresidentialPardonForm(formTarget);
+}
+
+// Function
 AForm* Intern::makeForm(std::string const &formName, std::string const &formTarget) {
 	if (formName.empty() || formTarget.empty()) {
-		std::cout << ITALICRED << "Error: formName or formTarget is empty" << DEF << std::endl;
+		std::cout << RED << "Error: formName or formTarget is empty" << DEF << std::endl;
 		return NULL;
 	}
+
+	const std::string name[4] = {"schrubbery creation", "robotomy request", "presidential pardon"};
+	AForm* (Intern::*actions[3])(std::string const&) ={
+		&Intern::createShrubberyForm,
+		&Intern::createRobotomyForm,
+		&Intern::createPresidentialForm
+	};
 	
-	FormType formType = getFormName(formName);
-	switch (formType) {
-		case SCHRUBBERY:
+	for (int i = 0; i < 3; i++) {
+		if (formName == name[i]) {
 			std::cout << "Intern creates " << formName << DEF << std::endl;
-			return new SchrubberyCreationForm(formTarget);
-		case ROBOTOMY:
-			std::cout << "Intern creates " << formName << DEF << std::endl;
-			return new RobotomyRequestForm(formTarget);
-		case PRESIDENTIAL:
-			std::cout << "Intern creates " << formName << DEF << std::endl;
-			return new PresidentialPardonForm(formTarget);
-		case UNKNOWN:
-			std::cout << ITALICRED << "Error: unknown form name" << DEF << std::endl;
-			return NULL;
+			return (this->*actions[i])(formTarget);
+		}
 	}
+	
+	std::cout << RED << "Error: formName is not valid" << DEF << std::endl;
+	return (NULL);
 }

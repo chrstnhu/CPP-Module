@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:10:56 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:15:11 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 // Libraries
 # include <iostream>
 # include <string>
-# include <cstdlib>
-# include <fstream> // std::ofstream file
 
 // Headers
 # include "Colors.hpp"
-# include "AForm.hpp"
 # include "Bureaucrat.hpp"
-# include "SchrubberyCreationForm.hpp"
-# include "RobotomyRequestForm.hpp"
-# include "PresidentialPardonForm.hpp"
+# include "Form.hpp"
 
 void printColor(const std::string &msg, const std::string &color);
 void separatorLine();

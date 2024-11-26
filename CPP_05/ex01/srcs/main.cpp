@@ -6,17 +6,18 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:04:09 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:23:45 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Bureaucrat.hpp"
+#include "../includes/Utils.hpp"
 
 void testOutOfGrade();
 void testForm();
 
 int main () {
-	std::cout << YELLOW << "=== Test Bureaucrat ===" << DEF << std::endl;
+	printColor("=== TEST BUREAUCRAT ===", YELLOW);
+
 	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 5);
 	try {
 		std::cout << bureaucrat1 << std::endl;
@@ -26,34 +27,36 @@ int main () {
 		}
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 
-	Bureaucrat *bureaucrat3 = new Bureaucrat("Foo", 148);
+	Bureaucrat *bureaucrat2 = new Bureaucrat("Foo", 148);
 	try {
-		std::cout << *bureaucrat3 << std::endl;
-		bureaucrat3->decrementGrade();
-		std::cout << *bureaucrat3 << std::endl;
-		bureaucrat3->decrementGrade();
+		std::cout << *bureaucrat2 << std::endl;
+		bureaucrat2->decrementGrade();
+		std::cout << *bureaucrat2 << std::endl;
+		bureaucrat2->decrementGrade();
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
-	delete bureaucrat3;
+	delete bureaucrat2;
 
 	testOutOfGrade();
 	testForm();
 }
 
 void testOutOfGrade() {
-	std::cout << std::endl
-		<< YELLOW << "=== Test out of grade ===" << DEF << std::endl;
+	separatorLine();
+	printColor("=== TEST OUT OF GRADE ===", YELLOW);
+
+	printColor("-- Test more", ITALICYELLOW);
 	try {
 		Bureaucrat bureaucratMore("More", 200);
 		std::cout << bureaucratMore << std::endl;
@@ -61,12 +64,13 @@ void testOutOfGrade() {
 		std::cout << bureaucratMore << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 
+	printColor("-- Test less", ITALICYELLOW);
 	try {
 		Bureaucrat bureaucratLess("Less", -5);
 		std::cout << bureaucratLess << std::endl;
@@ -74,31 +78,45 @@ void testOutOfGrade() {
 		std::cout << bureaucratLess << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 }
 
 void testForm () {
-	std::cout << std::endl
-		<< YELLOW << "=== Test Form ===" << DEF << std::endl;
+	separatorLine();
+	printColor("=== TEST FORM === ", YELLOW);
 	
-	Form form1 = Form("Form1", 5, 10);
-	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 4);
+	printColor("-- Test Form 1", ITALICYELLOW);
+	try {
+		Form form1 = Form("Form1", 5, 10);
+		Bureaucrat bureaucrat1 = Bureaucrat("Bob", 4);
 
-	std::cout << form1 << std::endl;
-	std::cout << bureaucrat1 << std::endl;	
-	form1.beSigned(bureaucrat1);
-	bureaucrat1.signForm(bureaucrat1, form1);
+		std::cout << form1 << std::endl;
+		std::cout << bureaucrat1 << std::endl;	
+		form1.beSigned(bureaucrat1);
+		bureaucrat1.signForm(bureaucrat1, form1);
+	}
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception : " << e.what() << DEF << std::endl << std::endl;
+	}
 
+	printColor("-- Test Form 2", ITALICYELLOW);
+	try {
+		Form form2 = Form("Form2", 155, 10);
+		Bureaucrat bureaucrat2 = Bureaucrat("Alice", 10);
 
-	Form form2 = Form("Form2", 9, 10);
-	Bureaucrat bureaucrat2 = Bureaucrat("Alice", 10);
-
-	std::cout << form2 << std::endl;
-	std::cout << bureaucrat2 << std::endl;
-	form2.beSigned(bureaucrat2);
-	bureaucrat2.signForm(bureaucrat2, form2);
+		std::cout << form2 << std::endl;
+		std::cout << bureaucrat2 << std::endl;
+		form2.beSigned(bureaucrat2);
+		bureaucrat2.signForm(bureaucrat2, form2);
+	}
+	catch (Bureaucrat::GradeTooHighException &e) {
+		std::cout << RED << "High : " << e.what() << DEF << std::endl << std::endl;
+	}
+	catch (Bureaucrat::GradeTooLowException &e) {
+		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
+	}
 }

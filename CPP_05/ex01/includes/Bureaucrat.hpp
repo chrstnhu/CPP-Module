@@ -6,17 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:00:57 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:14:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
-# include <string>
-# include "Colors.hpp"
-# include "Form.hpp"
+#include "Utils.hpp"
 
 class Form;
 

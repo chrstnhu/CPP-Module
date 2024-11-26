@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 12:06:41 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:09:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void testForm();
 void testInternForm();
 
 int main () {
-	std::cout << YELLOW << "=== Test Bureaucrat ===" << DEF << std::endl;
-	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 5);
+	printColor("=== TEST BUREAUCRAT ===", YELLOW);
+
+	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 3);
 	try {
 		std::cout << bureaucrat1 << std::endl;
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 3; i++) {
 			bureaucrat1.incrementGrade();
 			std::cout << bureaucrat1 << std::endl;
 		}
@@ -39,8 +40,9 @@ int main () {
 }
 
 void testOutOfGrade() {
-	std::cout << std::endl << YELLOW
-		<< "=== Test out of grade ===" << DEF << std::endl;
+	separatorLine();
+	printColor("=== TEST OUT OF GRADE ===", YELLOW);
+	
 	try {
 		Bureaucrat bureaucratMore("More", 200);
 		std::cout << bureaucratMore << std::endl;
@@ -58,11 +60,10 @@ void testOutOfGrade() {
 void testForm () {
 	srand(time(0));
 	
-	std::cout << std::endl << YELLOW
-		<< "=== Test Form ===" << DEF << std::endl;
+	separatorLine();
+	printColor("=== TEST FORM === ", YELLOW);
 	
-	std::cout << std::endl << YELLOW << "SchrubberyCreationForm" << DEF << std::endl;
-	
+	printColor("-- Test SchrubberyCreationForm", ITALICYELLOW);
 	SchrubberyCreationForm SchrubberyForm("Target1");
 	Bureaucrat bob = Bureaucrat("Bob", 146); // Max (sign 145 | execute 137)
 	std::cout << SchrubberyForm << std::endl
@@ -70,19 +71,15 @@ void testForm () {
 	bob.signForm(bob, SchrubberyForm);
     bob.executeForm(SchrubberyForm);
 
-	std::cout << std::endl << YELLOW << "RobotomyRequestForm" << DEF << std::endl;
-
+	printColor("-- Test RobotomyRequestForm", ITALICYELLOW);
 	RobotomyRequestForm RobotomyForm("Target2");
-	Bureaucrat Alice = Bureaucrat("Alice", 80);  // Max (sign 72 | execute 45)
+	Bureaucrat Alice("Alice", 80);  // Max (sign 72 | execute 45)
 	std::cout << RobotomyForm << std::endl
 			<< Alice << std::endl;
 	Alice.signForm(Alice, RobotomyForm);
 	Alice.executeForm(RobotomyForm);
-	Alice.executeForm(RobotomyForm);
 	
-	
-	std::cout << std::endl << YELLOW << "PresidentialPardonForm" << DEF << std::endl;
-
+	printColor("-- Test PresidentialPardonForm", ITALICYELLOW);
 	PresidentialPardonForm PresidentialForm("Target3"); 
 	Bureaucrat bunny = Bureaucrat("Bunny", 25); // Max sign (25 | execute 5)
 	std::cout << PresidentialForm << std::endl
@@ -92,19 +89,50 @@ void testForm () {
 }
 
 void testInternForm() {
-	std::cout << std::endl << YELLOW
-		<< "=== Test Intern ===" << DEF << std::endl;
+	separatorLine();
+	printColor("== TEST INTERN FORM ==", YELLOW);
 
+	// Subject test
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+	delete rrf;
+	
+	// My test
 	Intern intern;
+	AForm *form1 = intern.makeForm("schrubbery creation", "Target1");
+	AForm *form2 = intern.makeForm("robotomy", "Target2");
+	AForm *form3 = intern.makeForm("presidential pardon", "Target3");
 
-	AForm *form1 = intern.makeForm("Schrubbery", "Target1");
-	AForm *form2 = intern.makeForm("Robotomy", "Target2");
-	AForm *form3 = intern.makeForm("Presidential", "Target3");
+	// Test the forms with bureaucrat
+	Bureaucrat bureaucrat("Bureaucrat", 25);
+	try {
+		printColor("-- Try to sign and execute form1 ", ITALICYELLOW);
+		if (!form1) {
+			throw std::exception();
+		}
+		bureaucrat.signForm(bureaucrat, *form1);
+		bureaucrat.executeForm(*form1);
+		printColor("-- Try to sign and execute form3", ITALICYELLOW);
+		if (!form3) {
+			throw std::exception();
+		}
+		bureaucrat.signForm(bureaucrat, *form3);
+		bureaucrat.executeForm(*form3);
+		printColor("-- Try to sign and execute form2", ITALICYELLOW);
+		if (!form2) {
+			throw std::exception();
+		}
+		bureaucrat.signForm(bureaucrat, *form2);
+		bureaucrat.executeForm(*form2);
+		
 
-	std::cout << &form1 << std::endl
-			<< &form2 << std::endl
-			<< &form3 << std::endl;
-
+	}
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception caught in testInternForm" << DEF << std::endl;
+	}
+	
 	delete form1;
 	delete form2;
 	delete form3;
