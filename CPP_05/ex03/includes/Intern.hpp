@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:21:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 12:02:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,29 @@
 
 # include "Utils.hpp"
 
+enum FormType {
+	SCHRUBBERY,
+	ROBOTOMY,
+	PRESIDENTIAL,
+	UNKNOWN
+};
+
 class Form;
 
 class Intern {
 	protected :
+		AForm *_form;
 		std::string _formName;
 		std::string _formTarget;
 	public :
 		Intern();
 		Intern(std::string const &formName, std::string const &formTarget);
-		Intern(AForm const &other);
+		Intern(Intern const &other);
 		~Intern();
 
 		// Copy assignement operator
 		Intern &operator=(Intern const &other);
-
+		
 		// Functions
 		AForm* makeForm(std::string const &formName, std::string const &formTarget);
 };
