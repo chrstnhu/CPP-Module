@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 18:07:28 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/26 18:54:53 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ static bool isFloat(const std::string &input) {
 	}
 
 	int i = 0;
-	bool hasSign = input[0] == '+' || input[0] == '-';
+	bool hasSign = false;
 	bool hasDot = false;
-	if (hasSign) {
+	if (input[0] == '+' || input[0] == '-') {
+		hasSign = true;
 		i++;
 	}
 	
