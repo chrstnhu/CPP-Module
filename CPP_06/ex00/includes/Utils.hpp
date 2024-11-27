@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 17:43:50 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/27 16:59:18 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <climits> // Integer number handling
 # include <cfloat> // Float number handling
 # include <cstring>
+#include <iomanip>
+#include <limits> 
+#include <sstream> //convert string of digit to int, float, double
 
 // Headers
 # include "Colors.hpp"
