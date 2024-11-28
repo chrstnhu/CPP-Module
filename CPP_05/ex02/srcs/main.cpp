@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 13:45:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 16:45:40 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void testForm () {
 	
 	printColor("-- Test SchrubberyCreationForm", ITALICYELLOW);
 
-	AForm *form1 = new SchrubberyCreationForm("Target1");
+	AForm *form1 = new SchrubberyCreationForm("Garden");
 	try {
 		Bureaucrat bob = Bureaucrat("Bob", 146); // Max (sign 145 | execute 137)
 		std::cout << bob << std::endl;
@@ -110,7 +110,7 @@ void testForm () {
 	separatorLine();
 	printColor("-- Test RobotomyRequestForm", ITALICYELLOW);
 
-	AForm *form2 = new RobotomyRequestForm("Target2");
+	AForm *form2 = new RobotomyRequestForm("Deathlok");
 
 	try {
 		Bureaucrat Alice = Bureaucrat("Alice", 80);  // Max (sign 72 | execute 45)
@@ -133,7 +133,7 @@ void testForm () {
 	separatorLine();
 	printColor("-- Test PresidentialPardonForm", ITALICYELLOW);
 
-	AForm *form3 = new PresidentialPardonForm("Target3");
+	AForm *form3 = new PresidentialPardonForm("Ford Prefect");
 	try {
 		Bureaucrat bunny = Bureaucrat("Bunny", 25); // Max sign (25 | execute 5)
 		std::cout << bunny << std::endl;
