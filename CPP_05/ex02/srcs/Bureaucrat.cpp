@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 17:03:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 13:32:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void Bureaucrat::decrementGrade() {
 	std::cout << " | After Decrement--: " << YELLOW << this->_grade << DEF << std::endl;
 }
 
+// Check if the form can be signed
 void Bureaucrat::signForm(Bureaucrat &bureaucrat, AForm &form) {
     try {
         form.beSigned(bureaucrat);
@@ -98,14 +99,14 @@ void Bureaucrat::signForm(Bureaucrat &bureaucrat, AForm &form) {
     }
 }
 
-
+// Execute the signed form 
 void Bureaucrat::executeForm(AForm const & form) {
 	try {
 		if (!form.getSigned()) {
             throw FormNotSignedException();
         }
-		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 		form.execute(*this);
+		std::cout << BOLDDEF << this->getName() << " executed " << form.getName() << DEF << std::endl << std::endl;
 	}
 	catch (const std::exception &e) {
 		std::cout << RED << "Exception caught in executeForm: "

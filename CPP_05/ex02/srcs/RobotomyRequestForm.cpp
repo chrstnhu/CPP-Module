@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:47:41 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 16:53:55 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 13:32:13 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	int value = rand() % 2;
 	if (value == 0) {
 		std::cout << BOLDGREEN << this->getTarget() 
-			<< " has been robotomized successfully" << DEF << std::endl << std::endl;
+			<< " has been robotomized successfully" << DEF << std::endl;
 	}
 	else {
 		std::cout << BOLDORANGE << this->getTarget()
-			<< " failed to be robotomized" << DEF << std::endl << std::endl;
+			<< " failed to be robotomized" << DEF << std::endl;
 	}
 }

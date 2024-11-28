@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:58:39 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 13:46:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void testOutOfGrade();
 int main () {
 	printColor("=== TEST BUREAUCRAT ===", YELLOW);
 
+	// Test bureaucrat increment ===========================================
+	printColor("-- Test Bureaucrat increment", ITALICYELLOW);
 	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 5);
 	try {
 		std::cout << bureaucrat1 << std::endl;
@@ -37,6 +39,8 @@ int main () {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 
+	// Test bureaucrat decrement ===========================================
+	printColor("-- Test Bureaucrat decrement", ITALICYELLOW);
 	Bureaucrat *bureaucrat3 = new Bureaucrat("Foo", 148);
 	try {
 		std::cout << *bureaucrat3 << std::endl;
@@ -60,6 +64,8 @@ void testOutOfGrade() {
 	separatorLine();
 	printColor("=== TEST OUT OF GRADE ===", YELLOW);
 
+	// Test more than grade 150 ====================================================
+	printColor("-- Test Bureaucrat more than grade 150", ITALICYELLOW);
 	try {
 		Bureaucrat bureaucratMore("More", 200);
 		std::cout << bureaucratMore << std::endl;
@@ -73,6 +79,8 @@ void testOutOfGrade() {
 		std::cout << RED << "Low : " << e.what() << DEF << std::endl << std::endl;
 	}
 
+	// Test less than grade 1 ====================================================
+	printColor("-- Test Bureaucrat less than grade 1", ITALICYELLOW);
 	try {
 		Bureaucrat bureaucratLess("Less", -5);
 		std::cout << bureaucratLess << std::endl;

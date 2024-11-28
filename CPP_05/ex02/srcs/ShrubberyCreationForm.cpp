@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SchrubberyCreationForm.cpp                         :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:27:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 13:32:29 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void SchrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	
 	file.open(fileName.c_str(), std::ios::out);
 	if (!file.is_open()) {
-		std::cerr << "Error: could not open file" << std::endl;
+		std::cout << "Error: could not open file" << std::endl;
 		return ;
 	}
 	
@@ -82,6 +82,6 @@ void SchrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	file.close();
 
 	std::cout << "Go watch the beautiful ASCII tree art in "
-		<< fileName << DEF << std::endl << std::endl;
+		<< fileName << DEF << std::endl;
 }
 

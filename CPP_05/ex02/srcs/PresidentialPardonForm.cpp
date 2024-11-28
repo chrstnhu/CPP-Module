@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:49:57 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 16:53:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 13:32:18 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 		throw GradeTooLowException();
 	}
 	std::cout << BOLDGREEN << this->getTarget()
-		<< " has been pardoned by Zaphod Beeblebrox." << DEF << std::endl << std::endl;
+		<< " has been pardoned by Zaphod Beeblebrox." << DEF << std::endl;
 }

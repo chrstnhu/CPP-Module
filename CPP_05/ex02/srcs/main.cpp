@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:59:22 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 13:45:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void testForm();
 
 int main () {
 	printColor("=== TEST BUREAUCRAT ===", YELLOW);
+	
+	// Test bureaucrat increment ===========================================
+	printColor("-- Test Bureaucrat increment", ITALICYELLOW);
 	Bureaucrat bureaucrat1 = Bureaucrat("Bob", 5);
 	try {
 		std::cout << bureaucrat1 << std::endl;
@@ -29,6 +32,8 @@ int main () {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 
+	// Test bureaucrat decrement ===========================================
+	printColor("-- Test Bureaucrat decrement", ITALICYELLOW);
 	Bureaucrat *bureaucrat3 = new Bureaucrat("Foo", 148);
 	try {
 		std::cout << *bureaucrat3 << std::endl;
@@ -49,6 +54,8 @@ void testOutOfGrade() {
 	separatorLine();
 	printColor("=== TEST OUT OF GRADE ===", YELLOW);
 
+	// Test more than grade 150 ====================================================
+	printColor("-- Test Bureaucrat more than grade 150", ITALICYELLOW);
 	try {
 		Bureaucrat bureaucratMore("More", 200);
 		std::cout << bureaucratMore << std::endl;
@@ -59,6 +66,8 @@ void testOutOfGrade() {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
 	}
 
+	// Test less than grade 1 ====================================================
+	printColor("-- Test Bureaucrat less than grade 1", ITALICYELLOW);
 	try {
 		Bureaucrat bureaucratLess("Less", -5);
 		std::cout << bureaucratLess << std::endl;
@@ -73,52 +82,74 @@ void testOutOfGrade() {
 void testForm () {
 	srand(time(0));
 
+	// Schrubbery Creation Form ================================================================
 	separatorLine();
 	printColor("=== TEST FORM === ", YELLOW);
 	
 	printColor("-- Test SchrubberyCreationForm", ITALICYELLOW);
-	SchrubberyCreationForm SchrubberyForm("Target1");
-	Bureaucrat bob = Bureaucrat("Bob", 146); // Max (sign 145 | execute 137)
-	std::cout << SchrubberyForm << std::endl
-			<< bob << std::endl;	
-	bob.signForm(bob, SchrubberyForm);
-    bob.executeForm(SchrubberyForm);
 
-	Bureaucrat bureaucrat1 = Bureaucrat("Bureaucrat1", 130); // Max (sign 145 | execute 137)
-	std::cout << SchrubberyForm << std::endl
-			<< bureaucrat1 << std::endl;	
-	bureaucrat1.signForm(bureaucrat1, SchrubberyForm);
-    bureaucrat1.executeForm(SchrubberyForm);
+	AForm *form1 = new SchrubberyCreationForm("Target1");
+	try {
+		Bureaucrat bob = Bureaucrat("Bob", 146); // Max (sign 145 | execute 137)
+		std::cout << bob << std::endl;
+		
+		printColor("Bob try to sign and execute directly the form", ITALICYELLOW);
+		form1->beSigned(bob);
+		form1->execute(bob);
+		
+		printColor("Bob try to sign and execute with signform and executeForm", ITALICYELLOW);
+		bob.signForm(bob, *form1);
+		bob.executeForm(*form1);
+	}
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception caught in main : " << e.what() << DEF << std::endl;
+	}
 
+
+	// Robotomy Request Form================================================================
 	separatorLine();
 	printColor("-- Test RobotomyRequestForm", ITALICYELLOW);
-	RobotomyRequestForm RobotomyForm("Target2");
-	Bureaucrat Alice = Bureaucrat("Alice", 80);  // Max (sign 72 | execute 45)
-	std::cout << RobotomyForm << std::endl
-			<< Alice << std::endl;
-	Alice.signForm(Alice, RobotomyForm);
-	Alice.executeForm(RobotomyForm);
-	Alice.executeForm(RobotomyForm);
 
-	Bureaucrat bureaucrat2 = Bureaucrat("Bureaucrat2", 30);  // Max (sign 72 | execute 45)
-	std::cout << RobotomyForm << std::endl
-			<< bureaucrat2 << std::endl;
-	bureaucrat2.signForm(bureaucrat2, RobotomyForm);
-	bureaucrat2.executeForm(RobotomyForm);
-	bureaucrat2.executeForm(RobotomyForm);
-	
+	AForm *form2 = new RobotomyRequestForm("Target2");
+
+	try {
+		Bureaucrat Alice = Bureaucrat("Alice", 80);  // Max (sign 72 | execute 45)
+		std::cout << Alice << std::endl;
+		
+		printColor("Alice try to sign and execute form1", ITALICYELLOW);
+		Alice.signForm(Alice, *form1);
+		Alice.executeForm(*form1);
+		
+		printColor("Alice try to sign and execute form2", ITALICYELLOW);
+		Alice.signForm(Alice, *form2);
+		Alice.executeForm(*form2);
+	}
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception caught in main : " << e.what() << DEF << std::endl;
+	}
+
+
+	// Presidential Pardon Form ================================================================
 	separatorLine();
 	printColor("-- Test PresidentialPardonForm", ITALICYELLOW);
-	PresidentialPardonForm PresidentialForm("Target3"); 
-	Bureaucrat bunny = Bureaucrat("Bunny", 25); // Max sign (25 | execute 5)
-	std::cout << PresidentialForm << std::endl
-			<< bunny << std::endl;
-	bunny.signForm(bunny, PresidentialForm);
-	bunny.executeForm(PresidentialForm);
 
-	Bureaucrat bureaucrat3 = Bureaucrat("Bureaucrat3", 1); // Max sign (25 | execute 5)
-	std::cout << PresidentialForm << std::endl
-			<< bureaucrat3 << std::endl;
-	bureaucrat3.signForm(bureaucrat3, PresidentialForm);
-	bureaucrat3.executeForm(PresidentialForm);
+	AForm *form3 = new PresidentialPardonForm("Target3");
+	try {
+		Bureaucrat bunny = Bureaucrat("Bunny", 25); // Max sign (25 | execute 5)
+		std::cout << bunny << std::endl;
+		
+		printColor("Bunny try to execute form1", ITALICYELLOW);
+		bunny.executeForm(*form3);
+
+		printColor("Bunny try to sign and execute form1", ITALICYELLOW);
+		bunny.signForm(bunny, *form3);
+		bunny.executeForm(*form3);
+	}
+	catch (const std::exception &e) {
+		std::cout << RED << "Exception caught in main : " << e.what() << DEF << std::endl;
+	}
+
+	delete form1;
+	delete form2;
+	delete form3;
 }
