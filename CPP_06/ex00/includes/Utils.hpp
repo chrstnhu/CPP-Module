@@ -6,12 +6,22 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/27 16:59:18 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 16:07:44 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_HPP
 # define UTILS_HPP
+
+// Limits
+# define INT_MIN_VAL std::numeric_limits<int>::min()
+# define INT_MAX_VAL std::numeric_limits<int>::max()
+
+# define FLOAT_MIN_VAL std::numeric_limits<float>::min()
+# define FLOAT_MAX_VAL std::numeric_limits<float>::max()
+
+# define DOUBLE_MIN_VAL std::numeric_limits<double>::min()
+# define DOUBLE_MAX_VAL std::numeric_limits<double>::max()
 
 // Libraries
 # include <iostream>
@@ -29,7 +39,7 @@
 # include "Colors.hpp"
 # include "ScalarConverter.hpp"
 
-void printColor(const std::string &msg, const std::string &color);
+void printColor(const std::string &msg, const std::string &color, int needEndl);
 void separatorLine();
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:13:43 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/27 14:06:27 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/28 15:54:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 class ScalarConverter {
 	public :  // Change to private
-
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
+		~ScalarConverter();
 		
 		//Copy assignement operator
 		ScalarConverter &operator=(const ScalarConverter &src);
@@ -34,13 +36,6 @@ class ScalarConverter {
 		
 	public :
 		static void convert(const std::string &input);
-
-
-		ScalarConverter(); // change to private
-		ScalarConverter(const ScalarConverter &other);
-		~ScalarConverter();
-				
-
 };
 
 #endif

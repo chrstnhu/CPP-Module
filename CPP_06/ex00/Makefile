@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 16:00:13 by chrhu             #+#    #+#              #
-#    Updated: 2024/11/26 17:37:42 by chrhu            ###   ########.fr        #
+#    Updated: 2024/11/28 15:45:36 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,20 @@ OBJ_DIR = obj
 
 # Srcs
 SRCS_PATH = srcs
-SRCS = main.cpp Utils.cpp ScalarConverter.cpp Char.cpp Int.cpp Float.cpp Double.cpp
+# SRCS = main.cpp Utils.cpp ScalarConverter.cpp Char.cpp Int.cpp Float.cpp Double.cpp
+
+#Char
+# SRCS = Utils.cpp Char.cpp
+
+# Int
+SRCS = Utils.cpp Int.cpp
+
+# Float
+# SRCS = Utils.cpp Float.cpp
+
+# Double
+# SRCS = Utils.cpp Double.cpp
+
 HEADERS = includes
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
@@ -40,11 +53,12 @@ all : $(NAME)
 $(NAME) : $(OBJS) $(HEADERS)/*.hpp
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-clean : @rm -rf $(OBJ_DIR)
+clean :
 	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 
