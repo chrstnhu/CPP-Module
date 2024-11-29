@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 16:09:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 13:31:10 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 # include <sstream>
 
 bool ScalarConverter::isChar(const std::string &input) {
-	if (input.empty())
-		return false;
-	
-	int len = input.length();
-	
-	for (int i = 0; i < len; i++) {
-		if (!std::isprint(input[i])) {
-			return false;
+	if (input.size() == 1 && std::isprint(input[0]) && !std::isdigit(input[0])) {
+		return true;
+	}
+	if (input.size() == 3 && input[0] == '\'' && input[2] == '\'') {
+		if (std::isprint(input[1])) {
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 void ScalarConverter::convertChar(const std::string &input) {
-	char c = static_cast<char>(input[0]);
+	char c = static_cast<char>(input[1]);
+	if (input.size() == 1) {
+		c = static_cast<char>(input[0]);
+	}
 	int i = static_cast<int>(c);
 	float f = static_cast<float>(c);
 	double d = static_cast<double>(c);
 	
-	if (input.length() != 1) {
-		printColor("char: impossible", RED, 0);
-	} else if (std::isprint(c)) {
+	if (std::isprint(c)) {
         std::cout << "char: '" << c << "'" << std::endl;
     } else {
 		printColor("char: Non displayable", RED, 0);
@@ -45,7 +44,7 @@ void ScalarConverter::convertChar(const std::string &input) {
 	std::cout << "double: " << d << std::endl;
 }
 
-int main() {
+/* int main() {
 	printColor("==============TEST CHAR=============\n", RED, 1);
 
 	printColor("Test case 1: '42'", YELLOW, 1);
@@ -66,10 +65,10 @@ int main() {
 	printColor("Test case 6: '127'", YELLOW, 1);
 	ScalarConverter::convertChar("127"); // Example with printable char
 
-	printColor("Test case 7: 'z'", YELLOW, 1);
-	ScalarConverter::convertChar("z"); // Example with printable char
+	printColor("Test case 7: ' '", YELLOW, 1);
+	ScalarConverter::convertChar("' '"); // Example with printable char
 
-	printColor("Test case 8: ' '", YELLOW, 1);
+	printColor("Test case 8: A", YELLOW, 1);
 	ScalarConverter::convertChar("A"); // Example with printable char
     return 0;
-}
+} */

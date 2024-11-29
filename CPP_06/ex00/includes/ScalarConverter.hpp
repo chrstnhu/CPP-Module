@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:13:43 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 15:54:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 14:23:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "Utils.hpp"
 
 class ScalarConverter {
-	public :  // Change to private
+	private :  // Change to private
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		~ScalarConverter();
