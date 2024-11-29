@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 14:23:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 16:50:46 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 	}
 	return (*this);
 }
+
 
 void ScalarConverter::convert(const std::string &input) {
 	if (isChar(input)) {

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 15:23:26 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 16:42:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,25 @@
 } */
 
 bool ScalarConverter::isDouble(const std::string &input) {
-	if (input.compare("-inf") == 0 || input.compare("inf") == 0 || input.compare("nan") == 0) {
+	// Check if the input is a special value
+	if (input == "-inf" || input == "inf" || input == "nan") {
 		return true;
 	}
+	// Check if the input is a float
 	if (std::strchr(input.c_str(), '.') == NULL
-		|| input[input.size() - 1] == 'f' || input[input.size() - 1] == 'F') {
+		|| input[input.size() - 1] == 'f'
+		|| input[input.size() - 1] == 'F') {
 		return false;
 	}
 
 	size_t i = 0;
-	
+	bool hasDot = false;
+
 	// Check if there is a sign
 	if (input[0] == '+' || input[0] == '-') {
 		i++;
 	}
-
-    bool hasDot = false;
+	// Check if there is double
     for (; i < input.size(); i++) {
         if (input[i] == '.') {
             if (hasDot) {
@@ -79,25 +82,13 @@ bool ScalarConverter::isDouble(const std::string &input) {
 	return true;
 }
 
-//**********************************************************************
-bool printPseudoLitteral(std::string input, std::string type, int isDouble) {
-	if (input.compare("nan") == 0 || input.compare("-inf") == 0 || input.compare("inf") == 0) {
-		if (isDouble) {
-			printColor(type + ": " + input, DEF, 0);
-			return true;
-		}
-		printColor(type + ": " + input + "f", DEF, 0);
-		return true;
-	}
-	return false;
-}
-
-
-static void printChar(std::string input, float x) {
-	if (input.compare("nan") == 0 || input.compare("-inf") == 0 || input.compare("inf") == 0) {
-		printColor("char: impossible", RED, 0);
-		return ;
-	}
+static void printChar(double x) {
+	// Check if the input is a special value
+    if (x != x || x == std::numeric_limits<double>::infinity()
+		|| x == -std::numeric_limits<double>::infinity()) {
+        printColor("char: impossible", RED, 0);
+        return;
+    }
 	if (x >= CHAR_MIN && x <= CHAR_MAX) {
 		char c = static_cast<char>(x);
 		if (std::isprint(c)) {
@@ -112,11 +103,13 @@ static void printChar(std::string input, float x) {
 	printColor("char: impossible", RED, 0);
 }
 
-static void printInt(std::string input, float x) {
-	if (input.compare("nan") == 0 || input.compare("-inf") == 0 || input.compare("inf") == 0) {
-		printColor("int: impossible", RED, 0);
-		return ;
-	}
+static void printInt(double x) {
+	// Check if the input is a special value
+    if (x != x || x == std::numeric_limits<double>::infinity()
+		|| x == -std::numeric_limits<double>::infinity()) {
+        printColor("int: impossible", RED, 0);
+        return;
+    }
 	int i = static_cast<int>(x);
 	if (i >= INT_MIN && i <= INT_MAX) {
 		std::cout << "int: " << i << std::endl;
@@ -125,41 +118,79 @@ static void printInt(std::string input, float x) {
 	printColor("int: impossible", RED, 0);
 }
 
-static void printFloat(std::string input, float x) {
-	if (printPseudoLitteral(input, "float", 0)) {
-		return ;
-	}
+static void printFloat(double x) {
+	// Check if the input is a special value
+    if (x != x) {  // x est NaN
+        printColor("float: nanf", DEF, 0);
+        return;
+    }
+
+    // Check if the value is infinity or -infinity
+    if (x == std::numeric_limits<double>::infinity()) {
+        printColor("float: inff", DEF, 0);
+        return;
+    }
+    if (x == -std::numeric_limits<double>::infinity()) {
+        printColor("float: -inff", DEF, 0);
+        return;
+    }
+
 	float f = static_cast<float>(x);
 	if (f >= -FLT_MAX && f <= FLT_MAX) {
-		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+		std::cout << "float: " << std::fixed
+			<< std::setprecision(1) << f << "f" << std::endl;
 		return ;
 	}
 	printColor("float: impossible", RED, 0);
 }
 
-static void printDouble(std::string input, float x) {
-	if (printPseudoLitteral(input, "double", 1)) {
-		return ;
-	}
-	double d = static_cast<double>(x);
-	if (d >= -DBL_MAX && d <= DBL_MAX) {
-		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+static void printDouble(double x) {
+	// Check if the input is a special value
+
+	if (x != x) {
+        printColor("double: nan", DEF, 0);
+        return;
+    }
+
+	// Check if the value is infinity or -infinity
+    if (x == std::numeric_limits<double>::infinity()) {
+        printColor("double: inf", DEF, 0);
+        return;
+    }
+    if (x == -std::numeric_limits<double>::infinity()) {
+        printColor("double: -inf", DEF, 0);
+        return;
+    }
+	if (x >= -DBL_MAX && x <= DBL_MAX) {
+		std::cout << "double: " << std::fixed
+			<< std::setprecision(1) << x << std::endl;
 		return ;
 	}
 	printColor("double: impossible", RED, 0);
 }
 
+
 void ScalarConverter::convertDouble(const std::string &input) {
-	std::stringstream ss;
-	ss << input;
+    double x = 0.0;
 
-	double x = 0;
-	ss >> x;
-
-	printChar(input, x);
-	printInt(input, x);
-	printFloat(input, x);
-	printDouble(input, x);
+	if (input == "nan") {
+        x = std::numeric_limits<double>::quiet_NaN();
+    }
+    else if (input == "inf") {
+        x = std::numeric_limits<double>::infinity();
+    }
+    else if (input == "-inf") {
+        x = -std::numeric_limits<double>::infinity();
+    }
+	else {
+		std::stringstream ss;
+		ss << input;
+		ss >> x;
+	}
+	printChar(x);
+	printInt(x);
+	printFloat(x);
+	printDouble(x);
 }
 
 /*
