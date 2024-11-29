@@ -6,20 +6,19 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 16:23:28 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 17:22:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Utils.hpp"
 
 // FLT_MIN and FLT_MAX are the minimum and maximum values of a float
-bool ScalarConverter::isFloat(const std::string &input)
-{
+bool ScalarConverter::isFloat(const std::string &input) {
 	if (input == "-inff" || input == "inff" || input == "nanf") {
 		return true;
 	}
 	if (input.find('.') == std::string::npos
-		|| (input == ".f" || input == ".F")) {
+		|| input == ".f" || input == ".F") {
 		return false;
 	}
 
@@ -52,53 +51,47 @@ bool ScalarConverter::isFloat(const std::string &input)
 	return true;
 }
 
-void printChar(float x)
-{
-    if (x != x || x == std::numeric_limits<float>::infinity()
+void printChar(float x) {
+	// Check if the input is in range or a special value
+    if (x >= CHAR_MIN || x <= CHAR_MAX
+		|| x != x || x == std::numeric_limits<float>::infinity()
 		|| x == -std::numeric_limits<float>::infinity()) {
         printColor("char: impossible", RED, 0);
         return;
     }
 	
-	if (x >= CHAR_MIN && x <= CHAR_MAX) {
-		char c = static_cast<char>(x);
-		if (std::isprint(c)) {
-			std::cout << "char: '" << c << "'" << std::endl;
-		}
-		else {
-			printColor("char: Non displayable", RED, 0);
-		}
+	char c = static_cast<char>(x);
+	if (std::isprint(c)) {
+		std::cout << "char: '" << c << "'" << std::endl;
 	}
 	else {
-		printColor("char: impossible", RED, 0);
+		printColor("char: Non displayable", RED, 0);
 	}
 }
 
-void printInt(float x)
-{
-    if (x != x || x == std::numeric_limits<float>::infinity()
-		|| x == -std::numeric_limits<float>::infinity()) {
+void printInt(float x) {
+	// Check if the input is a special value
+    if (x != x || x == std::numeric_limits<float>::infinity() || x == -std::numeric_limits<float>::infinity()) {
+        printColor("int: impossible", RED, 0);
+        return;
+    }
+	// Check if the value is within the range of an int
+    if (x < static_cast<float>(INT_MIN) || x > static_cast<float>(INT_MAX)) {
         printColor("int: impossible", RED, 0);
         return;
     }
 
-	int i = static_cast<int>(x);
-	if (i >= INT_MIN && i <= INT_MAX) {
-		std::cout << "int: " << i << std::endl;
-	}
-	else {
-		printColor("int: impossible", RED, 0);
-	}
+    int i = static_cast<int>(x);
+    std::cout << "int: " << i << std::endl;
 }
 
-void printFloat(float x)
-{
+
+void printFloat(float x) {
 	// Check if x is NaN (like 0.0f/0.0f)
     if (x != x) {  // x est NaN
         printColor("float: nanf", DEF, 0);
         return;
     }
-
     // Check if the value is infinity or -infinity
     if (x == std::numeric_limits<float>::infinity()) {
         printColor("float: inff", DEF, 0);
@@ -110,24 +103,21 @@ void printFloat(float x)
     }
 
 	// Check if the value is within the range of a float
-	float f = static_cast<float>(x);
-	if (f >= -FLT_MAX && f <= FLT_MAX) {
+	if (x >= -FLT_MAX && x <= FLT_MAX) {
 		std::cout << "float: " << std::fixed
-			<< std::setprecision(1) << f << "f" << std::endl;
+			<< std::setprecision(1) << x << "f" << std::endl;
 	}
 	else {
 		printColor("float: impossible", RED, 0);
 	}
 }
 
-void printDouble(float x)
-{
+void printDouble(float x) {
 	// Check if x is NaN (like 0.0f/0.0f)
 	if (x != x) {
         printColor("double: nan", DEF, 0);
         return;
     }
-
 	// Check if the value is infinity or -infinity
     if (x == std::numeric_limits<float>::infinity()) {
         printColor("double: inf", DEF, 0);
@@ -149,10 +139,9 @@ void printDouble(float x)
 	}
 }
 
-void ScalarConverter::convertFloat(const std::string &input)
-{
+void ScalarConverter::convertFloat(const std::string &input) {
 	float x = static_cast<float>(std::atof(input.c_str()));
-
+	
 	printChar(x);
 	printInt(x);
 	printFloat(x);

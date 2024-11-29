@@ -6,47 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 16:42:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 17:22:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Utils.hpp"
-
-/* bool ScalarConverter::isDouble(const std::string &input) {
-	if (input.empty() || std::strchr(input.c_str(), '.') == NULL) {
-		return false;
-	}
-
-	int i = 0;
-	bool hasDot = false;
-	if (input[0] == '+' || input[0] == '-') {
-		i++;
-	}
-
-	// Check if there is a dot at the beginning
-	if (input[i] == '.') {
-		hasDot = true;
-        i++;
-        if (i == input.length() || !std::isdigit(input[i])) {
-            return false;
-        }
-    }
-
-	// Check if is a float
-	for (; i < input.length(); i++) {
-		if (input[i] == '.') {
-			if (hasDot) {
-                return false;
-            }
-			hasDot = true;
-		}
-		else if (!std::isdigit(input[i])) {
-			return false;
-		}
-	}
-
-	return true;
-} */
 
 bool ScalarConverter::isDouble(const std::string &input) {
 	// Check if the input is a special value
@@ -83,24 +47,22 @@ bool ScalarConverter::isDouble(const std::string &input) {
 }
 
 static void printChar(double x) {
-	// Check if the input is a special value
-    if (x != x || x == std::numeric_limits<double>::infinity()
+	// Check if the input is in range or a special value
+    if (x >= CHAR_MIN || x <= CHAR_MAX 
+	|| x != x || x == std::numeric_limits<double>::infinity()
 		|| x == -std::numeric_limits<double>::infinity()) {
         printColor("char: impossible", RED, 0);
         return;
     }
-	if (x >= CHAR_MIN && x <= CHAR_MAX) {
-		char c = static_cast<char>(x);
-		if (std::isprint(c)) {
-			std::cout << "char: '" << c << "'" << std::endl;
-			return ;
-		}
-		else {
-			printColor("char: Non displayable", RED, 0);
-			return ;
-		}
+	char c = static_cast<char>(x);
+	if (std::isprint(c)) {
+		std::cout << "char: '" << c << "'" << std::endl;
+		return ;
 	}
-	printColor("char: impossible", RED, 0);
+	else {
+		printColor("char: Non displayable", RED, 0);
+		return ;
+	}
 }
 
 static void printInt(double x) {
@@ -110,12 +72,15 @@ static void printInt(double x) {
         printColor("int: impossible", RED, 0);
         return;
     }
+	// Check if the value is within the range of an int
+    if (x < static_cast<float>(INT_MIN) || x > static_cast<float>(INT_MAX)) {
+        printColor("int: impossible", RED, 0);
+        return;
+    }
+
+	
 	int i = static_cast<int>(x);
-	if (i >= INT_MIN && i <= INT_MAX) {
-		std::cout << "int: " << i << std::endl;
-		return ;
-	}
-	printColor("int: impossible", RED, 0);
+	std::cout << "int: " << i << std::endl;
 }
 
 static void printFloat(double x) {
@@ -124,7 +89,6 @@ static void printFloat(double x) {
         printColor("float: nanf", DEF, 0);
         return;
     }
-
     // Check if the value is infinity or -infinity
     if (x == std::numeric_limits<double>::infinity()) {
         printColor("float: inff", DEF, 0);
@@ -136,6 +100,7 @@ static void printFloat(double x) {
     }
 
 	float f = static_cast<float>(x);
+	// Check if the value is within the range of a float
 	if (f >= -FLT_MAX && f <= FLT_MAX) {
 		std::cout << "float: " << std::fixed
 			<< std::setprecision(1) << f << "f" << std::endl;
@@ -146,12 +111,10 @@ static void printFloat(double x) {
 
 static void printDouble(double x) {
 	// Check if the input is a special value
-
 	if (x != x) {
         printColor("double: nan", DEF, 0);
         return;
     }
-
 	// Check if the value is infinity or -infinity
     if (x == std::numeric_limits<double>::infinity()) {
         printColor("double: inf", DEF, 0);
@@ -161,6 +124,8 @@ static void printDouble(double x) {
         printColor("double: -inf", DEF, 0);
         return;
     }
+
+	// Check if the value is within the range of a double
 	if (x >= -DBL_MAX && x <= DBL_MAX) {
 		std::cout << "double: " << std::fixed
 			<< std::setprecision(1) << x << std::endl;

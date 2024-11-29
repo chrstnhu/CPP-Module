@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 13:31:10 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/11/29 17:22:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void ScalarConverter::convertChar(const std::string &input) {
 	if (input.size() == 1) {
 		c = static_cast<char>(input[0]);
 	}
+	
 	int i = static_cast<int>(c);
 	float f = static_cast<float>(c);
 	double d = static_cast<double>(c);
