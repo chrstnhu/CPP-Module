@@ -17,19 +17,7 @@ OBJ_DIR = obj
 
 # Srcs
 SRCS_PATH = srcs
-SRCS = main.cpp Utils.cpp ScalarConverter.cpp Char.cpp Int.cpp Float1.cpp Double.cpp
-
-#Char
-# SRCS = Utils.cpp Char.cpp
-
-# Int
-# SRCS = Utils.cpp Int.cpp
-
-# Float
-# SRCS = Utils.cpp Float.cpp
-
-# Double
-# SRCS = Utils.cpp Double.cpp
+SRCS = main.cpp Utils.cpp ScalarConverter.cpp Char.cpp Int.cpp Float.cpp Double.cpp
 
 HEADERS = includes
 
