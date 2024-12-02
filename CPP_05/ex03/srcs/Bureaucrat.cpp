@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 13:41:02 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/02 13:58:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,6 @@ void Bureaucrat::signForm(Bureaucrat &bureaucrat, AForm &form) {
 
 void Bureaucrat::executeForm(AForm const &form) {
 	try {
-		if (!form.getSigned()) {
-            throw FormNotSignedException();
-        }
 		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 		form.execute(*this);
 	}
