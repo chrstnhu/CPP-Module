@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/02 15:54:46 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/02 16:04:04 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void testForm () {
 	AForm *form2 = new RobotomyRequestForm("Deathlok");
 
 	try {
-		Bureaucrat Alice = Bureaucrat("Alice", 40);  // Max (sign 72 | execute 45)
+		Bureaucrat Alice = Bureaucrat("Alice", 80);  // Max (sign 72 | execute 45)
 		std::cout << Alice << std::endl;
 		
 		printColor("Alice try to sign and execute form1", ITALICYELLOW);
@@ -135,14 +135,14 @@ void testForm () {
 
 	AForm *form3 = new PresidentialPardonForm("Ford Prefect");
 	try {
-		Bureaucrat bunny = Bureaucrat("Bunny", 10); // Max sign (25 | execute 5)
+		Bureaucrat bunny = Bureaucrat("Bunny", 25); // Max sign (25 | execute 5)
 		std::cout << bunny << std::endl;
 		
 		printColor("Bunny try to execute form1", ITALICYELLOW);
 		bunny.executeForm(*form3);
 
 		printColor("Bunny try to sign and execute form1", ITALICYELLOW);
-		// bunny.signForm(bunny, *form3);
+		bunny.signForm(bunny, *form3);
 		bunny.executeForm(*form3);
 	}
 	catch (const std::exception &e) {
