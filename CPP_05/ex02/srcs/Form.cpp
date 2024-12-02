@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 13:25:05 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/02 13:57:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,6 @@ void AForm::beSigned(Bureaucrat &bureaucrat) {
 		throw GradeTooLowException();
 	}
 	this->_isSigned = true;
-}
-
-// Execute form
-void AForm::execute(Bureaucrat const &executor) const {
-	std::cout << "Executing form of " << executor.getName() << std::endl;
 }
 
 // Overload << operator
