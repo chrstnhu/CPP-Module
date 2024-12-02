@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 16:46:51 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/02 15:57:24 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ void testForm () {
 
 	AForm *form1 = new SchrubberyCreationForm("Garden");
 	try {
-		Bureaucrat bob = Bureaucrat("Bob", 146); // Max (sign 145 | execute 137)
+		Bureaucrat bob = Bureaucrat("Bob", 145); // Max (sign 145 | execute 137)
 		std::cout << bob << std::endl;
 		
-		printColor("Bob try to sign and execute directly the form", ITALICYELLOW);
+		printColor("The form need to be signed and executed by the bureaucrat", ITALICYELLOW);
 		form1->beSigned(bob);
 		form1->execute(bob);
 		
-		printColor("Bob try to sign and execute with signform and executeForm", ITALICYELLOW);
+		printColor("Bureaucrat bob try to signform and executeForm", ITALICYELLOW);
 		bob.signForm(bob, *form1);
 		bob.executeForm(*form1);
 	}
@@ -193,8 +193,6 @@ void testInternForm() {
 		}
 		bureaucrat.signForm(bureaucrat, *form2);
 		bureaucrat.executeForm(*form2);
-		
-
 	}
 	catch (const std::exception &e) {
 		std::cout << RED << "Exception : " << e.what() << DEF << std::endl;
