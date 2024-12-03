@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 15:33:49 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 16:51:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,17 @@ void printInt(float x) {
 
 // Convert a float to a double
 void printDouble(float x) {
-	double d = static_cast<double>(x);
-
 	// Check if the value is within the range of a double
-	if (d < -DBL_MAX || d > DBL_MAX) {
+	if (x < static_cast<float>(-DBL_MAX) || x > static_cast<float>(DBL_MAX)) {
 		printColor("double: impossible", RED, 0);
 		return ;
 	}
+
+	double d = static_cast<double>(x);
 	std::cout << "double: " << std::fixed
 		<< std::setprecision(1) << d << std::endl;
 }
+
 
 void ScalarConverter::convertFloat(const std::string &input) {
 	float x = static_cast<float>(std::atof(input.c_str()));

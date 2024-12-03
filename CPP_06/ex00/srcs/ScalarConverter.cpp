@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 15:06:03 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 17:32:11 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,49 +35,25 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 }
 
 bool ScalarConverter::isSpecialValues(const std::string &input) {
-	if (input == "-inff" || input == "inff" || input == "nanf") {
+	if (input == "-inff" || input == "+inff" || input == "nanf") {
 		return true;
 	}
-	if (input == "-inf" || input == "inf" || input == "nan") {
+	if (input == "-inf" || input == "+inf" || input == "nan") {
 		return true;
 	}
 	return false;
 }
 
 void ScalarConverter::handleSpecialValues(const std::string &input) {
-	float f = static_cast<float>(std::atof(input.c_str()));
-    double d = 0.0;
-
-	std::stringstream ss;
-	
-	ss << input;
-	ss >> d;
-	
-	if (input == "nan" || input == "nanf" 
-		|| f != f || d != d) {
-        printColor("int: impossible", RED, 0);
-        printColor("char: impossible", RED, 0);
-        printColor("float: nanf", DEF, 0);
-        printColor("double: nan", DEF, 0);
-
-    }
-    if (input == "inf" || input == "inff" 
-		|| f == std::numeric_limits<float>::infinity()
-		|| d == std::numeric_limits<double>::infinity()) {
-        printColor("char: impossible", RED, 0);
-        printColor("int: impossible", RED, 0);
-        printColor("float: inff", DEF, 0);
-        printColor("double: inf", DEF, 0);
-
-    }
-    if (input == "-inf" || input == "-inff" 
-		|| f == -std::numeric_limits<float>::infinity()
-		|| d == -std::numeric_limits<double>::infinity()) {
-        printColor("char: impossible", RED, 0);
-        printColor("int: impossible", RED, 0);
-        printColor("float: -inff", DEF, 0);
-        printColor("double: -inf", DEF, 0);
-    }
+	printColor("char: impossible", RED, 0);
+	printColor("int: impossible", RED, 0);
+	if (input == "-inff" || input == "+inff" || input == "nanf") {
+		std::cout << "float: " << input << std::endl;
+		std::cout <<  "double: " << input.substr(0, input.size() - 1) <<  std::endl;
+	} else {
+		std::cout << "float: " << input << "f" << std::endl;
+		std::cout << "double: " << input.substr(0, input.size()) << std::endl;
+	}
 }
 
 void ScalarConverter::convert(const std::string &input) {
@@ -97,9 +73,6 @@ void ScalarConverter::convert(const std::string &input) {
 		convertDouble(input);
 	}
 	else {
-		printColor("char: impossible", RED, 0);
-        printColor("int: impossible", RED, 0);
-		printColor("float: impossible", RED, 0);
-        printColor("double: impossible", RED, 0);
+		printColor("Please enter a valid CHAR, INT, FLOAT, DOUBLE", RED, 0);
 	}
 }

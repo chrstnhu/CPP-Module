@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 15:34:53 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 16:51:05 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void printChar(double x) {
 // Convert a double to an int
 static void printInt(double x) {
 	// Check if the value is within the range of an int
-    if (x < static_cast<float>(INT_MIN) || x > static_cast<float>(INT_MAX)) {
+    if (x < static_cast<double>(INT_MIN) || x > static_cast<double>(INT_MAX)) {
         printColor("int: impossible", RED, 0);
 		return ;
     }
@@ -74,13 +74,13 @@ static void printInt(double x) {
 
 // Convert a double to a float
 static void printFloat(double x) {
-	float f = static_cast<float>(x);
-	
 	// Check if the value is within the range of a float
-	if (f < -FLT_MAX || f > FLT_MAX) {
+	if (x < static_cast<double>(-FLT_MAX) || x > static_cast<double>(FLT_MAX)) {
 		printColor("float: impossible", RED, 0);
 		return ;
 	}
+	
+	float f = static_cast<float>(x);
 	std::cout << "float: " << std::fixed
 		<< std::setprecision(1) << f << "f" << std::endl;
 }
