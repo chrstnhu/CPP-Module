@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 15:00:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 15:06:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ void ScalarConverter::convert(const std::string &input) {
 		convertDouble(input);
 	}
 	else {
-		printColor("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible", RED, 0);
+		printColor("char: impossible", RED, 0);
+        printColor("int: impossible", RED, 0);
+		printColor("float: impossible", RED, 0);
+        printColor("double: impossible", RED, 0);
 	}
 }

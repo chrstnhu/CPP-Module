@@ -6,12 +6,13 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 15:03:14 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 15:34:53 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Utils.hpp"
 
+// Check if the input is a double
 bool ScalarConverter::isDouble(const std::string &input) {
 	// Check if the input is a float
 	if (std::strchr(input.c_str(), '.') == NULL
@@ -42,52 +43,46 @@ bool ScalarConverter::isDouble(const std::string &input) {
 	return true;
 }
 
+// Convert a double to a char
 static void printChar(double x) {
+	// Check if the value is within the range of a char
 	if (x <= CHAR_MIN || x >= CHAR_MAX ) {
         printColor("char: impossible", RED, 0);
         return;
     }
+	
 	char c = static_cast<char>(x);
 	if (std::isprint(c)) {
 		std::cout << "char: '" << c << "'" << std::endl;
-		return ;
 	}
 	else {
 		printColor("char: Non displayable", RED, 0);
-		return ;
 	}
 }
-
+	
+// Convert a double to an int
 static void printInt(double x) {
 	// Check if the value is within the range of an int
     if (x < static_cast<float>(INT_MIN) || x > static_cast<float>(INT_MAX)) {
         printColor("int: impossible", RED, 0);
-        return;
+		return ;
     }
 
 	int i = static_cast<int>(x);
 	std::cout << "int: " << i << std::endl;
 }
 
+// Convert a double to a float
 static void printFloat(double x) {
 	float f = static_cast<float>(x);
+	
 	// Check if the value is within the range of a float
-	if (f >= -FLT_MAX && f <= FLT_MAX) {
-		std::cout << "float: " << std::fixed
-			<< std::setprecision(1) << f << "f" << std::endl;
+	if (f < -FLT_MAX || f > FLT_MAX) {
+		printColor("float: impossible", RED, 0);
 		return ;
 	}
-	printColor("float: impossible", RED, 0);
-}
-
-static void printDouble(double x) {
-	// Check if the value is within the range of a double
-	if (x >= -DBL_MAX && x <= DBL_MAX) {
-		std::cout << "double: " << std::fixed
-			<< std::setprecision(1) << x << std::endl;
-		return ;
-	}
-	printColor("double: impossible", RED, 0);
+	std::cout << "float: " << std::fixed
+		<< std::setprecision(1) << f << "f" << std::endl;
 }
 
 void ScalarConverter::convertDouble(const std::string &input) {
@@ -98,64 +93,20 @@ void ScalarConverter::convertDouble(const std::string &input) {
 	ss << input;
 	ss >> x;
 
+	// Print char
 	printChar(x);
+
+	// Print int
 	printInt(x);
+	
+	// Print float
 	printFloat(x);
-	printDouble(x);
+
+	// Print double
+	if (ss.fail() || !ss.eof() || x < -DBL_MAX || x > DBL_MAX) {
+		printColor("double: impossible", RED, 0);
+		return ;
+	}
+    std::cout << "double: " << std::fixed
+		<< std::setprecision(1) << x << std::endl;
 }
-
-/*
-int main() {
-	printColor("==============TEST FLOAT=============\n", RED, 1);
-
-	printColor("--------vALID test-------", YELLOW, 1);
-
-	printColor("Test case: '-3.0'", YELLOW, 1);
-    ScalarConverter::convertDouble("-3.0");  // Invalid input for int
-    std::cout << std::endl;
-
-	printColor("Test case: '.3'", YELLOW, 1);
-    ScalarConverter::convertDouble(".3");  // Valid input within char range
-    std::cout << std::endl;
-
-	printColor("Test case: '-0.'", YELLOW, 1);
-    ScalarConverter::convertDouble("-0.");  // Valid input but out of char range
-    std::cout << std::endl;
-
-	printColor("Test case: '+3.65841'", YELLOW, 1);
-    ScalarConverter::convertDouble("+3.65841");  // Invalid input for int
-    std::cout << std::endl;
-
-	printColor("Test case: '5.45646", YELLOW, 1);
-    ScalarConverter::convertDouble("5.45646");  // Invalid input for int
-    std::cout << std::endl;
-	
-	printColor("--------Invalid test-------", YELLOW, 1);
-
-    // Test cases for convertDouble
-	printColor("Test case: '42'", YELLOW, 1);
-    ScalarConverter::convertDouble("42");  // A valid int input
-    std::cout << std::endl;
-
-	printColor("Test case: '-21474836493'", YELLOW, 1);
-    ScalarConverter::convertDouble("-21474836493");  // Out of int range (too small)
-    std::cout << std::endl;
-
-	printColor("Test case: '-2sdf'", YELLOW, 1);
-    ScalarConverter::convertDouble("-2sdf");  // Invalid input (non-integer)
-    std::cout << std::endl;
-	
-	printColor("Test case: '--1.2'", YELLOW, 1);
-    ScalarConverter::convertDouble("--1.2");  // Valid input within char range
-    std::cout << std::endl;
-
-	printColor("Test case: '0.F'", YELLOW, 1);
-    ScalarConverter::convertDouble("0.F");  // Valid input but out of char range
-    std::cout << std::endl;
-
-	printColor("Test case: '6.0f'", YELLOW, 1);
-    ScalarConverter::convertDouble("0.0f");  // Valid input but out of char range
-    std::cout << std::endl;
-
-	return 0;
-}*/
