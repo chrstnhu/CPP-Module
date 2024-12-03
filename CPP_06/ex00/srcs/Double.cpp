@@ -6,17 +6,13 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 17:22:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 15:03:14 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Utils.hpp"
 
 bool ScalarConverter::isDouble(const std::string &input) {
-	// Check if the input is a special value
-	if (input == "-inf" || input == "inf" || input == "nan") {
-		return true;
-	}
 	// Check if the input is a float
 	if (std::strchr(input.c_str(), '.') == NULL
 		|| input[input.size() - 1] == 'f'
@@ -47,10 +43,7 @@ bool ScalarConverter::isDouble(const std::string &input) {
 }
 
 static void printChar(double x) {
-	// Check if the input is in range or a special value
-    if (x >= CHAR_MIN || x <= CHAR_MAX 
-	|| x != x || x == std::numeric_limits<double>::infinity()
-		|| x == -std::numeric_limits<double>::infinity()) {
+	if (x <= CHAR_MIN || x >= CHAR_MAX ) {
         printColor("char: impossible", RED, 0);
         return;
     }
@@ -66,39 +59,17 @@ static void printChar(double x) {
 }
 
 static void printInt(double x) {
-	// Check if the input is a special value
-    if (x != x || x == std::numeric_limits<double>::infinity()
-		|| x == -std::numeric_limits<double>::infinity()) {
-        printColor("int: impossible", RED, 0);
-        return;
-    }
 	// Check if the value is within the range of an int
     if (x < static_cast<float>(INT_MIN) || x > static_cast<float>(INT_MAX)) {
         printColor("int: impossible", RED, 0);
         return;
     }
 
-	
 	int i = static_cast<int>(x);
 	std::cout << "int: " << i << std::endl;
 }
 
 static void printFloat(double x) {
-	// Check if the input is a special value
-    if (x != x) {  // x est NaN
-        printColor("float: nanf", DEF, 0);
-        return;
-    }
-    // Check if the value is infinity or -infinity
-    if (x == std::numeric_limits<double>::infinity()) {
-        printColor("float: inff", DEF, 0);
-        return;
-    }
-    if (x == -std::numeric_limits<double>::infinity()) {
-        printColor("float: -inff", DEF, 0);
-        return;
-    }
-
 	float f = static_cast<float>(x);
 	// Check if the value is within the range of a float
 	if (f >= -FLT_MAX && f <= FLT_MAX) {
@@ -110,21 +81,6 @@ static void printFloat(double x) {
 }
 
 static void printDouble(double x) {
-	// Check if the input is a special value
-	if (x != x) {
-        printColor("double: nan", DEF, 0);
-        return;
-    }
-	// Check if the value is infinity or -infinity
-    if (x == std::numeric_limits<double>::infinity()) {
-        printColor("double: inf", DEF, 0);
-        return;
-    }
-    if (x == -std::numeric_limits<double>::infinity()) {
-        printColor("double: -inf", DEF, 0);
-        return;
-    }
-
 	// Check if the value is within the range of a double
 	if (x >= -DBL_MAX && x <= DBL_MAX) {
 		std::cout << "double: " << std::fixed
@@ -134,24 +90,14 @@ static void printDouble(double x) {
 	printColor("double: impossible", RED, 0);
 }
 
-
 void ScalarConverter::convertDouble(const std::string &input) {
     double x = 0.0;
 
-	if (input == "nan") {
-        x = std::numeric_limits<double>::quiet_NaN();
-    }
-    else if (input == "inf") {
-        x = std::numeric_limits<double>::infinity();
-    }
-    else if (input == "-inf") {
-        x = -std::numeric_limits<double>::infinity();
-    }
-	else {
-		std::stringstream ss;
-		ss << input;
-		ss >> x;
-	}
+	std::stringstream ss;
+	
+	ss << input;
+	ss >> x;
+
 	printChar(x);
 	printInt(x);
 	printFloat(x);

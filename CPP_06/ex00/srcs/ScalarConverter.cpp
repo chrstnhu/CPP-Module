@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/29 16:50:46 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 15:00:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScalarConverter::ScalarConverter() {
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other) {
 	std::cout << ITALICGREEN << "ScalarConverter Copy constructor" << DEF << std::endl;
-	*this=other;
+	*this = other;
 }
 
 ScalarConverter::~ScalarConverter() {
@@ -29,14 +29,62 @@ ScalarConverter::~ScalarConverter() {
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 	std::cout << ITALICGREEN << "ScalarConverter Copy assignement operator" << DEF << std::endl;
 	if (this == &other) {
-		*this=other;	
+		*this = other;	
 	}
 	return (*this);
 }
 
+bool ScalarConverter::isSpecialValues(const std::string &input) {
+	if (input == "-inff" || input == "inff" || input == "nanf") {
+		return true;
+	}
+	if (input == "-inf" || input == "inf" || input == "nan") {
+		return true;
+	}
+	return false;
+}
+
+void ScalarConverter::handleSpecialValues(const std::string &input) {
+	float f = static_cast<float>(std::atof(input.c_str()));
+    double d = 0.0;
+
+	std::stringstream ss;
+	
+	ss << input;
+	ss >> d;
+	
+	if (input == "nan" || input == "nanf" 
+		|| f != f || d != d) {
+        printColor("int: impossible", RED, 0);
+        printColor("char: impossible", RED, 0);
+        printColor("float: nanf", DEF, 0);
+        printColor("double: nan", DEF, 0);
+
+    }
+    if (input == "inf" || input == "inff" 
+		|| f == std::numeric_limits<float>::infinity()
+		|| d == std::numeric_limits<double>::infinity()) {
+        printColor("char: impossible", RED, 0);
+        printColor("int: impossible", RED, 0);
+        printColor("float: inff", DEF, 0);
+        printColor("double: inf", DEF, 0);
+
+    }
+    if (input == "-inf" || input == "-inff" 
+		|| f == -std::numeric_limits<float>::infinity()
+		|| d == -std::numeric_limits<double>::infinity()) {
+        printColor("char: impossible", RED, 0);
+        printColor("int: impossible", RED, 0);
+        printColor("float: -inff", DEF, 0);
+        printColor("double: -inf", DEF, 0);
+    }
+}
 
 void ScalarConverter::convert(const std::string &input) {
-	if (isChar(input)) {
+	if (isSpecialValues(input)) {
+		handleSpecialValues(input);
+	}
+	else if (isChar(input)) {
 		convertChar(input);
 	}
 	else if (isInt(input)) {
