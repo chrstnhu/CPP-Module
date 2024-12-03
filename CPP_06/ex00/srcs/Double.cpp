@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 16:51:05 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 19:17:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,14 @@ static void printFloat(double x) {
 }
 
 void ScalarConverter::convertDouble(const std::string &input) {
-    double x = 0.0;
-
-	std::stringstream ss;
+	char *end;
+    double x = std::strtod(input.c_str(), &end);
 	
-	ss << input;
-	ss >> x;
-
+	if (end == input.c_str()) {
+		printColor("impossible to convert", RED, 0);
+		return;
+	}
+	
 	// Print char
 	printChar(x);
 
@@ -103,7 +104,7 @@ void ScalarConverter::convertDouble(const std::string &input) {
 	printFloat(x);
 
 	// Print double
-	if (ss.fail() || !ss.eof() || x < -DBL_MAX || x > DBL_MAX) {
+	if (x < -DBL_MAX || x > DBL_MAX) {
 		printColor("double: impossible", RED, 0);
 		return ;
 	}

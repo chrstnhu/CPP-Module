@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 16:51:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 19:17:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,13 @@ void printDouble(float x) {
 
 
 void ScalarConverter::convertFloat(const std::string &input) {
-	float x = static_cast<float>(std::atof(input.c_str()));
+	char *end;
+	float x = std::strtof(input.c_str(), &end);
 	
+	if (*end != '\0' && (*end != 'f' && *end != 'F')) {
+		printColor("impossible to convert", RED, 0);
+		return;
+	}
 	// Print char
 	printChar(x);
 
@@ -101,12 +106,12 @@ void ScalarConverter::convertFloat(const std::string &input) {
 	printInt(x);
 	
 	// Print float
-	if (x >= -FLT_MAX && x <= FLT_MAX) {
-		std::cout << "float: " << std::fixed
-			<< std::setprecision(1) << x << "f" << std::endl;
+	if (x < -FLT_MAX || x > FLT_MAX) {
+		printColor("float: impossible", RED, 0);
 	}
 	else {
-		printColor("float: impossible", RED, 0);
+		std::cout << "float: " << std::fixed
+			<< std::setprecision(1) << x << "f" << std::endl;
 	}
 
 	// Print double

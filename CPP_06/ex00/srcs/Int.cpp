@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 15:33:13 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/03 17:42:18 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,16 @@ void printDouble(int x) {
 }
 
 void ScalarConverter::convertInt(const std::string &input) {
-	int x = 0;
+	char *end;
+	long l = std::strtol(input.c_str(), &end, 10);
 
-	std::stringstream ss;
-	ss << input;
-	ss >> x;
+	int x = static_cast<int>(l);
 
 	// Print char
     printChar(x);
 
 	// Print int
-	if (ss.fail() || !ss.eof() || x < INT_MIN || x > INT_MAX) {
+	if (*end != '\0' || x < INT_MIN || x > INT_MAX) {
 		printColor("int: impossible", RED, 0);
     }
 	else {
