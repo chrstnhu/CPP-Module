@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:10:24 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/04 17:25:47 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/04 17:32:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,57 @@ Base *generate(void) {
 
 // Derived class A
 void identify(Base *p) {
-	printColor("Enter identify(Base *p)", ITALICCYAN, 1);
-	
-	if (dynamic_cast<A*>(p)) {
-    	std::cout << "I am an object of type A." << std::endl;
+	printColor("== Enter identify(Base *p) ==", YELLOW, 0);
+
+	try {
+		// Test derived class A
+		if (!dynamic_cast<A*>(p)) {
+			throw std::exception();
+		}
+		std::cout << "I am an object of type A." << std::endl;
 	}
-	else if (dynamic_cast<B*>(p)) {
-		std::cout << "I am an object of type B." << std::endl;
-	}
-	else if (dynamic_cast<C*>(p)) {
-		std::cout << "I am an object of type C." << std::endl;
-	}
-	else {
-		std::cout << "I am not an object of type A, B or C." << std::endl;
+	catch (std::exception &e) {
+		// Test derived class B
+		try {
+		if (!dynamic_cast<B*>(p)) {
+			throw std::exception();
+		}
+			std::cout << "I am an object of type B." << std::endl;
+		}
+		catch (std::exception &e) {
+			// Test derived class C
+			try {
+				if (!dynamic_cast<C*>(p)) {
+					throw std::exception();
+				}
+				std::cout << "I am an object of type C." << std::endl;
+			}
+			catch (std::exception &e) {
+				std::cout << "I am not an object of type A, B or C." << std::endl;
+			}
+		}
 	}
 }
 
+
 void identify(Base &p) {
-	printColor("Enter identify(Base &p)", ITALICCYAN, 1);
+	printColor("== Enter identify(Base &p) ==", YELLOW, 1);
 
 	try {
+		// Test derived class A
 		A &a = dynamic_cast<A &>(p);
 		(void)a;
 		std::cout << "I am an object of type A." << std::endl;
 	}
 	catch (std::exception &e) {
+		// Test derived class B
 		try {
 			B &b = dynamic_cast<B &>(p);
 			(void)b;
 			std::cout << "I am an object of type B." << std::endl;
 		}
 		catch (std::exception &e) {
+			// Test derived class C
 			try {
 				C &c = dynamic_cast<C &>(p);
 				(void)c;
