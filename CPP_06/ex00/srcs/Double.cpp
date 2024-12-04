@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:11:01 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/03 19:17:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/04 13:28:00 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void ScalarConverter::convertDouble(const std::string &input) {
 	char *end;
     double x = std::strtod(input.c_str(), &end);
 	
-	if (end == input.c_str()) {
+	if (*end != '\0') {
 		printColor("impossible to convert", RED, 0);
 		return;
 	}
