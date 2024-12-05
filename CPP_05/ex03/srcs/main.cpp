@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/02 15:57:24 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:26:39 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main () {
 
 	testOutOfGrade();
 	testForm();
+	testInternForm();
 }
 
 void testOutOfGrade() {
@@ -159,6 +160,7 @@ void testInternForm() {
 	separatorLine();
 	printColor("== TEST INTERN FORM ==", YELLOW);
 
+	printColor("-- Subject test --", ITALICYELLOW);
 	// Subject test
 	Intern someRandomIntern;
 	AForm* rrf;
@@ -166,6 +168,7 @@ void testInternForm() {
 
 	delete rrf;
 	
+	printColor("-- My test --", ITALICYELLOW);
 	// My test
 	Intern intern;
 	AForm *form1 = intern.makeForm("schrubbery creation", "Target1");
@@ -177,19 +180,21 @@ void testInternForm() {
 	try {
 		printColor("-- Try to sign and execute form1 ", ITALICYELLOW);
 		if (!form1) {
-			throw std::exception();
+			throw FormNotValidException();
 		}
 		bureaucrat.signForm(bureaucrat, *form1);
 		bureaucrat.executeForm(*form1);
+		
 		printColor("-- Try to sign and execute form3", ITALICYELLOW);
 		if (!form3) {
-			throw std::exception();
+			throw FormNotValidException();
 		}
 		bureaucrat.signForm(bureaucrat, *form3);
 		bureaucrat.executeForm(*form3);
+		
 		printColor("-- Try to sign and execute form2", ITALICYELLOW);
 		if (!form2) {
-			throw std::exception();
+			throw FormNotValidException();
 		}
 		bureaucrat.signForm(bureaucrat, *form2);
 		bureaucrat.executeForm(*form2);

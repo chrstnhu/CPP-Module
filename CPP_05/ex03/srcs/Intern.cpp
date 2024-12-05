@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:08:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:27:33 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,12 @@ AForm* Intern::makeForm(std::string const &formName, std::string const &formTarg
 	
 	for (int i = 0; i < 3; i++) {
 		if (formName == name[i]) {
-			std::cout << "Intern creates " << formName << DEF << std::endl;
+			std::cout << std::endl << "Intern creates " << formName << DEF << std::endl;
 			return (this->*actions[i])(formTarget);
 		}
 	}
-	
-	std::cout << RED << "Error: formName is not valid" << DEF << std::endl;
+	std::cout << std::endl << RED << "Intern couldn't creates this formName: " << UNDERDEF << formName << std::endl;
+	std::cout << YELLOW << "|-> " 
+		<< "Available form names: schrubbery creation, robotomy request, presidential pardon" << DEF << std::endl;
 	return (NULL);
 }
