@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 15:06:38 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:19:22 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include "Intern.hpp"
+
+class FormNotValidException : public std::exception {
+public:
+    const char* what() const throw() {
+        return "Form is not valid!";
+    }
+};
 
 void printColor(const std::string &msg, const std::string &color);
 void separatorLine();
