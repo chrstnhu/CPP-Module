@@ -1,6 +1,12 @@
-#include <iostream>
-# include <cstring>
+# include <iostream>
 # include <string>
+# include <cstdlib>
+# include <cctype> // Character handling
+# include <climits> // Integer number handling
+# include <cfloat> // Float number handling
+# include <cstring>
+# include <iomanip>
+# include <limits> 
 
 static bool validateExponentPart(const std::string& input, int& i, size_t ePos, size_t length) {
     bool hasDotBeforeE = false;
@@ -127,25 +133,46 @@ static bool isFloatnoE(const std::string &input) {
 	return true;
 }
 
+void convertFloat(const std::string &input) {
+	char *end;
+	float x = std::strtof(input.c_str(), &end);
+	
+	if (*end != '\0' && (*end != 'f' && *end != 'F')) {
+		std::cout << " Impossible to convert" << std::endl;
+		return;
+	}
+	
+	// Print float
+	if (x < -FLT_MAX || x > FLT_MAX) {
+	std::cout << "float: impossible" << std::endl;
+	}
+	else {
+		std::cout << "float: " << std::fixed
+			<< std::setprecision(1) << x << "f" << std::endl;
+	}
+
+}
+
+
 int main () {
     // Cas pour float et double
     std::string inputs[] = {
         "-.3f",        // Float valide avec un point
-        // "3.3E-2f",     // Float valide avec exponentielle
+        "3.3E2f",     // Float valide avec exponentielle
         "0.F",        // Float avec suffixe F
         "3.0f",        // Float avec point mais sans exponentielle
         "+3.14f",      // Float positif
         "-3.14f",      // Float négatif
-        // "3.14E2f",     // Float avec exponentielle
-        // "1e10f",       // Float avec exponentielle sans point
+         "3.14E2f",     // Float avec exponentielle
+         "1e10f",       // Float avec exponentielle sans point
         // "0f",          // Float simple, juste un 0
         "0.0f",        // Float simple, 0 avec un point
-        // "1.23e+10f",   // Float avec exponentielle et signe
-        // "1.23e-10F",   // Float avec exponentielle et signe négatif
+         "1.23e+10f",   // Float avec exponentielle et signe
+         "1.23e-10F",   // Float avec exponentielle et signe négatif
         "1.23f",       // Float normal sans exponentielle
-        // "1e+10",       // Double valide sans suffixe 'f'
-        // "1e-10",       // Double valide sans suffixe 'f'
-        // "3.14E2",      // Double valide avec exponentielle
+         "1e+10",       // Double valide sans suffixe 'f'
+         "1e-10",       // Double valide sans suffixe 'f'
+         "3.14E2",      // Double valide avec exponentielle
         "3.14159",     // Double sans suffixe, juste un nombre
 		// "3E2f",        // Valide
         // "abc",         // Invalide, chaîne non numérique
@@ -154,14 +181,15 @@ int main () {
         "3.14.2",      // Invalide, deux points
         "3..14",       // Invalide, deux points
         "e3.14",       // Invalide, 'e' placé au début
-        // "3.14E",       // Invalide, exponentielle mal formée
-        // "3.14fE3",     // Invalide, 'E' après le 'f'
+         "3.14E",       // Invalide, exponentielle mal formée
+         "3.14fE3",     // Invalide, 'E' après le 'f'
     };
 
     for (const std::string& input : inputs) {
         std::cout << "Testing input: " << input << std::endl;
-        if (isFloatnoE(input)) {
+        if (isFloat(input)) {
             std::cout << "The input is a float" << std::endl;
+		convertFloat(input);
         } else {
             std::cout << "XX The input is not a float" << std::endl;
         }
