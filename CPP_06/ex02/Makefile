@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 14:34:01 by chrhu             #+#    #+#              #
-#    Updated: 2024/12/04 16:17:39 by chrhu            ###   ########.fr        #
+#    Updated: 2024/12/05 17:52:51 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
-NAME = Identify
+NAME = identify
 
 $(OBJ_DIR)/%.o: $(SRCS_PATH)/%.cpp
 	@mkdir -p $(OBJ_DIR)

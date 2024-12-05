@@ -6,13 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:10:24 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/04 17:32:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 18:26:46 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Utils.hpp"
 
-Base::~Base() {
+Base::~Base()
+{
 	std::cout << ITALICGREEN << "Base Destructor" << DEF << std::endl;
 }
 
@@ -31,66 +32,60 @@ Base *generate(void) {
 	}
 }
 
-// Derived class A
+// Dynamic cast with pointer
 void identify(Base *p) {
-	printColor("== Enter identify(Base *p) ==", YELLOW, 0);
+	printColor("-> Enter identify(Base *p) with pointer", ITALICDEF, 0);
 
 	try {
-		// Test derived class A
-		if (!dynamic_cast<A*>(p)) {
+		if (!dynamic_cast<A *>(p)) {
 			throw std::exception();
 		}
-		std::cout << "I am an object of type A." << std::endl;
+		std::cout << BOLDBLUE << "I am an object of type A" << DEF << std::endl;
 	}
 	catch (std::exception &e) {
-		// Test derived class B
 		try {
-		if (!dynamic_cast<B*>(p)) {
-			throw std::exception();
-		}
-			std::cout << "I am an object of type B." << std::endl;
+			if (!dynamic_cast<B *>(p)) {
+				throw std::exception();
+			}
+			std::cout << BOLDORANGE << "I am an object of type B" << DEF << std::endl;
 		}
 		catch (std::exception &e) {
-			// Test derived class C
 			try {
-				if (!dynamic_cast<C*>(p)) {
+				if (!dynamic_cast<C *>(p)) {
 					throw std::exception();
 				}
-				std::cout << "I am an object of type C." << std::endl;
+				std::cout << BOLDPURPLE << "I am an object of type C" << DEF << std::endl;
 			}
 			catch (std::exception &e) {
-				std::cout << "I am not an object of type A, B or C." << std::endl;
+				std::cout << RED << "I am not an object of type A, B or C." << std::endl;
 			}
 		}
 	}
 }
 
-
+// Dynamic cast with reference
 void identify(Base &p) {
-	printColor("== Enter identify(Base &p) ==", YELLOW, 1);
+	printColor("-> Enter identify(Base &p) with reference", ITALICDEF, 1);
 
 	try {
-		// Test derived class A
-		A &a = dynamic_cast<A &>(p);
+		A a = dynamic_cast<A &>(p);
 		(void)a;
-		std::cout << "I am an object of type A." << std::endl;
+		std::cout << BOLDBLUE << "I am an object of type A" << DEF << std::endl;
 	}
 	catch (std::exception &e) {
-		// Test derived class B
 		try {
-			B &b = dynamic_cast<B &>(p);
+			B b = dynamic_cast<B &>(p);
 			(void)b;
-			std::cout << "I am an object of type B." << std::endl;
+			std::cout << BOLDORANGE << "I am an object of type B" << DEF << std::endl;
 		}
 		catch (std::exception &e) {
-			// Test derived class C
 			try {
-				C &c = dynamic_cast<C &>(p);
+				C c = dynamic_cast<C &>(p);
 				(void)c;
-				std::cout << "I am an object of type C." << std::endl;
+				std::cout << BOLDPURPLE << "I am an object of type C" << DEF << std::endl;
 			}
 			catch (std::exception &e) {
-				std::cout << "I am not an object of type A, B or C." << std::endl;
+				std::cout << RED << "I am not an object of type A, B or C." << std::endl;
 			}
 		}
 	}

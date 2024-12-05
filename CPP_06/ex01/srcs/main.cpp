@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:13:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/04 13:46:37 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 17:51:16 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main (int ac, char **av) {
 	if (ac != 2) {
-		printColor("Error: Invalid number of arguments", RED, 0);
+		printColor("Usage: ./serializer [string]", RED, 0);
 		return 1;
 	}
 	Data *original = new Data(av[1]);
