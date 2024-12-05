@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:32 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 13:45:48 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 15:47:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void testForm () {
 
 		std::cout << form1 << std::endl;
 		std::cout << bureaucrat1 << std::endl;	
-		form1.beSigned(bureaucrat1);
 		bureaucrat1.signForm(bureaucrat1, form1);
 	}
 	catch (const std::exception &e) {
@@ -114,12 +113,11 @@ void testForm () {
 	// Test Form 2 out of grade ========================================================
 	printColor("-- Test Form 2", ITALICYELLOW);
 	try {
-		Form form2 = Form("Form2", 155, 10);
-		Bureaucrat bureaucrat2 = Bureaucrat("Alice", 10);
+		Form form2 = Form("Form2", 140, 10);
+		Bureaucrat bureaucrat2 = Bureaucrat("Alice", 150);
 
 		std::cout << form2 << std::endl;
 		std::cout << bureaucrat2 << std::endl;
-		form2.beSigned(bureaucrat2);
 		bureaucrat2.signForm(bureaucrat2, form2);
 	}
 	catch (const std::exception &e) {
