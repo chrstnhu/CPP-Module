@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/02 13:58:08 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 15:46:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
 	std::cout << ITALICGREEN << "'" << _name << "'"
 		<< ", Bureaucrat default constructor" << DEF << std::endl;
+	if (this->_grade < 1) {
+		throw Bureaucrat::GradeTooHighException();
+	}
+	if (this->_grade > 150) {
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 // Constructor with parameters
@@ -86,18 +92,18 @@ void Bureaucrat::decrementGrade() {
 }
 
 void Bureaucrat::signForm(Bureaucrat &bureaucrat, AForm &form) {
-    try {
-        form.beSigned(bureaucrat);
-        std::cout << UNDERDEF << "-> " 
-                  << bureaucrat.getName() << " signed "
-                  << form.getName() << DEF << std::endl << std::endl;
+	try {
+        form.beSigned(bureaucrat); 
+    	std::cout << UNDERDEF << "-> " 
+                << bureaucrat.getName() << " signed "
+                << form.getName() << DEF << std::endl << std::endl;
     }
     catch (const std::exception &e) {
-        std::cout << RED << "Exception caught in signForm: "
-			<< e.what() << DEF << std::endl;
+		std::cout << UNDERRED << "-> "
+				<< bureaucrat.getName() << " couldn't sign " 
+				<< form.getName() << " because " << e.what() << DEF << std::endl;
     }
 }
-
 
 void Bureaucrat::executeForm(AForm const &form) {
 	try {
