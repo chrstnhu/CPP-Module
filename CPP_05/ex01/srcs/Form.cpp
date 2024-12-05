@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:18:53 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 15:38:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 // Default constructor
 Form::Form() : _name("default"), _isSigned(false),  _gradeToSign(150), _gradeToExecute(150) {
 	std::cout << ITALICGREEN << "Form default constructor" << DEF << std::endl;
-	if (this->_gradeToSign < 1) {
+	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-	if (this->_gradeToSign > 150) {
+	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
 }
@@ -30,10 +30,10 @@ Form::Form(std::string const name, int grade, int executeGrade) :
 		<< ", Form constructor with parameters"
 		<< " | Grade: " << grade 
 		<< " | Execute grade: " << executeGrade << DEF << std::endl;
-	if (this->_gradeToSign < 1) {
+	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-	if (this->_gradeToSign > 150) {
+	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
 }
