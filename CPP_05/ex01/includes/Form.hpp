@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/26 14:15:01 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 15:31:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ class Form {
 		class GradeTooHightException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
-					return "Grade is too high, can't exceed 1";
+					return "Grade is too high";
 				}
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
-					return "Grade is too low, can't exceed 150";
+					return "Grade is too low";
 				}
 		};
 };

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 15:15:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:22:02 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
 
 		// Functions
-		virtual void execute(Bureaucrat const &executor) const;
+		void performAction() const;
 };
 
 #endif

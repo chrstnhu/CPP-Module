@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:49:57 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 13:32:18 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:21:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 // Functions
 
 // Presidential pardon <target>
-void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
-	if (!this->getSigned()) {
-		throw FormNotSignedException();
-	}
-	if (this->getGradeToExecute() < executor.getGrade()) {
-		throw GradeTooLowException();
-	}
+void PresidentialPardonForm::performAction() const {
 	std::cout << BOLDGREEN << this->getTarget()
 		<< " has been pardoned by Zaphod Beeblebrox." << DEF << std::endl;
 }

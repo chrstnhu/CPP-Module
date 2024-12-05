@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:47:41 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/25 16:53:55 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:21:42 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 //Functions
 
 // Make drilling noise,  <target> has been robotomized successfully 50% of the time. 
-void RobotomyRequestForm::execute(Bureaucrat const &executor) const {	
+void RobotomyRequestForm::performAction() const {	
 	std::cout << "Drilling noises : Vrrrrrrrrr..." << std::endl;
-	if (!this->getSigned()) {
-		throw FormNotSignedException();
-	}
-	if (this->getGradeToExecute() < executor.getGrade()) {
-		throw GradeTooLowException();
-	}
-
 	int value = rand() % 2;
 	if (value == 0) {
 		std::cout << BOLDGREEN << this->getTarget() 

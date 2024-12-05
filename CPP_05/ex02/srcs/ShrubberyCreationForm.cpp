@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/11/28 13:32:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:35:20 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,9 @@ SchrubberyCreationForm &SchrubberyCreationForm::operator=(SchrubberyCreationForm
 // Functions
 
 // Create a file <target>_shrubbery and writes ASCII trees inside it
-void SchrubberyCreationForm::execute(Bureaucrat const &executor) const {
+void SchrubberyCreationForm::performAction() const {
+	
 	std::string fileName = this->getTarget() + "_shrubbery";
-
-	if (!this->getSigned()) {
-		throw FormNotSignedException();
-	}
-	if (executor.getGrade() > this->getGradeToExecute()) {
-		throw GradeTooLowException();
-	}
 	std::ofstream file;
 	
 	file.open(fileName.c_str(), std::ios::out);
@@ -78,7 +72,9 @@ void SchrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	<< "         |||/\\ " << std::endl
 	<< "         |||\\/ " << std::endl
 	<< "         ||||| " << std::endl
-	<< GREEN << "   ....." << BROWN << "//||||\\" << GREEN << "..... " << DEF << std::endl;
+	<< GREEN << "   ....." << BROWN << "//||||\\" << GREEN << "..... " << DEF 
+	<< "   David Moore    " << std::endl;
+	
 	file.close();
 
 	std::cout << "Go watch the beautiful ASCII tree art in "
