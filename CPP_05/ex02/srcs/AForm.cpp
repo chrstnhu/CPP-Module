@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:25 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/05 16:24:33 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/06 14:41:55 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 AForm::AForm() : _name("default"), _target("default_target"), _isSigned(false),  _gradeToSign(150), _gradeToExecute(150) {
 	std::cout << ITALICGREEN << "Form default constructor" << DEF << std::endl;
 	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
-		throw Bureaucrat::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	}
 	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150) {
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 }
 
@@ -31,10 +31,10 @@ AForm::AForm(std::string const name, int grade, int gradeToExecute) :
 		<< " | Grade: " << grade 
 		<< " | Execute grade: " << gradeToExecute << DEF << std::endl;
 	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
-		throw Bureaucrat::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	}
 	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150) {
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 }
 
@@ -45,10 +45,10 @@ AForm::AForm(std::string const name, int grade, int gradeToExecute, std::string 
 		<< " | Grade: " << grade 
 		<< " | Execute grade: " << gradeToExecute << DEF << std::endl;
 	if (this->_gradeToSign < 1 || this->_gradeToExecute < 1) {
-		throw Bureaucrat::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	}
 	if (this->_gradeToSign > 150 || this->_gradeToExecute > 150) {
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 }
 

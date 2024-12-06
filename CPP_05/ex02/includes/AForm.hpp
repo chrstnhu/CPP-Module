@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/05 16:24:40 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/06 14:41:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class AForm {
 		void execute(Bureaucrat const &executor) const;
 		virtual void performAction() const = 0;
 		
-		class GradeTooHightException : public std::exception {
+		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
 					return "Grade is too high";

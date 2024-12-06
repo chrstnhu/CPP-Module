@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:10:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/05 15:31:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/06 14:42:39 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Form {
 		// Functions
 		void beSigned(Bureaucrat &Bureaucrat);
 		
-		class GradeTooHightException : public std::exception {
+		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char *what() const throw() {
 					return "Grade is too high";
