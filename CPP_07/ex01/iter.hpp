@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 16:13:28 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/06 16:29:11 by chrhu            ###   ########.fr       */
+/*   Created: 2024/12/10 11:42:38 by chrhu             #+#    #+#             */
+/*   Updated: 2024/12/10 12:46:29 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Utils.hpp"
+#ifndef ITER_HPP
+# define ITER_HPP
 
-int main (int ac, char **av) {
-	if (ac != 2) {
-		printColor("Usage: ./serializer [string]", RED, 0);
-		return 1;
+#include <iostream>
+#include <string>
+
+# define YELLOW "\033[0;33m"
+# define DEF "\033[0;39m"
+
+template <typename T>
+void iter(T *array, size_t size, void (*func) (T const &)) {
+	for (size_t i = 0; i < size; i++) {
+		func(array[i]);
 	}
-	Data *original = new Data(av[1]);
-	std::cout << "Original string: " << original->getInput() << std::endl;
-
-	return 0;
 }
+
+#endif

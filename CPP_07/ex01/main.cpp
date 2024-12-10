@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 11:42:40 by chrhu             #+#    #+#             */
+/*   Updated: 2024/12/10 12:53:13 by chrhu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "iter.hpp"
+
+void printColor(const std::string &msg, const std::string &color) {
+    std::cout << std::endl << color << msg << DEF << std::endl;
+}
+
+void printInt(int const &element) {
+	std::cout << element << " ";
+}
+
+void printChar(char const &element) {
+	std::cout << element << " ";
+}
+
+void printString(std::string const &element) {
+	std::cout << element << " ";
+}
+
+void printIntPtr(int * const &element) {
+	std::cout << *element << " | "
+			<< "Address: " << element << std::endl;
+}
+
+int main( void ) {
+	printColor("--> Print int", YELLOW);
+	int array[] = {1, 2, 3, 4, 5};
+	int len = 2;
+
+	::iter(array, len, printInt);
+	
+	printColor("\n--> Print char", YELLOW);
+	char array2[] = {'a', 'b', 'c', 'd', 'e'};
+	int len2 = 10;
+	::iter(array2, len2, printChar);
+	
+	printColor("\n--> Print string", YELLOW);
+	std::string array3[] = {"Hello", "World", "42", "Paris", "France"};
+	int len3 = 2;
+	::iter(array3, len3, printString);
+	
+	printColor("\n--> Print pointeur", YELLOW);
+	int a = 42;
+	int b = -42;
+	int c = 0;
+	
+	int *array4[] = {&a, &b, &c};
+	int len4 = 3;
+	::iter(array4, len4, printIntPtr);
+
+	return 0;
+}
