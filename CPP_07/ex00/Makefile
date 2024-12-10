@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/10 11:42:06 by chrhu             #+#    #+#              #
-#    Updated: 2024/12/10 12:03:56 by chrhu            ###   ########.fr        #
+#    Updated: 2024/12/10 16:46:53 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ NAME = whatever
 
 %.o : %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
+
+all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
