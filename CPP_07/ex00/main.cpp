@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/10 12:25:28 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 13:00:14 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,59 @@
 int main( void ) {
 	int a = 2;
 	int b = 3;
+
+	// Swap int ------------------------------------------------------------------------
+	std::cout << YELLOW << "--------- Swap int ----------" << DEF << std::endl;
+	std::cout << YELLOW<< "Before swap: " << DEF
+			<< "a = " << a << ", b = " << b << std::endl;
 	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << YELLOW << " After swap: " << DEF 
+			<< "a = " << a << ", b = " << b << std::endl;
+	
 	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl << std::endl;
+
+	// Swap string ----------------------------------------------------------------------
 	std::string c = "chaine1";
 	std::string d = "chaine2";
+
+	std::cout << YELLOW << "--------- Swap string ----------" << DEF << std::endl;
+	std::cout << YELLOW << "Before swap: " << DEF
+			<< "c = " << c << ", d = " << d << std::endl;
 	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << YELLOW << " After swap: " << DEF 
+			<< "c = " << c << ", d = " << d << std::endl;
+	
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl << std::endl;
+
+	// Swap float -----------------------------------------------------------------------
+	float e = 5.356f;
+	float f = -85.14f;
+
+	std::cout << YELLOW << "--------- Swap float ----------" << DEF << std::endl;
+	std::cout << YELLOW << "Before swap: " << DEF
+			<< "e = " << e << ", f = " << f << std::endl;
+	::swap(e, f);
+	std::cout << YELLOW << " After swap: " << DEF 
+			<< "e = " << e << ", f = " << f << std::endl;
+	
+	std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
+	std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl << std::endl;
+
+	// Swap pointeur -----------------------------------------------------------------------
+	float *ptr_e = &e;
+	float a_to_float = static_cast<float>(a);
+	float *ptr_a = &a_to_float;
+
+	std::cout << YELLOW << "--------- Swap pointeur ----------" << DEF << std::endl;
+	std::cout << YELLOW << "Before swap: " << DEF
+			<< "ptr_e = " << *ptr_e << ", ptr_a = " << *ptr_a << std::endl;
+	::swap(*ptr_e, *ptr_a);
+	std::cout << YELLOW << " After swap: " << DEF 
+			<< "ptr_e = " << *ptr_e << ", ptr_a = " << *ptr_a << std::endl;
+	
+	std::cout << "min( ptr_e, ptr_a ) = " << ::min( *ptr_e, *ptr_a ) << std::endl;
+	std::cout << "max( ptr_e, ptr_a ) = " << ::max( *ptr_e, *ptr_a ) << std::endl << std::endl;
 	return 0;
 }
