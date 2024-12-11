@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:38 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/11 14:04:49 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 16:17:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ class Array {
 
 		// Copy assignement
 		Array &operator=(const Array &other);
-		T &operator[](size_t index);
+		T &operator[](unsigned int index);
+		T const &operator[](unsigned int index) const;
 
 		// Setter
-		size_t size() const;
+		unsigned int size() const;
 		void add(const T &element, unsigned int index);
 };
 

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:52:21 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/11 14:08:34 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 16:19:37 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ Array<T>::Array(const Array &other) {
 template <typename T>
 Array<T>::~Array() {
 	std::cout << GREEN << "Array destructor" <<  DEF << std::endl;
-	delete[] this->_array;
+	if (this->_array != NULL) {
+		delete[] this->_array;
+	}
 }
 
 // Copy assignement
@@ -57,7 +59,15 @@ Array<T>& Array<T>::operator=(const Array &other) {
 }
 
 template <typename T>
-T& Array<T>::operator[](size_t index) {
+T& Array<T>::operator[](unsigned int index) {
+    if (index >= this->_size) {
+        throw InvalidIndexException();
+    }
+    return this->_array[index];
+}
+
+template <typename T>
+T const & Array<T>::operator[](unsigned int index) const {
     if (index >= this->_size) {
         throw InvalidIndexException();
     }
@@ -66,7 +76,7 @@ T& Array<T>::operator[](size_t index) {
 
 // Functions
 template <typename T>
-size_t Array<T>::size() const {
+unsigned int Array<T>::size() const {
 	return this->_size;
 }
 
