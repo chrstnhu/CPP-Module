@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:52:21 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/10 17:43:07 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 14:08:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array() : _array(new T[0]), _size(0) {
+Array<T>::Array() : _array(new T[0]), _size(0), _currentSize(0) {
 	std::cout << GREEN << "Array Constructor" << DEF << std::endl;
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {
+Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n), _currentSize(0) {
 	std::cout << GREEN << "Array Constructor with parameter" <<  DEF << std::endl;
 }
 
@@ -64,9 +64,19 @@ T& Array<T>::operator[](size_t index) {
     return this->_array[index];
 }
 
+// Functions
 template <typename T>
 size_t Array<T>::size() const {
 	return this->_size;
+}
+
+template <typename T>
+void Array<T>::add(const T& element, unsigned int index) {
+    if (index < size()) {
+        _array[index] = element;
+    } else {
+        throw std::out_of_range("Index out of bounds");
+    }
 }
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:38 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/10 17:12:46 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 14:04:49 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Array {
 	private :
 		T *_array;
 		unsigned int _size;
+		unsigned int _currentSize;
 
 	public :
 		Array();
@@ -38,7 +39,9 @@ class Array {
 		Array &operator=(const Array &other);
 		T &operator[](size_t index);
 
+		// Setter
 		size_t size() const;
+		void add(const T &element, unsigned int index);
 };
 
 class InvalidIndexException : public std::exception {
