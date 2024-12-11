@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/11 12:07:24 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 14:08:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main( void ) {
 	try {
 		int x = rand() % 10;
 		std::cout << YELLOW << "x = " << x << DEF << std::endl;
-		std::cout << "array[x] = " << array[x] << std::endl;
+		std::cout << "array[" << x << "] = " << array[x] << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cerr << RED << "Exception catch: " << e.what() << DEF << std::endl;
@@ -56,24 +56,31 @@ int main( void ) {
 	try {
 		int x = rand() % 10;
 		std::cout << YELLOW << "x = " << x << DEF << std::endl;
-		std::cout << "arrayCopy[x] = " << arrayCopy[x] << std::endl;
+		std::cout << "arrayCopy[" << x << "] = " << arrayCopy[x] << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cerr << RED << "Exception catch: " << e.what() << DEF << std::endl;
 	}
 
-	// Copy assignement test
-	printColor("--> Print assignement array", YELLOW);
-	Array<int> arrayAssignement(3);
-	arrayAssignement = array;
-	for (int i = 0; i < size; ++i) {
-		array[i] = rand() % 100;
-		std::cout << "arrayAssignement[" << i << "] = " << arrayAssignement[i] << std::endl;
-	}
+	// Test string array
+	printColor("--> Print string array", YELLOW);
+	Array<std::string> arrayString(3);
+	size = arrayString.size();
 	try {
-		int x = rand() % 10;
-		std::cout << YELLOW << "x = " << x << DEF << std::endl;
-		std::cout << "arrayAssignement[" << x << "] = " << arrayAssignement[x] << std::endl;
+		arrayString.add("Hello", 0);
+		arrayString.add("World", 1);
+		arrayString.add("42", 2);
+		for (int i = 0; i < size; ++i) {
+			std::cout << "arrayString[" << i << "] = " << arrayString[i] << std::endl;
+		}
+		// overload array
+		arrayString.add("Paris", 3);
+		arrayString.add("France", 2);
+		for (int i = 0; i < size; ++i) {
+			std::cout << "arrayString[" << i << "] = " << arrayString[i] << std::endl;
+		}
+
+
 	}
 	catch (std::exception &e) {
 		std::cerr << RED << "Exception catch: " << e.what() << DEF << std::endl;
