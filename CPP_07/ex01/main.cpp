@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/10 12:53:13 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 13:14:57 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,26 @@ void printIntPtr(int * const &element) {
 }
 
 int main( void ) {
+	// Test with int -------------------------------------------
 	printColor("--> Print int", YELLOW);
 	int array[] = {1, 2, 3, 4, 5};
 	int len = 2;
 
 	::iter(array, len, printInt);
 	
+	// Test with char -------------------------------------------
 	printColor("\n--> Print char", YELLOW);
 	char array2[] = {'a', 'b', 'c', 'd', 'e'};
 	int len2 = 10;
 	::iter(array2, len2, printChar);
 	
+	// Test with string
 	printColor("\n--> Print string", YELLOW);
 	std::string array3[] = {"Hello", "World", "42", "Paris", "France"};
 	int len3 = 2;
 	::iter(array3, len3, printString);
 	
+	// Test with pointeur -----------------------------------------
 	printColor("\n--> Print pointeur", YELLOW);
 	int a = 42;
 	int b = -42;
