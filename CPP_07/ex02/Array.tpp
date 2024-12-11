@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:52:21 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/10 17:20:52 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/10 17:43:07 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ template <typename T>
 Array<T>::Array(const Array &other) {
 	std::cout << GREEN << "Array Copy Constructor" <<  DEF << std::endl;
 	this->_size = other._size;
-	this->_array = new T(other._size);
+	this->_array = new T[other._size];
     for (unsigned int i = 0; i < this->_size; ++i) {
         _array[i] = other._array[i];
     }
@@ -48,7 +48,7 @@ Array<T>& Array<T>::operator=(const Array &other) {
 	if (this != &other) {
 		delete[] this->_array;
 		this->_size = other._size;
-		this->_array = new T(other._size);	
+		this->_array = new T[other._size];	
 	    for (unsigned int i = 0; i < this->_size; ++i) {
         	_array[i] = other._array[i];
 	    }
