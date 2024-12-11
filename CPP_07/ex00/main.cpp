@@ -6,18 +6,22 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:40 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/11 13:00:14 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 14:46:03 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
+
+void printColor(const std::string &msg, const std::string &color) {
+    std::cout << std::endl << color << msg << DEF << std::endl;
+}
 
 int main( void ) {
 	int a = 2;
 	int b = 3;
 
 	// Swap int ------------------------------------------------------------------------
-	std::cout << YELLOW << "--------- Swap int ----------" << DEF << std::endl;
+	printColor("--------- Swap int ----------", YELLOW);
 	std::cout << YELLOW<< "Before swap: " << DEF
 			<< "a = " << a << ", b = " << b << std::endl;
 	::swap( a, b );
@@ -31,7 +35,7 @@ int main( void ) {
 	std::string c = "chaine1";
 	std::string d = "chaine2";
 
-	std::cout << YELLOW << "--------- Swap string ----------" << DEF << std::endl;
+	printColor("--------- Swap string ----------", YELLOW);
 	std::cout << YELLOW << "Before swap: " << DEF
 			<< "c = " << c << ", d = " << d << std::endl;
 	::swap(c, d);
@@ -45,7 +49,7 @@ int main( void ) {
 	float e = 5.356f;
 	float f = -85.14f;
 
-	std::cout << YELLOW << "--------- Swap float ----------" << DEF << std::endl;
+	printColor("--------- Swap float ----------", YELLOW);
 	std::cout << YELLOW << "Before swap: " << DEF
 			<< "e = " << e << ", f = " << f << std::endl;
 	::swap(e, f);
@@ -60,7 +64,7 @@ int main( void ) {
 	float a_to_float = static_cast<float>(a);
 	float *ptr_a = &a_to_float;
 
-	std::cout << YELLOW << "--------- Swap pointeur ----------" << DEF << std::endl;
+	printColor("--------- Swap pointeur ----------", YELLOW);
 	std::cout << YELLOW << "Before swap: " << DEF
 			<< "ptr_e = " << *ptr_e << ", ptr_a = " << *ptr_a << std::endl;
 	::swap(*ptr_e, *ptr_a);
