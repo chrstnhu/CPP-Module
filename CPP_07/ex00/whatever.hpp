@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:42:38 by chrhu             #+#    #+#             */
-/*   Updated: 2024/12/10 12:26:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2024/12/11 12:42:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string>
 
 template <typename T>
-T min(const T &a, const T &b)
+T min(const T &x, const T &y)
 {
 	if (a < b) {
 		return a;
@@ -28,23 +28,23 @@ T min(const T &a, const T &b)
 };
 
 template <typename U>
-U max(const U &a, const U &b)
+U max(const U &x, const U &y)
 {
-	if (a > b) {
-		return a;
+	if (x > y) {
+		return x;
 	}
 	else {
-		return b;
+		return y;
 	}
 };
 
 template <typename S>
-void swap( S &a, S &b) {
+void swap(const S &x, const S &y) {
 	S tmp;
 	
-	tmp = a;
-	a = b;
-	b = tmp;
+	tmp = x;
+	x = y;
+	y = tmp;
 }
 
 #endif
