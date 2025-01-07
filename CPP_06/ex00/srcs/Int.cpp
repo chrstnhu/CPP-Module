@@ -32,14 +32,15 @@ bool ScalarConverter::isInt(const std::string &input) {
 	return true;
 }
 
+
 // Convert an int to a char
 void printChar(int x) {
     if (x <= CHAR_MIN || x >= CHAR_MAX ) {
         printColor("char: impossible", RED, 0);
         return;
     }
-	
 	char c = static_cast<char>(x);
+
 	if (std::isprint(c)) {
 		std::cout << "char: '" << c << "'" << std::endl;
 	}
@@ -72,16 +73,14 @@ void printDouble(int x) {
 		<< std::setprecision(1) << d << std::endl;
 }
 
+// Convert the input to an int
 void ScalarConverter::convertInt(const std::string &input) {
 	char *end;
 	long l = std::strtol(input.c_str(), &end, 10);
-
 	int x = static_cast<int>(l);
 
-	// Print char
     printChar(x);
 
-	// Print int
 	if (*end != '\0' || x < INT_MIN || x > INT_MAX) {
 		printColor("int: impossible", RED, 0);
     }
@@ -89,9 +88,6 @@ void ScalarConverter::convertInt(const std::string &input) {
 		std::cout << "int: " << x << std::endl;
 	}
 
-	// Print float
 	printFloat(x);
-	
-	// Print double
 	printDouble(x);
 }

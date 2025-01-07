@@ -16,12 +16,12 @@
 # include "Utils.hpp"
 
 class ScalarConverter {
-	private :  // Change to private		
+	private :	
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		~ScalarConverter();
 		
-		//Copy assignement operator
+		// Copy assignement operator
 		ScalarConverter &operator=(const ScalarConverter &src);
 	
 		// Methods

@@ -48,9 +48,9 @@ bool ScalarConverter::isFloat(const std::string &input) {
 	return true;
 }
 
+
 // Convert a float to a char
 void printChar(float x) {
-	// Check if the input is in range
     if (x <= CHAR_MIN || x >= CHAR_MAX ) {
         printColor("char: impossible", RED, 0);
         return;
@@ -67,7 +67,6 @@ void printChar(float x) {
 
 // Convert a float to an int
 void printInt(float x) {
-	// Check if the value is within the range of an int
     if (x < static_cast<float>(INT_MIN) || x > static_cast<float>(INT_MAX)) {
         printColor("int: impossible", RED, 0);
         return;
@@ -79,7 +78,6 @@ void printInt(float x) {
 
 // Convert a float to a double
 void printDouble(float x) {
-	// Check if the value is within the range of a double
 	if (x < static_cast<float>(-DBL_MAX) || x > static_cast<float>(DBL_MAX)) {
 		printColor("double: impossible", RED, 0);
 		return ;
@@ -90,7 +88,7 @@ void printDouble(float x) {
 		<< std::setprecision(1) << d << std::endl;
 }
 
-
+// Convert the input to a float
 void ScalarConverter::convertFloat(const std::string &input) {
 	char *end;
 	float x = std::strtof(input.c_str(), &end);
@@ -99,13 +97,10 @@ void ScalarConverter::convertFloat(const std::string &input) {
 		printColor("impossible to convert", RED, 0);
 		return;
 	}
-	// Print char
-	printChar(x);
 
-	// Print int
+	printChar(x);
 	printInt(x);
 	
-	// Print float
 	if (x < -FLT_MAX || x > FLT_MAX) {
 		printColor("float: impossible", RED, 0);
 	}
@@ -114,6 +109,5 @@ void ScalarConverter::convertFloat(const std::string &input) {
 			<< std::setprecision(1) << x << "f" << std::endl;
 	}
 
-	// Print double
 	printDouble(x);
 }

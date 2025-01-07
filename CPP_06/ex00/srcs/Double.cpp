@@ -14,7 +14,6 @@
 
 // Check if the input is a double
 bool ScalarConverter::isDouble(const std::string &input) {
-	// Check if the input is a float
 	if (std::strchr(input.c_str(), '.') == NULL
 		|| input[input.size() - 1] == 'f'
 		|| input[input.size() - 1] == 'F') {
@@ -24,11 +23,9 @@ bool ScalarConverter::isDouble(const std::string &input) {
 	size_t i = 0;
 	bool hasDot = false;
 
-	// Check if there is a sign
 	if (input[0] == '+' || input[0] == '-') {
 		i++;
 	}
-	// Check if there is double
     for (; i < input.size(); i++) {
         if (input[i] == '.') {
             if (hasDot) {
@@ -43,9 +40,9 @@ bool ScalarConverter::isDouble(const std::string &input) {
 	return true;
 }
 
+
 // Convert a double to a char
 static void printChar(double x) {
-	// Check if the value is within the range of a char
 	if (x <= CHAR_MIN || x >= CHAR_MAX ) {
         printColor("char: impossible", RED, 0);
         return;
@@ -62,7 +59,6 @@ static void printChar(double x) {
 	
 // Convert a double to an int
 static void printInt(double x) {
-	// Check if the value is within the range of an int
     if (x < static_cast<double>(INT_MIN) || x > static_cast<double>(INT_MAX)) {
         printColor("int: impossible", RED, 0);
 		return ;
@@ -74,7 +70,6 @@ static void printInt(double x) {
 
 // Convert a double to a float
 static void printFloat(double x) {
-	// Check if the value is within the range of a float
 	if (x < static_cast<double>(-FLT_MAX) || x > static_cast<double>(FLT_MAX)) {
 		printColor("float: impossible", RED, 0);
 		return ;
@@ -94,16 +89,10 @@ void ScalarConverter::convertDouble(const std::string &input) {
 		return;
 	}
 	
-	// Print char
 	printChar(x);
-
-	// Print int
 	printInt(x);
-	
-	// Print float
 	printFloat(x);
 
-	// Print double
 	if (x < -DBL_MAX || x > DBL_MAX) {
 		printColor("double: impossible", RED, 0);
 		return ;
