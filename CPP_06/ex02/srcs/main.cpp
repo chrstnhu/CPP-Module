@@ -23,13 +23,11 @@ int main (int ac, char **av) {
 	printColor("========= First object =========\n", DEF, 0);
 	Base *obj = generate();
 
-	// By pointer
-	identify(obj);
-
-	// By reference
-    identify(*obj);
+	identify(obj); // By pointer
+    identify(*obj); // By reference
 
 	delete obj;
+
 
 	printColor("========= Second object =========\n", DEF, 1);
 	Base *obj2 = generate();
@@ -39,6 +37,7 @@ int main (int ac, char **av) {
 
 	delete obj2;
 
+
 	printColor("========= Third object =========\n", DEF, 1);
 	Base *obj3 = generate();
 
@@ -46,5 +45,14 @@ int main (int ac, char **av) {
     identify(*obj3);
 
 	delete obj3;
+
+
+	printColor("========= Fourth object (testing exception) =========\n", DEF, 1);
+    Base *obj4 = new Base();
+
+    identify(obj4);
+    identify(*obj4);
+
+	delete obj4;
 	return 0;
 }

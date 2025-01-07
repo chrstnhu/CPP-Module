@@ -12,8 +12,8 @@
 
 #include "../includes/Utils.hpp"
 
-Base::~Base()
-{
+// Destructors
+Base::~Base() {
 	std::cout << ITALICGREEN << "Base Destructor" << DEF << std::endl;
 }
 
@@ -27,39 +27,27 @@ Base *generate(void) {
 	else if (randomNum == 1) {
 		return new B();
 	}
-	else {
+	else if (randomNum == 2) {
 		return new C();
 	}
+	return NULL;
 }
 
 // Dynamic cast with pointer
 void identify(Base *p) {
 	printColor("-> Enter identify(Base *p) with pointer", ITALICDEF, 0);
-
-	try {
-		if (!dynamic_cast<A *>(p)) {
-			throw std::exception();
-		}
+	
+	if (dynamic_cast<A *>(p)) {
 		std::cout << BOLDBLUE << "I am an object of type A" << DEF << std::endl;
 	}
-	catch (std::exception &e) {
-		try {
-			if (!dynamic_cast<B *>(p)) {
-				throw std::exception();
-			}
-			std::cout << BOLDORANGE << "I am an object of type B" << DEF << std::endl;
-		}
-		catch (std::exception &e) {
-			try {
-				if (!dynamic_cast<C *>(p)) {
-					throw std::exception();
-				}
-				std::cout << BOLDPURPLE << "I am an object of type C" << DEF << std::endl;
-			}
-			catch (std::exception &e) {
-				std::cout << RED << "I am not an object of type A, B or C." << std::endl;
-			}
-		}
+	else if (dynamic_cast<B *>(p)) {
+		std::cout << BOLDORANGE << "I am an object of type B" << DEF << std::endl;
+	}
+	else if (dynamic_cast<C *>(p)) {
+		std::cout << BOLDPURPLE << "I am an object of type C" << DEF << std::endl;
+	}
+	else {
+		std::cout << RED << "I am not an object of type A, B or C." << std::endl;
 	}
 }
 

@@ -31,6 +31,7 @@ class B : public Base {
 class C : public Base {
 };
 
+// Functions
 Base *generate(void);
 void identify(Base *p);
 void identify(Base &p);
