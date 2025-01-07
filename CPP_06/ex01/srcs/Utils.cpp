@@ -20,10 +20,6 @@ void printColor(const std::string &msg, const std::string &color, int needEndl) 
 	}
 }
 
-// void separatorLine() {
-// 	std::cout << std::endl << "=============================================================" << std::endl;
-// }
-
 void separatorLine(int size) {
 	std::cout << std::endl;
 	

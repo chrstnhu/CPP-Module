@@ -42,6 +42,7 @@ Data &Data::operator=(const Data &other) {
 	return (*this);
 }
 
+
 // Getters and setters
 void Data::setInput(std::string input) {
 	_input = input;
