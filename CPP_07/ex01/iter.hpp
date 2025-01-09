@@ -20,7 +20,10 @@
 # define DEF "\033[0;39m"
 
 template <typename T>
-void iter(T *array, size_t size, void (*func) (T const &)) {
+void iter(T *array, size_t size, void (*func) (T &)) {
+	if (array == NULL || func == NULL) {
+		return ;
+	}
 	for (size_t i = 0; i < size; i++) {
 		func(array[i]);
 	}
