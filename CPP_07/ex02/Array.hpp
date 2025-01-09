@@ -44,13 +44,6 @@ class Array {
 		unsigned int size() const;
 		void add(const T &element, unsigned int index);
 };
-
-class InvalidIndexException : public std::exception {
-	public :
-		virtual const char *what() const throw() {
-			return "Invalid index";
-		}
-};
 	
 # include "Array.tpp"
 

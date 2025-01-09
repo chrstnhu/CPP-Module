@@ -20,14 +20,16 @@ int main( void ) {
 	srand(time(NULL));
 
 	// Subject main test
+	std::cout << YELLOW << "-- Subject test --" << DEF;
 	printColor("--> Print int", YELLOW);
 	int *a = new int(42);
 
-	std::cout << "a = " << *a << std::endl;
+	std::cout << "a = " << *a << std::endl << std::endl;
 
 	delete a;
 
 	// Constructor test
+	printColor("-- Main test --", YELLOW);
 	Array<int> array(5);
 	int size = array.size();
 	
@@ -74,6 +76,7 @@ int main( void ) {
 			std::cout << "arrayString[" << i << "] = " << arrayString[i] << std::endl;
 		}
 		// overload array
+		std::cout << std::endl << "--> Add array" << std::endl;
 		arrayString.add("Paris", 3);
 		arrayString.add("France", 2);
 		for (int i = 0; i < size; ++i) {

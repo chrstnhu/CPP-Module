@@ -14,6 +14,8 @@
 # define WHATEVER_HPP
 
 # define YELLOW "\033[0;33m"
+# define YELLOWITALIC "\033[0;33;3m"
+
 # define DEF "\033[0;39m"
 
 # include <iostream>

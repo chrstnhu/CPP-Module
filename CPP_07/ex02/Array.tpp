@@ -60,16 +60,16 @@ Array<T>& Array<T>::operator=(const Array &other) {
 
 template <typename T>
 T& Array<T>::operator[](unsigned int index) {
-    if (index >= this->_size) {
-        throw InvalidIndexException();
+    if (index >= this->_size || index < 0) {
+        throw std::out_of_range("Index out of bounds");
     }
     return this->_array[index];
 }
 
 template <typename T>
 T const & Array<T>::operator[](unsigned int index) const {
-    if (index >= this->_size) {
-        throw InvalidIndexException();
+    if (index >= this->_size || index < 0) {
+        throw std::out_of_range("Index out of bounds");
     }
     return this->_array[index];
 }
@@ -82,11 +82,10 @@ unsigned int Array<T>::size() const {
 
 template <typename T>
 void Array<T>::add(const T& element, unsigned int index) {
-    if (index < size()) {
-        _array[index] = element;
-    } else {
-        throw std::out_of_range("Index out of bounds");
-    }
+	if (index >= size()) {
+		throw std::out_of_range("Index out of bounds");
+	}
+    _array[index] = element;
 }
 
 # endif
