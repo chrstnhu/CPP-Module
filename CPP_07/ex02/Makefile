@@ -15,9 +15,12 @@ GREEN = \033[0;32m
 YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
+# Subject main test
+# SRCS = subject_main.cpp 
+
 # SRCS
 SRCS = main.cpp
-HEADER = Array.hpp
+HEADER = Array.hpp Array.tpp
 OBJS = $(SRCS:%.cpp=%.o)
 
 # Compiler 
