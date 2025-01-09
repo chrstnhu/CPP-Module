@@ -16,20 +16,20 @@ void printColor(const std::string &msg, const std::string &color) {
     std::cout << std::endl << color << msg << DEF << std::endl;
 }
 
-void printInt(int const &element) {
+void printInt(int &element) {
 	std::cout << element << " ";
 	std::cout << "Multiply by 2: " << element * 2 << std::endl;
 }
 
-void printChar(char const &element) {
+void printChar(char &element) {
+	std::cout << element << ", ";
+}
+
+void printString(std::string &element) {
 	std::cout << element << " ";
 }
 
-void printString(std::string const &element) {
-	std::cout << element << " ";
-}
-
-void printIntPtr(int * const &element) {
+void printIntPtr(int * &element) {
 	std::cout << *element << " | "
 			<< "Address: " << element << std::endl;
 }
