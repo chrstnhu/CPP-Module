@@ -16,23 +16,27 @@ void printColor(const std::string &msg, const std::string &color) {
     std::cout << std::endl << color << msg << DEF << std::endl;
 }
 
+// Test with int
 void printInt(int &element) {
 	std::cout << element << " ";
 	std::cout << "Multiply by 2: " << element * 2 << std::endl;
 }
 
+// Test with char
 void printChar(char &element) {
 	std::cout << element << ", ";
 }
 
+// Test with string
 void printString(std::string &element) {
 	std::cout << element << " ";
 }
 
+// Test with pointeur
 void printIntPtr(int * &element) {
-	std::cout << *element << " | "
-			<< "Address: " << element << std::endl;
+	std::cout << *element << " | " << "Address: " << element << std::endl;
 }
+
 
 int main( void ) {
 	// Test with int -------------------------------------------
@@ -49,7 +53,7 @@ int main( void ) {
 	iter(array2, len2, printChar);
 	std::cout << "|" << std::endl;
 	
-	// Test with string
+	// Test with string -----------------------------------------
 	printColor("\n--> Print string", YELLOW);
 	std::string array3[] = {"Hello", "World", "42", "Paris", "France"};
 	int len3 = 2;

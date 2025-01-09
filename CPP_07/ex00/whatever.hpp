@@ -15,8 +15,8 @@
 
 # define YELLOW "\033[0;33m"
 # define YELLOWITALIC "\033[0;33;3m"
-
 # define DEF "\033[0;39m"
+# define GREEN "\033[0;32;1m"
 
 # include <iostream>
 # include <string>

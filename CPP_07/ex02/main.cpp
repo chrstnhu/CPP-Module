@@ -16,30 +16,39 @@ void printColor(const std::string &msg, const std::string &color) {
     std::cout << std::endl << color << msg << DEF << std::endl;
 }
 
-int main( void ) {
-	srand(time(NULL));
-
-	// Subject main test
-	std::cout << YELLOW << "-- Subject test --" << DEF;
-	printColor("--> Print int", YELLOW);
+// Test subject main
+void subjectMain() {
 	int *a = new int(42);
 
-	std::cout << "a = " << *a << std::endl << std::endl;
+	std::cout << "a = " << *a << std::endl;
 
 	delete a;
+}
 
-	// Constructor test
-	printColor("-- Main test --", YELLOW);
+// Test empty array
+void emptyArrayTest() {
+	try {
+		Array<int> emptyArray;
+		std::cout << "emptyArray.size() = " << emptyArray.size() << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cerr << RED << "Exception catch: " << e.what() << DEF << std::endl;
+	}
+}
+
+// Test array with size and initialise random values
+void arrayIntTest() {
 	Array<int> array(5);
 	int size = array.size();
-	
-	// Fill array
+
+	// Fill array with random values
 	for (int i = 0; i < size; ++i) {
-        array[i] = rand() % 100;
+		array[i] = rand() % 100;
 		std::cout << "array[" << i << "] = " << array[i] << std::endl;
 	}
-	// Try to access array index
+
 	try {
+
 		int x = rand() % 10;
 		std::cout << YELLOW << "x = " << x << DEF << std::endl;
 		std::cout << "array[" << x << "] = " << array[x] << std::endl;
@@ -49,7 +58,7 @@ int main( void ) {
 	}
 
 	// Copy constructor test
-	printColor("--> Print copy array", YELLOW);
+	printColor("=== Print copy constructor array ====", YELLOW);
 	Array<int> arrayCopy(array);
 	for (int i = 0; i < size; ++i) {
         array[i] = rand() % 100;
@@ -63,11 +72,13 @@ int main( void ) {
 	catch (std::exception &e) {
 		std::cerr << RED << "Exception catch: " << e.what() << DEF << std::endl;
 	}
+}
 
-	// Test string array
-	printColor("--> Print string array", YELLOW);
+// Test string array
+void arrayStringTest() {
 	Array<std::string> arrayString(3);
-	size = arrayString.size();
+	int size = arrayString.size();
+
 	try {
 		arrayString.add("Hello", 0);
 		arrayString.add("World", 1);
@@ -88,5 +99,29 @@ int main( void ) {
 	catch (std::exception &e) {
 		std::cerr << RED << "Exception catch: " << e.what() << DEF << std::endl;
 	}
+}
+
+int main( void ) {
+	srand(time(NULL));
+
+	// Subject main test
+	printColor("==== Subject test ====", YELLOW);
+	subjectMain();
+
+
+	// Empty array test
+	printColor("==== Empty array test ====", YELLOW);
+	emptyArrayTest();
+
+
+	// Test array with size and initialise random values
+	printColor("==== Array with size and random value ====", YELLOW);
+	arrayIntTest();
+
+
+	// Test string array
+	printColor("=== Print string array ===", YELLOW);
+	arrayStringTest();
+
 	return 0;
 }
