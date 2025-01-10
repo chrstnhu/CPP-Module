@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:51:04 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/10 14:42:51 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/10 15:08:19 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ unsigned int Span::shortestSpan() {
         throw std::invalid_argument("Vector has only one element");
     }
     
+    std::sort(_vec.begin(), _vec.end());
+
     unsigned int shortest = -1;
     for (unsigned int i = 0; i < _vec.size() - 1; i++) {
-        unsigned int diff = _vec[i+1] - _vec[i];
+        unsigned int diff = _vec[i + 1] - _vec[i];
         if (diff < shortest) {
             shortest = diff;
         }
@@ -101,11 +103,11 @@ unsigned int Span::longestSpan() {
         if (_vec[i] < smallest) {
             smallest = _vec[i];
         }
-        else if (_vec[i] > largest) {
+        if (_vec[i] > largest) {
             largest = _vec[i];
         }
     }
-    return std::abs(largest-smallest);
+    return largest - smallest;
 }
 
 // Find the smallest number
