@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 14:47:37 by chrhu             #+#    #+#              #
-#    Updated: 2025/01/10 15:12:51 by chrhu            ###   ########.fr        #
+#    Updated: 2025/01/10 16:01:17 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
 # SRCS
-SRCS = main.cpp MutantStack.cpp
-HEADERS = MutantStack.hpp
+SRCS = main.cpp 
+HEADERS = MutantStack.hpp MutantStack.tpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Compiler and flags

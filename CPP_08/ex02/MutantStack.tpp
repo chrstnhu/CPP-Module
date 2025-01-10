@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:37 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/10 15:26:51 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/10 16:58:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,16 @@ MutantStack<T> &MutantStack<T>::operator=(MutantStack const &other) {
         this = other;
     }
     return *this;
+}
+
+// Methods
+template <typename T>
+typename std::stack<T>::container_type::iterator MutantStack<T>::begin() {
+    return this->c.begin();
+}
+
+template <typename T>
+typename std::stack<T>::container_type::iterator MutantStack<T>::end() {
+    return this->c.end();
 }
 
