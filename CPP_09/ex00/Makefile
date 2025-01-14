@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 19:23:39 by chrhu             #+#    #+#              #
-#    Updated: 2025/01/14 12:37:56 by chrhu            ###   ########.fr        #
+#    Updated: 2025/01/14 13:31:00 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
 #SRCS
-SRCS = main.cpp BitcoinExchange.cpp CheckValidity.cpp
+SRCS = main.cpp BitcoinExchange.cpp CheckValidity.cpp DataExchange.cpp
 HEADERS = includes/BitcoinExchange.hpp includes/Colors.hpp
 OBJS = $(SRCS:%.cpp=%.o)
 
@@ -24,7 +24,7 @@ OBJS = $(SRCS:%.cpp=%.o)
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
-NAME = BitcoinExchange
+NAME = btc
 
 %.o : %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
