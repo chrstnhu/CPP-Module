@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:41 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/14 17:11:30 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/14 19:59:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,14 @@ void BitCoinExchange::setClosestKey(std::string key) {
 
 std::string BitCoinExchange::getClosestKey() {
     return _closestKey;
+}
+
+
+void BitCoinExchange::setClosestValue(double value) {
+    _closestValue = value;
+}
+
+
+double BitCoinExchange::getClosestValue() {
+    return _closestValue;
 }

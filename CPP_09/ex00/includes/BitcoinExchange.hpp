@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:39 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/14 17:11:21 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/14 19:59:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ class BitCoinExchange {
         bool isPositifValue(const std::string &value);
 
         std::string getClosestKey();
-        
+        double getClosestValue();
         void setClosestKey(std::string key);
+        void setClosestValue(double value);
 };
 
 class DataExchange {
