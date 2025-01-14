@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 19:23:39 by chrhu             #+#    #+#              #
-#    Updated: 2025/01/13 19:27:30 by chrhu            ###   ########.fr        #
+#    Updated: 2025/01/14 12:37:56 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ YELLOW = \033[0;33m
 DEFAULT = \033[0m
 
 #SRCS
-SRCS = main.cpp BitcoinExchange.cpp
+SRCS = main.cpp BitcoinExchange.cpp CheckValidity.cpp
 HEADERS = includes/BitcoinExchange.hpp includes/Colors.hpp
-OBJS = $(SRC:%.cpp=%.o)
+OBJS = $(SRCS:%.cpp=%.o)
 
 #Compile
 CC = c++
