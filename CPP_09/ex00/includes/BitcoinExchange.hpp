@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:39 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/14 19:59:41 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/15 12:10:04 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,59 +25,37 @@
 # include "Colors.hpp"
 
 class BitCoinExchange {
-    protected :
-        // std::map <std::string, double> _startline;
-        std::string _line;
-        std::string _date;
-        std::string _value;
-        std::string _closestKey;
-        double _closestValue;
-        
-    public :
-        std::map <std::string, double> _startline;
+    private :
+        std::map <std::string, float> _lineToExchange;
     
+        std::string _line;
+        std::string _dateKey;
+        float       _value;
+        std::string _closestKey;
+        float       _closestValue;
+
+    public :
         BitCoinExchange();
-        BitCoinExchange(std::string &line, std::string &date, std::string &value);
+        BitCoinExchange(std::string &line, std::string &date, float &value);
         BitCoinExchange(const BitCoinExchange &other);
         ~BitCoinExchange();
 
         // Copy assignement
         BitCoinExchange &operator=(const BitCoinExchange &other);
 
+        // Getter and setter
+        const std::map<std::string, float> &getLineToExchange() const;
+        std::string getClosestKey();
+        float      getClosestValue();
+        
+        void setClosestKey(std::string key);
+        void setClosestValue(float value);
+
         // Functions
         void checkValidity();
         bool isValidDate(const std::string &date);
-        bool isValidValue(const std::string &value);
-        bool isPositifValue(const std::string &value);
-
-        std::string getClosestKey();
-        double getClosestValue();
-        void setClosestKey(std::string key);
-        void setClosestValue(double value);
-};
-
-class DataExchange {
-    // protected :
-        // std::map <std::string, double> _data;
-        // std::string _date;
-        // std::string _value;
-        // std::string _closestKey;
-    
-    public :
-        std::map <std::string, double> _data;
-
-        DataExchange();
-        DataExchange(std::string &line, std::string &date, std::string &value);
-        DataExchange(const DataExchange &other);
-        ~DataExchange();
-
-        // Copy assignement
-        DataExchange &operator=(const DataExchange &other);
-
-        // Setter
-        // std::string getClosestKey();
-        // void setClosestKey(std::string key);
-        // void setClosestValue(double value);
+        bool isValidValue(const float &value);
+        bool isPositifValue(const float &value);
 };
 
 # endif
