@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:46 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/10 16:26:40 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/16 15:24:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ class MutantStack : public std::stack<T> {
         MutantStack<T> &operator=(MutantStack const &other);
         
         typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 
         iterator begin();
         iterator end();
+
+        reverse_iterator rbegin();
+        reverse_iterator rend();
 };
 
 #endif

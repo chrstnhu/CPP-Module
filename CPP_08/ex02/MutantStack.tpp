@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:48:37 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/10 16:58:12 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/16 15:23:09 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,12 @@ typename std::stack<T>::container_type::iterator MutantStack<T>::end() {
     return this->c.end();
 }
 
+template <typename T>
+typename std::stack<T>::container_type::reverse_iterator MutantStack<T>::rbegin() {
+    return this->c.rbegin();
+}
+
+template <typename T>
+typename std::stack<T>::container_type::reverse_iterator MutantStack<T>::rend() {
+    return this->c.rend();
+}
