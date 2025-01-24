@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:24:36 by chrhu             #+#    #+#              #
-#    Updated: 2025/01/24 14:12:14 by chrhu            ###   ########.fr        #
+#    Updated: 2025/01/24 16:52:35 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ OBJ_DIR = obj
 
 #SRCS
 SRCS_PATH = srcs
-SRCS = main.cpp 
+SRCS = main_deque.cpp SortDeque.cpp PmergeMe.cpp
+# SRCS = main.cpp
+# SRCS = SortVector.cpp 
+
 HEADERS = includes
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
