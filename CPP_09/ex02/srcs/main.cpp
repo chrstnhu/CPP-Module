@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_12.cpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/24 14:12:00 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/24 15:00:21 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ void insertMinimaBinarySearch(std::vector<int>& maxima, std::vector<int>& minima
 
 int main(int ac, char **av) {
     if (ac < 2) {
-        std::cout << RED "Usage : ./PmergeMe [multiple number]" DEF << std::endl;
+        std::cout << RED "Usage : ./PmergeMe (positif) number1 number2 number3 ... numberN" DEF << std::endl;
     }
+    
     
     std::vector<int> vec;
     
@@ -98,6 +99,8 @@ int main(int ac, char **av) {
     }
     std::cout << std::endl;
 
+    clock_t start = clock();
+    
     std::deque<std::pair<int, int> > pairs;
     for (size_t i = 0; i < vec.size(); i += 2) {
         if (i + 1 < vec.size()) {
@@ -117,11 +120,13 @@ int main(int ac, char **av) {
     std::vector<int> maxima;
     std::vector<int> minima;
     for (size_t i = 0; i < pairs.size(); i++) {
-            maxima.push_back(pairs[i].second);
-            minima.push_back(pairs[i].first);
+        maxima.push_back(pairs[i].second);
+        minima.push_back(pairs[i].first);
     }
 
     insertMinimaBinarySearch(maxima, minima);
+    
+    clock_t end = clock();
     
     // Afficher les éléments du deque après insertion
     std::cout << YELLOW << "After:   " DEF;
@@ -130,5 +135,8 @@ int main(int ac, char **av) {
     }
     std::cout << std::endl;
 
+    double durationVector = 1000000.0 * (end - start) / CLOCKS_PER_SEC;    
+    std::cout << YELLOW "Time to process a rang of " BOLDDEF << maxima.size() 
+        << YELLOW " elements with std::vector : " DEF << durationVector << " µs" << std::endl;
     return 0;
 }
