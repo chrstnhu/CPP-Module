@@ -60,23 +60,23 @@ int main() {
     }
 
 
-    // Test with char vector
-    std::cout << std::endl << YELLOW << "===  Test with char vector === " << DEF << std::endl;
-    std::vector<char> vec2;
+    // Test with char list
+    std::cout << std::endl << YELLOW << "===  Test with char list === " << DEF << std::endl;
+    std::list<char> list;
     
-    vec2.push_back('a');
-    vec2.push_back('b');
-    vec2.push_back('c');
-    vec2.push_back('d');
-    vec2.push_back('e');
+    list.push_back('a');
+    list.push_back('b');
+    list.push_back('c');
+    list.push_back('d');
+    list.push_back('e');
 
     try {
         std::cout << "-> Try accessing elements 'c'" << std::endl;
-        easyfind(vec2, 'c');
+        easyfind(list, 'c');
         std::cout << "-> Try accessing elements 'a'" << std::endl;
-        easyfind(vec2, 'a');
+        easyfind(list, 'a');
         std::cout << "-> Try accessing elements 'z'" << std::endl;
-        easyfind(vec2, 'z');
+        easyfind(list, 'z');
     }
     catch (std::exception &e) {
         std::cout << RED << "Exception caught: " << e.what() << DEF << std::endl;

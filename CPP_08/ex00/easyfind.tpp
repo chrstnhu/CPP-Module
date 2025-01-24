@@ -22,8 +22,6 @@ void easyfind(T &container, int n) {
                 << "' at index " << index << DEF << std::endl;
     }
     else {
-        std::stringstream ss;
-        ss << "Element not found at index "<< index;
-        throw std::invalid_argument(ss.str());
+        throw std::invalid_argument("Element not found");
     }
 }
