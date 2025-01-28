@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 15:19:43 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/28 15:24:30 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int main(int ac, char **av) {
     
     try {
         PMergeMe pairsDeque(ac, av);
-       
-        
-        PMergeMe pairsVec(ac, av);
-        
+        PMergeMe pairsVec = pairsDeque;
         
         // Print before sort
         std::cout << YELLOW "Before:       " DEF;
