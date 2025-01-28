@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 15:24:30 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/28 16:14:24 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 # include "../includes/PmergeMe.hpp"
 
 int main(int ac, char **av) {
-    if (ac < 2) {
-        std::cout << RED "Usage : ./PmergeMe (positif) number1 number2 number3 ... numberN" DEF << std::endl;
+    if (ac < 3) {
+        std::cout << RED "Usage : ./PmergeMe nbr1 nbr2 ... nbrN (positive integer number)" DEF << std::endl;
+        return 0;
     }
     
     try {
