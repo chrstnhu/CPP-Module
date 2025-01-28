@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 15:26:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/28 16:14:12 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // Default constructor
 PMergeMe::PMergeMe(): _pairsDeque(), _maximaDeque(), _minimaDeque(), _pairsVec(), _maximaVec(), _minimaVec() {
     // std::cout << ITALICGREEN "PMergeMe default constructor called" DEF << std::endl;
+    throw std::invalid_argument("Error: Need parameter PmergeMe(int ac, char **av)");
 }
 
 // Copy constructor
@@ -31,7 +32,7 @@ PMergeMe::PMergeMe(PMergeMe const &other) {
 }
 
 // Constructor with parameter
-PMergeMe::PMergeMe(int ac, char **av) {
+PMergeMe::PMergeMe(int ac, char **av): _pairsDeque(), _maximaDeque(), _minimaDeque(), _pairsVec(), _maximaVec(), _minimaVec() {
     // std::cout << ITALICGREEN "PMergeMe Constructor with parameter called" DEF << std::endl;
     checkArgs(ac, av);
 }
@@ -61,10 +62,10 @@ void PMergeMe::checkArgs(int ac, char **av) {
     for (int i = 1; i < ac; i++) {
         char* end;
         if (std::strtol(av[i], &end, 10) < 0) {
-            throw std::invalid_argument("Error is negative number");
+            throw std::invalid_argument("is not a positif number");
         }
         if (!std::isdigit(av[i][0])) {
-            throw std::invalid_argument("Error is not a number");
+            throw std::invalid_argument("is not a number");
         }
     }
 }
