@@ -6,14 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/24 16:34:09 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/28 15:26:54 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
 
 // Default constructor
-PMergeMe::PMergeMe(): _pairsDeque(), _maxima(), _minima() {
+PMergeMe::PMergeMe(): _pairsDeque(), _maximaDeque(), _minimaDeque(), _pairsVec(), _maximaVec(), _minimaVec() {
     // std::cout << ITALICGREEN "PMergeMe default constructor called" DEF << std::endl;
 }
 
@@ -22,19 +22,18 @@ PMergeMe::PMergeMe(PMergeMe const &other) {
     // std::cout << ITALICGREEN "PMergeMe Copy Constructor called" DEF << std::endl;
     if (this != &other) {
         _pairsDeque = other._pairsDeque;
-        _maxima = other._maxima;
-        _minima = other._minima;
+        _maximaDeque = other._maximaDeque;
+        _minimaDeque = other._minimaDeque;
+        _pairsVec = other._pairsVec;
+        _maximaVec = other._maximaVec;
+        _minimaDeque = other._minimaDeque;
     }
 }
 
+// Constructor with parameter
 PMergeMe::PMergeMe(int ac, char **av) {
     // std::cout << ITALICGREEN "PMergeMe Constructor with parameter called" DEF << std::endl;
-    for (int i = 0; i < ac; i++) {
-        char* end;
-        if (std::strtol(av[i], &end, 10) < 0) {
-            throw std::invalid_argument("Error: negative number or not a number");
-        }
-    }
+    checkArgs(ac, av);
 }
 
 // Destructor
@@ -48,8 +47,55 @@ PMergeMe &PMergeMe::operator=(PMergeMe const &other) {
     // std::cout << ITALICGREEN "PMergeMe Copy assignement called" DEF << std::endl;
     if (this != &other) {
         _pairsDeque = other._pairsDeque;
-        _maxima = other._maxima;
-        _minima = other._minima;
+        _maximaDeque = other._maximaDeque;
+        _minimaDeque = other._minimaDeque;
+        _pairsVec = other._pairsVec;
+        _maximaVec = other._maximaVec;
+        _minimaDeque = other._minimaDeque;
     }
     return *this;
+}
+
+// METHODS
+void PMergeMe::checkArgs(int ac, char **av) {
+    for (int i = 1; i < ac; i++) {
+        char* end;
+        if (std::strtol(av[i], &end, 10) < 0) {
+            throw std::invalid_argument("Error is negative number");
+        }
+        if (!std::isdigit(av[i][0])) {
+            throw std::invalid_argument("Error is not a number");
+        }
+    }
+}
+
+// GETTERS
+
+// Deque
+std::deque<std::pair<int, int> > &PMergeMe::getPairsDeque() {
+    return _pairsDeque;
+}
+
+std::deque<int> &PMergeMe::getMaximaDeque() {
+    return _maximaDeque;
+}
+
+// Vector
+std::vector<std::pair<int, int> > &PMergeMe::getPairsVec() {
+    return _pairsVec;
+}
+
+std::vector<int>&PMergeMe::getMaximaVec() {
+    return _maximaVec;
+}
+
+// Overload operator<<
+std::ostream & operator<<(std::ostream &os, PMergeMe &rhs) {
+    for (std::deque<int >::iterator it = rhs.getMaximaDeque().begin(); it != rhs.getMaximaDeque().end(); ++it) {
+        os << *it << " ";
+    }
+    for (std::vector<int >::iterator it = rhs.getMaximaVec().begin(); it != rhs.getMaximaVec().end(); ++it) {
+        os << *it << " ";
+    }
+    return os;
 }
