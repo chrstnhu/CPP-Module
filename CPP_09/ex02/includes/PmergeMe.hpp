@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:01:00 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/24 17:21:55 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/28 15:25:42 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 class PMergeMe {
     protected:
         std::deque<std::pair<int, int> > _pairsDeque;
-        std::deque<int> _maxima;
-        std::deque<int> _minima;
+        std::deque<int> _maximaDeque;
+        std::deque<int> _minimaDeque;
 
-        std::vector <int> _pairsVec;
+        std::vector <std::pair<int, int> > _pairsVec;
         std::vector <int> _maximaVec;
         std::vector <int> _minimaVec;
         
@@ -49,24 +49,28 @@ class PMergeMe {
 
         // Getters
         std::deque<std::pair<int, int> > &getPairsDeque();
-        std::deque<int> &getMaxima();
+        std::deque<int> &getMaximaDeque();
         
-        std::vector<int> &getPairsVec();
+        std::vector<std::pair<int, int> > &getPairsVec();
         std::vector<int> &getMaximaVec();
+
+        // Methods
+        void checkArgs(int ac, char **av);
 
         // Deque
         void savePairsDeque(int ac, char **av);
         void recursiveSortMaxima(std::deque<std::pair<int, int> > &pairs);
         void insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairs);
-        void printPairsDeque();
         
         // Vector
         void savePairsVec(int ac, char **av);
-        void recursiveSortMaxima(std::vector<int> &pairsVec);
-        void insertMinimaBinarySearch(std::vector<int> &pairsVec);
-        void printPairsVec();
+        void recursiveSortMaxima(std::vector<std::pair<int, int> > &pairsVec);
+        void insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairsVec);
+
+        
 
 };
 
+std::ostream & operator<<(std::ostream &os, PMergeMe &rhs);
 
 # endif
