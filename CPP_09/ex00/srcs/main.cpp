@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:23:04 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/15 12:16:38 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:36:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void keyCompare(BitCoinExchange &btc, Data &data) {
                 }
             } 
             else {
-                throw std::invalid_argument("Error: No match found or earlier date available => " + startline_date);
+                throw std::invalid_argument("Error: no match found or earlier date available => " + startline_date);
             }
         }
     }
@@ -46,7 +46,7 @@ void processInputFile(std::fstream &input, Data &data) {
     
     while (std::getline(input, line)) {
         if (line.empty()) {
-            std::cout << "Error: Empty file" << std::endl;
+            std::cout << "Error: empty file" << std::endl;
             break;
         }
         if (line.compare("date | value") == 0) {

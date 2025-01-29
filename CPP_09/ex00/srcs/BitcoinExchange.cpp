@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:41 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/15 12:12:45 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:35:31 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ BitCoinExchange &BitCoinExchange::operator=(const BitCoinExchange &other) {
 
         _lineToExchange[_dateKey] = _value;
     }
+    
     checkValidity();
     return *this;
 }
