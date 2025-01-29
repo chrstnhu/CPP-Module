@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 13:50:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 14:35:47 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void PMergeMe::savePairsVec(int ac, char **av) {
                 _pairsVec.push_back(std::make_pair(second, first));
             }
         } else {
-            _pairsVec.push_back(std::make_pair(first, 0));
+            _impairNbrVec.push_back(first);
         }
     }
 }
@@ -76,7 +76,6 @@ void PMergeMe::recursiveSortMaxima(std::vector<std::pair<int, int> > &pairsVec) 
 
 // Insert Minima with Binary Search
 void PMergeMe::insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairsVec) {
-    
     // Fill the maxima and minima vectors
     for (size_t index = 0; index < pairsVec.size(); ++index) {
         if (pairsVec[index].second != 0) {
@@ -85,6 +84,12 @@ void PMergeMe::insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairs
         _minimaVec.push_back(pairsVec[index].first);
     }
 
+    // If impair number, insert it in the minima vector
+    if (!_impairNbrVec.empty()) {
+        _minimaVec.push_back(_impairNbrVec[0]);
+    }
+    
+    // Insert the first minima in the maxima vector
     _maximaVec.insert(_maximaVec.begin(), _minimaVec[0]);
 
     // Insert the minima in the maxima vector

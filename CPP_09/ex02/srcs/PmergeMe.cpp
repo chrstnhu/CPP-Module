@@ -6,14 +6,16 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 16:14:12 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 14:10:58 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
 
 // Default constructor
-PMergeMe::PMergeMe(): _pairsDeque(), _maximaDeque(), _minimaDeque(), _pairsVec(), _maximaVec(), _minimaVec() {
+PMergeMe::PMergeMe(): 
+    _pairsDeque(), _maximaDeque(), _minimaDeque(), _impairNbrDeque(), 
+    _pairsVec(), _maximaVec(), _minimaVec(), _impairNbrVec() {
     // std::cout << ITALICGREEN "PMergeMe default constructor called" DEF << std::endl;
     throw std::invalid_argument("Error: Need parameter PmergeMe(int ac, char **av)");
 }
@@ -25,14 +27,19 @@ PMergeMe::PMergeMe(PMergeMe const &other) {
         _pairsDeque = other._pairsDeque;
         _maximaDeque = other._maximaDeque;
         _minimaDeque = other._minimaDeque;
+        _impairNbrDeque = other._impairNbrDeque;
+
         _pairsVec = other._pairsVec;
         _maximaVec = other._maximaVec;
         _minimaDeque = other._minimaDeque;
+        _impairNbrVec = other._impairNbrVec;
     }
 }
 
 // Constructor with parameter
-PMergeMe::PMergeMe(int ac, char **av): _pairsDeque(), _maximaDeque(), _minimaDeque(), _pairsVec(), _maximaVec(), _minimaVec() {
+PMergeMe::PMergeMe(int ac, char **av): 
+    _pairsDeque(), _maximaDeque(), _minimaDeque(), _impairNbrDeque(), 
+    _pairsVec(), _maximaVec(), _minimaVec(), _impairNbrVec() {
     // std::cout << ITALICGREEN "PMergeMe Constructor with parameter called" DEF << std::endl;
     checkArgs(ac, av);
 }
@@ -50,9 +57,12 @@ PMergeMe &PMergeMe::operator=(PMergeMe const &other) {
         _pairsDeque = other._pairsDeque;
         _maximaDeque = other._maximaDeque;
         _minimaDeque = other._minimaDeque;
+        _impairNbrDeque = other._impairNbrDeque;
+        
         _pairsVec = other._pairsVec;
         _maximaVec = other._maximaVec;
         _minimaDeque = other._minimaDeque;
+        _impairNbrVec = other._impairNbrVec;
     }
     return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 13:30:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 14:35:44 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ void PMergeMe::savePairsDeque(int ac, char **av) {
                 _pairsDeque.push_back(std::make_pair(second, first));
             }
         } else {
-            _pairsDeque.push_back(std::make_pair(first, 0));
+            _impairNbrDeque.push_back(first);
         }
     }
 }
 
 // Recursive Sort Maxima
-void PMergeMe::recursiveSortMaxima(std::deque<std::pair<int, int> >& pairs) {
-    if (pairs.size() <= 1) {
+void PMergeMe::recursiveSortMaxima(std::deque<std::pair<int, int> >& pairsDeque) {
+    if (pairsDeque.size() <= 1) {
         return;
     }
 
-    size_t mid = pairs.size() / 2;
-    std::deque<std::pair<int, int> > left(pairs.begin(), pairs.begin() + mid);
-    std::deque<std::pair<int, int> > right(pairs.begin() + mid, pairs.end());
-
+    size_t mid = pairsDeque.size() / 2;
+    std::deque<std::pair<int, int> > left(pairsDeque.begin(), pairsDeque.begin() + mid);
+    std::deque<std::pair<int, int> > right(pairsDeque.begin() + mid, pairsDeque.end());
+    
     // Recursive calls
     recursiveSortMaxima(left);
     recursiveSortMaxima(right);
@@ -69,21 +69,27 @@ void PMergeMe::recursiveSortMaxima(std::deque<std::pair<int, int> >& pairs) {
         result.push_back(right[rightIndex]);
         rightIndex++;
     }
-
-    pairs = result;
+    
+    pairsDeque = result;
 }
 
 // Insert Minima with Binary Search
-void PMergeMe::insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairs) {
+void PMergeMe::insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairsDeque) {
 
     // Fill the maxima and minima deque
-    for (size_t index = 0; index < pairs.size(); ++index) {
-        if (pairs[index].second != 0) {
-            _maximaDeque.push_back(pairs[index].second);
+    for (size_t index = 0; index < pairsDeque.size(); ++index) {
+        if (pairsDeque[index].second != 0) {
+            _maximaDeque.push_back(pairsDeque[index].second);
         }
-        _minimaDeque.push_back(pairs[index].first);
+        _minimaDeque.push_back(pairsDeque[index].first);
     }
-
+    
+    // If impair number, insert it in the minima vector
+    if (!_impairNbrDeque.empty()) {
+        _minimaDeque.push_back(_impairNbrDeque[0]);
+    }
+    
+    // Insert the first minima in the maxima vector
     _maximaDeque.push_front(_minimaDeque[0]);
 
     // Insert the minima in the maxima deque

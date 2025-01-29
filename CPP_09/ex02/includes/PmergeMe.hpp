@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:01:00 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 15:25:42 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 14:35:22 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ class PMergeMe {
         std::deque<std::pair<int, int> > _pairsDeque;
         std::deque<int> _maximaDeque;
         std::deque<int> _minimaDeque;
+        std::deque<int> _impairNbrDeque;
 
         std::vector <std::pair<int, int> > _pairsVec;
         std::vector <int> _maximaVec;
         std::vector <int> _minimaVec;
+        std::vector <int> _impairNbrVec;
         
     public:
         PMergeMe();
