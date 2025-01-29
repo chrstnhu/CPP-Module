@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/28 16:14:24 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:08:32 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(int ac, char **av) {
         PMergeMe pairsVec = pairsDeque;
         
         // Print before sort
+        std::cout << YELLOW "Nbr of args:  "  DEF << ac - 1 << YELLOW " elements" DEF << std::endl;
         std::cout << YELLOW "Before:       " DEF;
         for (int i = 1; i < ac; i++) {
             std::cout << av[i] << " ";
@@ -35,16 +36,14 @@ int main(int ac, char **av) {
         pairsDeque.savePairsDeque(ac, av);
         
         clock_t startDeque = clock();
-        pairsDeque.recursiveSortMaxima(pairsDeque.getPairsDeque());
-        pairsDeque.insertMinimaBinarySearch(pairsDeque.getPairsDeque());
+        pairsDeque.sortFordJohnson(pairsDeque.getPairsDeque());
         clock_t endDeque = clock();
 
         // Try with std::vector
         pairsVec.savePairsVec(ac, av);
         
         clock_t startVector = clock();
-        pairsVec.recursiveSortMaxima(pairsVec.getPairsVec());
-        pairsVec.insertMinimaBinarySearch(pairsVec.getPairsVec());
+        pairsVec.sortFordJohnson(pairsVec.getPairsVec());
         clock_t endVector = clock();
         
         // Print after sort
@@ -63,7 +62,7 @@ int main(int ac, char **av) {
     }
     catch (std::exception &e) {
         std::cerr << RED "Error" << std::endl;
-        std::cerr << RED "Exception catch: " << e.what() << std::endl;
+        std::cerr << RED << e.what() << DEF << std::endl;
         return 1;
     }
     return 0;
