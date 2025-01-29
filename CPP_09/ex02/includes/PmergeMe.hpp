@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:01:00 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:35:22 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:30:44 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@
 class PMergeMe {
     protected:
         std::deque<std::pair<int, int> > _pairsDeque;
+        std::deque<std::pair<int, int> > _impairNbrDeque;
         std::deque<int> _maximaDeque;
         std::deque<int> _minimaDeque;
-        std::deque<int> _impairNbrDeque;
+        
 
         std::vector <std::pair<int, int> > _pairsVec;
+        std::vector <std::pair<int, int> > _impairNbrVec;
         std::vector <int> _maximaVec;
         std::vector <int> _minimaVec;
-        std::vector <int> _impairNbrVec;
+        
         
     public:
         PMergeMe();
@@ -61,16 +63,39 @@ class PMergeMe {
 
         // Deque
         void savePairsDeque(int ac, char **av);
-        void recursiveSortMaxima(std::deque<std::pair<int, int> > &pairs);
-        void insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairs);
+        void sortFordJohnson(std::deque<std::pair<int, int> > &pairsDeque);
+        void recursiveSortMaxima(std::deque<std::pair<int, int> > &pairsDeque);
+        void insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairsDeque);
         
         // Vector
         void savePairsVec(int ac, char **av);
+        void sortFordJohnson(std::vector<std::pair<int, int> > &pairsVec);
         void recursiveSortMaxima(std::vector<std::pair<int, int> > &pairsVec);
         void insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairsVec);
 
-        
+        #include <iostream>
 
+        class NumberIsNotPositif : public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return 
+                        "\n*********************************\n"
+                        "*      ERROR: Number is not     *\n"
+                        "*           POSITIVE !          *\n"
+                        "*********************************\n";
+                }
+        };
+
+        class IsNotANumber: public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return 
+                        "\n*********************************\n"
+                        "*      ERROR: Args is not       *\n"
+                        "*           A NUMBER !          *\n"
+                        "*********************************\n";
+                }
+        };
 };
 
 std::ostream & operator<<(std::ostream &os, PMergeMe &rhs);

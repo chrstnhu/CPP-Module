@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:10:58 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:25:06 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 // Default constructor
 PMergeMe::PMergeMe(): 
-    _pairsDeque(), _maximaDeque(), _minimaDeque(), _impairNbrDeque(), 
-    _pairsVec(), _maximaVec(), _minimaVec(), _impairNbrVec() {
+    _pairsDeque(), _impairNbrDeque(), _maximaDeque(), _minimaDeque(),  
+    _pairsVec(), _impairNbrVec(), _maximaVec(), _minimaVec() {
     // std::cout << ITALICGREEN "PMergeMe default constructor called" DEF << std::endl;
     throw std::invalid_argument("Error: Need parameter PmergeMe(int ac, char **av)");
 }
@@ -25,21 +25,21 @@ PMergeMe::PMergeMe(PMergeMe const &other) {
     // std::cout << ITALICGREEN "PMergeMe Copy Constructor called" DEF << std::endl;
     if (this != &other) {
         _pairsDeque = other._pairsDeque;
+        _impairNbrDeque = other._impairNbrDeque;
         _maximaDeque = other._maximaDeque;
         _minimaDeque = other._minimaDeque;
-        _impairNbrDeque = other._impairNbrDeque;
 
         _pairsVec = other._pairsVec;
+        _impairNbrVec = other._impairNbrVec;
         _maximaVec = other._maximaVec;
         _minimaDeque = other._minimaDeque;
-        _impairNbrVec = other._impairNbrVec;
     }
 }
 
 // Constructor with parameter
 PMergeMe::PMergeMe(int ac, char **av): 
-    _pairsDeque(), _maximaDeque(), _minimaDeque(), _impairNbrDeque(), 
-    _pairsVec(), _maximaVec(), _minimaVec(), _impairNbrVec() {
+    _pairsDeque(),_impairNbrDeque(),  _maximaDeque(), _minimaDeque(),
+    _pairsVec(), _impairNbrVec(), _maximaVec(), _minimaVec()  {
     // std::cout << ITALICGREEN "PMergeMe Constructor with parameter called" DEF << std::endl;
     checkArgs(ac, av);
 }
@@ -55,14 +55,14 @@ PMergeMe &PMergeMe::operator=(PMergeMe const &other) {
     // std::cout << ITALICGREEN "PMergeMe Copy assignement called" DEF << std::endl;
     if (this != &other) {
         _pairsDeque = other._pairsDeque;
+        _impairNbrDeque = other._impairNbrDeque;
         _maximaDeque = other._maximaDeque;
         _minimaDeque = other._minimaDeque;
-        _impairNbrDeque = other._impairNbrDeque;
         
         _pairsVec = other._pairsVec;
+        _impairNbrVec = other._impairNbrVec;
         _maximaVec = other._maximaVec;
         _minimaDeque = other._minimaDeque;
-        _impairNbrVec = other._impairNbrVec;
     }
     return *this;
 }
@@ -72,10 +72,10 @@ void PMergeMe::checkArgs(int ac, char **av) {
     for (int i = 1; i < ac; i++) {
         char* end;
         if (std::strtol(av[i], &end, 10) < 0) {
-            throw std::invalid_argument("is not a positif number");
+            throw PMergeMe::NumberIsNotPositif();
         }
         if (!std::isdigit(av[i][0])) {
-            throw std::invalid_argument("is not a number");
+            throw PMergeMe::IsNotANumber();
         }
     }
 }

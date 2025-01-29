@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:35:47 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 14:54:36 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void PMergeMe::savePairsVec(int ac, char **av) {
                 _pairsVec.push_back(std::make_pair(second, first));
             }
         } else {
-            _impairNbrVec.push_back(first);
+            _impairNbrVec.push_back(std::make_pair(first, 0));
         }
     }
 }
@@ -83,11 +83,6 @@ void PMergeMe::insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairs
         }
         _minimaVec.push_back(pairsVec[index].first);
     }
-
-    // If impair number, insert it in the minima vector
-    if (!_impairNbrVec.empty()) {
-        _minimaVec.push_back(_impairNbrVec[0]);
-    }
     
     // Insert the first minima in the maxima vector
     _maximaVec.insert(_maximaVec.begin(), _minimaVec[0]);
@@ -99,4 +94,14 @@ void PMergeMe::insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairs
         std::vector<int>::iterator pos = std::lower_bound(_maximaVec.begin(), _maximaVec.end(), target);
         _maximaVec.insert(pos, target);
     }
+}
+
+void PMergeMe::sortFordJohnson(std::vector<std::pair<int, int> > &pairsVec){
+    recursiveSortMaxima(pairsVec);
+    
+    if (!_impairNbrVec.empty()) {
+        pairsVec.push_back(_impairNbrVec[0]);
+    }
+    
+    insertMinimaBinarySearch(pairsVec);
 }

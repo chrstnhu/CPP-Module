@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:35:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 14:51:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void PMergeMe::savePairsDeque(int ac, char **av) {
                 _pairsDeque.push_back(std::make_pair(second, first));
             }
         } else {
-            _impairNbrDeque.push_back(first);
+            _impairNbrDeque.push_back(std::make_pair(first, 0));
         }
     }
 }
@@ -83,12 +83,7 @@ void PMergeMe::insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairsD
         }
         _minimaDeque.push_back(pairsDeque[index].first);
     }
-    
-    // If impair number, insert it in the minima vector
-    if (!_impairNbrDeque.empty()) {
-        _minimaDeque.push_back(_impairNbrDeque[0]);
-    }
-    
+
     // Insert the first minima in the maxima vector
     _maximaDeque.push_front(_minimaDeque[0]);
 
@@ -99,4 +94,13 @@ void PMergeMe::insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairsD
         std::deque<int>::iterator pos = std::lower_bound(_maximaDeque.begin(), _maximaDeque.end(), target);
         _maximaDeque.insert(pos, target);
     }
+}
+
+void PMergeMe::sortFordJohnson(std::deque<std::pair<int, int> > &pairsDeque){
+    recursiveSortMaxima(pairsDeque);
+    
+    if (!_impairNbrDeque.empty()) {
+        pairsDeque.push_back(_impairNbrDeque[0]);
+    }
+    insertMinimaBinarySearch(pairsDeque);
 }
