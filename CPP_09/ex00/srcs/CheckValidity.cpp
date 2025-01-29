@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:41 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/15 12:15:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:33:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Check the validity of the date and value
 void BitCoinExchange::checkValidity() {
     if (_dateKey.empty()) {
-        throw std::invalid_argument("Error: Empty date");
+        throw BitCoinExchange::emptyDate();
     }
     if (_line.find("|") == std::string::npos) {
         throw std::invalid_argument("Error: bad input => " + _line);
@@ -24,10 +24,10 @@ void BitCoinExchange::checkValidity() {
         throw std::invalid_argument("Error: bad date => " + _dateKey);
     }
     if (!isValidValue(_value)) {
-        throw std::invalid_argument("Error: too large a number.");
+        throw BitCoinExchange::numberTooLarge();
     }
     if (!isPositifValue(_value)) {
-        throw std::out_of_range("Error: not a positive number.");
+        throw BitCoinExchange::notAPositifNumber();
     }
 }
 

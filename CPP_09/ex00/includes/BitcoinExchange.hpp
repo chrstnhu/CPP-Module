@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:39 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/15 12:10:04 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:37:41 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,29 @@ class BitCoinExchange {
         bool isValidDate(const std::string &date);
         bool isValidValue(const float &value);
         bool isPositifValue(const float &value);
+
+        // Exceptions
+        class numberTooLarge: public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return "Error: too large a number.";
+                }
+        };
+
+        class notAPositifNumber: public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return "Error: not a positive number.";
+                }
+        };
+
+        class emptyDate: public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return "Error: empty date.";
+                }
+        };
+
 };
 
 # endif

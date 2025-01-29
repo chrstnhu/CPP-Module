@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:30:38 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/16 17:57:54 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:28:58 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void RPN::checkValidity(const std::string str) {
             continue;
         }
         else {
-            throw std::invalid_argument("Error");
+            throw RPN::isInvalid();
         }
     }
 }
