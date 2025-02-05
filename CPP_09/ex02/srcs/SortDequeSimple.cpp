@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/02/05 14:25:11 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/05 14:26:15 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,6 @@ bool comparePairs(const std::pair<int, int>& a, const std::pair<int, int>& b) {
 void PMergeMe::sortFordJohnson(std::deque<std::pair<int, int> > &pairsDeque){
     // Sort second number
     std::sort(pairsDeque.begin(), pairsDeque.end(), comparePairs);
-    
-    for (size_t i = 0; i < pairsDeque.size(); i++) {
-        std::cout << pairsDeque[i].first << " " << pairsDeque[i].second << std::endl;
-    }
     
     // Insert if is impair
     if (!_impairNbrDeque.empty()) {
