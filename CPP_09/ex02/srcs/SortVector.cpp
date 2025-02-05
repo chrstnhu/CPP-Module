@@ -6,30 +6,11 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:54:36 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:31:17 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
-
-// Save Pairs Vector
-void PMergeMe::savePairsVec(int ac, char **av) {
-    for (int i = 1; i < ac; i += 2) {
-        char* end;
-        int first = std::strtol(av[i], &end, 10);
-        if (i + 1 < ac) {
-            int second = std::strtol(av[i + 1], &end, 10);
-            if (first < second) {
-                _pairsVec.push_back(std::make_pair(first, second));
-            }
-            else {
-                _pairsVec.push_back(std::make_pair(second, first));
-            }
-        } else {
-            _impairNbrVec.push_back(std::make_pair(first, 0));
-        }
-    }
-}
 
 // Recursive Sort Maxima
 void PMergeMe::recursiveSortMaxima(std::vector<std::pair<int, int> > &pairsVec) {
@@ -73,35 +54,70 @@ void PMergeMe::recursiveSortMaxima(std::vector<std::pair<int, int> > &pairsVec) 
     pairsVec = result;
 }
 
-
-// Insert Minima with Binary Search
-void PMergeMe::insertMinimaBinarySearch(std::vector<std::pair<int, int> > &pairsVec) {
-    // Fill the maxima and minima vectors
-    for (size_t index = 0; index < pairsVec.size(); ++index) {
-        if (pairsVec[index].second != 0) {
-            _maximaVec.push_back(pairsVec[index].second);
+// Jacobsthal
+std::vector<int> PMergeMe::jacobsthal(std::vector<std::pair<int, int> > &pairs) {
+    // Fill main and pending deque
+    for (size_t index = 0; index < pairs.size(); ++index) {
+        if (pairs[index].second != 0) {
+            _mainVec.push_back(pairs[index].second);
         }
-        _minimaVec.push_back(pairsVec[index].first);
+        _pendingVec.push_back(pairs[index].first);
     }
-    
-    // Insert the first minima in the maxima vector
-    _maximaVec.insert(_maximaVec.begin(), _minimaVec[0]);
 
-    // Insert the minima in the maxima vector
-    for (size_t index = 1; index < _minimaVec.size(); ++index) {
-        int target = _minimaVec[index];
+    // Insert first pending deque
+    _mainVec.insert(_mainVec.begin(), _pendingVec[0]);
 
-        std::vector<int>::iterator pos = std::lower_bound(_maximaVec.begin(), _maximaVec.end(), target);
-        _maximaVec.insert(pos, target);
+    // Calculate Jacobsthal distance and add to deque
+    std::vector<int> jacobsthalVec;
+    for (int i = 3; i < 15; ++i) {
+        jacobsthalVec.push_back(jacobsthalDistance(i));
+    }
+    return jacobsthalVec;
+}
+
+// Insert pending with Binary Search
+void PMergeMe::insertMinimaBinarySearch(std::vector<int> jacobsthalVec) {
+    size_t end = 0;
+    size_t start = 0;
+
+    for (size_t i = 0; i < jacobsthalVec.size() && ! _pendingVec.empty(); i++) {
+        end = end + jacobsthalVec[i];
+        start = end - jacobsthalVec[i] + 1;
+
+		if (end >= _pendingVec.size()) {
+			end = _pendingVec.size() - 1;
+        }
+
+        // Insert pending deque to main deque        
+        for (size_t j = end; j >= start; j--) {
+            size_t subDeque = _mainVec.size() - (_pendingVec.size() - (end + 1));
+            int target = _pendingVec[j];
+            
+            int left = 0;
+            int right = subDeque;
+            
+            // Binary search
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                if (_mainVec[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+            _mainVec.insert(_mainVec.begin() + left, target);
+        }
     }
 }
 
+// Sort Ford Johnson
 void PMergeMe::sortFordJohnson(std::vector<std::pair<int, int> > &pairsVec){
     recursiveSortMaxima(pairsVec);
     
+    // Insert if is impair
     if (!_impairNbrVec.empty()) {
         pairsVec.push_back(_impairNbrVec[0]);
     }
     
-    insertMinimaBinarySearch(pairsVec);
+    insertMinimaBinarySearch(jacobsthal(pairsVec));
 }
