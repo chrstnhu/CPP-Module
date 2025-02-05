@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/02/04 17:23:34 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:53:39 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Default constructor
 PMergeMe::PMergeMe(): 
     _pairsDeque(), _impairNbrDeque(), _mainDeque(), _pendingDeque(),  
-    _pairsVec(), _impairNbrVec(), _maximaVec(), _minimaVec() {
+    _pairsVec(), _impairNbrVec(), _mainVec(), _pendingVec() {
     // std::cout << ITALICGREEN "PMergeMe default constructor called" DEF << std::endl;
     throw std::invalid_argument("Error: Need parameter PmergeMe(int ac, char **av)");
 }
@@ -31,15 +31,15 @@ PMergeMe::PMergeMe(PMergeMe const &other) {
 
         _pairsVec = other._pairsVec;
         _impairNbrVec = other._impairNbrVec;
-        _maximaVec = other._maximaVec;
-        _pendingDeque = other._pendingDeque;
+        _mainVec = other._mainVec;
+        _pendingVec = other._pendingVec;
     }
 }
 
 // Constructor with parameter
 PMergeMe::PMergeMe(int ac, char **av): 
     _pairsDeque(),_impairNbrDeque(),  _mainDeque(), _pendingDeque(),
-    _pairsVec(), _impairNbrVec(), _maximaVec(), _minimaVec()  {
+    _pairsVec(), _impairNbrVec(), _mainVec(), _pendingVec()  {
     // std::cout << ITALICGREEN "PMergeMe Constructor with parameter called" DEF << std::endl;
     checkArgs(ac, av);
 }
@@ -61,8 +61,8 @@ PMergeMe &PMergeMe::operator=(PMergeMe const &other) {
         
         _pairsVec = other._pairsVec;
         _impairNbrVec = other._impairNbrVec;
-        _maximaVec = other._maximaVec;
-        _pendingDeque = other._pendingDeque;
+        _mainVec = other._mainVec;
+        _pendingVec = other._pendingVec;
     }
     return *this;
 }
@@ -87,7 +87,7 @@ std::deque<std::pair<int, int> > &PMergeMe::getPairsDeque() {
     return _pairsDeque;
 }
 
-std::deque<int> &PMergeMe::getMaximaDeque() {
+std::deque<int> &PMergeMe::getMainDeque() {
     return _mainDeque;
 }
 
@@ -96,12 +96,80 @@ std::vector<std::pair<int, int> > &PMergeMe::getPairsVec() {
     return _pairsVec;
 }
 
-std::vector<int>&PMergeMe::getMaximaVec() {
-    return _maximaVec;
+std::vector<int>&PMergeMe::getMainVec() {
+    return _mainVec;
+}
+
+// List
+std::list<std::pair<int, int> > &PMergeMe::getPairsList() {
+    return _pairsList;
+}
+
+std::list<int>&PMergeMe::getMainList() {
+    return _mainList;
+}
+
+// METHODS
+// Save pairs and swap the biggest number to the right
+void PMergeMe::savePairsDeque(int ac, char **av) {
+    for (int i = 1; i < ac; i += 2) {
+        char* end;
+        int first = std::strtol(av[i], &end, 10);
+        if (i + 1 < ac) {
+            int second = std::strtol(av[i + 1], &end, 10);
+            if (first < second) {
+                _pairsDeque.push_back(std::make_pair(first, second));
+            }
+            else {
+                _pairsDeque.push_back(std::make_pair(second, first));
+            }
+        } 
+        else {
+            _impairNbrDeque.push_back(std::make_pair(first, 0));
+        }
+    }
+}
+
+// Save Pairs Vector
+void PMergeMe::savePairsVec(int ac, char **av) {
+    for (int i = 1; i < ac; i += 2) {
+        char* end;
+        int first = std::strtol(av[i], &end, 10);
+        if (i + 1 < ac) {
+            int second = std::strtol(av[i + 1], &end, 10);
+            if (first < second) {
+                _pairsVec.push_back(std::make_pair(first, second));
+            }
+            else {
+                _pairsVec.push_back(std::make_pair(second, first));
+            }
+        } else {
+            _impairNbrVec.push_back(std::make_pair(first, 0));
+        }
+    }
 }
 
 
-// METHODS
+void PMergeMe::savePairsList(int ac, char **av) {
+    for (int i = 1; i < ac; i += 2) {
+        char* end;
+        int first = std::strtol(av[i], &end, 10);
+        if (i + 1 < ac) {
+            int second = std::strtol(av[i + 1], &end, 10);
+            if (first < second) {
+                _pairsList.push_back(std::make_pair(first, second));
+            }
+            else {
+                _pairsList.push_back(std::make_pair(second, first));
+            }
+        } else {
+            _impairNbrList.push_back(std::make_pair(first, 0));
+        }
+    }
+}
+
+
+
 int PMergeMe::jacobsthalNumber(int n) {
     if (n == 0) {
         return 0;
@@ -113,15 +181,25 @@ int PMergeMe::jacobsthalNumber(int n) {
 }
 
 int PMergeMe::jacobsthalDistance(int n) {
-    return jacobsthalNumber(n) - jacobsthalNumber(n - 1);
+    // Traitement spécial pour les indices faibles
+    if (n <= 0) {
+        return 0;  // Si n <= 0, la distance est 0
+    }
+    
+    int jacobsthal_n = jacobsthalNumber(n);
+    int jacobsthal_n_minus_1 = jacobsthalNumber(n - 1);
+    return jacobsthal_n - jacobsthal_n_minus_1;
 }
 
 // Overload operator<<
 std::ostream & operator<<(std::ostream &os, PMergeMe &rhs) {
-    for (std::deque<int >::iterator it = rhs.getMaximaDeque().begin(); it != rhs.getMaximaDeque().end(); ++it) {
+    for (std::deque<int >::iterator it = rhs.getMainDeque().begin(); it != rhs.getMainDeque().end(); ++it) {
         os << *it << " ";
     }
-    for (std::vector<int >::iterator it = rhs.getMaximaVec().begin(); it != rhs.getMaximaVec().end(); ++it) {
+    for (std::vector<int >::iterator it = rhs.getMainVec().begin(); it != rhs.getMainVec().end(); ++it) {
+        os << *it << " ";
+    }
+    for (std::list<int>::iterator it = rhs.getMainList().begin(); it != rhs.getMainList().end(); ++it) {
         os << *it << " ";
     }
     return os;
