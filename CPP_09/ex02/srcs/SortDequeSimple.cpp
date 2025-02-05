@@ -6,34 +6,14 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/02/05 14:26:15 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:28:35 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
 
-// Save pairs and swap the biggest number to the right
-void PMergeMe::savePairsDeque(int ac, char **av) {
-    for (int i = 1; i < ac; i += 2) {
-        char* end;
-        int first = std::strtol(av[i], &end, 10);
-        if (i + 1 < ac) {
-            int second = std::strtol(av[i + 1], &end, 10);
-            if (first < second) {
-                _pairsDeque.push_back(std::make_pair(first, second));
-            }
-            else {
-                _pairsDeque.push_back(std::make_pair(second, first));
-            }
-        } 
-        else {
-            _impairNbrDeque.push_back(std::make_pair(first, 0));
-        }
-    }
-}
-
 // Jacobsthal 
-void PMergeMe::jacobsthal(std::deque<std::pair<int, int> > &pairsDeque) {
+std::deque<int> PMergeMe::jacobsthal(std::deque<std::pair<int, int> > &pairsDeque) {
     // Fill main and pending deque
     for (size_t index = 0; index < pairsDeque.size(); ++index) {
         if (pairsDeque[index].second != 0) {
@@ -45,20 +25,23 @@ void PMergeMe::jacobsthal(std::deque<std::pair<int, int> > &pairsDeque) {
     // Insert first pending deque
     _mainDeque.push_front(_pendingDeque[0]);
 
+    std::deque<int> jacobsthalDeque;
+
     // Calculate Jacobsthal distance and add to deque
     for (int i = 3; i < 15; ++i) {
-        _jacobsthalDeque.push_back(jacobsthalDistance(i));
+        jacobsthalDeque.push_back(jacobsthalDistance(i));
     }
+    return jacobsthalDeque;
 }
 
 // Insert Minima with Binary Search
-void PMergeMe::insertMinimaBinarySearch() {
+void PMergeMe::insertMinimaBinarySearch(std::deque<int> jacobsthalDeque) {
     size_t end = 0;
     size_t start = 0;
 
-    for (size_t i = 0; i < _jacobsthalDeque.size() && ! _pendingDeque.empty(); i++) {
-        end = end + _jacobsthalDeque[i];
-        start = end - _jacobsthalDeque[i] + 1;
+    for (size_t i = 0; i < jacobsthalDeque.size() && ! _pendingDeque.empty(); i++) {
+        end = end + jacobsthalDeque[i];
+        start = end - jacobsthalDeque[i] + 1;
 
 		if (end >= _pendingDeque.size()) {
 			end = _pendingDeque.size() - 1;
@@ -88,6 +71,5 @@ void PMergeMe::sortFordJohnson(std::deque<std::pair<int, int> > &pairsDeque){
         pairsDeque.push_back(_impairNbrDeque[0]);
     }
     
-    jacobsthal(pairsDeque);
-    insertMinimaBinarySearch();
+    insertMinimaBinarySearch(jacobsthal(pairsDeque));
 }
