@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 14:51:35 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:26:16 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,34 +73,47 @@ void PMergeMe::recursiveSortMaxima(std::deque<std::pair<int, int> >& pairsDeque)
     pairsDeque = result;
 }
 
-// Insert Minima with Binary Search
-void PMergeMe::insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairsDeque) {
+void PMergeMe::jacobsthalInsert () {
+    
+}
 
+void PMergeMe::jacobsthal(std::deque<std::pair<int, int> > &pairsDeque) {
     // Fill the maxima and minima deque
     for (size_t index = 0; index < pairsDeque.size(); ++index) {
         if (pairsDeque[index].second != 0) {
-            _maximaDeque.push_back(pairsDeque[index].second);
+            _mainDeque.push_back(pairsDeque[index].second);
         }
-        _minimaDeque.push_back(pairsDeque[index].first);
+        _pendingDeque.push_back(pairsDeque[index].first);
     }
 
     // Insert the first minima in the maxima vector
-    _maximaDeque.push_front(_minimaDeque[0]);
+    _mainDeque.push_front(_pendingDeque[0]);
+    
+    // Calculate the Jacobsthal distance
+    int jacobsthalNbr = jacobsthalDistance(_pendingDeque.size());
+    
+}
 
+// Insert Minima with Binary Search
+void PMergeMe::insertMinimaBinarySearch() {
     // Insert the minima in the maxima deque
-    for (size_t index = 1; index < _minimaDeque.size(); ++index) {
-        int target = _minimaDeque[index];
+    for (size_t index = 1; index < _pendingDeque.size(); ++index) {
+        int target = _pendingDeque[index];
 
-        std::deque<int>::iterator pos = std::lower_bound(_maximaDeque.begin(), _maximaDeque.end(), target);
-        _maximaDeque.insert(pos, target);
+        std::deque<int>::iterator pos = std::lower_bound(_mainDeque.begin(), _mainDeque.end(), target);
+        _mainDeque.insert(pos, target);
     }
 }
 
+// Sort Ford Johnson
 void PMergeMe::sortFordJohnson(std::deque<std::pair<int, int> > &pairsDeque){
     recursiveSortMaxima(pairsDeque);
     
     if (!_impairNbrDeque.empty()) {
         pairsDeque.push_back(_impairNbrDeque[0]);
     }
-    insertMinimaBinarySearch(pairsDeque);
+    jacobsthalDistance(pairsDeque);
+    
+    
+    insertMinimaBinarySearch();
 }

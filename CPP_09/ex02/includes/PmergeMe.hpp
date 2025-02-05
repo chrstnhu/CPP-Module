@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:01:00 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 15:30:44 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:22:39 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # define BEFORE 0
 # define AFTER 1
+# define DEQUE 2
+# define VECTOR 3
 
 # include "Colors.hpp"
 
@@ -33,8 +35,8 @@ class PMergeMe {
     protected:
         std::deque<std::pair<int, int> > _pairsDeque;
         std::deque<std::pair<int, int> > _impairNbrDeque;
-        std::deque<int> _maximaDeque;
-        std::deque<int> _minimaDeque;
+        std::deque<int> _mainDeque;
+        std::deque<int> _pendingDeque;
         
 
         std::vector <std::pair<int, int> > _pairsVec;
@@ -60,12 +62,17 @@ class PMergeMe {
 
         // Methods
         void checkArgs(int ac, char **av);
+        int jacobsthalNumber(int n);
+        int jacobsthalDistance(int n);
 
         // Deque
         void savePairsDeque(int ac, char **av);
         void sortFordJohnson(std::deque<std::pair<int, int> > &pairsDeque);
         void recursiveSortMaxima(std::deque<std::pair<int, int> > &pairsDeque);
-        void insertMinimaBinarySearch(std::deque<std::pair<int, int> >& pairsDeque);
+        void jacobsthal(std::deque<std::pair<int, int> > &pairsDeque);
+        
+        void insertMinimaBinarySearch();
+        
         
         // Vector
         void savePairsVec(int ac, char **av);
@@ -80,8 +87,10 @@ class PMergeMe {
                 virtual const char* what() const throw() {
                     return 
                         "\n*********************************\n"
+                        "*                               *\n"
                         "*      ERROR: Number is not     *\n"
                         "*           POSITIVE !          *\n"
+                        "*                               *\n"
                         "*********************************\n";
                 }
         };
@@ -91,13 +100,29 @@ class PMergeMe {
                 virtual const char* what() const throw() {
                     return 
                         "\n*********************************\n"
+                        "*                               *\n"
                         "*      ERROR: Args is not       *\n"
                         "*           A NUMBER !          *\n"
+                        "*                               *\n"
                         "*********************************\n";
                 }
         };
 };
 
+class notSorted: public std::exception {
+    public:
+        virtual const char* what() const throw() {
+            return 
+                "\n*********************************\n"
+                "*                               *\n"
+                "*      ERROR: Not sorted        *\n"
+                "*                               *\n"
+                "*********************************\n";
+        }
+};
+        
 std::ostream & operator<<(std::ostream &os, PMergeMe &rhs);
+
+
 
 # endif

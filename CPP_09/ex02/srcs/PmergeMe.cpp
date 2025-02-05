@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 15:25:06 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:23:34 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Default constructor
 PMergeMe::PMergeMe(): 
-    _pairsDeque(), _impairNbrDeque(), _maximaDeque(), _minimaDeque(),  
+    _pairsDeque(), _impairNbrDeque(), _mainDeque(), _pendingDeque(),  
     _pairsVec(), _impairNbrVec(), _maximaVec(), _minimaVec() {
     // std::cout << ITALICGREEN "PMergeMe default constructor called" DEF << std::endl;
     throw std::invalid_argument("Error: Need parameter PmergeMe(int ac, char **av)");
@@ -26,19 +26,19 @@ PMergeMe::PMergeMe(PMergeMe const &other) {
     if (this != &other) {
         _pairsDeque = other._pairsDeque;
         _impairNbrDeque = other._impairNbrDeque;
-        _maximaDeque = other._maximaDeque;
-        _minimaDeque = other._minimaDeque;
+        _mainDeque = other._mainDeque;
+        _pendingDeque = other._pendingDeque;
 
         _pairsVec = other._pairsVec;
         _impairNbrVec = other._impairNbrVec;
         _maximaVec = other._maximaVec;
-        _minimaDeque = other._minimaDeque;
+        _pendingDeque = other._pendingDeque;
     }
 }
 
 // Constructor with parameter
 PMergeMe::PMergeMe(int ac, char **av): 
-    _pairsDeque(),_impairNbrDeque(),  _maximaDeque(), _minimaDeque(),
+    _pairsDeque(),_impairNbrDeque(),  _mainDeque(), _pendingDeque(),
     _pairsVec(), _impairNbrVec(), _maximaVec(), _minimaVec()  {
     // std::cout << ITALICGREEN "PMergeMe Constructor with parameter called" DEF << std::endl;
     checkArgs(ac, av);
@@ -56,13 +56,13 @@ PMergeMe &PMergeMe::operator=(PMergeMe const &other) {
     if (this != &other) {
         _pairsDeque = other._pairsDeque;
         _impairNbrDeque = other._impairNbrDeque;
-        _maximaDeque = other._maximaDeque;
-        _minimaDeque = other._minimaDeque;
+        _mainDeque = other._mainDeque;
+        _pendingDeque = other._pendingDeque;
         
         _pairsVec = other._pairsVec;
         _impairNbrVec = other._impairNbrVec;
         _maximaVec = other._maximaVec;
-        _minimaDeque = other._minimaDeque;
+        _pendingDeque = other._pendingDeque;
     }
     return *this;
 }
@@ -88,7 +88,7 @@ std::deque<std::pair<int, int> > &PMergeMe::getPairsDeque() {
 }
 
 std::deque<int> &PMergeMe::getMaximaDeque() {
-    return _maximaDeque;
+    return _mainDeque;
 }
 
 // Vector
@@ -98,6 +98,22 @@ std::vector<std::pair<int, int> > &PMergeMe::getPairsVec() {
 
 std::vector<int>&PMergeMe::getMaximaVec() {
     return _maximaVec;
+}
+
+
+// METHODS
+int PMergeMe::jacobsthalNumber(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+    return jacobsthalNumber(n - 1) + 2 * jacobsthalNumber(n - 2);
+}
+
+int PMergeMe::jacobsthalDistance(int n) {
+    return jacobsthalNumber(n) - jacobsthalNumber(n - 1);
 }
 
 // Overload operator<<
