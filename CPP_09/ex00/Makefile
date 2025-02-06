@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/13 19:23:39 by chrhu             #+#    #+#              #
-#    Updated: 2025/01/15 11:30:25 by chrhu            ###   ########.fr        #
+#    Updated: 2025/02/06 13:42:08 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 NAME = btc
 
-$(OBJ_DIR)/%.o : $(SRCS_PATH)/%.cpp
+$(OBJ_DIR)/%.o : $(SRCS_PATH)/%.cpp $(HEADERS)/*.hpp
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 

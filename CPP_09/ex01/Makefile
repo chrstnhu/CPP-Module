@@ -6,7 +6,7 @@
 #    By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:24:36 by chrhu             #+#    #+#              #
-#    Updated: 2025/01/16 17:24:39 by chrhu            ###   ########.fr        #
+#    Updated: 2025/02/06 13:42:03 by chrhu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -Wshadow
 
 NAME = RPN
 
-$(OBJ_DIR)/%.o : $(SRCS_PATH)/%.cpp
+$(OBJ_DIR)/%.o : $(SRCS_PATH)/%.cpp $(HEADERS)/*.hpp
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
