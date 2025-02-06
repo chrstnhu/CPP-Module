@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:30 by chrhu             #+#    #+#             */
-/*   Updated: 2025/02/05 17:26:28 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/06 14:59:52 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ void isSorted(PMergeMe &pairs, int status) {
         }
         std::cout << GREEN "Vector is sorted !" DEF << std::endl;
     }
-    else if (status == LIST) {
-        std::list<int> pairsList = pairs.getMainList();
-        std::list<int>::iterator it = pairsList.begin();
-        std::list<int>::iterator nextIt = it;
-        ++nextIt;
-        while (nextIt != pairsList.end()) {
-            if (*it > *nextIt) {
-                std::cout << "PairsList[i]: " << *it << std::endl;
-                std::cout << "PairsList[i + 1]: " << *nextIt << std::endl;
-                throw notSorted();
-            }
-            ++it;
-            ++nextIt;
-        }
-        std::cout << GREEN "List is sorted !" DEF << std::endl;
-    }
+    // else if (status == LIST) {
+    //     std::list<int> pairsList = pairs.getMainList();
+    //     std::list<int>::iterator it = pairsList.begin();
+    //     std::list<int>::iterator nextIt = it;
+    //     ++nextIt;
+    //     while (nextIt != pairsList.end()) {
+    //         if (*it > *nextIt) {
+    //             std::cout << "PairsList[i]: " << *it << std::endl;
+    //             std::cout << "PairsList[i + 1]: " << *nextIt << std::endl;
+    //             throw notSorted();
+    //         }
+    //         ++it;
+    //         ++nextIt;
+    //     }
+    //     std::cout << GREEN "List is sorted !" DEF << std::endl;
+    // }
 }
 
 int main(int ac, char **av) {
@@ -65,13 +65,19 @@ int main(int ac, char **av) {
     try {
         PMergeMe pairsDeque(ac, av);
         PMergeMe pairsVec = pairsDeque;
-        PMergeMe pairsList = pairsDeque;
+        // PMergeMe pairsList = pairsDeque;
         
         // Print before sort
         std::cout << YELLOW "Nbr of args:  "  DEF << ac - 1 << YELLOW " elements" DEF << std::endl;
         std::cout << YELLOW "Before:       " DEF;
         for (int i = 1; i < ac; i++) {
-            std::cout << av[i] << " ";
+            if (i < MAXNBR + 1) {
+                std::cout << av[i] << " ";
+            }
+            else {
+                std::cout << "[...]";
+                break ;
+            }
         }
         std::cout << std::endl;
 
@@ -90,13 +96,13 @@ int main(int ac, char **av) {
         clock_t endVector = clock();
 
 
-        // Try with std::list
-        pairsList.savePairsList(ac, av);
-        clock_t startList = clock();
-        pairsList.sortFordJohnson(pairsList.getPairsList());
-        clock_t endList = clock();
-
+        // // Try with std::list
+        // pairsList.savePairsList(ac, av);
+        // clock_t startList = clock();
+        // pairsList.sortFordJohnson(pairsList.getPairsList());
+        // clock_t endList = clock();
         
+                
         // Print after sort and check if it's sorted
         std::cout << YELLOW "After deque : " DEF << pairsDeque << std::endl;
         isSorted(pairsDeque, DEQUE);
@@ -104,9 +110,9 @@ int main(int ac, char **av) {
         isSorted(pairsVec, VECTOR);
 
 
-        std::cout << YELLOW "After list: " DEF << pairsList << std::endl;
-        isSorted(pairsList, LIST);
-        std::cout << std::endl;
+        // std::cout << YELLOW "After list: " DEF << pairsList << std::endl;
+        // isSorted(pairsList, LIST);
+        // std::cout << std::endl;
 
 
         // Print time deque
@@ -119,9 +125,9 @@ int main(int ac, char **av) {
         std::cout << YELLOW "Time to process a rang of " BOLDDEF << pairsVec.getMainVec().size() 
             << YELLOW " elements with std::vector : " DEF << durationVector << " µs" << std::endl;
     
-        double durationList = 1000000.0 * (endList - startList) / CLOCKS_PER_SEC;    
-        std::cout << YELLOW "Time to process a rang of " BOLDDEF << pairsList.getMainList().size() 
-            << YELLOW " elements with std::list : " DEF << durationList << " µs" << std::endl;
+        // double durationList = 1000000.0 * (endList - startList) / CLOCKS_PER_SEC;    
+        // std::cout << YELLOW "Time to process a rang of " BOLDDEF << pairsList.getMainList().size() 
+        //     << YELLOW " elements with std::list : " DEF << durationList << " µs" << std::endl;
     
     }
     catch (std::exception &e) {
