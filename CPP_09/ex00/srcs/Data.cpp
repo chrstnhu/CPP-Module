@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:58:56 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/15 11:57:29 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/04 13:43:04 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ const std::map<std::string, float> &Data::getData() const {
 }
 
 
-// Function 
+// METHODS
+
+// Load data from file
 void Data::loadDataFromFile(std::string filename) {
     std::fstream file;
     file.open(filename.c_str(), std::ios::in);
