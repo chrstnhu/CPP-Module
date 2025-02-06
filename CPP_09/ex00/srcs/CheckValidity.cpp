@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:41 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 15:33:26 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/04 13:42:55 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void BitCoinExchange::checkValidity() {
 // Check if is leap year
 static bool isLeapYear(int year) {
     bool divibleBy4 = year % 4 == 0;
-
     bool divibleBy100 = year % 100 == 0;
-
     bool divibleBy400 = year % 400 == 0;
 
     if (divibleBy4) {
@@ -65,12 +63,6 @@ bool BitCoinExchange::isValidDate(const std::string &date) {
         return false;
     }
     switch (month) {
-        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-            if (day > 31) {
-                return false;
-            }
-            break;
-        
         case 4: case 6: case 9: case 11:
             if (day > 30) {
                 return false;
@@ -78,30 +70,33 @@ bool BitCoinExchange::isValidDate(const std::string &date) {
             break;
     
         case 2:
-            if (!isLeapYear(year) && day > 28) {
-                return false;
+            if (isLeapYear(year)) {
+                if (day > 29) {
+                    return false;
+                }
+            }
+            else {
+                if (day > 28) {
+                    return false;
+                }
             }
             break;
     }
     return true;
 }
 
-// Check if the value is valid
+// Check if the value is valid (less than 1000)
 bool BitCoinExchange::isValidValue(const float &value) {
-    
     if (value > 1000) {
         return false;
     }
-    
     return true;
 }
 
-// Check if the value is positive
+// Check if the value is positive (more than 0)
 bool BitCoinExchange::isPositifValue(const float &value) {
-    
     if (value < 0) {
         return false;
     }
-    
     return true;
 }
