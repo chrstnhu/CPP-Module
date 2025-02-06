@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:21:41 by chrhu             #+#    #+#             */
-/*   Updated: 2025/01/29 15:35:31 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/04 13:42:26 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ BitCoinExchange &BitCoinExchange::operator=(const BitCoinExchange &other) {
     return *this;
 }
 
-
+// Getter and Setter of key
 void BitCoinExchange::setClosestKey(std::string key) {
     _closestKey = key;
 }
@@ -76,7 +76,7 @@ std::string BitCoinExchange::getClosestKey() {
     return _closestKey;
 }
 
-
+// Getter and Setter of value
 void BitCoinExchange::setClosestValue(float value) {
     _closestValue = value;
 }
@@ -86,8 +86,7 @@ float BitCoinExchange::getClosestValue() {
     return _closestValue;
 }
 
-
-// Getter 
+// Getter of line
 const std::map<std::string, float> &BitCoinExchange::getLineToExchange() const {
     return _lineToExchange;
 }
