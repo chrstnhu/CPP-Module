@@ -6,7 +6,7 @@
 /*   By: chrhu <chrhu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:00:58 by chrhu             #+#    #+#             */
-/*   Updated: 2025/02/05 16:53:39 by chrhu            ###   ########.fr       */
+/*   Updated: 2025/02/06 15:01:08 by chrhu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,14 @@ std::vector<int>&PMergeMe::getMainVec() {
     return _mainVec;
 }
 
-// List
-std::list<std::pair<int, int> > &PMergeMe::getPairsList() {
-    return _pairsList;
-}
+// // List
+// std::list<std::pair<int, int> > &PMergeMe::getPairsList() {
+//     return _pairsList;
+// }
 
-std::list<int>&PMergeMe::getMainList() {
-    return _mainList;
-}
+// std::list<int>&PMergeMe::getMainList() {
+//     return _mainList;
+// }
 
 // METHODS
 // Save pairs and swap the biggest number to the right
@@ -150,26 +150,26 @@ void PMergeMe::savePairsVec(int ac, char **av) {
 }
 
 
-void PMergeMe::savePairsList(int ac, char **av) {
-    for (int i = 1; i < ac; i += 2) {
-        char* end;
-        int first = std::strtol(av[i], &end, 10);
-        if (i + 1 < ac) {
-            int second = std::strtol(av[i + 1], &end, 10);
-            if (first < second) {
-                _pairsList.push_back(std::make_pair(first, second));
-            }
-            else {
-                _pairsList.push_back(std::make_pair(second, first));
-            }
-        } else {
-            _impairNbrList.push_back(std::make_pair(first, 0));
-        }
-    }
-}
+// void PMergeMe::savePairsList(int ac, char **av) {
+//     for (int i = 1; i < ac; i += 2) {
+//         char* end;
+//         int first = std::strtol(av[i], &end, 10);
+//         if (i + 1 < ac) {
+//             int second = std::strtol(av[i + 1], &end, 10);
+//             if (first < second) {
+//                 _pairsList.push_back(std::make_pair(first, second));
+//             }
+//             else {
+//                 _pairsList.push_back(std::make_pair(second, first));
+//             }
+//         } else {
+//             _impairNbrList.push_back(std::make_pair(first, 0));
+//         }
+//     }
+// }
 
 
-
+// Jacobsthal number
 int PMergeMe::jacobsthalNumber(int n) {
     if (n == 0) {
         return 0;
@@ -191,16 +191,39 @@ int PMergeMe::jacobsthalDistance(int n) {
     return jacobsthal_n - jacobsthal_n_minus_1;
 }
 
+
 // Overload operator<<
 std::ostream & operator<<(std::ostream &os, PMergeMe &rhs) {
+    int count = 0;
     for (std::deque<int >::iterator it = rhs.getMainDeque().begin(); it != rhs.getMainDeque().end(); ++it) {
-        os << *it << " ";
+        if (count < MAXNBR) {
+            os << *it << " ";
+            count++;
+        }
+        else {
+            os << "[...] ";
+            break;
+        }
     }
     for (std::vector<int >::iterator it = rhs.getMainVec().begin(); it != rhs.getMainVec().end(); ++it) {
-        os << *it << " ";
+        if (count < MAXNBR) {
+            os << *it << " ";
+            count++;
+        }
+        else {
+            os << "[...] ";
+            break;
+        }
     }
-    for (std::list<int>::iterator it = rhs.getMainList().begin(); it != rhs.getMainList().end(); ++it) {
-        os << *it << " ";
-    }
+    // for (std::list<int>::iterator it = rhs.getMainList().begin(); it != rhs.getMainList().end(); ++it) {
+    //     if (count < MAXNBR) {
+    //         os << *it << " ";
+    //         count++;
+    //     }
+    //     else {
+    //         os << "[...] ";
+    //         break;
+    //     }
+    // }
     return os;
 }
